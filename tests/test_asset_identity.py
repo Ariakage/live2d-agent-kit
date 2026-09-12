@@ -83,6 +83,31 @@ class PreviewIdentityTests(unittest.TestCase):
             self.assertEqual(json.loads((output / "model/model.model3.json").read_text()), settings)
             for name in preview.resources(settings):
                 self.assertEqual((source / name).read_bytes(), (output / "model" / name).read_bytes())
+            self.assertEqual(json.loads((output / "preview-manifest.json").read_text())["config"]["CAPTURE_HOLD_DEFAULTS"], [])
+
+    def test_capture_hold_defaults_are_copied_to_runtime_config(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            _, output, _, argv = self.prepare(root, "metadata/data.userdata3.json")
+            config = root / "config.json"
+            ids = ["ParamEyeBallForm", "ParamOptionalCustomPhysics"]
+            config.write_text(json.dumps({"captureHoldDefaults": ids}))
+            with mock.patch.object(sys, "argv", [*argv, "--config", str(config)]), contextlib.redirect_stdout(io.StringIO()):
+                preview.main()
+            self.assertEqual(json.loads((output / "preview-manifest.json").read_text())["config"]["CAPTURE_HOLD_DEFAULTS"], ids)
+            self.assertIn("export const CAPTURE_HOLD_DEFAULTS = " + json.dumps(ids) + ";", (output / "view-config.js").read_text())
+
+    def test_malformed_capture_hold_defaults_fail_before_copying_assets(self):
+        invalid = [None, "ParamEyeBallForm", {}, [""], ["  "], [1], [None], [["nested"]], ["same", "same"]]
+        for value in invalid:
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                _, output, _, argv = self.prepare(root, "metadata/data.userdata3.json")
+                config = root / "config.json"
+                config.write_text(json.dumps({"captureHoldDefaults": value}))
+                with mock.patch.object(sys, "argv", [*argv, "--config", str(config)]), self.assertRaisesRegex(ValueError, "captureHoldDefaults"):
+                    preview.main()
+                self.assertFalse(output.exists())
 
 
 class UpscaleIdentityTests(unittest.TestCase):

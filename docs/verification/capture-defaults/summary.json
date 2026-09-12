@@ -1,0 +1,47 @@
+{
+  "scope": "Actual public Pink HD regression on final template with original config and implicit captureHoldDefaults:[]. Synthetic input only; getUserMedia forbidden. No new physical camera or complete pose-matrix validation.",
+  "passed": true,
+  "checks": 22,
+  "warnings": [],
+  "errors": [],
+  "cameraRequests": 0,
+  "modelSha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+  "textureSha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+  "sourceFiles": {
+    "scripts/prepare-preview.py": "a023044d33234ae789afadd1ff1e7f4c63cd44f889ea1cac9b17d6e5f67a8bab",
+    "scripts/check-preview.cjs": "38c2953844ca22d26ae23fd4f5d74915c60f7320b38e74670d9a3621674e93dd",
+    "templates/web-preview/app.js": "ef4e754c6929b355e9bb2907441135abc7e3e2235552480fa38c340ee05d9993",
+    "templates/web-preview/capture-controller.js": "844041c1a763282f20175173bcafa980198a9b5f0e380cb63e6cf1d379e57be8",
+    "templates/web-preview/runtime.js": "35059f4fce3a81aed799b26ea96ab6ee93543a8b272dbfa35922212d04e02792",
+    "templates/web-preview/view-config.js": "35a34513047aed6f712d4397b742a94fe3178631f3cd9a59ecdfc7bacce0e988",
+    "templates/web-preview/tracking-input.js": "31320e1f75d87ccc80af23a9ace83be4183599ed1c5898b8532e05e56f94dcf7",
+    "templates/web-preview/camera-tracker.js": "40ee92740d273196c388e19a867d2c026c6dc4cb3709b680c7729645c720498f",
+    "templates/web-preview/tracking-math.js": "7c817822ea59a5d9e8065a88bf81fca222df14500fd953aef3f60cedafe4d647",
+    "templates/web-preview/index.html": "4a812f2960cceb38ff2ed1d92bb6b81b972a2d7e777a3593406bc839e4a9a417",
+    "templates/web-preview/server.py": "9efb35c8a42e06aa43355cbe3de2018cd26f0e21eeebf9ca892da2fe4d537ae1",
+    "examples/pink-sakura/preview-config.json": "5b2c5c26ad6c9b656edb5a0acaceb0f99b26c5b0db54aef9d5e766bb9caf3274"
+  },
+  "generatedViewConfigSha256": "cc3f38bf9119473595ed0b7408c9b49d4bde01d14aa55309cd9c9b364731e3fd",
+  "generatedDefaultHold": [],
+  "actualOwnershipEvidence": "default-ownership.json",
+  "sourceFilesUnchangedAfterTest": true,
+  "publicHistoricalCameraReportUnchanged": true,
+  "serverStopped": true,
+  "serverPort": "http://127.0.0.1:60108/",
+  "browser": {
+    "name": "chromium",
+    "version": "152.0.7977.83",
+    "playwrightPackage": "playwright",
+    "playwrightVersion": "1.63.0",
+    "explicitExecutablePath": true
+  },
+  "runtime": {
+    "coreVersionNumber": 83951616,
+    "coreVersion": "5.1.0",
+    "renderer": "WebGL",
+    "maxTextureSize": 16384,
+    "requestedClippingMaskSize": 1024,
+    "clippingMaskSize": 1024
+  },
+  "modelParametersWithoutObservedGeometryChange": []
+}

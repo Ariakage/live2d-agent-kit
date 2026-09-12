@@ -89,6 +89,12 @@ and verify permission errors, calibration and lost tracking. Map only supported
 model parameters. Separate a physical camera run from prerecorded/synthetic
 test fixtures; retain numeric evidence without publishing personal camera frames.
 
+For an existing model, follow [docs/migrate-existing-model.md](docs/migrate-existing-model.md).
+Preserve its logical framing, native mapping ranges and per-layer source processing.
+Use `captureHoldDefaults` only for selected legacy parameters that should remain at
+their native defaults during capture; the default empty list leaves physics alone.
+Independent eyebrow inputs require actual source layers and visible bindings.
+
 Optional MCP paths are documented in [mcp/README.md](mcp/README.md); use only tools
 actually available and verified in the current environment. The kit's CLI route
 works without them. Do not describe an evaluated tool as used in production.

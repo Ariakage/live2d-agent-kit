@@ -201,9 +201,11 @@ python3 scripts/prepare-preview.py \
 python3 work/pink-camera-preview/server.py --port 8860
 ```
 
-点击“开始面捕”，允许浏览器使用摄像头，正视镜头后校准。推理在浏览器本地执行，不上传或录制画面，也不请求麦克风。识别依赖按固定 URL 与 SHA 获取，不随仓库分发。预览服务的同源连接策略会拦截 SDK 默认的统计请求；换用其它服务时也须保留该策略。上半身姿态属于近似估计，没有手臂/手指绑定。使用方法和实际测试范围见 [摄像头指引](docs/camera-tracking.md)，变更见 [更新日志](CHANGELOG.md)。本次最终模型的 [16 项真实摄像头检查](docs/verification/camera-tracking.json)已通过；上半身实测覆盖双肩，未验证髋部俯仰精度。
+点击“开始面捕”，允许浏览器使用摄像头，正视镜头后校准。推理在浏览器本地执行，不上传或录制画面，也不请求麦克风。识别依赖按固定 URL 与 SHA 获取，不随仓库分发。预览服务的同源连接策略会拦截 SDK 默认的统计请求；换用其它服务时也须保留该策略。上半身姿态属于近似估计，没有手臂/手指绑定。使用方法和实际测试范围见 [摄像头指引](docs/camera-tracking.md)，变更见 [更新日志](CHANGELOG.md)。`7f391f4` 快照下的 Pink Sakura 已通过 [16 项真实摄像头检查](docs/verification/camera-tracking.json)；上半身实测覆盖双肩，未验证髋部俯仰精度。这份记录保留旧代码身份，后续迁移配置的回归范围见[证据索引](docs/verification/README.md)。
 
 ## 没有 `work/`，还能复现吗？
+
+已有模型接入同一套面捕时，按[迁移指引](docs/migrate-existing-model.md)保存旧版取景、参数范围和素材处理配置。可用 `captureHoldDefaults` 保留旧版捕捉期间固定的原生参数；默认不固定任何额外参数，输入映射优先，其它物理继续运行。缺少眉毛图层的模型需要先补齐真实绑定，再验证摄像头输入。
 
 `work/` 保存导出结果、临时图层、完整动作截图和日志。Pink Sakura 的基础源图、眉毛分解脚本与派生素材、测量坐标、补画配方以及运行模型都已提交；复现从 `examples/` 开始，不需要作者原来的工作目录。
 

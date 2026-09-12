@@ -2,11 +2,11 @@ import {createViewer} from './runtime.js';
 import {CaptureController} from './capture-controller.js';
 import {CameraTracker} from './camera-tracker.js';
 import {INPUTS, mapInput} from './tracking-input.js';
-import {MODEL_URL,MODEL_LABEL,REFERENCE_URL,DOWNLOAD_URL,INPUT_MAPPING,CAMERA_ASSETS} from './view-config.js';
+import {MODEL_URL,MODEL_LABEL,REFERENCE_URL,DOWNLOAD_URL,INPUT_MAPPING,CAMERA_ASSETS,CAPTURE_HOLD_DEFAULTS} from './view-config.js';
 const $=s=>document.querySelector(s);
 let viewer,readyInfo,camera,showingReference=false;
 const parameterControls=new Map(),inputControls=new Map();
-const capture=new CaptureController({getViewer:()=>viewer,onPrepare:()=>{
+const capture=new CaptureController({getViewer:()=>viewer,holdParameterDefaults:CAPTURE_HOLD_DEFAULTS,onPrepare:()=>{
   viewer.setAutoPlay(false);viewer.setPointerFollow(false);viewer.clearParameters();viewer.setExpression('');
   $('#auto-play').checked=false;$('#pointer-follow').checked=false;
 },onSourceStop:()=>camera?.stop(),onState:state=>{

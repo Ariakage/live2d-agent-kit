@@ -82,7 +82,7 @@ def main():
     parser.add_argument('--cubism-core', required=True, type=Path)
     parser.add_argument('--vendor-dir', required=True, type=Path)
     parser.add_argument('--tracking-dir', type=Path, help='Optional verified local MediaPipe files from setup-tracking.py; enables explicit camera controls')
-    parser.add_argument('--config', type=Path, help='Optional JSON: drawing, regions, inputMapping, label')
+    parser.add_argument('--config', type=Path, help='Optional JSON: drawing, regions, inputMapping, captureHoldDefaults, label')
     parser.add_argument('--reference', type=Path, help='Optional reference image, copied separately and labeled static')
     parser.add_argument('--download', type=Path, help='Optional local model ZIP download')
     args = parser.parse_args()
@@ -114,6 +114,11 @@ def main():
         if 'target' in mapping and not isinstance(mapping['target'],str): raise ValueError(f'Invalid mapping target: {name}')
         for key in ('inputMin','inputMax','outputMin','outputMax'):
             if key in mapping and (not isinstance(mapping[key],(int,float)) or not math.isfinite(mapping[key])): raise ValueError(f'Invalid mapping endpoint: {name}.{key}')
+    hold_defaults=config.get('captureHoldDefaults',[])
+    if (not isinstance(hold_defaults,list) or
+        any(not isinstance(name,str) or not name.strip() for name in hold_defaults) or
+        len(set(hold_defaults)) != len(hold_defaults)):
+        raise ValueError('captureHoldDefaults must be an array of unique nonempty parameter ID strings')
     for optional in (args.reference,args.download):
         if optional and not optional.is_file(): raise ValueError(f'Optional input does not exist: {optional}')
     if args.reference and args.reference.suffix.lower() not in ('.png','.jpg','.jpeg','.webp'):
@@ -157,7 +162,7 @@ def main():
         (output/'media').mkdir();dest=output/'media'/('reference'+args.reference.suffix.lower());shutil.copy2(args.reference,dest);reference_url='./media/'+dest.name
     if args.download:
         (output/'downloads').mkdir();shutil.copy2(args.download,output/'downloads'/'model.zip');download_url='./downloads/model.zip'
-    values={'DRAWING':drawing,'REGIONS':regions,'MODEL_URL':'./model/model.model3.json','MODEL_LABEL':config.get('label',model.name.removesuffix('.model3.json')),'REFERENCE_URL':reference_url,'DOWNLOAD_URL':download_url,'INPUT_MAPPING':config.get('inputMapping',{}),'CAMERA_ASSETS':camera_assets}
+    values={'DRAWING':drawing,'REGIONS':regions,'MODEL_URL':'./model/model.model3.json','MODEL_LABEL':config.get('label',model.name.removesuffix('.model3.json')),'REFERENCE_URL':reference_url,'DOWNLOAD_URL':download_url,'INPUT_MAPPING':config.get('inputMapping',{}),'CAPTURE_HOLD_DEFAULTS':hold_defaults,'CAMERA_ASSETS':camera_assets}
     (output/'view-config.js').write_text('// Generated configuration; drawing dimensions are independent of texture atlas resolution.\n'+''.join(f'export const {key} = {json.dumps(value,ensure_ascii=False)};\n' for key,value in values.items()),encoding='utf-8')
     manifest={'schemaVersion':1,'modelEntry':'model/model.model3.json','config':values,'dependencies':{'core':'user-provided; verify Cubism redistribution terms','pixi':'6.5.10','pixi-live2d-display':'0.4.0'},'copiedNotices':sorted(notices),'files':{str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file()}}
     if tracking_lock: manifest['dependencies']['tracking']={'package':tracking_lock['package'],'lockSha256':sha(output/'tracking'/'dependency-lock.json')}

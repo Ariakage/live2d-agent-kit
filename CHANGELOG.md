@@ -4,6 +4,8 @@
 
 ### Added / 新增
 
+- An [existing-model migration guide](docs/migrate-existing-model.md), including native input ranges, per-layer green despill, eyebrow artwork, loaded-file identities and physical-camera regression scope.
+- Optional `captureHoldDefaults` model profiles to preserve selected legacy defaults during capture. Mapped inputs take priority; direct native controls and unlisted physics remain available. The default empty profile preserves existing behavior.
 - Local browser camera tracking with pinned MediaPipe Face Landmarker and Pose Landmarker Lite. Face input includes eyebrows, blinking, gaze, mouth and head angles; shoulder/torso angles are approximate single-camera estimates.
 - Explicit camera start/stop, neutral calibration, optional local video display, and a face-only mode. Video inference stays local; the application does not upload or record video and never requests a microphone.
 - A separately acquired tracking dependency lock, setup/verification script, and an opt-in physical-camera regression command: `node scripts/check-camera.cjs --physical-camera`.
@@ -19,6 +21,8 @@
 
 ### Tests / 验证
 
+- Migration profile regression: 61 Python / 32 Node tests pass, including configuration validation, mapping precedence, unknown parameter IDs and capture-versus-native control ownership. Earlier archived build and camera reports retain their original source identities and test counts.
+- Pink Sakura with the updated template and default empty hold profile passed [22 real WebGL checks](docs/verification/capture-defaults/README.md). Unmapped physics remained unowned by capture; this regression did not request a camera.
 - The committed `7f391f4` archive passed an independent offline source-package check: 59 Python / 28 Node tests, three byte-identical eyebrow images, and 24-layer Pink / 16-layer Minimal regeneration. The [original report](docs/verification/source-package-7f391f4.json) and [evidence index with SHA-256](docs/verification/README.md) preserve its exact revision. This check does not repeat the separately recorded cold compilation, Core or physical-camera runs.
 - 59 Python tests and 28 Node tests passed, covering source and asset boundaries, build entry points, eyebrow/landmark mapping, calibration, stale inputs, camera lifecycle races and dependency integrity.
 - Pink Sakura: 24 parameters / 26 drawables, 202 native Core poses, 22 Web checks and 91 pose captures; LOW and 4× HD MOC bytes match.

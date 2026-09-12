@@ -3,8 +3,10 @@ import {INPUTS, NEUTRAL_INPUT, DURATION, clamp, simulateInput, mapInput} from '.
 /** One input owner: simulator, manual signals or camera results. Device acquisition
  * stays in CameraTracker; this controller maps, smooths and expires its values. */
 export class CaptureController {
-  constructor({getViewer, onPrepare, onState, onSourceStop}={}) {
+  constructor({getViewer, onPrepare, onState, onSourceStop, holdParameterDefaults=[]}={}) {
     this.getViewer=getViewer; this.onPrepare=onPrepare; this.onState=onState; this.onSourceStop=onSourceStop;
+    this.holdParameterDefaults=new Set(Array.isArray(holdParameterDefaults)
+      ? holdParameterDefaults.filter(id=>typeof id==='string'&&id.trim()) : []);
     this.mode='idle'; this.profile='all'; this.paused=false; this.time=0;
     this.options={strength:1,smoothing:.3,speed:1,faceVisible:true,bodyVisible:true};
     this.inputs={...NEUTRAL_INPUT}; this.offsets={}; this.parameters={};
@@ -82,13 +84,22 @@ export class CaptureController {
     if (this.mode==='simulation') this.inputs=simulateInput(this.time,this.profile);
     const detected=this.detection();
     if (this.mode==='camera' && (this.cameraSeenAt===null||performance.now()-this.cameraSeenAt>=500)) this.message='摄像头输入 · 等待新识别结果，模型回正';
-    const target=mapInput(this.inputs,{...this.options,faceVisible:detected.face,bodyVisible:detected.body,offsets:this.offsets,descriptors:viewer.getParameters()});
-    const breath=viewer.getParameters().find(p=>p.id==='ParamBreath');
-    if (breath) target.ParamBreath=this.mode!=='camera'&&this.options.bodyVisible ? breath.min+(breath.max-breath.min)*(.2+.16*Math.sin(this.time*2*Math.PI/6)) : breath.default;
+    const descriptors=viewer.getParameters();
+    const target=mapInput(this.inputs,{...this.options,faceVisible:detected.face,bodyVisible:detected.body,offsets:this.offsets,descriptors});
+    const held=new Set();
+    // A model profile may retain selected legacy capture defaults. Real input
+    // mappings take priority; all other unmapped physics outputs stay unowned.
+    for (const parameter of descriptors) {
+      if (this.holdParameterDefaults.has(parameter.id) && !Object.hasOwn(target,parameter.id)) {
+        target[parameter.id]=parameter.default; held.add(parameter.id);
+      }
+    }
+    const breath=descriptors.find(p=>p.id==='ParamBreath');
+    if (breath && !Object.hasOwn(target,breath.id)) target.ParamBreath=this.mode!=='camera'&&this.options.bodyVisible ? breath.min+(breath.max-breath.min)*(.2+.16*Math.sin(this.time*2*Math.PI/6)) : breath.default;
     for (const [id,value] of Object.entries(target)) {
       const eye=/Eye.*Open/.test(id);
       const tau=eye ? 12+this.options.smoothing*28 : 12+this.options.smoothing*280;
-      const alpha=immediate || this.options.smoothing===0 ? 1 : 1-Math.exp(-dt*1000/tau);
+      const alpha=held.has(id) || immediate || this.options.smoothing===0 ? 1 : 1-Math.exp(-dt*1000/tau);
       this.parameters[id]=(this.parameters[id] ?? value)+(value-(this.parameters[id] ?? value))*alpha;
     }
     viewer.setCaptureParameters(this.parameters); this.frame++;
