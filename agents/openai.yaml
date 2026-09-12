@@ -1,0 +1,4 @@
+interface:
+  display_name: "Live2D Agent Kit"
+  short_description: "从参考图或 PSD 制作 Live2D，修复拼接并验证真实运行模型"
+  default_prompt: "使用 $live2d-agent-kit 将我的图片制作成 Live2D 模型，并提供源工程、运行包和验证过的网页预览。"

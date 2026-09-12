@@ -1,0 +1,2 @@
+# Unified diff context uses mandatory leading spaces before source tabs.
+patches/*.patch -whitespace

@@ -1,0 +1,983 @@
+diff --git a/src/main/kotlin/io/github/psd2live/agent/AgentPlacementValidation.kt b/src/main/kotlin/io/github/psd2live/agent/AgentPlacementValidation.kt
+index 32fe17a..bddfec2 100644
+--- a/src/main/kotlin/io/github/psd2live/agent/AgentPlacementValidation.kt
++++ b/src/main/kotlin/io/github/psd2live/agent/AgentPlacementValidation.kt
+@@ -13,13 +13,14 @@ internal fun validateRegisteredNeutral(preview: RigPreviewModel, layerIds: Set<S
+         if (layerId !in layerIds) continue
+         val layer = preview.analysis.layers.single { it.source.id.raw == layerId }.source
+         val placement = preview.atlas.placementByLayerId.getValue(layerId)
+-        val page = preview.atlas.pages[placement.page].image
++        // Placements are in packing coordinates even when the exported PNG is enlarged.
++        val (pageWidth, pageHeight) = preview.atlas.packingPageSizes[placement.page]
+         val uv = requireNotNull(drawable.mesh).uvs
+         val actual = requireNotNull(evaluated.worldPositions[drawable.id])
+         require(actual.size == uv.size)
+         for (i in actual.indices step 2) {
+-            val x = layer.bounds.left + uv[i]*page.width - placement.x
+-            val y = layer.bounds.top + uv[i+1]*page.height - placement.y
++            val x = layer.bounds.left + uv[i]*pageWidth - placement.x
++            val y = layer.bounds.top + uv[i+1]*pageHeight - placement.y
+             require(actual[i].isFinite() && actual[i+1].isFinite() && abs(actual[i]-x) < 2f && abs(-actual[i+1]-y) < 2f) {
+                 "Neutral placement drift/reflection for $layerId at vertex ${i/2}. Inspect source raster, parent ${drawable.parentDeformerId?.raw}, geometry and flip channels. No commit was made; original asset and registration remain recoverable."
+             }
+diff --git a/src/main/kotlin/io/github/psd2live/core/Analyzer.kt b/src/main/kotlin/io/github/psd2live/core/Analyzer.kt
+index 8f3b340..b603896 100644
+--- a/src/main/kotlin/io/github/psd2live/core/Analyzer.kt
++++ b/src/main/kotlin/io/github/psd2live/core/Analyzer.kt
+@@ -33,10 +33,11 @@ object CharacterAnalyzer {
+ 		val warnings = mutableListOf<String>()
+ 		val nonEmpty = layers.filter { it.opaquePixels > 0 }
+ 		require(nonEmpty.isNotEmpty()) { tr("error.psdNoVisibleLayers") }
++		val calibrationLayers = calibrationLayers(nonEmpty, config.sourceClosedEyes)
+ 
+-		val character = union(nonEmpty.map { it.bounds })
+-		val explicitFace = nonEmpty.filter { it.semantic.tag == SemanticTag.FACE }
+-		val headLayers = nonEmpty.filter { it.semantic.tag.group == LayerGroup.HEAD }
++		val character = union(calibrationLayers.map { it.bounds })
++		val explicitFace = calibrationLayers.filter { it.semantic.tag == SemanticTag.FACE }
++		val headLayers = calibrationLayers.filter { it.semantic.tag.group == LayerGroup.HEAD }
+ 		val face = when {
+ 			explicitFace.isNotEmpty() -> union(explicitFace.map { it.bounds })
+ 			headLayers.isNotEmpty() -> union(headLayers.map { it.bounds }).let { guessed ->
+@@ -44,14 +45,14 @@ object CharacterAnalyzer {
+ 			}
+ 			else -> Bounds(character.left, character.top, character.right, character.top + character.height * 0.42f)
+ 		}
+-		val bodyLayers = nonEmpty.filter { it.semantic.tag.group == LayerGroup.BODY }
++		val bodyLayers = calibrationLayers.filter { it.semantic.tag.group == LayerGroup.BODY }
+ 		val body = if (bodyLayers.isNotEmpty()) {
+ 			union(bodyLayers.map { it.bounds })
+ 		} else {
+ 			Bounds(character.left, max(face.bottom, character.top + character.height * 0.35f), character.right, character.bottom)
+ 		}
+-		val topwear = nonEmpty.filter { it.semantic.tag == SemanticTag.TOPWEAR }.map { it.bounds }.takeIf { it.isNotEmpty() }?.let(::union)
+-		val bottomwear = nonEmpty.filter { it.semantic.tag == SemanticTag.BOTTOMWEAR }.map { it.bounds }.takeIf { it.isNotEmpty() }?.let(::union)
++		val topwear = calibrationLayers.filter { it.semantic.tag == SemanticTag.TOPWEAR }.map { it.bounds }.takeIf { it.isNotEmpty() }?.let(::union)
++		val bottomwear = calibrationLayers.filter { it.semantic.tag == SemanticTag.BOTTOMWEAR }.map { it.bounds }.takeIf { it.isNotEmpty() }?.let(::union)
+ 		val anchors = RigAnchors(
+ 			character = character.expanded(0.015f),
+ 			face = face.expanded(0.04f),
+@@ -89,6 +90,14 @@ object CharacterAnalyzer {
+ 
+ 	private fun union(bounds: List<Bounds>): Bounds = bounds.reduce(Bounds::union)
+ 
++	/** An alternate eye endpoint must not enlarge the calibration of an existing open eye. */
++	internal fun calibrationLayers(layers: List<ClassifiedLayer>, sourceClosedEyes: Boolean): List<ClassifiedLayer> {
++		if (!sourceClosedEyes) return layers
++		val openSides = layers.filter { it.opaquePixels > 0 && it.semantic.tag in setOf(
++			SemanticTag.EYEWHITE, SemanticTag.EYELASH, SemanticTag.IRIDES) }.map { it.semantic.side }.toSet()
++		return layers.filterNot { it.semantic.tag == SemanticTag.EYE_CLOSE && it.semantic.side in openSides }
++	}
++
+ 	private fun ClassifiedLayer.withOverride(
+ 		override: LayerClassificationOverride?,
+ 		preserveSide: Boolean = false,
+diff --git a/src/main/kotlin/io/github/psd2live/core/AtlasPacker.kt b/src/main/kotlin/io/github/psd2live/core/AtlasPacker.kt
+index 8c12c18..053687d 100644
+--- a/src/main/kotlin/io/github/psd2live/core/AtlasPacker.kt
++++ b/src/main/kotlin/io/github/psd2live/core/AtlasPacker.kt
+@@ -16,8 +16,11 @@ object AtlasPacker {
+ 		var rowHeight: Int,
+ 	)
+ 
+-	fun pack(layers: List<ClassifiedLayer>, requestedSize: Int, padding: Int): PackedAtlas {
++	fun pack(layers: List<ClassifiedLayer>, requestedSize: Int, padding: Int, edgeExtrusion: Int = 0): PackedAtlas {
+ 		require(requestedSize in 256..16384) { tr("error.atlasSize") }
++		require(padding in 0..256 && edgeExtrusion in 0..padding) {
++			"Atlas padding must be 0..256 and edge extrusion must be 0..padding"
++		}
+ 		val items = layers
+ 			.filter { it.source.raster.width > 0 && it.source.raster.height > 0 && it.opaquePixels > 0 }
+ 			.map { Item(it, it.source.raster.width, it.source.raster.height) }
+@@ -35,7 +38,9 @@ object AtlasPacker {
+ 			val packedHeight = item.height + padding
+ 			if (page.x + packedWidth > pageSize) {
+ 				page.x = padding
+-				page.y += page.rowHeight + padding
++				// Each neighboring row owns its gutter. Never let their RGBA extensions overlap.
++				// With extrusion disabled this retains the original shelf layout byte-for-byte.
++				page.y += page.rowHeight + maxOf(padding, edgeExtrusion * 2)
+ 				page.rowHeight = 0
+ 			}
+ 			if (page.y + packedHeight > pageSize) page = newPage()
+@@ -44,6 +49,19 @@ object AtlasPacker {
+ 				graphics.composite = AlphaComposite.Src
+ 				graphics.drawImage(image, page.x, page.y, null)
+ 			}
++			if (edgeExtrusion > 0) {
++				// Duplicate the complete edge RGBA, including alpha, into the reserved gutter.
++				// UVs describe pixel boundaries: linear/mipmap filters may sample beyond them.
++				// A transparent-black gutter darkens opaque rectangular skin patches in renderers
++				// that premultiply after filtering. Do not alter a single source/interior pixel.
++				for (dy in -edgeExtrusion until item.height + edgeExtrusion) {
++					for (dx in -edgeExtrusion until item.width + edgeExtrusion) {
++						if (dx in 0 until item.width && dy in 0 until item.height) continue
++						page.image.setRGB(page.x + dx, page.y + dy,
++							image.getRGB(dx.coerceIn(0, item.width - 1), dy.coerceIn(0, item.height - 1)))
++					}
++				}
++			}
+ 			placements[item.layer.source.id.raw] = AtlasPlacement(pages.lastIndex, page.x, page.y, item.width, item.height)
+ 			page.x += packedWidth + padding
+ 			page.rowHeight = maxOf(page.rowHeight, item.height)
+diff --git a/src/main/kotlin/io/github/psd2live/core/Model.kt b/src/main/kotlin/io/github/psd2live/core/Model.kt
+index d61586f..2ebc68c 100644
+--- a/src/main/kotlin/io/github/psd2live/core/Model.kt
++++ b/src/main/kotlin/io/github/psd2live/core/Model.kt
+@@ -107,9 +107,33 @@ data class MeshSettings(
+ 	val interiorDensity: Float = 40.0f,
+ )
+ 
++data class SourceEyeCorners(val leftX: Float, val leftY: Float, val rightX: Float, val rightY: Float) {
++	init {
++		require(listOf(leftX, leftY, rightX, rightY).all { it.isFinite() } && rightX > leftX) {
++			"Source eye corners must be finite and ordered from canvas left to right"
++		}
++	}
++}
++
++/** Authored upper-lid centreline in source canvas pixels, sorted from canvas left to right. */
++data class SourceEyeCurve(val points: List<Pair<Float, Float>>) {
++	init {
++		require(points.size in 2..256 && points.all { it.first.isFinite() && it.second.isFinite() } &&
++			points.zipWithNext().all { (a, b) -> b.first > a.first }) {
++			"Source eye curve needs 2..256 finite [x,y] points with strictly increasing x"
++		}
++	}
++}
++
+ data class PipelineConfig(
+ 	val atlasSize: Int = 4096,
+ 	val texturePadding: Int = 2,
++	/** Copy edge RGBA into reserved atlas gutters; zero preserves the original texture output. */
++	val textureEdgeExtrusion: Int = 0,
++	/** Absolute PNG paths used after rig construction; UVs and logical atlas placements stay unchanged. */
++	val exportTexturePages: List<String> = emptyList(),
++	/** SHA-256 of each freshly packed original PNG, in page order, guarding against stale replacements. */
++	val exportTextureSourceSha256: List<String> = emptyList(),
+ 	val meshSpacing: Int = 40,
+ 	val meshOuterMargin: Float = 1.0f,
+ 	val meshInnerMargin: Float = 10.0f,
+@@ -118,6 +142,37 @@ data class PipelineConfig(
+ 	val meshOverrides: Map<String, MeshSettings> = emptyMap(),
+ 	val alphaThreshold: Int = 8,
+ 	val headTurnStrength: Float = 1f,
++	/** Override authored head roll when a front-facing source must keep a horizontal eye line. */
++	val initialHeadAngleZOverride: Float? = null,
++	/** Calibrate face geometry separately from a larger original-pixel head drawable. */
++	val faceBoundsOverride: Bounds? = null,
++	/** Preserve raster alpha with rectangular face/feature, front-hair and short-neckwear meshes. */
++	val preserveSourceRaster: Boolean = false,
++	/** Use a gentle closed-lid arc only in original-pixel mode; the authored open key is unchanged. */
++	val sourcePixelShallowBlink: Boolean = true,
++	/** Crossfade same-side authored closed-eye endpoints without changing open-eye calibration. */
++	val sourceClosedEyes: Boolean = false,
++	val sourceEyeCornersL: SourceEyeCorners? = null,
++	val sourceEyeCornersR: SourceEyeCorners? = null,
++	/** Measured endpoints after placing the closed-eye raster; matched once to the open-eye anchors. */
++	val sourceClosedEyeCornersL: SourceEyeCorners? = null,
++	val sourceClosedEyeCornersR: SourceEyeCorners? = null,
++	/** Keep a continuous authored lash visible through partial blinks, before the original open lash fades in. */
++	val sourceContinuousLid: Boolean = false,
++	val sourceOpenEyeCurveL: SourceEyeCurve? = null,
++	val sourceOpenEyeCurveR: SourceEyeCurve? = null,
++	/** Signed canvas-pixel depth of the anchored blink curve; negative is a smiling upward arch. */
++	val sourceEyeClosureDepth: Float = 2f,
++	/** Continuous closed-lid raster thickness at the open endpoint; 1 preserves previous rigs. */
++	val sourceLidOpenThickness: Float = 1f,
++	/** Scale driven head roll independently of yaw/pitch. */
++	val headRollStrength: Float = 1f,
++	/** Scale the additional hair depth-plane follow, independently of the face surface. */
++	val hairFollowStrength: Float = 1f,
++	/** Bypass shared pendulums when the caller supplies one mesh/physics output per strand. */
++	val independentHairPhysics: Boolean = false,
++	/** Let a separately painted closed mouth respond to ParamMouthForm without compressing it. */
++	val cuteMouthForm: Boolean = false,
+ 	val bodyStrength: Float = 1f,
+ 	val meshOnly: Boolean = false,
+ 	val generateDeformers: Boolean = true,
+@@ -220,6 +275,8 @@ data class AtlasPage(val image: BufferedImage, val png: ByteArray)
+ data class PackedAtlas(
+ 	val pages: List<AtlasPage>,
+ 	val placementByLayerId: Map<String, AtlasPlacement>,
++	/** Original packing-coordinate dimensions, retained when only exported texture pixels change. */
++	val packingPageSizes: List<Pair<Int, Int>> = pages.map { it.image.width to it.image.height },
+ )
+ 
+ data class PipelineAnalysis(
+diff --git a/src/main/kotlin/io/github/psd2live/core/NinePoseFaceRig.kt b/src/main/kotlin/io/github/psd2live/core/NinePoseFaceRig.kt
+index 1be5e11..3d0887d 100644
+--- a/src/main/kotlin/io/github/psd2live/core/NinePoseFaceRig.kt
++++ b/src/main/kotlin/io/github/psd2live/core/NinePoseFaceRig.kt
+@@ -50,14 +50,22 @@ internal class NinePoseFaceRig(
+ 		val angleXKeys = floatArrayOf(-45f, 0f, 45f)
+ 		val angleYKeys = floatArrayOf(-30f, 0f, 30f)
+ 
+-		fun from(analysis: PipelineAnalysis): NinePoseFaceRig {
+-			val initialAngleZ = HeadOrientationEstimator.estimate(analysis.layers, analysis.anchors.face)
++		fun from(analysis: PipelineAnalysis, initialAngleZOverride: Float? = null, faceBoundsOverride: Bounds? = null,
++			sourceClosedEyes: Boolean = false): NinePoseFaceRig {
++			require(initialAngleZOverride == null || (initialAngleZOverride.isFinite() && initialAngleZOverride in -45f..45f)) {
++				"Initial head roll override must be finite and within -45..45 degrees"
++			}
++			val calibrationFace = faceBoundsOverride ?: analysis.anchors.face
++			require(listOf(calibrationFace.left, calibrationFace.top, calibrationFace.right, calibrationFace.bottom).all { it.isFinite() } &&
++				calibrationFace.width > 0f && calibrationFace.height > 0f) { "Face calibration bounds must be finite with positive width and height" }
++			val calibrationLayers = CharacterAnalyzer.calibrationLayers(analysis.layers, sourceClosedEyes)
++			val initialAngleZ = initialAngleZOverride ?: HeadOrientationEstimator.estimate(calibrationLayers, calibrationFace)
+ 			val coordinateSpace = HeadCoordinateSpace(
+ 				initialAngleZ,
+-				analysis.anchors.faceCenterX,
+-				analysis.anchors.faceCenterY,
++				if (faceBoundsOverride != null) calibrationFace.centerX else analysis.anchors.faceCenterX,
++				if (faceBoundsOverride != null) calibrationFace.centerY else analysis.anchors.faceCenterY,
+ 			)
+-			val nonEmpty = analysis.layers.filter { it.opaquePixels > 0 }.map { layer ->
++			val nonEmpty = calibrationLayers.filter { it.opaquePixels > 0 }.map { layer ->
+ 				val center = coordinateSpace.toAligned(layer.centroidX, layer.centroidY)
+ 				layer.copy(
+ 					bounds = coordinateSpace.boundsToAligned(layer.bounds),
+@@ -65,7 +73,7 @@ internal class NinePoseFaceRig(
+ 					centroidY = center.second,
+ 				)
+ 			}
+-			val face = coordinateSpace.boundsToAligned(analysis.anchors.face)
++			val face = coordinateSpace.boundsToAligned(calibrationFace)
+ 
+ 			fun unionOrNull(layers: List<ClassifiedLayer>): Bounds? =
+ 				layers.map { it.bounds }.takeIf { it.isNotEmpty() }?.reduce(Bounds::union)
+@@ -115,7 +123,10 @@ internal class NinePoseFaceRig(
+ 			val eyeCenterX = when {
+ 				pairedEyes.size >= 2 -> pairedEyes.map { it.bounds.centerX }.average().toFloat()
+ 				eyeBounds != null -> eyeBounds.centerX
+-				else -> coordinateSpace.toAligned(analysis.anchors.faceCenterX, analysis.anchors.faceCenterY).first
++				else -> coordinateSpace.toAligned(
++					if (faceBoundsOverride != null) calibrationFace.centerX else analysis.anchors.faceCenterX,
++					if (faceBoundsOverride != null) calibrationFace.centerY else analysis.anchors.faceCenterY,
++				).first
+ 			}
+ 			val eyeLineY = eyeBounds?.centerY ?: (face.top + face.height * 0.38f)
+ 			val noseBounds = unionOrNull(nonEmpty.filter { it.semantic.tag == SemanticTag.NOSE })
+diff --git a/src/main/kotlin/io/github/psd2live/core/PSD2LivePipeline.kt b/src/main/kotlin/io/github/psd2live/core/PSD2LivePipeline.kt
+index ab3ee3f..afd8569 100644
+--- a/src/main/kotlin/io/github/psd2live/core/PSD2LivePipeline.kt
++++ b/src/main/kotlin/io/github/psd2live/core/PSD2LivePipeline.kt
+@@ -40,10 +40,11 @@ class PSD2LivePipeline {
+ 
+ 	fun buildPreview(analysis: PipelineAnalysis, config: PipelineConfig = PipelineConfig()): RigPreviewModel {
+         val effectiveAnalysis = MouthLipLayers.prepare(analysis, config)
+-        val atlas = AtlasPacker.pack(effectiveAnalysis.layers, config.atlasSize, config.texturePadding)
++        val atlas = AtlasPacker.pack(effectiveAnalysis.layers, config.atlasSize, config.texturePadding, config.textureEdgeExtrusion)
+ 		val rig = RigBuilder.build(effectiveAnalysis, atlas, config).withRigEdits(config.rigEdits)
+-		val runtimeBundle = buildRuntimeBundle("psd2live-preview", effectiveAnalysis, atlas, rig, config).first
+-		return RigPreviewModel(effectiveAnalysis, atlas, rig, config, runtimeBundle)
++		val exportAtlas = TextureOverride.apply(atlas, config)
++		val runtimeBundle = buildRuntimeBundle("psd2live-preview", effectiveAnalysis, exportAtlas, rig, config).first
++		return RigPreviewModel(effectiveAnalysis, exportAtlas, rig, config, runtimeBundle)
+ 	}
+ 
+ 	/** Fast incremental update for physics, motions and sidecars without re-analyzing or re-packing. */
+@@ -52,6 +53,14 @@ class PSD2LivePipeline {
+ 		config: PipelineConfig,
+ 		baseName: String = "psd2live-preview",
+ 	): RigPreviewModel {
++		if (current.config.exportTexturePages != config.exportTexturePages ||
++			current.config.exportTextureSourceSha256 != config.exportTextureSourceSha256) {
++			// The current pages may already be enlarged. Repack the original source before
++			// checking a different replacement; never apply its source hash to an HD page.
++			val rebuilt = buildPreview(current.analysis, config)
++			val (runtimeBundle, _) = buildRuntimeBundle(baseName, rebuilt.analysis, rebuilt.atlas, rebuilt.rig, config)
++			return rebuilt.copy(runtimeBundle = runtimeBundle)
++		}
+ 		val (runtimeBundle, _) = buildRuntimeBundle(baseName, current.analysis, current.atlas, current.rig, config)
+ 		return current.copy(config = config, runtimeBundle = runtimeBundle)
+ 	}
+@@ -101,9 +110,10 @@ class PSD2LivePipeline {
+ 	): PipelineResult {
+         val analysis = MouthLipLayers.prepare(inputAnalysis, config)
+ 		progress.update(tr("progress.classify"), 0.18)
+-		val atlas = AtlasPacker.pack(analysis.layers, config.atlasSize, config.texturePadding)
++		val atlas = AtlasPacker.pack(analysis.layers, config.atlasSize, config.texturePadding, config.textureEdgeExtrusion)
+ 		progress.update(tr("progress.atlas"), 0.38)
+ 		val rig = RigBuilder.build(analysis, atlas, config).withRigEdits(config.rigEdits)
++		val exportAtlas = TextureOverride.apply(atlas, config)
+ 		val generatedLabel = tr("validation.generated")
+ 		val neutralRig = RigIntegrityValidator.validateNeutralPose(generatedLabel, rig.puppet, rig.sourceBoundsByDrawableId)
+ 		val generatedAngleWarnings = RigIntegrityValidator.validateHeadAnglePoses(generatedLabel, rig.puppet, neutralRig.boundsByDrawableId)
+@@ -119,7 +129,7 @@ class PSD2LivePipeline {
+ 		Files.createDirectories(outputRoot)
+ 		val files = mutableListOf<ExportedFile>()
+ 		val warnings = (analysis.warnings + rig.warnings + neutralRig.warnings + generatedAngleWarnings + generatedWarpWarnings).toMutableList()
+-		val (runtimeBundle, runtimeReport) = buildRuntimeBundle(baseName, analysis, atlas, rig, config)
++		val (runtimeBundle, runtimeReport) = buildRuntimeBundle(baseName, analysis, exportAtlas, rig, config)
+ 
+ 		if (config.exportMoc3) {
+ 			for (file in runtimeBundle.assets) files += writeContained(outputRoot, file.path, file.bytes)
+@@ -136,7 +146,7 @@ class PSD2LivePipeline {
+ 		progress.update(tr("progress.exportMoc3"), 0.77)
+ 
+ 		if (config.exportCmo3) {
+-			val pages = atlas.pages.map { page ->
++			val pages = exportAtlas.pages.map { page ->
+ 				Cmo3Conversion.AtlasPage(page.png, page.image.width, page.image.height)
+ 			}
+ 			val converted = Cmo3Conversion.freshCmo3(
+@@ -169,12 +179,12 @@ class PSD2LivePipeline {
+ 		progress.update(tr("progress.exportCmo3"), 0.91)
+ 
+ 		if (config.exportJson) {
+-			val report = projectReport(baseName, analysis, rig, atlas, config, warnings)
++			val report = projectReport(baseName, analysis, rig, exportAtlas, config, warnings)
+ 			Json.parseToJsonElement(report)
+ 			files += writeContained(outputRoot, "$baseName.psd2live.json", report.encodeToByteArray())
+ 		}
+ 		progress.update(tr("progress.validated"), 1.0)
+-		return PipelineResult(analysis, files, warnings, RigPreviewModel(analysis, atlas, rig, config, runtimeBundle))
++		return PipelineResult(analysis, files, warnings, RigPreviewModel(analysis, exportAtlas, rig, config, runtimeBundle))
+ 	}
+ 
+ 	private fun buildRuntimeBundle(
+@@ -353,6 +363,14 @@ class PSD2LivePipeline {
+ 		val useFrontHair = hasFrontHair && config.generatePhysics && config.physicsFrontHair && !config.meshOnly
+ 		val useBackHair = hasBackHair && config.generatePhysics && config.physicsBackHair && !config.meshOnly
+ 		val useEyeJelly = hasEyeJelly && config.generatePhysics && config.physicsEyeJelly && !config.meshOnly
++		val deformerIds = rig.puppet.deformers.map { it.id.raw }.toSet()
++		fun existingDeformers(vararg ids: String) = ids.filter { it in deformerIds }.joinToString(",", "[", "]", transform = ::quote)
++		val texturePages = atlas.pages.joinToString(",", "[", "]") {
++			"{\"width\":${it.image.width},\"height\":${it.image.height}}"
++		}
++		val packingPages = atlas.packingPageSizes.joinToString(",", "[", "]") { (width, height) ->
++			"{\"width\":$width,\"height\":$height}"
++		}
+ 		return """
+ 		{
+ 		  "version": 1,
+@@ -361,9 +379,10 @@ class PSD2LivePipeline {
+ 		  "runtimeTarget": ${quote(rig.puppet.runtimeTarget.name)},
+ 		  "mocVersion": ${rig.puppet.runtimeTarget.mocVersion().byteValue},
+ 		  "canvas": {"width":${analysis.source.widthPx},"height":${analysis.source.heightPx}},
+-		  "config": {"atlasSize":${config.atlasSize},"meshSpacing":${config.meshSpacing},"headTurnStrength":${config.headTurnStrength},"bodyStrength":${config.bodyStrength},"meshOnly":${config.meshOnly},"generateDeformers":${config.generateDeformers},"exportMotions":${config.exportMotions}},
++		  "config": {"atlasSize":${config.atlasSize},"meshSpacing":${config.meshSpacing},"headTurnStrength":${config.headTurnStrength},"headRollStrength":${config.headRollStrength},"hairFollowStrength":${config.hairFollowStrength},"independentHairPhysics":${config.independentHairPhysics},"cuteMouthForm":${config.cuteMouthForm},"bodyStrength":${config.bodyStrength},"meshOnly":${config.meshOnly},"generateDeformers":${config.generateDeformers},"exportMotions":${config.exportMotions}},
++		  "textures": {"packingPages":$packingPages,"pages":$texturePages,"sourceSha256":[${config.exportTextureSourceSha256.joinToString(",", transform = ::quote)}]},
+ 		  "faceRig": {"algorithm":"perspective-parallelogram-nine-pose-v2","angleX":[-45,0,45],"angleY":[-30,0,30],"initialAngleZ":${rig.initialHeadAngleZ},"centerX":${rig.faceCenterX},"centerY":${rig.faceCenterY},"radiusX":${rig.faceRadiusX},"radiusY":${rig.faceRadiusY}},
+-		  "deformerHierarchy": {"head":"DeformHeadContainer","face":"DeformFaceNinePose","frontHair":["DeformHairFrontFollow","DeformHairFrontPhysics"],"backHair":["DeformHairBackFollow","DeformHairBackPhysics"]},
++		  "deformerHierarchy": {"head":"DeformHeadContainer","face":"DeformFaceNinePose","frontHair":${existingDeformers("DeformHairFrontFollow", "DeformHairFrontPhysics")},"backHair":${existingDeformers("DeformHairBackFollow", "DeformHairBackPhysics")}},
+ 		  "physics": {"enabled":${config.generatePhysics && !config.meshOnly},"frontHair":$useFrontHair,"backHair":$useBackHair,"eyeJelly":$useEyeJelly,"preset":"hair-and-eye-pendulum"},
+ 		  "summary": {"layers":${analysis.layers.size},"drawables":${rig.puppet.drawables.size},"deformers":${rig.puppet.deformers.size},"parameters":${rig.puppet.parameters.size},"atlasPages":${atlas.pages.size}},
+ 		  "layers": [
+diff --git a/src/main/kotlin/io/github/psd2live/core/RigBuilder.kt b/src/main/kotlin/io/github/psd2live/core/RigBuilder.kt
+index 85be8eb..fa12b14 100644
+--- a/src/main/kotlin/io/github/psd2live/core/RigBuilder.kt
++++ b/src/main/kotlin/io/github/psd2live/core/RigBuilder.kt
+@@ -150,14 +150,18 @@ object RigBuilder {
+ 		val warnings = mutableListOf<String>()
+ 		val characterFrame = analysis.anchors.character
+ 		val layout = analysis.calibration ?: analysis
+-        val faceRig = NinePoseFaceRig.from(layout)
++		val calibrationLayers = CharacterAnalyzer.calibrationLayers(layout.layers, config.sourceClosedEyes)
++		val closedEyeSides = if (config.sourceClosedEyes) analysis.layers.filter {
++			it.semantic.tag == SemanticTag.EYE_CLOSE && it.opaquePixels > 0
++		}.map { it.semantic.side }.toSet() else emptySet()
++        val faceRig = NinePoseFaceRig.from(layout, config.initialHeadAngleZOverride, config.faceBoundsOverride, config.sourceClosedEyes)
+ 		val headSpace = faceRig.coordinateSpace
+ 		val rigLayerById = analysis.layers.associate { layer ->
+ 			val rigLayer = if (inferredGroup(layer, analysis.anchors) == LayerGroup.HEAD) layer.inHeadSpace(headSpace) else layer
+ 			layer.source.id.raw to rigLayer
+ 		}
+-		val layoutRigLayers = layout.layers.map { if (inferredGroup(it, layout.anchors) == LayerGroup.HEAD) it.inHeadSpace(headSpace) else it }
+-        val headCandidates = layout.layers
++		val layoutRigLayers = calibrationLayers.map { if (inferredGroup(it, layout.anchors) == LayerGroup.HEAD) it.inHeadSpace(headSpace) else it }
++        val headCandidates = calibrationLayers
+ 			.filter { inferredGroup(it, analysis.anchors) == LayerGroup.HEAD && it.opaquePixels > 0 }
+ 			.map { it.inHeadSpace(headSpace) }
+ 		val headFrame = if (headCandidates.isEmpty()) faceRig.face else headCandidates.map { it.bounds }.reduce(Bounds::union).expanded(0.025f)
+@@ -318,7 +322,7 @@ object RigBuilder {
+ 			val isHeadLayer = inferredGroup(layer, analysis.anchors) == LayerGroup.HEAD
+ 			val rigLayer = rigLayerById.getValue(layer.source.id.raw)
+ 			val defaultParentAndFrame = deformerResult.pairedParentByLayerId[layer.source.id.raw]
+-				?: parentAndFrame(layer, faceRig, analysis.anchors, characterFrame, headFrame, faceFrame, frontHairFrame, backHairFrame)
++				?: parentAndFrame(layer, faceRig, analysis.anchors, characterFrame, headFrame, faceFrame, frontHairFrame, backHairFrame, config.independentHairPhysics)
+ 			val hasParentOverride = config.parentOverrides.containsKey(layer.source.id.raw)
+ 			val overrideParentRaw = config.parentOverrides[layer.source.id.raw]
+ 			val effectiveParentId: DeformerId? = if (hasParentOverride) {
+@@ -374,10 +378,13 @@ object RigBuilder {
+ 					matchingEyeWhiteBounds(rigLayer, eyeWhiteLayers),
+ 					mouthAperture,
+                     config,
++					layer.semantic.side in closedEyeSides,
+ 				)
+ 			}
+ 			val override = config.layerOverrides[layer.source.id.raw]
+-			val channelGrids = if (config.meshOnly) ChannelGrids.Empty else buildChannels(layer, override, switchParamKeys)
++			val channelGrids = if (config.meshOnly) ChannelGrids.Empty else buildChannels(layer, override, switchParamKeys,
++				config.cuteMouthForm, layer.semantic.side in closedEyeSides,
++				layer.semantic.side in closedEyeSides && continuousLidEnabled(config, layer.semantic.side))
+ 			val drawable = Drawable(
+ 				id = id,
+ 				name = layer.source.name,
+@@ -693,7 +700,7 @@ object RigBuilder {
+ 		val headPivotLocalX = normalizeX(headPivotCanvas.first, character)
+ 		val headPivotLocalY = normalizeY(headPivotCanvas.second, character)
+ 		val rotationGrid = oneDimGrid(StandardParameters.ANGLE_Z, floatArrayOf(-30f, 0f, 30f)) { value ->
+-			RotationPivotForm(headPivotLocalX, headPivotLocalY, value, 1f)
++			RotationPivotForm(headPivotLocalX, headPivotLocalY, value * config.headRollStrength.coerceIn(0f, 1f), 1f)
+ 		}
+ 		val rotation = Deformer.Rotation(
+ 			headRotationId,
+@@ -818,8 +825,9 @@ object RigBuilder {
+ 				-0.020f,
+ 				-0.006f,
+ 				yawPerspective = 0.10f,
++				followStrength = config.hairFollowStrength,
+ 			)
+-			deformers += hairPhysicsWarp(
++			if (!config.independentHairPhysics) deformers += hairPhysicsWarp(
+ 				frontHairPhysicsWarpId,
+ 				tr("model.deformer.frontHairPhysics"),
+ 				StandardParameters.HAIR_FRONT,
+@@ -832,8 +840,9 @@ object RigBuilder {
+ 			)
+ 		}
+ 		backHair?.let { frame ->
+-			deformers += hairFollowWarp(backHairFollowWarpId, tr("model.deformer.backHairFollow"), frame, head, backHairPartId, -0.018f, 0.004f)
+-			deformers += hairPhysicsWarp(
++			deformers += hairFollowWarp(backHairFollowWarpId, tr("model.deformer.backHairFollow"), frame, head, backHairPartId, -0.018f, 0.004f,
++				followStrength = config.hairFollowStrength)
++			if (!config.independentHairPhysics) deformers += hairPhysicsWarp(
+ 				backHairPhysicsWarpId,
+ 				tr("model.deformer.backHairPhysics"),
+ 				StandardParameters.HAIR_BACK,
+@@ -853,7 +862,7 @@ object RigBuilder {
+ 				!isHandledByFaceRegion(layer, faceRig)
+ 		}
+ 		val grouped = candidateLayers.groupBy { layer ->
+-			val (defaultParentId, _) = parentAndFrame(layer, faceRig, analysis.anchors, character, head, faceFrame, frontHair, backHair)
++			val (defaultParentId, _) = parentAndFrame(layer, faceRig, analysis.anchors, character, head, faceFrame, frontHair, backHair, config.independentHairPhysics)
+ 			val baseName = pairBaseName(layer.source.name)
+ 			defaultParentId to baseName.lowercase(Locale.ROOT).trim()
+ 		}
+@@ -862,7 +871,7 @@ object RigBuilder {
+ 			val hasRight = pairLayers.any { it.semantic.side == Side.RIGHT }
+ 			if (!hasLeft || !hasRight) continue
+ 
+-			val (defaultParentId, defaultParentFrame) = parentAndFrame(pairLayers.first(), faceRig, analysis.anchors, character, head, faceFrame, frontHair, backHair)
++			val (defaultParentId, defaultParentFrame) = parentAndFrame(pairLayers.first(), faceRig, analysis.anchors, character, head, faceFrame, frontHair, backHair, config.independentHairPhysics)
+ 			val cleanBaseName = pairBaseName(pairLayers.first().source.name)
+ 			val pairId = uniquePairDeformerId(cleanBaseName, pairLayers.first().semantic.tag, usedDeformerIds)
+ 			val pairName = tr("model.deformer.pair", cleanBaseName)
+@@ -1079,6 +1088,7 @@ object RigBuilder {
+ 		yawParallax: Float,
+ 		pitchParallax: Float,
+ 		yawPerspective: Float = 0f,
++		followStrength: Float = 1f,
+ 	): Deformer.Warp {
+ 		val inHead = mapBounds(frame, head)
+ 		val grid = warpGrid(
+@@ -1086,7 +1096,8 @@ object RigBuilder {
+ 			3,
+ 			4,
+ 		) { u, v, values ->
+-			hairFollowPoint(inHead, u, v, values[0], values[1], yawParallax, pitchParallax, yawPerspective)
++			val strength = followStrength.coerceIn(0f, 1f)
++			hairFollowPoint(inHead, u, v, values[0] * strength, values[1] * strength, yawParallax, pitchParallax, yawPerspective)
+ 		}
+ 		return Deformer.Warp(id, name, headWarpId, part, 4, 3, true, grid)
+ 	}
+@@ -1125,6 +1136,7 @@ object RigBuilder {
+ 		faceFrame: Bounds,
+ 		frontHair: Bounds?,
+ 		backHair: Bounds?,
++		independentHairPhysics: Boolean = false,
+ 	): Pair<DeformerId, Bounds> = when (layer.semantic.tag) {
+ 		SemanticTag.FACE -> faceContourId to faceFrame
+ 		SemanticTag.IRIDES -> faceRig.regionFor(FaceFeature.IRIS, layer.semantic.side)?.let { gazeWarpId(it) to it.bounds }
+@@ -1140,8 +1152,8 @@ object RigBuilder {
+ 			faceRig.regionFor(FaceFeature.MOUTH, layer.semantic.side)?.let { featureWarpId(it) to it.bounds } ?: (faceWarpId to faceFrame)
+ 		SemanticTag.EARS, SemanticTag.EARWEAR -> faceRig.regionFor(FaceFeature.EAR, layer.semantic.side)?.let { featureWarpId(it) to it.bounds }
+ 			?: (faceWarpId to faceFrame)
+-		SemanticTag.FRONT_HAIR -> frontHair?.let { frontHairPhysicsWarpId to it } ?: (headWarpId to head)
+-		SemanticTag.BACK_HAIR -> backHair?.let { backHairPhysicsWarpId to it } ?: (headWarpId to head)
++		SemanticTag.FRONT_HAIR -> frontHair?.let { (if (independentHairPhysics) frontHairFollowWarpId else frontHairPhysicsWarpId) to it } ?: (headWarpId to head)
++		SemanticTag.BACK_HAIR -> backHair?.let { (if (independentHairPhysics) backHairFollowWarpId else backHairPhysicsWarpId) to it } ?: (headWarpId to head)
+ 		else -> when {
+ 			layer.semantic.tag in faceTags -> faceWarpId to faceFrame
+ 			inferredGroup(layer, anchors) == LayerGroup.HEAD -> headWarpId to head
+@@ -1178,6 +1190,33 @@ object RigBuilder {
+             else override?.maxEdgeDistance ?: max(12f, config.meshMaxEdgeDistance * semanticDensity)
+ 		val effectiveInteriorDensity = override?.interiorDensity ?: max(12f, config.meshInteriorDensity * semanticDensity)
+ 
++        // Original-pixel head slices must be bounded by their texture alpha, never by a fitted
++        // silhouette that can cut away a painted chin, ear edge or eyelash. Unlike the small
++        // fallback below, this grid retains <=6px spacing across the complete head raster.
++        if ((config.preserveSourceRaster && layer.semantic.tag in faceTags) ||
++                (config.sourceClosedEyes && layer.semantic.tag == SemanticTag.EYE_CLOSE)) {
++            return buildRectangularFallbackMesh(layer, parentFrame, headSpace, placement, atlasSize,
++                minOf(6f, effectiveSpacing), preservePixelGrid = true)
++        }
++        // Source-cut sidelocks and a short choker also need their painted fine tips/edges intact.
++        // A 12px grid is sufficient for these larger, gently moving pieces; long ties stay on
++        // their established mesh path (the same aspect-ratio distinction used by the importer).
++        if (config.preserveSourceRaster && (layer.semantic.tag == SemanticTag.FRONT_HAIR ||
++                (layer.semantic.tag == SemanticTag.NECKWEAR && height <= width * 2))) {
++            return buildRectangularFallbackMesh(layer, parentFrame, headSpace, placement, atlasSize,
++                minOf(12f, effectiveSpacing), preservePixelGrid = true)
++        }
++
++        // Tiny facial strokes lose painted tips when the relative-alpha contour preprocessor
++        // hardens their soft edges. A full-frame grid preserves source alpha exactly. Its shared
++        // X columns also keep blink/mouth mappings y' = curve(x) + scale*y from inverting triangles.
++        if (width <= 256 && height <= 256 && layer.semantic.tag in setOf(
++                SemanticTag.EYEBROW, SemanticTag.EYELASH, SemanticTag.EYEWHITE,
++                SemanticTag.MOUTH, SemanticTag.MOUTH_OPEN, SemanticTag.MOUTH_CLOSE)) {
++            return buildRectangularFallbackMesh(layer, parentFrame, headSpace, placement, atlasSize,
++                minOf(6f, effectiveSpacing))
++        }
++
+ 		// Authored tooth layers may contain several disconnected teeth. Keep their complete texture;
+ 		// the mouth clipping id supplies the visible boundary.
+ 		if (layer.semantic.tag in setOf(SemanticTag.TOOTH_T, SemanticTag.TOOTH_B)) {
+@@ -1224,11 +1263,17 @@ object RigBuilder {
+ 		placement: AtlasPlacement,
+ 		atlasSize: Int,
+ 		effectiveSpacing: Float,
++		preservePixelGrid: Boolean = false,
+ 	): MeshData {
+ 		val width = max(1, layer.source.raster.width)
+ 		val height = max(1, layer.source.raster.height)
+-		val columns = ceil(width / effectiveSpacing).toInt().coerceIn(1, 18)
+-		val rows = ceil(height / effectiveSpacing).toInt().coerceIn(1, 24)
++		val requestedColumns = ceil(width / effectiveSpacing).toInt().coerceAtLeast(1)
++		val requestedRows = ceil(height / effectiveSpacing).toInt().coerceAtLeast(1)
++		val columns = if (preservePixelGrid) requestedColumns else requestedColumns.coerceAtMost(18)
++		val rows = if (preservePixelGrid) requestedRows else requestedRows.coerceAtMost(24)
++		require((columns.toLong() + 1) * (rows + 1) <= 250_000) {
++			"Source-preserving rectangular mesh exceeds 250000 vertices; crop the source layer more tightly"
++		}
+ 		val count = (columns + 1) * (rows + 1)
+ 		val positions = FloatArray(count * 2)
+ 		val canvas = FloatArray(count * 2)
+@@ -1275,38 +1320,158 @@ object RigBuilder {
+ 		eyeWhiteBounds: List<Bounds>,
+ 		mouthAperture: Bounds?,
+         config: PipelineConfig,
++		sourceClosedEye: Boolean = false,
+ 	): KeyformGrid<MeshDeltaForm> {
+ 		val tag = layer.semantic.tag
+ 		return when (tag) {
+ 			SemanticTag.EYEWHITE, SemanticTag.EYELASH ->
+-				eyeClosureGrid(layer, data, parentFrame, faceRig, eyeWhiteBounds)
++				eyeClosureGrid(layer, data, parentFrame, faceRig, eyeWhiteBounds,
++					config.preserveSourceRaster && config.sourcePixelShallowBlink,
++					config.sourceEyeCornersL, config.sourceEyeCornersR,
++					if (config.sourceClosedEyes) config.sourceEyeClosureDepth else 2f,
++					sourceClosedEye,
++					sourceClosedEye && continuousLidEnabled(config, layer.semantic.side))
+ 			// Blink does not key the iris directly. The independent physics output supplies a small,
+ 			// delayed squash/stretch while eye-white clipping removes it as the lid closes.
+ 			SemanticTag.IRIDES -> irisJellyGrid(layer, data, parentFrame)
++			SemanticTag.EYE_CLOSE -> closedEyeEndpointGrid(layer, data, parentFrame, faceRig, config)
+ 			SemanticTag.EYEBROW -> eyebrowGrid(layer, data, parentFrame)
+ 			SemanticTag.MOUTH, SemanticTag.MOUTH_OPEN -> mouthWholeGrid(data, parentFrame, mouthAperture ?: layer.bounds, config)
+-			SemanticTag.MOUTH_CLOSE, SemanticTag.TOOTH_T, SemanticTag.TOOTH_B, SemanticTag.TONGUE ->
++			SemanticTag.MOUTH_CLOSE -> if (config.cuteMouthForm) closedMouthFormGrid(data, parentFrame, layer.bounds)
++				else zeroMeshGrid(data.mesh.positions.size)
++			SemanticTag.TOOTH_T, SemanticTag.TOOTH_B, SemanticTag.TONGUE ->
+ 				zeroMeshGrid(data.mesh.positions.size)
+ 			else -> zeroMeshGrid(data.mesh.positions.size)
+ 		}
+ 	}
+ 
++	private fun continuousLidEnabled(config: PipelineConfig, side: Side): Boolean =
++		config.sourceClosedEyes && config.sourceContinuousLid && when (side) {
++			Side.LEFT -> config.sourceOpenEyeCurveL != null && config.sourceEyeCornersL != null && config.sourceClosedEyeCornersL != null
++			Side.RIGHT -> config.sourceOpenEyeCurveR != null && config.sourceEyeCornersR != null && config.sourceClosedEyeCornersR != null
++			Side.NONE -> false
++		}
++
++	/** Follow the authored open curve, optionally tapering the painted lid as it approaches the open lash. */
++	private fun closedEyeEndpointGrid(layer: ClassifiedLayer, data: MeshData, frame: Bounds,
++		faceRig: NinePoseFaceRig, config: PipelineConfig): KeyformGrid<MeshDeltaForm> {
++		if (!config.sourceClosedEyes) return zeroMeshGrid(data.mesh.positions.size)
++		val source = when (layer.semantic.side) {
++			Side.LEFT -> config.sourceClosedEyeCornersL
++			Side.RIGHT -> config.sourceClosedEyeCornersR
++			else -> null
++		} ?: return zeroMeshGrid(data.mesh.positions.size)
++		val target = when (layer.semantic.side) {
++			Side.LEFT -> config.sourceEyeCornersL
++			Side.RIGHT -> config.sourceEyeCornersR
++			else -> null
++		} ?: return zeroMeshGrid(data.mesh.positions.size)
++		val delta = FloatArray(data.mesh.positions.size)
++		for (i in data.rigPositions.indices step 2) {
++			val original = faceRig.coordinateSpace.toCanvas(data.rigPositions[i], data.rigPositions[i + 1])
++			val matched = closedEyeEndpointPoint(original.first, original.second, source, target)
++			val aligned = faceRig.coordinateSpace.toAligned(matched.first, matched.second)
++			delta[i] = (aligned.first - data.rigPositions[i]) / frame.width.coerceAtLeast(1e-4f)
++			delta[i + 1] = (aligned.second - data.rigPositions[i + 1]) / frame.height.coerceAtLeast(1e-4f)
++		}
++		if (!continuousLidEnabled(config, layer.semantic.side)) return grid(emptyList()) { MeshDeltaForm(delta) }
++		val openCurve = if (layer.semantic.side == Side.LEFT) config.sourceOpenEyeCurveL!! else config.sourceOpenEyeCurveR!!
++		// Measure the intact CLOSED bitmap, never the open lash interrupted by painted bangs.
++		// Transform its alpha centroids first, then sample by matched canvas X. This removes the
++		// actual painted curvature without mistaking the mathematical closure arc for its centre.
++		val centres = eyelashCenterline(layer) ?: return grid(emptyList()) { MeshDeltaForm(delta) }
++		val closedCurve = SourceEyeCurve(centres.indices.map { x ->
++			closedEyeEndpointPoint(layer.source.bounds.left + x + 0.5f, centres[x], source, target)
++		}.sortedBy { it.first }.distinctBy { it.first })
++		val parameter = if (layer.semantic.side == Side.LEFT) StandardParameters.EYE_L_OPEN else StandardParameters.EYE_R_OPEN
++		return grid(listOf(axis(parameter, 0f, 0.35f, 1f))) { values ->
++			val openness = ((values[0] - 0.35f) / 0.65f).coerceIn(0f, 1f)
++			if (openness == 0f) MeshDeltaForm(delta.copyOf()) else {
++				val followed = delta.copyOf()
++				for (i in data.rigPositions.indices step 2) {
++					val original = faceRig.coordinateSpace.toCanvas(data.rigPositions[i], data.rigPositions[i + 1])
++					val matched = closedEyeEndpointPoint(original.first, original.second, source, target)
++					val closedY = sampleEyeCurve(closedCurve, matched.first)
++					val offset = (sampleEyeCurve(openCurve, matched.first) - closedY) * openness
++					val thickness = 1f + (config.sourceLidOpenThickness - 1f) * openness
++					val aligned = faceRig.coordinateSpace.toAligned(matched.first,
++						closedY + (matched.second - closedY) * thickness + offset)
++					followed[i] = (aligned.first - data.rigPositions[i]) / frame.width.coerceAtLeast(1e-4f)
++					followed[i + 1] = (aligned.second - data.rigPositions[i + 1]) / frame.height.coerceAtLeast(1e-4f)
++				}
++				MeshDeltaForm(followed)
++			}
++		}
++	}
++
++	internal fun sampleEyeCurve(curve: SourceEyeCurve, x: Float): Float {
++		val points = curve.points
++		if (x <= points.first().first) return points.first().second
++		if (x >= points.last().first) return points.last().second
++		val right = points.indexOfFirst { it.first >= x }
++		val a = points[right - 1]; val b = points[right]
++		return a.second + (b.second - a.second) * ((x - a.first) / (b.first - a.first))
++	}
++
++	internal fun closedEyeEndpointPoint(x: Float, y: Float, source: SourceEyeCorners, target: SourceEyeCorners): Pair<Float, Float> {
++		val sx = source.rightX - source.leftX
++		val sy = source.rightY - source.leftY
++		val tx = target.rightX - target.leftX
++		val ty = target.rightY - target.leftY
++		val denominator = sx * sx + sy * sy
++		val a = (tx * sx + ty * sy) / denominator
++		val b = (ty * sx - tx * sy) / denominator
++		val dx = x - source.leftX
++		val dy = y - source.leftY
++		return target.leftX + a * dx - b * dy to target.leftY + b * dx + a * dy
++	}
++
++	/** Preserve the painted neutral seam and lift only its corners for a small closed-mouth smile. */
++	private fun closedMouthFormGrid(data: MeshData, frame: Bounds, bounds: Bounds): KeyformGrid<MeshDeltaForm> =
++		grid(listOf(axis(StandardParameters.MOUTH_FORM, -1f, 0f, 1f))) { values ->
++			val form = values[0]
++			val halfWidth = (bounds.width * 0.5f).coerceAtLeast(1f)
++			val lift = (bounds.width * 0.085f).coerceIn(0.5f, 2f)
++			val delta = FloatArray(data.mesh.positions.size)
++			for (i in data.rigPositions.indices step 2) {
++				val dx = data.rigPositions[i] - bounds.centerX
++				val u = (dx / halfWidth).coerceIn(-1f, 1f)
++				delta[i] = dx * form * 0.08f / frame.width.coerceAtLeast(1e-4f)
++				delta[i + 1] = -form * lift * u * u / frame.height.coerceAtLeast(1e-4f)
++			}
++			MeshDeltaForm(delta)
++		}
++
+ 	private fun eyeClosureGrid(
+ 		layer: ClassifiedLayer,
+ 		data: MeshData,
+ 		frame: Bounds,
+ 		faceRig: NinePoseFaceRig,
+ 		eyeWhiteBounds: List<Bounds>,
++		shallowClose: Boolean,
++		leftCorners: SourceEyeCorners?,
++		rightCorners: SourceEyeCorners?,
++		closureDepth: Float,
++		closeBeforeCrossfade: Boolean,
++		closeWholeEyeWhite: Boolean = false,
+ 	): KeyformGrid<MeshDeltaForm> {
++		fun aligned(corners: SourceEyeCorners?): SourceEyeCorners? = corners?.let {
++			val left = faceRig.coordinateSpace.toAligned(it.leftX, it.leftY)
++			val right = faceRig.coordinateSpace.toAligned(it.rightX, it.rightY)
++			SourceEyeCorners(left.first, left.second, right.first, right.second)
++		}
++		val alignedLeft = if (shallowClose) aligned(leftCorners) else null
++		val alignedRight = if (shallowClose) aligned(rightCorners) else null
+ 		val parameter = if (layer.semantic.side == Side.LEFT) StandardParameters.EYE_L_OPEN else StandardParameters.EYE_R_OPEN
+ 		// Column sampling is defined in the source raster's canvas X axis.  Once the head has been
+ 		// aligned, the alpha-weighted centroid remains correct while that column function no longer is.
+ 		val eyelashCenterline = if (layer.semantic.tag == SemanticTag.EYELASH && faceRig.initialAngleZ == 0f) {
+ 			eyelashCenterline(layer)
+ 		} else null
++		val openKeys = if (closeBeforeCrossfade) floatArrayOf(0f, 0.35f, 1f) else floatArrayOf(0f, 1f)
+ 		val axes = if (layer.semantic.side == Side.NONE) {
+-			listOf(axis(StandardParameters.EYE_L_OPEN, 0f, 1f), axis(StandardParameters.EYE_R_OPEN, 0f, 1f))
+-		} else listOf(axis(parameter, 0f, 1f))
++			listOf(axis(StandardParameters.EYE_L_OPEN, *openKeys), axis(StandardParameters.EYE_R_OPEN, *openKeys))
++		} else listOf(axis(parameter, *openKeys))
+ 		return grid(axes) { values ->
+ 			val delta = FloatArray(data.mesh.positions.size)
+ 			for (vertex in data.mesh.positions.indices step 2) {
+@@ -1317,7 +1482,15 @@ object RigBuilder {
+ 					Side.RIGHT -> values[0]
+ 					Side.NONE -> if (canvasX >= faceRig.centerX) values[0] else values[1]
+ 				}
++				// Finish the open-lash shape before the endpoint opacity crossfade begins; otherwise
++				// a partly open lash is blended with a closed bitmap and creates two separated lines.
++				val geometryOpenness = if (closeBeforeCrossfade) ((openness - 0.35f) / 0.65f).coerceIn(0f, 1f) else openness
+ 				val whiteBounds = eyeWhiteBounds.minByOrNull { abs(it.centerX - canvasX) } ?: layer.bounds
++				val corners = when (layer.semantic.side) {
++					Side.LEFT -> alignedLeft
++					Side.RIGHT -> alignedRight
++					Side.NONE -> if (canvasX >= faceRig.centerX) alignedLeft else alignedRight
++				}
+ 				val closed = eyeClosurePoint(
+ 					canvasX,
+ 					canvasY,
+@@ -1325,14 +1498,50 @@ object RigBuilder {
+ 					whiteBounds,
+ 					layer.semantic.tag,
+ 					eyelashCenterline?.let { sampleCenterline(it, layer, canvasX) } ?: layer.centroidY,
++					shallowClose,
++					corners,
++					closureDepth,
++					closeWholeEyeWhite,
+ 				)
+-				delta[vertex] = (closed.first - canvasX) / frame.width.coerceAtLeast(1e-4f) * (1f - openness)
+-				delta[vertex + 1] = (closed.second - canvasY) / frame.height.coerceAtLeast(1e-4f) * (1f - openness)
++				delta[vertex] = (closed.first - canvasX) / frame.width.coerceAtLeast(1e-4f) * (1f - geometryOpenness)
++				delta[vertex + 1] = (closed.second - canvasY) / frame.height.coerceAtLeast(1e-4f) * (1f - geometryOpenness)
+ 			}
++			if (layer.semantic.tag == SemanticTag.EYEWHITE) preserveEyeTriangleOrientation(data, delta)
+ 			MeshDeltaForm(delta)
+ 		}
+ 	}
+ 
++	/**
++	 * Head alignment rotates the raster grid, so its columns no longer share X. Sampling the
++	 * narrow closed-eye curve on those triangles can invert a chord near the eye corner even
++	 * though the continuous mapping has a positive Jacobian. Keep the smallest extra vertical
++	 * thickness that preserves at least 1% of each original triangle's signed area. X does not
++	 * change during eye closure, making every area linear in this vertical displacement scale.
++	 */
++	private fun preserveEyeTriangleOrientation(data: MeshData, delta: FloatArray) {
++		val positions = data.mesh.positions
++		val indices = data.mesh.indices
++		fun area(a: Int, b: Int, c: Int, displaced: Boolean): Double {
++			fun y(i: Int) = positions[i + 1].toDouble() + if (displaced) delta[i + 1].toDouble() else 0.0
++			return (positions[b] - positions[a]).toDouble() * (y(c) - y(a)) -
++				(positions[c] - positions[a]).toDouble() * (y(b) - y(a))
++		}
++		var reopen = 0.0
++		for (i in indices.indices step 3) {
++			val a = indices[i] * 2
++			val b = indices[i + 1] * 2
++			val c = indices[i + 2] * 2
++			val original = area(a, b, c, false)
++			if (abs(original) < 1e-12) continue
++			val ratio = area(a, b, c, true) / original
++			if (ratio < 0.01) reopen = maxOf(reopen, (0.01 - ratio) / (1.0 - ratio))
++		}
++		if (reopen > 0.0) {
++			val retained = (1.0 - reopen).coerceIn(0.0, 1.0).toFloat()
++			for (i in 1 until delta.size step 2) delta[i] *= retained
++		}
++	}
++
+ 	/**
+ 	 * Closed eyes share one curve derived from the eye-white bounds.  The common centre line is what
+ 	 * keeps the shrunken white behind the lash. Every eyelash vertex in the same vertical slice is
+@@ -1346,14 +1555,40 @@ object RigBuilder {
+ 		eyeWhiteBounds: Bounds,
+ 		tag: SemanticTag,
+ 		sourceAnchorY: Float = layerBounds.centerY,
++		shallowClose: Boolean = false,
++		corners: SourceEyeCorners? = null,
++		closureDepth: Float = 2f,
++		closeWholeEyeWhite: Boolean = false,
+ 	): Pair<Float, Float> {
++		if (shallowClose && corners != null) {
++			// A continuous replacement lash owns the wing shape. Its white/iris clipping mask
++			// must close across the entire raster, including pixels beyond either canthus.
++			val fullWhiteClosure = closeWholeEyeWhite && tag == SemanticTag.EYEWHITE
++			// Keep each canthus and the entire outer lash wing at their authored positions. Blend
++			// over a short edge strip, so the source thickness does not form a seam at either anchor.
++			if (!fullWhiteClosure && (sourceX <= corners.leftX || sourceX >= corners.rightX)) return sourceX to sourceY
++			val width = corners.rightX - corners.leftX
++			val t = ((sourceX - corners.leftX) / width).coerceIn(0f, 1f)
++			require(closureDepth.isFinite() && closureDepth in -20f..20f) { "Source eye closure depth must be within -20..20 pixels" }
++			val curveY = corners.leftY * (1f - t) + corners.rightY * t + closureDepth * 4f * t * (1f - t)
++			val edgeWidth = minOf(6f, width * 0.12f).coerceAtLeast(0.1f)
++			val u = (minOf(sourceX - corners.leftX, corners.rightX - sourceX) / edgeWidth).coerceIn(0f, 1f)
++			val edgeWeight = if (fullWhiteClosure) 1f else u * u * (3f - 2f * u)
++			val scale = if (tag == SemanticTag.EYELASH) 0.88f else
++				(1.2f / layerBounds.height.coerceAtLeast(1f)).coerceIn(0.015f, 0.55f)
++			val targetY = curveY + (sourceY - sourceAnchorY) * scale
++			return sourceX to sourceY + (targetY - sourceY) * edgeWeight
++		}
+ 		val halfWidth = (eyeWhiteBounds.width * 0.5f).coerceAtLeast(1e-4f)
+ 		val normalizedX = ((sourceX - eyeWhiteBounds.centerX) / halfWidth).coerceIn(-1f, 1f)
+ 		val arch = max(0f, 1f - normalizedX * normalizedX)
+-		// Keep the trough at 72% of the eye-white height, but raise the endpoints from 48% to 34%.
+-		// This deepens the U without increasing its centre travel and reduces movement at both corners.
+-		val edgeY = eyeWhiteBounds.top + eyeWhiteBounds.height * 0.34f
+-		val curveY = edgeY + max(1.5f, eyeWhiteBounds.height * 0.38f) * arch
++		// Source-pixel heads keep their painted eyelash thickness and open key, but need a much
++		// shallower closed curve than the legacy 38%-height U. Share it with the white mask so the
++		// compressed aperture stays hidden behind the lash throughout the blink.
++		val edgeY = eyeWhiteBounds.top + eyeWhiteBounds.height * if (shallowClose) 0.55f else 0.34f
++		val archDepth = if (shallowClose) (eyeWhiteBounds.height * 0.10f).coerceIn(1f, 4f)
++			else max(1.5f, eyeWhiteBounds.height * 0.38f)
++		val curveY = edgeY + archDepth * arch
+ 		val layerHeight = layerBounds.height.coerceAtLeast(1f)
+ 		val verticalScale = when (tag) {
+ 			SemanticTag.EYELASH -> 0.88f
+@@ -1613,6 +1848,9 @@ object RigBuilder {
+ 		layer: ClassifiedLayer,
+ 		override: LayerClassificationOverride?,
+ 		switchParamKeys: Map<String, FloatArray>,
++		cuteMouthForm: Boolean = false,
++		sourceClosedEye: Boolean = false,
++		continuousLid: Boolean = false,
+ 	): ChannelGrids {
+ 		val type = override?.type ?: layer.semantic.type
+ 		val opacityGrid = when (type) {
+@@ -1635,12 +1873,50 @@ object RigBuilder {
+ 				} else null
+ 			}
+ 			LayerType.PRESET -> {
+-				when (layer.semantic.tag) {
++				if (sourceClosedEye && continuousLid && layer.semantic.tag in setOf(SemanticTag.EYE_CLOSE, SemanticTag.EYELASH)) {
++					val parameter = if (layer.semantic.side == Side.LEFT) StandardParameters.EYE_L_OPEN else StandardParameters.EYE_R_OPEN
++					scalarGrid(parameter, floatArrayOf(0f, 0.8f, 0.85f, 1f)) { open ->
++						// Source-over is not an additive mix: two half-alpha lashes cover only 75%.
++						// Bring the original to full opacity before fading the continuous replacement,
++						// so their common stroke always has an opaque layer behind it.
++						if (layer.semantic.tag == SemanticTag.EYE_CLOSE) {
++							if (open <= 0.85f) 1f else if (open >= 1f) 0f else (1f - open) / 0.15f
++						} else {
++							if (open <= 0.8f) 0f else if (open >= 0.85f) 1f else (open - 0.8f) / 0.05f
++						}
++					}
++				} else if (sourceClosedEye && continuousLid && layer.semantic.tag in setOf(SemanticTag.EYEWHITE, SemanticTag.IRIDES)) {
++					val parameter = if (layer.semantic.side == Side.LEFT) StandardParameters.EYE_L_OPEN else StandardParameters.EYE_R_OPEN
++					scalarGrid(parameter, floatArrayOf(0f, 0.35f, 0.5f, 1f)) { open ->
++						// The nondegenerate closed mask still has ~1.2px thickness. Hide its color
++						// until the aperture starts opening, including the exact 0.35 endpoint.
++						if (open <= 0.35f) 0f else if (open >= 0.5f) 1f else (open - 0.35f) / 0.15f
++					}
++				} else if (sourceClosedEye && layer.semantic.tag in setOf(SemanticTag.EYE_CLOSE,
++					SemanticTag.EYEWHITE, SemanticTag.IRIDES, SemanticTag.EYELASH)) {
++					val parameter = if (layer.semantic.side == Side.LEFT) StandardParameters.EYE_L_OPEN else StandardParameters.EYE_R_OPEN
++					scalarGrid(parameter, floatArrayOf(0f, 0.15f, 0.35f, 1f)) { open ->
++						val openWeight = ((open - 0.15f) / 0.20f).coerceIn(0f, 1f)
++						if (layer.semantic.tag == SemanticTag.EYE_CLOSE) 1f - openWeight else openWeight
++					}
++				} else when (layer.semantic.tag) {
+ 					SemanticTag.EYE_CLOSE -> {
+ 						val parameter = if (layer.semantic.side == Side.LEFT) StandardParameters.EYE_L_OPEN else StandardParameters.EYE_R_OPEN
+ 						scalarGrid(parameter, floatArrayOf(0f, 1f)) { open -> 1f - open }
+ 					}
+-					SemanticTag.MOUTH_CLOSE -> scalarGrid(StandardParameters.MOUTH_OPEN, floatArrayOf(0f, 1f)) { 1f - it }
++					SemanticTag.MOUTH_CLOSE -> if (cuteMouthForm) {
++						// Crossfade with the open-mouth bitmap over the same short interval. Keeping
++						// the closed smile visible through speech creates a second floating lip line.
++						scalarGrid(StandardParameters.MOUTH_OPEN, floatArrayOf(0f, 0.15f, 1f)) { open ->
++							1f - (open / 0.15f).coerceIn(0f, 1f)
++						}
++					} else scalarGrid(StandardParameters.MOUTH_OPEN, floatArrayOf(0f, 1f)) { 1f - it }
++					// A separate fully open bitmap must vanish at rest; geometry compression alone
++					// leaves a second lip/inner-mouth curve visible under the authored closed mouth.
++					SemanticTag.MOUTH_OPEN ->
++						scalarGrid(StandardParameters.MOUTH_OPEN, floatArrayOf(0f, 0.15f, 1f)) { open ->
++							(open / 0.15f).coerceIn(0f, 1f)
++						}
+ 					SemanticTag.TONGUE, SemanticTag.TOOTH_T, SemanticTag.TOOTH_B ->
+ 						scalarGrid(StandardParameters.MOUTH_OPEN, floatArrayOf(0f, 0.15f, 1f)) { open ->
+ 							(open / 0.15f).coerceIn(0f, 1f)
+diff --git a/src/main/kotlin/io/github/psd2live/core/TextureOverride.kt b/src/main/kotlin/io/github/psd2live/core/TextureOverride.kt
+new file mode 100644
+index 0000000..94c9838
+--- /dev/null
++++ b/src/main/kotlin/io/github/psd2live/core/TextureOverride.kt
+@@ -0,0 +1,79 @@
++package io.github.psd2live.core
++
++import java.io.ByteArrayInputStream
++import java.nio.ByteBuffer
++import java.nio.file.Files
++import java.nio.file.Path
++import java.security.MessageDigest
++import javax.imageio.ImageIO
++
++/**
++ * Replaces texture pixels only after the rig has normalized UVs against the original atlas.
++ * Placements remain in the original packing coordinate system and must never be used to rebuild
++ * a rig against these enlarged pages. Both runtime sidecars and editable CMO3 consume the new
++ * page dimensions together with the unchanged normalized UVs.
++ */
++internal object TextureOverride {
++	private val pngSignature = byteArrayOf(0x89.toByte(), 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a)
++	private val sha256Pattern = Regex("[0-9a-fA-F]{64}")
++
++	fun apply(atlas: PackedAtlas, config: PipelineConfig): PackedAtlas {
++		val paths = config.exportTexturePages
++		val expectedHashes = config.exportTextureSourceSha256
++		if (paths.isEmpty() && expectedHashes.isEmpty()) return atlas
++		require(paths.size == atlas.pages.size && expectedHashes.size == atlas.pages.size) {
++			"Export texture paths and source SHA-256 values must each match the packed atlas page count (${atlas.pages.size})"
++		}
++		var commonScale = 0
++		val pages = atlas.pages.mapIndexed { index, source ->
++			require(atlas.packingPageSizes.getOrNull(index) == (source.image.width to source.image.height)) {
++				"Export texture overrides must be applied to original packed pages, before any enlargement"
++			}
++			val expectedHash = expectedHashes[index]
++			require(sha256Pattern.matches(expectedHash)) {
++				"Export texture source SHA-256 for page $index must contain exactly 64 hexadecimal characters"
++			}
++			val actualHash = MessageDigest.getInstance("SHA-256").digest(source.png)
++				.joinToString("") { "%02x".format(it.toInt() and 0xff) }
++			require(expectedHash.equals(actualHash, ignoreCase = true)) {
++				"Export texture page $index is stale: expected source SHA-256 $expectedHash, freshly packed atlas is $actualHash"
++			}
++			val path = Path.of(paths[index])
++			require(path.isAbsolute && Files.isRegularFile(path)) {
++				"Export texture page $index must be an existing absolute file path: $path"
++			}
++			val png = Files.readAllBytes(path)
++			require(png.size >= 33 && pngSignature.indices.all { png[it] == pngSignature[it] } &&
++				png[12] == 'I'.code.toByte() && png[13] == 'H'.code.toByte() &&
++				png[14] == 'D'.code.toByte() && png[15] == 'R'.code.toByte()) {
++				"Export texture page $index must be a PNG with an IHDR header: $path"
++			}
++			// Inspect IHDR before allocating a decoded image, and require exact integer alignment.
++			val header = ByteBuffer.wrap(png, 16, 8)
++			val width = header.int
++			val height = header.int
++			val sourceWidth = source.image.width
++			val sourceHeight = source.image.height
++			require(width in 1..16384 && height in 1..16384 &&
++				width % sourceWidth == 0 && height % sourceHeight == 0) {
++				"Export texture page $index must have aligned dimensions no larger than 16384 pixels: ${width}x$height"
++			}
++			val scale = width / sourceWidth
++			require(scale in 2..4 && height / sourceHeight == scale) {
++				"Export texture page $index must be exactly 2x, 3x, or 4x its original ${sourceWidth}x$sourceHeight page"
++			}
++			if (commonScale == 0) commonScale = scale
++			require(scale == commonScale) { "All export texture pages must use the same integer scale" }
++			val image = ImageIO.read(ByteArrayInputStream(png))
++				?: error("Cannot decode export texture PNG page $index: $path")
++			require(image.width == width && image.height == height) {
++				"Decoded export texture dimensions disagree with the PNG header for page $index"
++			}
++			require(!source.image.colorModel.hasAlpha() || image.colorModel.hasAlpha()) {
++				"Export texture page $index must retain an alpha channel"
++			}
++			AtlasPage(image, png)
++		}
++		return atlas.copy(pages = pages)
++	}
++}

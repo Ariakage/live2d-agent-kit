@@ -1,0 +1,26 @@
+.DS_Store
+.cache/
+work/
+outputs/
+dist/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+!.env.example
+# Runtime SDKs, weights, and private artwork are obtained separately.
+**/vendor/*.js
+*.bin
+*.param
+*.pth
+*.safetensors
+*.dylib
+*.dll
+*.so
+*.jar
+*.moc3
+*.cmo3
+*.psd
+*.zip

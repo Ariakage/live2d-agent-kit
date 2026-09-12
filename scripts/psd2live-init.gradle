@@ -1,0 +1,21 @@
+// Kit-local task injection; leaves global Gradle and the engine build files alone.
+allprojects { project ->
+    afterEvaluate {
+        def integrationDir = project.property('agentKitIntegrationDir').toString()
+        project.extensions.getByName('kotlin').sourceSets.getByName('main').kotlin.srcDir(integrationDir)
+        project.tasks.register('exportManifest', JavaExec) {
+            dependsOn project.tasks.named('classes')
+            classpath = project.sourceSets.main.output + project.configurations.compileClasspath
+            mainClass = 'io.github.psd2live.agentkit.ManifestExportKt'
+            jvmArgs '-Xmx8g', '-Dfile.encoding=UTF-8', '-Djava.awt.headless=true'
+            args project.property('characterManifest').toString(), project.property('characterOutput').toString()
+        }
+        project.tasks.register('extractPsdManifest', JavaExec) {
+            dependsOn project.tasks.named('classes')
+            classpath = project.sourceSets.main.output + project.configurations.compileClasspath
+            mainClass = 'io.github.psd2live.agentkit.ExtractPsdKt'
+            jvmArgs '-Xmx4g', '-Djava.awt.headless=true'
+            args project.property('sourcePsd').toString(), project.property('fixtureOutput').toString()
+        }
+    }
+}

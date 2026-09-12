@@ -1,0 +1,15 @@
+{
+  "url": "https://github.com/tsunehimatoi/psd2live.git",
+  "commit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+  "patch_sha256": "a785a2cd38cb9d999a1f445d9fb36c75d3731d2742a335d072a3cdadd22a17fa",
+  "patched_files": {
+    "src/main/kotlin/io/github/psd2live/agent/AgentPlacementValidation.kt": "c7a75fec807ee50ae4335ec4711efe03f59a0ae022d090ba5b2a76fd997d53fd",
+    "src/main/kotlin/io/github/psd2live/core/Analyzer.kt": "c040d7c33095bebb644cf48a6e1cd46f039b55152c957e5c711c114eb2dd98a8",
+    "src/main/kotlin/io/github/psd2live/core/AtlasPacker.kt": "8cebd8470bd592631990d85b90c15b30f4283ffb372a0b708190f853f7faac0d",
+    "src/main/kotlin/io/github/psd2live/core/Model.kt": "c419b127c8e744eb1e727d9d58cf7f8e1278a095b7730fc102882095ef732c31",
+    "src/main/kotlin/io/github/psd2live/core/NinePoseFaceRig.kt": "2a0f4cd9efe370373b292daa398ff73f2049494241c734ab3e745d50a8adee89",
+    "src/main/kotlin/io/github/psd2live/core/PSD2LivePipeline.kt": "fa32c6a3a951e84ca3dad1641c2192992a348d975bedb811f2b1275c24424711",
+    "src/main/kotlin/io/github/psd2live/core/RigBuilder.kt": "42f7d897ee2eefbe35422877cd1ae402ca82aded154f3cf5e22624a868154fcc",
+    "src/main/kotlin/io/github/psd2live/core/TextureOverride.kt": "396e3f306c459fbf12eba10e560d693fd729713e580b37da5725106362264e7b"
+  }
+}
