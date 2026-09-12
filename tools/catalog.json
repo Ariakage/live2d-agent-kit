@@ -1,0 +1,1493 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-09-12",
+  "scope": "Historical character production and this reusable kit; references only, no bundled third-party tools, weights, SDK or original character art.",
+  "status_definitions": {
+    "production": "生产使用",
+    "validation": "辅助验证",
+    "evaluated": "仅评估",
+    "kit_development": "Kit 开发"
+  },
+  "evidence_policy": "kit_files and integration_paths are repository-root-relative. historical_records identify either private original-workspace records inspected while compiling this catalog or untracked kit verification reports explicitly prefixed as such. These reports are not shipped by this repository. Unknown versions/provenance are explicit.",
+  "tools": [
+    {
+      "id": "psd2live",
+      "name": "psd2live",
+      "usage_status": "production",
+      "observed_version": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+      "purpose": "将 SourceArt / PSD 转为真实网格、参数、物理、PSD、CMO3 和 MOC3。",
+      "upstream": [
+        {
+          "title": "Repository",
+          "url": "https://github.com/tsunehimatoi/psd2live"
+        },
+        {
+          "title": "Pinned architecture",
+          "url": "https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/docs/zh/AGENT_ARCHITECTURE.md"
+        }
+      ],
+      "license": {
+        "summary": "上游 GPL-3.0；本 kit 的累计补丁和 Kotlin 适配独立标注 GPL-3.0-only。",
+        "sources": [
+          "https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/LICENSE"
+        ]
+      },
+      "acquisition": "运行 setup-psd2live.sh 获取固定提交并验证补丁；源码位于忽略的 .cache。",
+      "integration_paths": [
+        "scripts/setup-psd2live.sh",
+        "scripts/export-model.sh",
+        "integrations/psd2live/engine-lock.json",
+        "patches/psd2live-agent-kit.patch"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "不能用未打补丁的上游结果冒充本次基线。"
+    },
+    {
+      "id": "java-jdk",
+      "name": "Java / OpenJDK 21",
+      "usage_status": "production",
+      "observed_version": "Java 21；发行版 Zulu，补丁版本 unknown",
+      "purpose": "编译运行导出适配、调用官方 Core、处理 alpha 与原创几何示例。",
+      "upstream": [
+        {
+          "title": "JDK 21 project",
+          "url": "https://openjdk.org/projects/jdk/21/"
+        },
+        {
+          "title": "Zulu downloads",
+          "url": "https://www.azul.com/downloads/?version=java-21-lts&package=jdk"
+        }
+      ],
+      "license": {
+        "summary": "以选用 JDK 发行版所附许可及组件 NOTICE 为准；不分发运行时。",
+        "sources": []
+      },
+      "acquisition": "安装适合平台的 JDK 21，设置 JAVA_HOME 与 VALIDATOR_JAVA；不要把本机默认新 JDK 视为已验证基线。",
+      "integration_paths": [
+        "scripts/doctor.sh",
+        "scripts/psd2live-init.gradle",
+        "examples/minimal-model/GenerateExample.java"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "gradle",
+      "name": "Gradle Wrapper",
+      "usage_status": "production",
+      "observed_version": "9.6.1",
+      "purpose": "固定上游的 JVM 构建与导出任务。",
+      "upstream": [
+        {
+          "title": "Gradle Wrapper",
+          "url": "https://gradle.org/"
+        }
+      ],
+      "license": {
+        "summary": "Apache-2.0；具体依赖另有许可。",
+        "sources": [
+          "https://github.com/gradle/gradle/blob/master/LICENSE"
+        ]
+      },
+      "acquisition": "使用固定 psd2live checkout 自带的 gradlew；首次按构建下载依赖。",
+      "integration_paths": [
+        "scripts/psd2live-init.gradle",
+        "scripts/export-model.sh"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "同一 checkout 串行构建，避免并发修改输出。"
+    },
+    {
+      "id": "kotlin",
+      "name": "Kotlin",
+      "usage_status": "production",
+      "observed_version": "2.4.10",
+      "purpose": "psd2live 与 manifest / PSD 适配器实现语言。",
+      "upstream": [
+        {
+          "title": "Kotlin",
+          "url": "https://kotlinlang.org/"
+        }
+      ],
+      "license": {
+        "summary": "Kotlin Apache-2.0；适配器和引擎仍适用各自 GPL 声明。",
+        "sources": [
+          "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
+        ]
+      },
+      "acquisition": "由固定上游 Gradle 构建管理，无需另装不匹配编译器。",
+      "integration_paths": [
+        "integrations/psd2live/ManifestExport.kt",
+        "integrations/psd2live/ExtractPsd.kt"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "upscayl",
+      "name": "Upscayl",
+      "usage_status": "production",
+      "observed_version": "2.15.0",
+      "purpose": "提供本次本地动漫超分所用的 upscayl-bin。",
+      "upstream": [
+        {
+          "title": "Repository",
+          "url": "https://github.com/upscayl/upscayl"
+        },
+        {
+          "title": "Tested release",
+          "url": "https://github.com/upscayl/upscayl/releases/tag/v2.15.0"
+        }
+      ],
+      "license": {
+        "summary": "AGPL-3.0；用户另行安装应用。",
+        "sources": [
+          "https://github.com/upscayl/upscayl/blob/main/LICENSE"
+        ]
+      },
+      "acquisition": "从官方发布页取得系统对应应用，定位其中 CLI；本次实际调用 CLI，不据此宣称 GUI 超分流程也已测试。",
+      "integration_paths": [
+        "scripts/upscale-atlas.sh",
+        "docs/upscaling.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/upscaling.md",
+          "docs/verification.md"
+        ],
+        "historical_records": [
+          "revision-10/upscale/upscale-report.json"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "upscayl-ncnn",
+      "name": "Upscayl NCNN / upscayl-bin",
+      "usage_status": "production",
+      "observed_version": "随 Upscayl 2.15.0；独立 CLI 版本 unknown",
+      "purpose": "GPU 分块推理 4× RGB 图集；实际参数 -z 4 -s 4 -t 256 -j 1:1:1。",
+      "upstream": [
+        {
+          "title": "Upscayl NCNN / upscayl-bin",
+          "url": "https://github.com/upscayl/upscayl-ncnn"
+        }
+      ],
+      "license": {
+        "summary": "upscayl-ncnn 为 AGPL-3.0；不由底层 NCNN 的 BSD 许可覆盖。",
+        "sources": [
+          "https://github.com/upscayl/upscayl-ncnn/blob/master/LICENSE"
+        ]
+      },
+      "acquisition": "使用应用内二进制或按 CLI 官方仓库构建；先检查本机 -h 与小样兼容性。",
+      "integration_paths": [
+        "scripts/upscale-atlas.py",
+        "scripts/AtlasAlpha.java"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/upscaling.md",
+          "docs/verification.md"
+        ],
+        "historical_records": [
+          "revision-10/upscale/upscale-report.json"
+        ]
+      },
+      "notes": "原项目执行在 Apple M4；不将其耗时推广到其他 GPU。",
+      "fingerprints": [
+        {
+          "file": "upscayl-bin",
+          "sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
+          "scope": "historical binary; not a required checksum for all platform builds"
+        }
+      ]
+    },
+    {
+      "id": "ncnn",
+      "name": "Tencent NCNN",
+      "usage_status": "production",
+      "observed_version": "unknown",
+      "purpose": "作为 upscayl-bin 内部推理组件，读取 NCNN 网络结构和权重。",
+      "upstream": [
+        {
+          "title": "Tencent NCNN",
+          "url": "https://github.com/Tencent/ncnn"
+        }
+      ],
+      "license": {
+        "summary": "BSD-3-Clause，另有所含第三方组件条款。",
+        "sources": [
+          "https://github.com/Tencent/ncnn/blob/master/LICENSE.txt"
+        ]
+      },
+      "acquisition": "一般随匹配的 Upscayl CLI 获得；本 kit 没有独立构建/固定 NCNN。",
+      "integration_paths": [
+        "docs/upscaling.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/upscaling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "间接使用；不把 NCNN 自身当成完整超分 CLI 或模型。"
+    },
+    {
+      "id": "upscayl-custom-models",
+      "name": "Upscayl custom-models",
+      "usage_status": "production",
+      "observed_version": "unknown；精确权重以 SHA-256 记录",
+      "purpose": "获取和辨认 Upscayl 可用的 NCNN 模型集合。",
+      "upstream": [
+        {
+          "title": "Upscayl custom-models",
+          "url": "https://github.com/upscayl/custom-models"
+        }
+      ],
+      "license": {
+        "summary": "模型来源混合，没有将整个集合视为 MIT 或统一权重许可。",
+        "sources": [
+          "https://github.com/upscayl/custom-models#credits"
+        ]
+      },
+      "acquisition": "按官方 README 获取 models 中需要的同名 .param / .bin；保留每个模型作者和转换来源。",
+      "integration_paths": [
+        "docs/upscaling.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/upscaling.md"
+        ],
+        "historical_records": [
+          "revision-10/upscale/upscale-report.json"
+        ]
+      },
+      "notes": "用户已有本地模型；未记录其当初下载时的集合提交。"
+    },
+    {
+      "id": "realesr-animevideov3-x4",
+      "name": "Real-ESRGAN / realesr-animevideov3-x4",
+      "usage_status": "production",
+      "observed_version": "AnimeVideo v3，NCNN x4；精确指纹见本条",
+      "purpose": "最终选定的动漫 RGB 神经超分模型；与独立 alpha 合成后保持原绑定与 UV。",
+      "upstream": [
+        {
+          "title": "Author repository",
+          "url": "https://github.com/xinntao/Real-ESRGAN"
+        },
+        {
+          "title": "Anime model documentation",
+          "url": "https://github.com/xinntao/Real-ESRGAN/blob/master/docs/anime_video_model.md"
+        },
+        {
+          "title": "NCNN model collection",
+          "url": "https://github.com/upscayl/custom-models#digital-art"
+        }
+      ],
+      "license": {
+        "summary": "Real-ESRGAN 上游 BSD-3-Clause；具体分发与转换文件仍核对来源。",
+        "sources": [
+          "https://github.com/xinntao/Real-ESRGAN/blob/master/LICENSE"
+        ]
+      },
+      "acquisition": "从 custom-models 获取同名 NCNN 两文件；PyTorch .pth 不能改扩展名后直接交给 CLI。",
+      "integration_paths": [
+        "scripts/upscale-atlas.py",
+        "docs/upscaling.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/upscaling.md",
+          "docs/verification.md"
+        ],
+        "historical_records": [
+          "revision-10/upscale/upscale-report.json"
+        ]
+      },
+      "notes": "本次运行 NCNN，不是 PyTorch；模型选择来自小样目视，不是普遍画质排名。",
+      "fingerprints": [
+        {
+          "file": "realesr-animevideov3-x4.param",
+          "bytes": 3077,
+          "sha256": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e"
+        },
+        {
+          "file": "realesr-animevideov3-x4.bin",
+          "bytes": 1247368,
+          "sha256": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
+        }
+      ]
+    },
+    {
+      "id": "animesharp",
+      "name": "4x-AnimeSharp-fp32",
+      "usage_status": "validation",
+      "observed_version": "本地 NCNN fp32；精确作者/下载版本 unknown",
+      "purpose": "与 AnimeVideo 对比脸部、虹膜和线条；没有用于最终运行图集。",
+      "upstream": [
+        {
+          "title": "Compatible custom-model workflow; not this file's provenance",
+          "url": "https://github.com/upscayl/custom-models"
+        }
+      ],
+      "license": {
+        "summary": "unknown；原本地文件没有完整作者下载链，本 kit 不替其指定许可证。",
+        "sources": []
+      },
+      "acquisition": "仅使用自己有来源和使用权的版本；先补齐模型卡/许可/转换链，再进行局部比较。",
+      "integration_paths": [
+        "docs/upscaling.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/upscaling.md",
+          "docs/case-study.md"
+        ],
+        "historical_records": [
+          "revision-10/upscale/upscale-report.json"
+        ]
+      },
+      "notes": "链接仅说明工具兼容方式，不宣称 custom-models 提供这份 AnimeSharp 或是其原作者。",
+      "fingerprints": [
+        {
+          "file": "4x-AnimeSharp-fp32.param",
+          "bytes": 165579,
+          "sha256": "0332002123306541c803cd675280eee7f9cdd96f0804a47129f86ebbf9ed4174"
+        },
+        {
+          "file": "4x-AnimeSharp-fp32.bin",
+          "bytes": 66793352,
+          "sha256": "d71eed4c6000a8ca6016ffc057be82fbc20d8b3c567bc28a1608db1fb58084e6"
+        }
+      ]
+    },
+    {
+      "id": "cubism-core-native",
+      "name": "Live2D Cubism Core Java / native",
+      "usage_status": "validation",
+      "observed_version": "6.0.257",
+      "purpose": "独立加载真实 MOC3、更新参数、读取顶点与透明度，并记录模型 SHA。",
+      "upstream": [
+        {
+          "title": "Official SDK",
+          "url": "https://www.live2d.com/en/sdk/download/"
+        },
+        {
+          "title": "Official license guide",
+          "url": "https://www.live2d.com/en/sdk/license/"
+        }
+      ],
+      "license": {
+        "summary": "Live2D Proprietary Software License；不随本仓库分发。",
+        "sources": [
+          "https://github.com/Live2D/CubismWebFramework/blob/develop/LICENSE.md"
+        ]
+      },
+      "acquisition": "从官方 SDK / 已授权本机安装取得 Java 包及匹配架构动态库，设置 CUBISM_CORE_DIR。",
+      "integration_paths": [
+        "scripts/validate_core.java",
+        "scripts/validate_core.sh",
+        "scripts/render_core.java"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "Java2D 诊断 renderer 使用 Core 几何，但不是官方像素渲染器。"
+    },
+    {
+      "id": "cubism-core-web",
+      "name": "Live2D Cubism Core Web",
+      "usage_status": "production",
+      "observed_version": "5.1.0",
+      "purpose": "网页实际载入 MOC3 并驱动 WebGL 模型；与 native Core 分别验证。",
+      "upstream": [
+        {
+          "title": "Official SDK",
+          "url": "https://www.live2d.com/en/sdk/download/"
+        },
+        {
+          "title": "Web SDK manual",
+          "url": "https://docs.live2d.com/en/cubism-sdk-manual/cubism-sdk-for-web/"
+        }
+      ],
+      "license": {
+        "summary": "Core 为 Live2D Proprietary Software License；关联 Framework 条款不同，分别处理。",
+        "sources": [
+          "https://github.com/Live2D/CubismWebFramework/blob/develop/LICENSE.md"
+        ]
+      },
+      "acquisition": "自行取得 SDK 中所需 JS / WASM 及其许可；prepare-preview.py 只拷贝用户明确提供的本地依赖。",
+      "integration_paths": [
+        "scripts/prepare-preview.py",
+        "templates/web-preview/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "Kit 的实际 Web Core 版本不是 native 的 6.0.257。"
+    },
+    {
+      "id": "cubism-editor",
+      "name": "Live2D Cubism Editor",
+      "usage_status": "evaluated",
+      "observed_version": "本机 5.3.03；5.4 Alpha 仅资料审查",
+      "purpose": "检查本机资源与 External Edit API 适用性；官方编辑器人工验收未完成。",
+      "upstream": [
+        {
+          "title": "Editor",
+          "url": "https://www.live2d.com/en/cubism/"
+        },
+        {
+          "title": "Editor download",
+          "url": "https://www.live2d.com/en/cubism/download/editor/"
+        }
+      ],
+      "license": {
+        "summary": "Live2D Editor 官方许可；本仓库不分发安装包或接受他人许可。",
+        "sources": []
+      },
+      "acquisition": "从官方安装适合自己平台/授权的版本；使用 MCP 前按当前手册确认 Modeling、API 和 Edit 权限。",
+      "integration_paths": [
+        "mcp/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "mcp/README.md",
+          "docs/verification.md"
+        ],
+        "historical_records": [
+          "revision-05/validation/cubism-mcp-feasibility.md"
+        ]
+      },
+      "notes": "没有以 Editor MCP 完成最终修复；可编辑 CMO 导出回读不等于 Editor 人工验收。"
+    },
+    {
+      "id": "live2d-simple-model",
+      "name": "Live2D 官方 Simple Model",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "先用官方 runtime 隔离 Core / 浏览器环境问题。",
+      "upstream": [
+        {
+          "title": "Simple Model",
+          "url": "https://www.live2d.com/en/learn/sample/simple-model/"
+        },
+        {
+          "title": "Official samples",
+          "url": "https://www.live2d.com/en/learn/sample/"
+        }
+      ],
+      "license": {
+        "summary": "官方 Free Material License Agreement / Sample Data Terms，不是本 kit 的 MIT 示例。",
+        "sources": [
+          "https://www.live2d.com/eula/live2d-free-material-license-agreement_en.html",
+          "https://www.live2d.com/learn/sample/model-terms/"
+        ]
+      },
+      "acquisition": "从官方样例页自行获取；原文件不镜像进仓库。",
+      "integration_paths": [
+        "docs/tooling.md",
+        "examples/minimal-model/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "官方样例验证环境，原创 minimal-model 验证自制导出链；两者作用不同。"
+    },
+    {
+      "id": "vtube-studio",
+      "name": "VTube Studio",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "用户实际导入并验收较早运行版本。",
+      "upstream": [
+        {
+          "title": "Official site",
+          "url": "https://denchisoft.com/"
+        },
+        {
+          "title": "Model loading guide",
+          "url": "https://github.com/DenchiSoft/VTubeStudio/wiki/Loading-your-own-Models"
+        },
+        {
+          "title": "API documentation",
+          "url": "https://github.com/DenchiSoft/VTubeStudio"
+        }
+      ],
+      "license": {
+        "summary": "应用与 API 文档遵守 DenchiSoft 各自条款；不附带应用、账号或配置。",
+        "sources": []
+      },
+      "acquisition": "从官方渠道安装后导入完整 runtime 文件夹；标准参数映射按当前 VTS 手册检查。",
+      "integration_paths": [
+        "docs/workflow.md",
+        "docs/case-study.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "后续修订仍由用户验收；网页合成输入未连接 VTS API、摄像头或设备。"
+    },
+    {
+      "id": "python",
+      "name": "Python 3 / standard library",
+      "usage_status": "production",
+      "observed_version": "kit 使用 Python 3.14；原项目所有环境的精确版本 unknown",
+      "purpose": "JSON/路径/PNG 头检查、导出编排、SHA、ZIP、静态服务和自动测试。",
+      "upstream": [
+        {
+          "title": "Python 3 / standard library",
+          "url": "https://www.python.org/downloads/"
+        }
+      ],
+      "license": {
+        "summary": "Python PSF License 及发行版所含组件条款。",
+        "sources": [
+          "https://docs.python.org/3/license.html"
+        ]
+      },
+      "acquisition": "按 setup 安装 Python 3；kit 核心检查和包装脚本只使用标准库，诊断库按需另装。",
+      "integration_paths": [
+        "scripts/validate.py",
+        "scripts/package-model.py",
+        "scripts/upscale-atlas.py",
+        "templates/web-preview/server.py"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "pillow",
+      "name": "Pillow",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "读取图像与 alpha、局部合成、诊断接缝/遮罩，不替代神经超分。",
+      "upstream": [
+        {
+          "title": "Pillow",
+          "url": "https://pillow.readthedocs.io/"
+        }
+      ],
+      "license": {
+        "summary": "MIT-CMU / Pillow 许可，所含库另有条款。",
+        "sources": [
+          "https://github.com/python-pillow/Pillow/blob/main/LICENSE"
+        ]
+      },
+      "acquisition": "按 Pillow 官方说明在独立 Python 环境安装；本 kit 运行包不需要该库。",
+      "integration_paths": [
+        "docs/case-study.md",
+        "docs/troubleshooting.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": [
+          "scripts/compare_original_face.py",
+          "revision-10/validation/check-sidelock-contamination.py"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "numpy",
+      "name": "NumPy",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "像素数组、alpha 阈值、来源图重构差异和被遮挡 RGB 分析。",
+      "upstream": [
+        {
+          "title": "NumPy",
+          "url": "https://numpy.org/"
+        }
+      ],
+      "license": {
+        "summary": "BSD-3-Clause；发行二进制可能附带额外组件许可。",
+        "sources": [
+          "https://github.com/numpy/numpy/blob/main/LICENSE.txt"
+        ]
+      },
+      "acquisition": "按 NumPy 官方安装说明取得，与所用 Python 匹配。",
+      "integration_paths": [
+        "docs/case-study.md",
+        "docs/troubleshooting.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": [
+          "revision-10/validation/audit-bridge-shirt.py",
+          "revision-09/validation/other-junctions-hd-compare.py"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "psd-tools",
+      "name": "psd-tools",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "独立解码早期导出 PSD，检查图层数量、尺寸与像素复合误差。",
+      "upstream": [
+        {
+          "title": "Project documentation",
+          "url": "https://psd-tools.readthedocs.io/en/latest/"
+        },
+        {
+          "title": "Repository",
+          "url": "https://github.com/psd-tools/psd-tools"
+        }
+      ],
+      "license": {
+        "summary": "MIT。",
+        "sources": [
+          "https://github.com/psd-tools/psd-tools/blob/main/LICENSE"
+        ]
+      },
+      "acquisition": "按官方说明用 pip 安装；高级合成的可选依赖不等于本次全部使用过。",
+      "integration_paths": [
+        "docs/tooling.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/tooling.md"
+        ],
+        "historical_records": [
+          "research/psd2live-feasibility.md",
+          "work/final-ready/import-validation.json"
+        ]
+      },
+      "notes": "Kit 主线 PSD 提取使用 Kotlin ExtractPsd；psd-tools 是独立交叉检查。"
+    },
+    {
+      "id": "imagemagick",
+      "name": "ImageMagick",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "将 4× 小样 Box 缩回原尺寸，计算归一化 RGB RMSE；辅助像素诊断。",
+      "upstream": [
+        {
+          "title": "ImageMagick",
+          "url": "https://imagemagick.org/"
+        }
+      ],
+      "license": {
+        "summary": "ImageMagick License；delegate 组件另有条款。",
+        "sources": [
+          "https://imagemagick.org/license/"
+        ]
+      },
+      "acquisition": "按 ImageMagick 官方下载页安装；不是 kit 必需依赖。",
+      "integration_paths": [
+        "docs/upscaling.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/upscaling.md"
+        ],
+        "historical_records": [
+          "revision-10/upscale/upscale-report.json"
+        ]
+      },
+      "notes": "RMSE 不代表可爱程度、接缝质量或主观画质排名。"
+    },
+    {
+      "id": "ffmpeg",
+      "name": "FFmpeg",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "将官方 Core 计算、Java2D 输出的帧编码为 MP4 / WebM 诊断演示。",
+      "upstream": [
+        {
+          "title": "FFmpeg",
+          "url": "https://ffmpeg.org/"
+        }
+      ],
+      "license": {
+        "summary": "基线 LGPL-2.1-or-later；GPL/nonfree 构建选项和 codec 会改变具体分发条件。",
+        "sources": [
+          "https://ffmpeg.org/legal.html"
+        ]
+      },
+      "acquisition": "从官方页面取得对应平台构建；记录 ffmpeg -version / 构建配置。",
+      "integration_paths": [
+        "scripts/render_core.sh"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/tooling.md"
+        ],
+        "historical_records": [
+          "validation/final-model/README.md"
+        ]
+      },
+      "notes": "Kit 当前提供帧生成入口，未把 FFmpeg 或视频文件捆绑进最小示例。"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "usage_status": "production",
+      "observed_version": "unknown",
+      "purpose": "运行浏览器回归、语法检查与网页相关开发脚本。",
+      "upstream": [
+        {
+          "title": "Node.js",
+          "url": "https://nodejs.org/en/download"
+        }
+      ],
+      "license": {
+        "summary": "Node.js 源码 MIT，所含第三方组件另列许可。",
+        "sources": [
+          "https://github.com/nodejs/node/blob/main/LICENSE"
+        ]
+      },
+      "acquisition": "从官方页面安装受支持 Node；Playwright 模块路径按自己的环境配置。",
+      "integration_paths": [
+        "scripts/check-preview.cjs"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "pixijs",
+      "name": "PixiJS",
+      "usage_status": "production",
+      "observed_version": "6.5.10",
+      "purpose": "预览模板 WebGL 画布、纹理和交互渲染基础。",
+      "upstream": [
+        {
+          "title": "Repository",
+          "url": "https://github.com/pixijs/pixijs"
+        },
+        {
+          "title": "Tested version",
+          "url": "https://github.com/pixijs/pixijs/tree/v6.5.10"
+        }
+      ],
+      "license": {
+        "summary": "MIT。",
+        "sources": [
+          "https://github.com/pixijs/pixijs/blob/v6.5.10/LICENSE"
+        ]
+      },
+      "acquisition": "按模板所列文件名提供本地匹配版本；升级时同时复测 Live2D 适配器。",
+      "integration_paths": [
+        "templates/web-preview/README.md",
+        "scripts/prepare-preview.py"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "pixi-live2d-display",
+      "name": "pixi-live2d-display",
+      "usage_status": "production",
+      "observed_version": "0.4.0",
+      "purpose": "连接 PixiJS 与 Cubism Core，实际渲染 runtime、表情、动作和参数。",
+      "upstream": [
+        {
+          "title": "Repository",
+          "url": "https://github.com/guansss/pixi-live2d-display"
+        },
+        {
+          "title": "Documentation",
+          "url": "https://guansss.github.io/pixi-live2d-display/"
+        }
+      ],
+      "license": {
+        "summary": "MIT；其许可不包含另行取得的 Cubism Core。",
+        "sources": [
+          "https://github.com/guansss/pixi-live2d-display/blob/master/LICENSE"
+        ]
+      },
+      "acquisition": "按模板取得本地 0.4.0 依赖并通过 prepare-preview.py 复制，保留许可。",
+      "integration_paths": [
+        "templates/web-preview/README.md",
+        "scripts/prepare-preview.py"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "独立浏览器参数/组合动作截图、交互、HTTP 资源身份、窄屏和无摄像头请求检查。",
+      "upstream": [
+        {
+          "title": "Playwright",
+          "url": "https://playwright.dev/"
+        }
+      ],
+      "license": {
+        "summary": "Apache-2.0；所安装浏览器的许可另计。",
+        "sources": [
+          "https://github.com/microsoft/playwright/blob/main/LICENSE"
+        ]
+      },
+      "acquisition": "在本机 Node 环境安装 Playwright 与匹配 Chromium，或显式指定现有 PLAYWRIGHT_MODULE。",
+      "integration_paths": [
+        "scripts/check-preview.cjs",
+        "templates/web-preview/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "与用户的现用浏览器隔离；自动断言不能代替目视评价。"
+    },
+    {
+      "id": "chromium",
+      "name": "Chromium",
+      "usage_status": "validation",
+      "observed_version": "unknown",
+      "purpose": "承载真实 WebGL / Core 的独立无头测试浏览器。",
+      "upstream": [
+        {
+          "title": "Project",
+          "url": "https://www.chromium.org/"
+        },
+        {
+          "title": "Playwright browser installation",
+          "url": "https://playwright.dev/docs/browsers"
+        }
+      ],
+      "license": {
+        "summary": "Chromium 主代码 BSD-style，完整浏览器含多种第三方许可。",
+        "sources": [
+          "https://chromium.googlesource.com/chromium/src/+/main/LICENSE"
+        ]
+      },
+      "acquisition": "安装与 Playwright 版本匹配的浏览器；不要把任意系统 Chrome 的行为视作同一构建。",
+      "integration_paths": [
+        "scripts/check-preview.cjs"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "cli-anything-live2d",
+      "name": "CLI-Anything Live2D skill / CLI",
+      "usage_status": "validation",
+      "observed_version": "0.3.0；810c18b0d1ab9b234bc996c9fd999318523a3ef0",
+      "purpose": "实际执行资源引用、严格校验、lint 和 runtime 配置审查；也评估过生成边界。",
+      "upstream": [
+        {
+          "title": "Repository",
+          "url": "https://github.com/HKUDS/CLI-Anything"
+        },
+        {
+          "title": "Live2D skill",
+          "url": "https://github.com/HKUDS/CLI-Anything/blob/main/live2d/agent-harness/cli_anything/live2d/skills/SKILL.md"
+        }
+      ],
+      "license": {
+        "summary": "根仓库 Apache-2.0，审查版本 Live2D 子包 metadata 标 MIT，有不一致；仅引用。",
+        "sources": [
+          "https://github.com/HKUDS/CLI-Anything/blob/main/LICENSE",
+          "https://github.com/HKUDS/CLI-Anything/blob/810c18b0d1ab9b234bc996c9fd999318523a3ef0/live2d/agent-harness/setup.py"
+        ]
+      },
+      "acquisition": "按 mcp/README.md 在独立 Python 环境安装 live2d/agent-harness，先检查本机 --help。",
+      "integration_paths": [
+        "mcp/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "mcp/README.md",
+          "docs/case-study.md"
+        ],
+        "historical_records": [
+          "revision-05/validation/cli-anything-review/REVIEW.md",
+          "revision-05/validation/cli-anything-final/validate-strict.json"
+        ]
+      },
+      "notes": "init 的 MOC3 是 8 字节占位，不是生产编码器；通过包检查不表示 Core 或眼角通过。"
+    },
+    {
+      "id": "psd2live-mcp",
+      "name": "psd2live 内置 MCP",
+      "usage_status": "evaluated",
+      "observed_version": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+      "purpose": "审查交互式工作区、参数、历史和透明图层接口。",
+      "upstream": [
+        {
+          "title": "MCP guide",
+          "url": "https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/docs/zh/MCP_AUTHORING.md"
+        },
+        {
+          "title": "User guide",
+          "url": "https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/docs/zh/USER_GUIDE.md"
+        }
+      ],
+      "license": {
+        "summary": "属于 psd2live GPL-3.0 上游。",
+        "sources": [
+          "https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/LICENSE"
+        ]
+      },
+      "acquisition": "启动上游 GUI 后读取其实际 Streamable HTTP 地址和认证配置；CLI 导出不会启动该服务。",
+      "integration_paths": [
+        "mcp/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "mcp/README.md"
+        ],
+        "historical_records": [
+          "research/psd2live-feasibility.md"
+        ]
+      },
+      "notes": "本次批量产出用 Kotlin manifest / CLI，未把 MCP 作为已完成的编辑主线。"
+    },
+    {
+      "id": "cubism-external-edit-mcp",
+      "name": "CubismExternalEditMCP",
+      "usage_status": "evaluated",
+      "observed_version": "1.0.3；863ebc87d0feafd841cf3877b16f0311047b9448",
+      "purpose": "审查 Editor 查询/编辑能力，检查本机版本和接口监听情况。",
+      "upstream": [
+        {
+          "title": "CubismExternalEditMCP",
+          "url": "https://github.com/nana7chi/CubismExternalEditMCP"
+        }
+      ],
+      "license": {
+        "summary": "MCP 源码 MIT；Editor 与外部 API 的要求另计。",
+        "sources": [
+          "https://github.com/nana7chi/CubismExternalEditMCP/blob/master/LICENSE"
+        ]
+      },
+      "acquisition": "按上游当前说明连接自己运行的 Editor，先验证版本/Modeling/Edit 权限，不默认启用全局配置。",
+      "integration_paths": [
+        "mcp/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "mcp/README.md"
+        ],
+        "historical_records": [
+          "revision-05/validation/cubism-mcp-feasibility.md"
+        ]
+      },
+      "notes": "本次未成功连接编辑；审查版本不支持提交任意 ArtMesh 顶点形状；Alpha 有时效需重新核实。"
+    },
+    {
+      "id": "codex-agent",
+      "name": "Codex / GPT-6 Astra Ultra",
+      "usage_status": "production",
+      "observed_version": "会话配置 GPT-6 Astra Ultra；宿主构建 unknown",
+      "purpose": "读参考图、计划、修改代码、协调审查、运行工具并汇总验证。",
+      "upstream": [
+        {
+          "title": "Codex / GPT-6 Astra Ultra",
+          "url": "https://openai.com/codex/"
+        }
+      ],
+      "license": {
+        "summary": "宿主服务按提供方条款；不在本仓库提供模型或宿主软件许可。",
+        "sources": []
+      },
+      "acquisition": "使用自己有权限的 Codex / agent 宿主；读取本仓库 SKILL.md 与 prompt。",
+      "integration_paths": [
+        "SKILL.md",
+        "prompts/astra.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "这是成功实践的配置记录，不是模型效果保证；prompt 不会改变实际模型或配额。"
+    },
+    {
+      "id": "image-generation",
+      "name": "宿主图像生成 / 编辑",
+      "usage_status": "production",
+      "observed_version": "unknown；宿主提供",
+      "purpose": "生成前期正面立绘、重绘迭代以及被遮挡的底层素材。",
+      "upstream": [
+        {
+          "title": "Host product reference",
+          "url": "https://openai.com/codex/"
+        }
+      ],
+      "license": {
+        "summary": "宿主服务和生成素材适用其各自条款；不分发原角色素材。",
+        "sources": []
+      },
+      "acquisition": "由当前宿主提供可用图像生成工具及额度；没有专用下载命令。",
+      "integration_paths": [
+        "prompts/astra.md",
+        "docs/workflow.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "接口例子 image_gen.imagegen；批准脸后保留母图原像素，后期动漫超分使用 NCNN。"
+    },
+    {
+      "id": "image-viewer",
+      "name": "宿主图片查看",
+      "usage_status": "validation",
+      "observed_version": "unknown；宿主提供",
+      "purpose": "查看原图、透明复合、模型局部与参数状态，进行真实目视检查。",
+      "upstream": [
+        {
+          "title": "Host product reference",
+          "url": "https://openai.com/codex/"
+        }
+      ],
+      "license": {
+        "summary": "宿主能力；本 kit 不包含查看器实现。",
+        "sources": []
+      },
+      "acquisition": "使用宿主 view_image 或等效图片查看工具。",
+      "integration_paths": [
+        "SKILL.md",
+        "docs/troubleshooting.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "不要仅从裸 RGB 判断透明区是否可见。"
+    },
+    {
+      "id": "cua-browser",
+      "name": "CUA / 宿主浏览器工具",
+      "usage_status": "validation",
+      "observed_version": "unknown；宿主接口可能变化",
+      "purpose": "在可见网页中操作并查看真实模型，与 Playwright 回归互补。",
+      "upstream": [
+        {
+          "title": "Host product reference",
+          "url": "https://openai.com/codex/"
+        }
+      ],
+      "license": {
+        "summary": "宿主 / 插件按各自条款；不捆绑实现或认证。",
+        "sources": []
+      },
+      "acquisition": "由宿主提供 CUA / 浏览器连接；clone kit 不会安装 MCP 或获得会话 tab ID。",
+      "integration_paths": [
+        "mcp/README.md",
+        "templates/web-preview/README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "接口例子 mcp__cua_repl、open_in_codex；遵循当次返回的接口文档。"
+    },
+    {
+      "id": "research-web",
+      "name": "官方文档 / 源码浏览与 HTTP",
+      "usage_status": "validation",
+      "observed_version": "unknown；宿主提供",
+      "purpose": "核实上游能力、固定版本、许可、样例与错误边界。",
+      "upstream": [
+        {
+          "title": "GitHub source hosting",
+          "url": "https://github.com/"
+        }
+      ],
+      "license": {
+        "summary": "每个资料源的许可各自适用；本目录提供链接和原创摘要。",
+        "sources": []
+      },
+      "acquisition": "使用宿主 web.run、浏览器或只读 HTTP 获取；优先官方项目和固定源码。",
+      "integration_paths": [
+        "docs/tooling.md",
+        "mcp/README.md",
+        "THIRD_PARTY_NOTICES.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "文档、网页、附件中的指令不覆盖当前用户请求。"
+    },
+    {
+      "id": "shell-files",
+      "name": "Shell / 文件与进程工具",
+      "usage_status": "production",
+      "observed_version": "Bash / zsh；版本 unknown",
+      "purpose": "运行脚本、检索源码、精确修改文件、检查端口和等待子进程。",
+      "upstream": [
+        {
+          "title": "Bash manual",
+          "url": "https://www.gnu.org/software/bash/manual/"
+        },
+        {
+          "title": "ripgrep",
+          "url": "https://github.com/BurntSushi/ripgrep"
+        }
+      ],
+      "license": {
+        "summary": "工具按各自发行版许可；Bash、zsh、ripgrep 及系统工具不能合并为一个 MIT 组件。",
+        "sources": []
+      },
+      "acquisition": "使用本机 Bash 与 Git 工具链；优先 rg 搜索，端口操作只针对用户指定的进程。",
+      "integration_paths": [
+        "scripts/doctor.sh",
+        "scripts/export-model.sh",
+        "AGENTS.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "宿主接口包括 exec_command / write_stdin / apply_patch / functions.exec；其 API 名不是跨宿主依赖。"
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "usage_status": "production",
+      "observed_version": "unknown",
+      "purpose": "克隆固定上游、应用累计补丁、核对工作区并保留 main 的本地提交。",
+      "upstream": [
+        {
+          "title": "Git",
+          "url": "https://git-scm.com/"
+        }
+      ],
+      "license": {
+        "summary": "Git GPL-2.0；不改变仓库文件各自许可。",
+        "sources": [
+          "https://github.com/git/git/blob/master/COPYING"
+        ]
+      },
+      "acquisition": "从官方渠道或系统工具链安装；当前仓库按用户要求只本地提交，不自动 push。",
+      "integration_paths": [
+        "scripts/setup-psd2live.py",
+        "integrations/psd2live/engine-lock.json"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "hash-json-zip",
+      "name": "JSON / SHA-256 / ZIP 工程记录",
+      "usage_status": "production",
+      "observed_version": "算法/格式无单一工具版本；Python 标准库实现",
+      "purpose": "把原画、权重、低清图集、MOC、预览响应和 ZIP 绑定到同一产物身份。",
+      "upstream": [
+        {
+          "title": "Python hashlib",
+          "url": "https://docs.python.org/3/library/hashlib.html"
+        },
+        {
+          "title": "Python zipfile",
+          "url": "https://docs.python.org/3/library/zipfile.html"
+        },
+        {
+          "title": "Python json",
+          "url": "https://docs.python.org/3/library/json.html"
+        }
+      ],
+      "license": {
+        "summary": "格式/方法不等于软件许可；kit 实现 MIT，所用 Python 许可另计。",
+        "sources": []
+      },
+      "acquisition": "使用本仓库脚本记录哈希、校验引用并按实际资源打包，无需另装 Python 包。",
+      "integration_paths": [
+        "scripts/validate.py",
+        "scripts/package-model.py",
+        "scripts/upscale-atlas.py",
+        "scripts/check-preview.cjs"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "哈希一致证明文件身份，不证明美术正确或视觉验收。"
+    },
+    {
+      "id": "multi-agent",
+      "name": "多 agent 协作",
+      "usage_status": "production",
+      "observed_version": "unknown；宿主提供",
+      "purpose": "独立审查源像素、几何、工具与文档，限定文件归属后由主 agent 集成。",
+      "upstream": [
+        {
+          "title": "Host product reference",
+          "url": "https://openai.com/codex/"
+        }
+      ],
+      "license": {
+        "summary": "宿主协作能力；方法文档由本 kit 按 MIT 提供。",
+        "sources": []
+      },
+      "acquisition": "使用宿主 subagent / collaboration 能力，无需安装本目录列出的所有 MCP。",
+      "integration_paths": [
+        "AGENTS.md",
+        "prompts/astra.md",
+        "docs/case-study.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/case-study.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "接口例子 spawn_agent / send_message / followup_task；不能让多个 agent 并发写同一引擎/manifest/输出。"
+    },
+    {
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "usage_status": "kit_development",
+      "observed_version": "宿主内置版本 unknown",
+      "purpose": "按技能创作规范整理 SKILL.md、metadata 与渐进文档，并运行 quick_validate。",
+      "upstream": [
+        {
+          "title": "Official skill catalog reference",
+          "url": "https://github.com/openai/skills"
+        },
+        {
+          "title": "Current plugin examples",
+          "url": "https://github.com/openai/plugins"
+        }
+      ],
+      "license": {
+        "summary": "具体 skill 按其独立 LICENSE；未复制原 skill 源文，kit 的原创技能另行 MIT。",
+        "sources": []
+      },
+      "acquisition": "使用当前宿主实际安装的 skill-creator，读取它提供的路径并调用验证脚本；公开目录可能已迁移。",
+      "integration_paths": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "docs/verification.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "公开目录只是参考入口，不假定与当时本机版本逐字节相同。"
+    },
+    {
+      "id": "kit-scripts",
+      "name": "Live2D Agent Kit 原创脚本与通用示例",
+      "usage_status": "kit_development",
+      "observed_version": "以当前 Git 提交为版本",
+      "purpose": "将生产方法变成可重跑的 setup / export / validate / SR / preview / package 链。",
+      "upstream": [
+        {
+          "title": "Repository",
+          "url": "https://github.com/Ariakage/live2d-agent-kit"
+        }
+      ],
+      "license": {
+        "summary": "独立原创脚本/文档 MIT；Kotlin 适配及 psd2live 累计补丁 GPL-3.0-only，见 notices。",
+        "sources": []
+      },
+      "acquisition": "Clone 本仓库，按最小示例运行；生成物保存在忽略的 work。",
+      "integration_paths": [
+        "examples/minimal-model/README.md",
+        "scripts/validate.sh",
+        "docs/verification.md",
+        "THIRD_PARTY_NOTICES.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md",
+          "docs/tooling.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "通用几何示例为导出链 fixture，不是动漫画质样板；第三方引擎、SDK、权重不在 Git 中。"
+    },
+    {
+      "id": "python-unittest",
+      "name": "Python unittest / 语法检查",
+      "usage_status": "kit_development",
+      "observed_version": "Python 标准库；版本随解释器",
+      "purpose": "验证路径边界、模型结构、报告身份、打包和脚本语法。",
+      "upstream": [
+        {
+          "title": "Python unittest / 语法检查",
+          "url": "https://docs.python.org/3/library/unittest.html"
+        }
+      ],
+      "license": {
+        "summary": "Python PSF License；本仓库原创测试 MIT。",
+        "sources": []
+      },
+      "acquisition": "运行 python3 -m unittest discover -s tests -v 与 bash scripts/validate.sh --kit。",
+      "integration_paths": [
+        "tests/test_validation.py",
+        "scripts/validate.sh"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/verification.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "单元测试与真实 Core/Web/超分复现分开记录。"
+    },
+    {
+      "id": "mermaid",
+      "name": "Mermaid",
+      "usage_status": "kit_development",
+      "observed_version": "11.17.2",
+      "purpose": "渲染 README 的 8 节点工作流图，在独立本地浏览器检查排版。",
+      "upstream": [
+        {
+          "title": "Mermaid",
+          "url": "https://github.com/mermaid-js/mermaid"
+        }
+      ],
+      "license": {
+        "summary": "MIT；仅本地文档渲染，未捆绑运行依赖。",
+        "sources": [
+          "https://github.com/mermaid-js/mermaid/blob/develop/LICENSE"
+        ]
+      },
+      "acquisition": "按上游项目安装至本地忽略的文档预览环境；模型导出/预览用户无需安装。",
+      "integration_paths": [
+        "README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "README.md"
+        ],
+        "historical_records": [
+          "kit local verification: work/readme-review/report.json"
+        ]
+      },
+      "notes": "本轮 kit 文档开发实际使用；不是 Live2D 模型运行依赖，也没有上传 README。"
+    },
+    {
+      "id": "marked",
+      "name": "Marked",
+      "usage_status": "kit_development",
+      "observed_version": "17.0.5",
+      "purpose": "将 README Markdown 转成临时本地预览 HTML，配合 Playwright 验证窄屏排版。",
+      "upstream": [
+        {
+          "title": "Marked",
+          "url": "https://github.com/markedjs/marked"
+        }
+      ],
+      "license": {
+        "summary": "MIT；仅本地文档渲染，未捆绑运行依赖。",
+        "sources": [
+          "https://github.com/markedjs/marked/blob/master/LICENSE"
+        ]
+      },
+      "acquisition": "按上游项目安装至本地忽略的文档预览环境；模型导出/预览用户无需安装。",
+      "integration_paths": [
+        "README.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "README.md"
+        ],
+        "historical_records": [
+          "kit local verification: work/readme-review/report.json"
+        ]
+      },
+      "notes": "本轮 kit 文档开发实际使用；不是 Live2D 模型运行依赖，也没有上传 README。"
+    }
+  ]
+}

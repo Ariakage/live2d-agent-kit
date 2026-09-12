@@ -1,44 +1,83 @@
+<div align="center">
+
 # Live2D Agent Kit
 
-把自己的参考图或分层 PSD 制作成可检查、可导入 VTube Studio 的 Live2D 模型：
-为 Codex / 其他 coding agent 提供工作流程、素材清单适配器、经过实践的 psd2live 补丁、
-动漫超分、真实 Core 验证和网页输入模拟。
+### 从参考图到 Live2D，把制作经验变成可复用的工作流。
 
-本 kit 源于一次使用 **GPT-6 Astra Ultra** 完成的角色制作与多轮修复实践。
-这是使用配置和案例记录；其他模型也能按流程工作，不保证任意一张图片能一键得到成熟绑定。
-平面原图中被遮挡的头发、眼球、口腔和衣服仍需补画与定位，审美选择需要原画对照。
+**保留原画 · 精确拆层 · 真实绑定 · 动漫超分 · 动作验证**
 
-**This project is not affiliated with Live2D Inc.**
+[![Workflow](https://img.shields.io/badge/Workflow-Art%20to%20Live2D-5277C3?style=flat-square)](docs/workflow.md)
+[![Agent](https://img.shields.io/badge/Case-GPT--6%20Astra%20Ultra-7564AB?style=flat-square)](docs/case-study.md)
+[![License](https://img.shields.io/badge/License-MIT%20%2B%20GPL--3.0-32998A?style=flat-square)](THIRD_PARTY_NOTICES.md)
+[![Validation](https://img.shields.io/badge/Validation-Core%20%2B%20WebGL-3C89A3?style=flat-square)](docs/verification.md)
 
-## 工具与原始资料链接
+[快速开始](#快速开始) · [工具参考库](tools/README.md) · [完整流程](docs/workflow.md) · [排错经验](docs/troubleshooting.md) · [Agent Skill](SKILL.md)
 
-| 项目 / 资料 | 本流程中的用途 | 对应指引 |
+<sub>This project is not affiliated with Live2D Inc.</sub>
+
+</div>
+
+---
+
+这是给 **Codex 与其他 coding agent** 的 Live2D 制作 kit：从自己的参考图或分层 PSD 出发，
+整理绘画、拆层坐标和绑定，导出真正的 `.moc3`，再用官方 Core 与网页动作检查验证。
+仓库同时提供可复用代码、工具来源、命令速查与多轮修复经验。
+
+实践使用 **GPT-6 Astra Ultra** 成功完成角色制作与迭代。这是一次实际案例的使用配置，
+其他 agent 也可以按流程执行。平面图里被遮挡的眼皮、口腔、后发和衣服需要补画；
+已认可的脸部和画风应作为整个流程的基准。
+
+> **第一次使用：** 先跑通原创几何最小示例，确认本机导出链与 Core 可用，再开始角色美术。
+> 工具参考库记录实际使用、辅助检查与仅评估项目，获取说明和许可随条目提供。
+
+## 能做什么
+
+| 从哪里开始 | Kit 提供什么 | 你会得到什么 |
 | --- | --- | --- |
-| [psd2live](https://github.com/tsunehimatoi/psd2live) · [中文 Agent 架构](https://github.com/tsunehimatoi/psd2live/blob/master/docs/zh/AGENT_ARCHITECTURE.md) | PSD/图层装配、绑定与真实 CMO3/MOC3 导出；kit 使用固定提交和累计补丁 | [安装](docs/setup.md)、[工作流](docs/workflow.md)、[manifest](docs/manifest.md) |
-| [Live2D 官方 Simple Model](https://www.live2d.com/en/learn/sample/simple-model/) | 用官方简单样例隔离 Core / 预览环境问题 | [官方样例验证](docs/tooling.md#先用官方简单模型隔离环境问题) |
-| [Live2D 官方 SDK](https://www.live2d.com/en/sdk/download/) · [Web SDK](https://www.live2d.com/en/sdk/download/web/) | 获取合法的官方 Core 与相应许可 | [Core 配置](docs/setup.md#配置本机官方-core)、[网页预览](templates/web-preview/README.md) |
-| [Upscayl](https://github.com/upscayl/upscayl) · [官方发布](https://github.com/upscayl/upscayl/releases) | 本地 GPU 动漫超分应用与所附 CLI | [超分工具及命令](docs/upscaling.md) |
-| [Upscayl custom-models](https://github.com/upscayl/custom-models) · [NCNN CLI 源码](https://github.com/upscayl/upscayl-ncnn) | 获取配套 `.param/.bin`，本次使用 `realesr-animevideov3-x4` | [模型获取与指纹](docs/upscaling.md#获取方式) |
-| [CLI-Anything Live2D skill](https://github.com/HKUDS/CLI-Anything/blob/main/live2d/agent-harness/cli_anything/live2d/skills/SKILL.md) | 可选包检查；其占位模板不是真正模型编码器 | [接入范围](mcp/README.md) |
-| [CubismExternalEditMCP](https://github.com/nana7chi/CubismExternalEditMCP) | 可选 Editor 外部 API 接入，需核对 Editor/API 版本 | [MCP 指引](mcp/README.md) |
+| **参考图 / 正面立绘** | 母图确认、隐藏补画、五坐标系与精确遮罩工作法 | 可复建的素材与 manifest |
+| **分层 PSD / PNG 图层** | 提取适配器、固定版 psd2live 与累计补丁 | PSD、CMO3、MOC3、图集、参数和物理 |
+| **已有模型有接缝** | 嘴周色差、闭眼断线、黑边、发丝/背带错位的排查方法 | 定位到素材、绑定或采样的修复记录 |
+| **结构正确但纹理模糊** | 本地 NCNN 动漫 4× 超分、独立 alpha、来源 SHA 检查 | 保持几何与 UV 的高清运行图集 |
+| **需要预演面捕输入** | 真实 WebGL 模型、参数面板、时间线、暂停与半身合成输入 | 可检查动作与资源身份的预览网页 |
+| **准备交付** | 资源验证、原生 Core 检查、浏览器实测与打包脚本 | 自足运行包、证据与明确的验收范围 |
 
-链接指向各项目原始来源；官方样例、SDK 和权重分别获取并遵守各自条款，不随 kit 分发。
+## 一条完整的制作路线
 
-## 交给另一个 agent
+```mermaid
+flowchart TB
+    subgraph ART["01 · 从原画到绑定"]
+        direction LR
+        A["参考图 / 分层 PSD"] --> B["确认母图<br/>拆层与隐藏补画"]
+        B --> C["Manifest<br/>位置 · 遮罩 · 层序"]
+        C --> D["psd2live + Kit 补丁<br/>网格 · 参数 · 物理"]
+    end
+    subgraph DELIVERY["02 · 从动作检查到交付"]
+        direction LR
+        E["真实 Core<br/>原分辨率检查"] --> F["动漫 4× 超分<br/>RGB / alpha 分开"]
+        F --> G["高清 WebGL 复查<br/>模型 · 贴图 SHA"]
+        G --> H["运行包 + 源工程<br/>VTS 用户验收"]
+    end
+    ART --> DELIVERY
+    classDef input fill:#ECF3FF,stroke:#6084CB,color:#203251;
+    classDef build fill:#F1ECFF,stroke:#9380C9,color:#34254F;
+    classDef verify fill:#EAF6F3,stroke:#55A795,color:#204940;
+    style ART fill:#F8FAFF,stroke:#C9D7EF,color:#203251;
+    style DELIVERY fill:#F6FBF9,stroke:#B8D8CB,color:#204940;
+    class A,B input;
+    class C,D,F build;
+    class E,G,H verify;
+```
 
-在本仓库中启动 Codex，把下面内容与自己的图片一起交给它：
 
-> 阅读 `SKILL.md`，按 `docs/workflow.md` 帮我把这些参考图做成 Live2D 模型。
-> 先检查环境并运行最小示例，确认导出与真实 Core 可用；再按我的图片测量、拆层和绑定。
-> 我认可的脸和画风要保留。请交付可追溯的源工程、运行包、网页动作预览和实际验证结果。
+**先修结构，再提清晰度。** 超分能改善纹理采样，发片里混入的衣服像素仍需先从正确的 alpha 轮廓中清理。
+完整步骤、每阶段交付和恢复方式见 [workflow.md](docs/workflow.md)。
 
-长任务提示见 [prompts/astra.md](prompts/astra.md)。可直接读取根 `SKILL.md`，
-或把本仓库作为 `live2d-agent-kit` skill 安装到当前 agent 支持的技能目录；
-无需安装 MCP 才能运行主线流程。
+## 快速开始
 
-## 先跑最小示例
+需要 **Git、Python 3.10+、JDK 21**；先按 [setup.md](docs/setup.md) 配好 Java。
+所有命令从仓库根目录运行，生成物放在忽略的 `work/`，每次实验使用新输出目录。
 
-需要 Git、Python 3.10+、**JDK 21**。先读 [安装说明](docs/setup.md)。
+### 1 · 跑通真实导出
 
 ```sh
 bash scripts/doctor.sh
@@ -48,8 +87,28 @@ bash scripts/export-model.sh work/minimal/assets/manifest.json work/minimal/low
 bash scripts/validate.sh --model work/minimal/low/Minimal.model3.json
 ```
 
-这一步生成真正的 PSD、CMO3、MOC3 和图集；最后一行只检查**文件结构**。
-原生验证需要用户已有、版本和平台匹配的官方 Core：
+这里生成 **14 个原创几何图层**，导出真正的 PSD、CMO3、MOC3 和 1024² 图集。
+最后一行检查文件结构；原生检查另外配置官方 Core。
+
+### 2 · 交给 agent 制作自己的角色
+
+把自己的图片或 PSD 与下面的提示一起交给 agent：
+
+```text
+阅读 SKILL.md、tools/README.md 和 docs/workflow.md，按本仓库流程制作我的 Live2D 模型。
+先检查可用工具并跑通最小示例，再确定母图、测量位置、拆层和绑定。
+保留我认可的脸和画风；先修素材及接缝，再做专用动漫超分。
+交付可复建的源工程、自足运行包、真实模型网页预览和对应文件的验证结果。
+分别说明 Core、网页和 VTube Studio 已完成的验收范围。
+```
+
+更完整的长任务提示：[prompts/astra.md](prompts/astra.md)。
+根目录 [SKILL.md](SKILL.md) 可以直接阅读，也可按宿主的技能安装方式随本仓库一起使用。
+
+<details>
+<summary><strong>3 · 官方 Core 验证与运行包打包</strong></summary>
+
+从用户已有的合法安装或官方分发取得适合本机的 Java/native Core，见 [Core 配置](docs/setup.md#配置本机官方-core)。
 
 ```sh
 export CUBISM_CORE_DIR=/path/to/your/local/core
@@ -60,44 +119,116 @@ python3 scripts/package-model.py --model work/minimal/low/Minimal.model3.json \
   --core-report work/minimal/core-report.json --output work/minimal/runtime
 ```
 
-最小示例是本仓库原创的几何测试素材，不包含案例角色图片。完整操作见
-[示例说明](examples/minimal-model/README.md)。最终还要进行视觉检查与目标软件验收。
+打包结果为独立的运行文件夹与 ZIP，资源引用不依赖作者电脑的路径。
+原生报告绑定实际 MOC 的 SHA；最终视觉与目标软件验收另行记录。
 
-## 从自己的图片制作
+</details>
 
-| 入口 | 下一步 |
+<details>
+<summary><strong>4 · 专用动漫超分与真实网页预览</strong></summary>
+
+超分使用本机 Upscayl CLI 与模型目录，具体获取和参数见 [upscaling.md](docs/upscaling.md)。
+
+```sh
+bash scripts/upscale-atlas.sh \
+  --manifest work/minimal/assets/manifest.json \
+  --export work/minimal/low --output work/minimal/upscale \
+  --binary /path/to/upscayl-bin --models /path/to/models \
+  --model realesr-animevideov3-x4
+bash scripts/export-model.sh work/minimal/upscale/manifest-hd.json work/minimal/hd
+```
+
+最小示例的 1024² 图集变为 4096²，逻辑坐标不变。后续用本地 Web Core 与预览依赖准备页面：
+
+```sh
+python3 scripts/prepare-preview.py \
+  --model work/minimal/hd/Minimal.model3.json --output work/minimal/preview \
+  --cubism-core /path/to/live2dcubismcore.min.js --vendor-dir /path/to/vendor
+python3 work/minimal/preview/server.py --port 8793
+```
+
+端口被占用时改用空闲端口。网页提供合成面部/半身输入；真实摄像头、手臂和手指追踪不在当前实现范围。
+依赖文件名、取景、输入映射与浏览器检查见 [网页模板说明](templates/web-preview/README.md)。
+
+</details>
+
+## 工具参考库
+
+**[查看完整工具目录 →](tools/README.md)** · [机器可读清单](tools/catalog.json) · [命令速查](tools/commands.md) · [宿主能力映射](tools/host-capabilities.md)
+
+参考库现有 **43 项**，分为生产使用、辅助验证、仅评估与 kit 开发。
+每项记录用途、使用证据、已知版本、上游来源、获取方式和许可边界。
+仓库保留我们编写的适配器、补丁和脚本；第三方应用、权重和 SDK 通过原始来源获取。
+
+| 类别 | 主要工具与原始来源 | 对应指引 |
+| --- | --- | --- |
+| **制作引擎** | [psd2live](https://github.com/tsunehimatoi/psd2live) · [Agent 架构](https://github.com/tsunehimatoi/psd2live/blob/master/docs/zh/AGENT_ARCHITECTURE.md) | [安装](docs/setup.md)、[适配器](integrations/psd2live/README.md)、[补丁](patches/README.md) |
+| **官方基准** | [Live2D Simple Model](https://www.live2d.com/en/learn/sample/simple-model/) · [Cubism SDK](https://www.live2d.com/en/sdk/download/) · [Web SDK](https://www.live2d.com/en/sdk/download/web/) | [环境隔离检查](docs/tooling.md#先用官方简单模型隔离环境问题)、[Core 配置](docs/setup.md#配置本机官方-core) |
+| **动漫超分** | [Upscayl](https://github.com/upscayl/upscayl) · [custom-models](https://github.com/upscayl/custom-models) · [upscayl-ncnn](https://github.com/upscayl/upscayl-ncnn) · [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) | [AnimeVideo / AnimeSharp 比较与获取](docs/upscaling.md) |
+| **网页运行与检查** | [PixiJS](https://github.com/pixijs/pixijs) · [pixi-live2d-display](https://github.com/guansss/pixi-live2d-display) · [Playwright](https://github.com/microsoft/playwright) | [真实模型预览](templates/web-preview/README.md)、[实测记录](docs/verification.md) |
+| **Skill / MCP** | [本 kit Skill](SKILL.md) · [CLI-Anything Live2D](https://github.com/HKUDS/CLI-Anything/blob/main/live2d/agent-harness/cli_anything/live2d/skills/SKILL.md) · [CubismExternalEditMCP](https://github.com/nana7chi/CubismExternalEditMCP) | [MCP 能力与限制](mcp/README.md)、[宿主工具映射](tools/host-capabilities.md) |
+| **构建与图像诊断** | Java / Gradle / Kotlin、Python / Pillow / NumPy / psd-tools / ImageMagick、FFmpeg、Node.js、Git、SHA-256、ZIP | [完整目录与来源](tools/README.md)、[按任务查命令](tools/commands.md) |
+
+官方样例可用于检查加载环境。CLI 的资源检查、SDK 的网格求值、真实画面与 VTS 验收，各自记录实际完成范围。
+
+## 实测到哪一步
+
+下面是 **2026-09-12 的通用最小示例本地记录**，不是在线 CI 或所有角色的质量保证。
+原角色的制作经过另见 [案例复盘](docs/case-study.md)。
+
+| 导出与原生 | 高清纹理 | 浏览器 |
+| --- | --- | --- |
+| **14 层 → 真实 MOC3 / CMO3** | **1024² → 4096²** | **22 项真实 Web 检查通过** |
+| 官方 Native Core 6.0.257 | NCNN 神经 RGB 4× + 独立 alpha | Web Core 5.1.0，实际 WebGL 绘制 |
+| 192 个取样姿态，含 125 组嘴型/头身眼组合 | 低分与高清 **MOC 逐字节一致** | 浏览器载入的 MOC / PNG SHA 与清单一致 |
+
+完整 [验证记录](docs/verification.md) 包含指纹、负例和范围。
+示例中两个眉毛参数没有测得可见绑定；参数存在与可见动画分别检查。
+
+## 经验已经整理在这里
+
+| 你正在做什么 | 从这里阅读 |
 | --- | --- |
-| 已有分层 PSD | `scripts/extract-psd.sh` 提取可见栅格图层，检查语义命名、位置、隐藏区域和拆层完整性。 |
-| 只有参考图 / 平面立绘 | 先确定正面母图与画风；保留已认可脸部，补画隐藏区域，按原图坐标描出独立图层。 |
-| 已有模型、存在接缝或错位 | 对比原图、透明合成、低分实际 Core；定位可见内容和运动归属，再修复。 |
-| 模型正确但纹理模糊 | 先做小样选择专用动漫超分模型，再对最终原图集做 4× RGB 超分与独立 alpha 合成。 |
+| 装工具、配置 Core、先验证环境 | [环境与安装](docs/setup.md) · [工具参考库](tools/README.md) |
+| 开始一个新角色，或恢复长任务 | [完整工作流程](docs/workflow.md) · [Astra 长任务提示](prompts/astra.md) |
+| 处理 PSD / PNG、裁切、层序与遮罩 | [Manifest 与五种坐标](docs/manifest.md) |
+| 保留原脸，修闭眼、肤色接缝、背带和发丝 | [排错指南](docs/troubleshooting.md) · [案例复盘](docs/case-study.md) |
+| 选择超分模型、保护透明边缘和 UV | [动漫超分](docs/upscaling.md) |
+| 调参数、模拟输入、看动作和资源身份 | [网页预览](templates/web-preview/README.md) |
+| 核对 MCP 是否适用、宿主缺少什么能力 | [MCP 指引](mcp/README.md) · [宿主能力映射](tools/host-capabilities.md) |
+| 复建、验证和打包 | [命令速查](tools/commands.md) · [实际验证范围](docs/verification.md) |
 
-- [工作流程](docs/workflow.md)：从输入到交付，各阶段应留下哪些证据。
-- [素材清单与坐标](docs/manifest.md)：PNG/PSD 路线、alpha holes、隐藏补画和特殊脸部模式。
-- [工具地图](docs/tooling.md)：实际使用、可选评估和第三方许可。
-- [动漫超分](docs/upscaling.md)：`realesr-animevideov3-x4`、Upscayl、透明边缘和 UV 不变的做法。
-- [排错指南](docs/troubleshooting.md)：脸、眼角、嘴周色块、黑缝、发尾与背带错位。
-- [Kit 复现记录](docs/verification.md)：通用示例的实际导出、Core、超分和检查指纹。
-- [完整案例复盘](docs/case-study.md)：失败方法、修复证据与经验边界。
-- [网页模板](templates/web-preview/README.md)：真实 Live2D 模型的面部/半身**输入模拟**；不是摄像头跟踪。
-- [MCP 说明](mcp/README.md)：psd2live、CLI-Anything、CubismExternalEditMCP 的用途与限制。
+<details>
+<summary><strong>仓库结构</strong></summary>
 
-## 仓库中的实现
+```text
+live2d-agent-kit/
+├── README.md / SKILL.md      入口与 Agent 工作规范
+├── LICENSE                  原创代码与文档的 MIT 许可
+├── THIRD_PARTY_NOTICES.md    第三方范围与归属
+├── tools/                   完整工具目录、JSON 清单、宿主映射、命令速查
+├── docs/                    安装、流程、拆层、超分、排错、案例、验证
+├── prompts/                 可直接交给 agent 的长任务提示
+├── mcp/                     可选 MCP / skill 的接入说明
+├── integrations/psd2live/    Manifest / PSD 适配器与引擎锁定信息
+├── patches/                 经验证的 psd2live 累计补丁
+├── scripts/                 导出、超分、Core 检查、预览与打包
+├── templates/web-preview/   通用真实模型网页模板
+├── examples/minimal-model/  原创几何测试素材生成器
+├── tests/                   无 SDK 的自动检查
+└── third_party/             补丁与适配器适用的 GPL 许可文本
+```
 
-`scripts/setup-psd2live.sh` 获取固定上游提交并验证补丁，不依赖浮动 HEAD。
-`integrations/psd2live` 提供 PNG manifest 与 PSD 适配器；`patches` 提供小特征网格、
-原像素脸部、头发绑定、纹理边缘延展和高清图集注入的实用修补。
+</details>
 
-`scripts/validate.sh` 检查资源结构，`validate_core.sh` 调用户本机官方原生 Core，
-`check-preview.cjs` 检查真实 Web Core。结果绑定具体 MOC/图集 SHA-256。
-结构通过、原生通过、画面正确和 VTube Studio 验收是不同结论。
+## 许可与归属
 
-素材、SDK、模型权重、生成结果与工具缓存都留在本机忽略目录。
-本仓库不提供原案例角色图片、SDK、付费工具、超分权重或未取得授权的官方样例。
+原创独立代码、文档和提示采用 [MIT](LICENSE)。
+`patches/psd2live-agent-kit.patch` 与 `integrations/psd2live/*.kt` 采用 **GPL-3.0-only**；
+完整范围见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+用户绘画、官方样例、Live2D SDK/Framework、第三方应用和超分权重各自适用原条款。
 
-## 许可
+感谢 psd2live、Live2D 官方资料、Upscayl / Real-ESRGAN、PixiJS、pixi-live2d-display、Playwright
+及可选 skill/MCP 项目提供的工具与文档。每个项目的原始来源均列于 [工具参考库](tools/README.md)。
 
-原创 kit 代码、文档和提示主要采用 [MIT](LICENSE)。
-`patches/psd2live-agent-kit.patch` 与 `integrations/psd2live/*.kt` 采用 **GPL-3.0-only**，
-其上游来源和完整许可见 [第三方声明](THIRD_PARTY_NOTICES.md)。
-Live2D SDK、框架、样例、工具、权重与用户素材各自适用原条款，不被本仓库 MIT 覆盖。
+**This project is not affiliated with Live2D Inc.**

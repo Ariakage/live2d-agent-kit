@@ -52,3 +52,14 @@ Minimal.moc3（低分 = 高清）
 重跑入口见 [最小示例](../examples/minimal-model/README.md)、
 [超分命令](upscaling.md) 和 [网页检查](../templates/web-preview/README.md)。
 导出、超分和预览使用各自的新目录；完整报告中包含本机路径，发布前应按自己的分享范围整理。
+
+## 工具目录与 README 维护检查
+
+同日另行扩充工具参考库与 README；此轮未更改模型制作、超分和 Web runtime。
+
+- 工具参考库有 **43 项**，JSON 唯一 ID、使用状态、152 个本地入口/证据引用检查通过；文档链接检查已包含 `tools/`。
+- Python 维护测试从 17 项增至 **19 项**并通过；新增回归确保 `tools/` 参与断链、个人路径和禁止二进制检查。
+- README 用 Marked 17.0.5 与 Mermaid 11.17.2 在本机渲染，再通过 Playwright 查看；8 节点流程图成功解析，标题、表格和折叠区正常，390px 窄屏没有页面横向溢出。
+- 这是本地 Markdown 排版检查；没有上传 README 进行渲染，也没有重跑或继承新的 VTS 验收。
+
+临时文档渲染依赖和截图留在忽略目录，模型流程不依赖 Marked / Mermaid。

@@ -223,6 +223,29 @@ class ValidationTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertEqual([e["code"] for e in result["errors"]], ["broken_link"])
 
+    def test_kit_checks_links_in_and_to_tools(self):
+        kit = self.root / "kit"
+        tools = kit / "tools"
+        tools.mkdir(parents=True)
+        (kit / "README.md").write_text("[Catalog](tools/README.md)\n[Missing tool](tools/missing.md)\n", encoding="utf-8")
+        (tools / "README.md").write_text("[Home](../README.md)\n[Missing guide](missing-guide.md)\n", encoding="utf-8")
+        result = validate.validate_kit(kit)
+        self.assertFalse(result["passed"])
+        self.assertEqual([e["code"] for e in result["errors"]], ["broken_link", "broken_link"])
+        self.assertEqual(result["checkedFiles"], 2)
+
+    def test_kit_checks_redistribution_and_private_paths_in_tools(self):
+        kit = self.root / "kit"
+        tools = kit / "tools"
+        tools.mkdir(parents=True)
+        (tools / "model.bin").write_bytes(b"not a distributable weight")
+        private_path = "/" + "Users" + "/example/private-art.png"
+        (tools / "catalog.json").write_text(json.dumps({"path": private_path}), encoding="utf-8")
+        result = validate.validate_kit(kit)
+        self.assertFalse(result["passed"])
+        self.assertEqual({e["code"] for e in result["errors"]}, {"redistribution", "private_path"})
+        self.assertEqual(result["checkedFiles"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

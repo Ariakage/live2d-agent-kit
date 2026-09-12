@@ -382,7 +382,7 @@ def validate_kit(root: Path) -> dict:
     root = root.resolve()
     report = base_report("kit")
     report["scope"] = "Repository relative-link and heuristic redistribution/privacy checks; not a license or media-content audit."
-    ignored = {".git", ".cache", "work", "tools", "node_modules", ".venv", "__pycache__", ".pytest_cache"}
+    ignored = {".git", ".cache", "work", "node_modules", ".venv", "__pycache__", ".pytest_cache"}
     text_suffixes = {".md", ".py", ".sh", ".json", ".cjs", ".js", ".java", ".kt", ".kts", ".gradle", ".toml", ".yaml", ".yml", ".txt"}
     private = re.compile(r"/" + r"(?:Users|home)" + r"/[A-Za-z0-9_.-]+/|/" + r"Volumes" + r"/[A-Za-z0-9_.-]+/")
     checked = 0
