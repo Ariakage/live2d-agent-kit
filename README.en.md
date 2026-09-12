@@ -204,6 +204,8 @@ Start the camera explicitly, grant browser access, then face forward and calibra
 
 ## Verification and rebuilding
 
+The [evidence index](docs/verification/README.md) links the physical-camera test, cold source build and committed-source-package check, with report hashes and separate scopes.
+
 The published geometric example records are local runs from **2026-09-12**. They are separate from Pink Sakura and are not an online CI result or a quality guarantee for arbitrary characters.
 
 | Geometric example | Recorded result |
@@ -216,6 +218,8 @@ The published geometric example records are local runs from **2026-09-12**. They
 The current minimal example has two separate eyebrow layers; all 19 parameters produced a measured drawable change. The [verification guide](docs/verification.md) separates this result from the earlier empty eyebrow slots, and includes file hashes and negative tests. The [case study](docs/case-study.md) covers the earlier character and its repairs.
 
 The current recipes contain 24 Pink Sakura layers and 16 geometric layers, with deterministic eyebrow source generation included. A full engine build from an initially empty cache compiled the source and exported the minimal model, which passed native Core and 22 real WebGL checks. The public Pink recipe also exported from that newly compiled engine, passed Core and produced a MOC identical to the HD release. This run used a source-only checkout and an optional local curl download relay; download retries are recorded separately from the successful compile. The [reproducibility guide](docs/reproducibility.md) records what can be rebuilt, what must be downloaded and which build checks have run. The [repository review](docs/repository-review.md) covers the bilingual docs and asset-input fixes.
+
+An independent `git archive` check of commit **`7f391f4`** also passed: **59 Python tests and 28 Node tests**, byte-identical regeneration of all three eyebrow images, and reconstruction of the 24-layer Pink and 16-layer Minimal recipes. Its [original report](docs/verification/source-package-7f391f4.json) does not run the engine compiler or Core. The [cold compilation record](docs/verification/cold-build/README.md) used an earlier archive plus explicitly recorded public source changes; the two checks retain their own revision and execution scope.
 
 `work/` contains generated manifests, exports, upscaled atlases, previews and test outputs. Those files belong to a local run; published source recipes and recorded dependency identities are the inputs for rebuilding them. Official SDK/Core binaries and upscaling weights remain external dependencies.
 

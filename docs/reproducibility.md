@@ -2,6 +2,12 @@
 
 Pink Sakura 的制作源图、眉毛分解源文件、最终遮罩坐标、配方生成器和引擎补丁均在仓库中。忽略的 `work/` 保存迭代输出，`.cache/` 保存另行获取的工具；它们不是公开示例生成 manifest 所需的隐藏素材。**2026-09-12 已完成独立空缓存起步的完整源码编译、16 层 Minimal 导出及实际 Core/Web 验证。** 本页保留较早快速审计的未完成记录，并分别说明后续验证。
 
+## 已提交源码包：7f391f4
+
+提交 `7f391f432615cfb46460e63e2555dabc98a0a9f9` 已再次通过独立 `git archive` 检查。新副本初始没有 `work/`、`.cache/`、`outputs/` 或 `dist/`：59 项 Python 与 28 项 Node 测试通过；三张眉毛素材重新生成后与发布字节一致；Pink 重建 24 个源层、Minimal 重建 16 个几何层。Pink manifest 与实际制作记录 SHA 相同，八张图像依赖全部在源包内。
+
+原报告及其 SHA 保留在[已提交源包记录](verification/source-package-7f391f4.json)和[验证索引](verification/README.md)。该检查不联网、不编译引擎、不导出 MOC、不执行 Core 或摄像头，因此 `cleanEngineBuildValidated` 与 `nativeCoreValidated` 保持 `false`。这与下面单独完成的冷源码编译结果并不冲突；冷构建使用的是较早源包加已记录的公开修改，不能直接称作对 `7f391f4` 的又一次完整冷编译。
+
 ## 完整源码构建结果
 
 本次从提交 `2afd9d2ac29d1ef93c39b86215c3d81d89cb7f6d` 的 `git archive` 建立新副本。初始引擎目录、Gradle 缓存及副本内 `work/`、`.cache/`、`build/` 均不存在；没有复制旧应用类、JAR 或生产工程。构建期间加入了当前公开的 16 层 Minimal 生成器，以及本页说明的源码获取和可选网络恢复脚本，逐个记录 SHA。因此这是“该源包加已记录的公开脚本修改”的实测，不追溯声称旧提交本身包含新增功能。

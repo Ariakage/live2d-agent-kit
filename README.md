@@ -58,6 +58,8 @@ Live2D Agent Kit 帮助 Codex 和其他 coding agent 把参考图或分层 PSD �
 
 [模型文件](examples/pink-sakura/runtime/) · [重建步骤](examples/pink-sakura/README.md#复现模板) · [验证记录](examples/pink-sakura/verification/README.md)
 
+[面捕与复现证据索引 →](docs/verification/README.md)：真实摄像头检查、冷源码编译和已提交源包重建分别记录，不需要从完整制作日志中寻找结果。
+
 | 模型结构 | 动漫超分 | 实际验证 |
 | --- | --- | --- |
 | **24 个源层 · 26 个 Drawable · 24 个参数** | **2048² → 8192²**，AnimeVideo v3 4× | **202** 个原生姿态 · **22** 项 Web 检查 |
@@ -216,6 +218,8 @@ python3 work/pink-camera-preview/server.py --port 8860
 | 过去的私有角色 | 不提供，也不参与本示例 | 使用仓库示例或自己的授权素材 |
 
 新示例为 24 层 Pink Sakura 配方和 16 层几何素材。完整空缓存引擎已重新编译，最小模型通过 Native Core 与 22 项真实网页检查；公开 Pink 配方也独立导出并通过 Core，MOC 与高清版一致。获取时使用源码精简 checkout 与可选的本地 curl 下载转发，并记录了下载重试。[复现审查](docs/reproducibility.md)列出执行范围、外部依赖和源包自检命令；[本次仓库审查](docs/repository-review.md)记录文档检查和脚本修复。
+
+提交 **`7f391f4`** 的独立 `git archive` 检查也已通过：**59 项 Python、28 项 Node 测试**，三张眉毛衍生图与发布素材逐字节一致，24 层 Pink 与 16 层 Minimal 配方均可重建。[源包原报告](docs/verification/source-package-7f391f4.json)不执行引擎编译或 Core；[冷源码编译记录](docs/verification/cold-build/README.md)来自较早源包加明确记录的公开修改，两次验证的提交与执行范围分别保留。
 
 ## 本例用了哪一个超分模型？
 

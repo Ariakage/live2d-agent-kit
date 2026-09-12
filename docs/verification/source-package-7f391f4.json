@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "checks": [
+    {
+      "name": "unit-tests",
+      "passed": true,
+      "summary": [
+        "Ran 59 tests in 5.045s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "name": "tracking-unit-tests",
+      "passed": true
+    },
+    {
+      "name": "kit",
+      "passed": true,
+      "warnings": 1
+    },
+    {
+      "name": "pink-brow-preparation",
+      "passed": true
+    },
+    {
+      "name": "pink-recipe",
+      "passed": true
+    },
+    {
+      "name": "pink-manifest",
+      "passed": true,
+      "warnings": 3
+    },
+    {
+      "name": "minimal-generation",
+      "passed": true
+    },
+    {
+      "name": "minimal-manifest",
+      "passed": true,
+      "warnings": 0
+    }
+  ],
+  "cleanEngineBuildValidated": false,
+  "nativeCoreValidated": false,
+  "scope": "Committed source package, offline tests, source-to-manifest regeneration; no exporter or runtime execution.",
+  "commit": "7f391f432615cfb46460e63e2555dabc98a0a9f9",
+  "initialGeneratedDirectoriesPresent": {
+    "work": false,
+    ".cache": false,
+    "outputs": false,
+    "dist": false
+  },
+  "browSources": [
+    {
+      "file": "eyebrow-base-v1.png",
+      "sha256": "4c806650224049849c87a748d0bcf32ed9a8a46addf5d487ff92b844b1739853",
+      "matchesPublished": true
+    },
+    {
+      "file": "eyebrow-l-v1.png",
+      "sha256": "5eb400d8a50a4fb1d1f016caf626921831b5d2a89b13d8ec735656a1eea5510f",
+      "matchesPublished": true
+    },
+    {
+      "file": "eyebrow-r-v1.png",
+      "sha256": "6c1dc905caa39282308a22ebf7927a7e146cdf763816f05e887226a3cf9b9518",
+      "matchesPublished": true
+    }
+  ],
+  "pink": {
+    "layers": 24,
+    "sources": {
+      "examples/pink-sakura/source/reference.png": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca",
+      "examples/pink-sakura/source/body-underpainting-v1.png": "af6630a8663bb0b64d06ab26a9a5a4cd1f3f0c95909899004911dcd17481de8b",
+      "examples/pink-sakura/source/rear-hair-underpainting-v1.png": "cc964cb5aff8a544b61da7008e987f91ea64eb6c58831aade1ef098717be666f",
+      "examples/pink-sakura/source/eyebrow-base-v1.png": "4c806650224049849c87a748d0bcf32ed9a8a46addf5d487ff92b844b1739853",
+      "examples/pink-sakura/source/eyeless-face-v1.png": "9ad6277a56d121ece6e81021787fddbc8e5e339a4930b10e36cc81ca3b69d219",
+      "examples/pink-sakura/source/face-parts-v1.png": "b1710863d1d9235af6db8d8473e0294474ed7b062e949fdc8d6de9f2546a0774",
+      "examples/pink-sakura/source/eyebrow-r-v1.png": "6c1dc905caa39282308a22ebf7927a7e146cdf763816f05e887226a3cf9b9518",
+      "examples/pink-sakura/source/eyebrow-l-v1.png": "5eb400d8a50a4fb1d1f016caf626921831b5d2a89b13d8ec735656a1eea5510f"
+    },
+    "manifestSha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
+    "matchesRecordedManifest": true
+  },
+  "minimal": {
+    "layers": 16,
+    "sources": {
+      "work/minimal/assets/back_hair.png": "d63fd1442d24a04d4bfa1e7e32498982409ab97a3e330c9706aa7a2b0c873078",
+      "work/minimal/assets/body.png": "85fff29f898f04b927230613f875a1df0d1a47697c73967b2a83da0ebd53a961",
+      "work/minimal/assets/topwear.png": "33fba4015562291bfc4ca731d2fa256ac78f70fd7794310df894dc5e74af638d",
+      "work/minimal/assets/neckwear.png": "b573d24d2690f010e08445ba9bb5212880ef4754f0c07c8c2bd81af72462da2a",
+      "work/minimal/assets/face.png": "4cee6ef94da5d239f47b25a9dbde46f26445a038250a14dd95a9a8c20dd23b2a",
+      "work/minimal/assets/eyebrow-r.png": "a16c394f58b50139c5637e9ab341bee5f250d13828a30596ab25135a71e92dd4",
+      "work/minimal/assets/eyewhite-r.png": "a72778ab582f467f367e1286cf0e3d6d2befd4f7c684233d5d8f990c8e7031c9",
+      "work/minimal/assets/irides-r.png": "ae0e55e1e59dc559aa3b345f881a68c2dbec7a96a19107ead612668fde7154d6",
+      "work/minimal/assets/eyelash-r.png": "1399c693e7ea91da43484ab76ad20251dc7a7eefe4f30af6826a65bd314fb233",
+      "work/minimal/assets/eyebrow-l.png": "07ee0a55e04ecf1e6e1e9bb8df3bfa4dc711c851db05419a3494d3b0a3da52a6",
+      "work/minimal/assets/eyewhite-l.png": "e22fee2f4620cf8ac5de77711b1f00fc78dc497a5959d5f81b7882d9c5fa32f4",
+      "work/minimal/assets/irides-l.png": "f21f68710629fb559c3d4be4c790e181eed20cf79aa9071f917d708ff75f5c50",
+      "work/minimal/assets/eyelash-l.png": "08ade6657ff85c88549afa08e752eec4e3a0f50779b17908d25357253f2ec406",
+      "work/minimal/assets/mouth_open.png": "8632346bd07d3813965224773ce036e52bf591dcc150ab8a9bc7bdd6b7fcfdcd",
+      "work/minimal/assets/mouth_close.png": "f2e60c0b6f9d7e2c90f7d30003b9e837a1a218f47baa81ccb0ced2fb9c5e9227",
+      "work/minimal/assets/front_hair.png": "5463c89640fa8f4ebe74d94205afcb557499732dddb82c7a64c7b051e76a680e"
+    },
+    "manifestSha256": "2376db1c86bbaa3d336f0189fb79c53baa0a45de286be86bda466fe2cd6a2ddc"
+  },
+  "engineSourceRecipe": {
+    "url": "https://github.com/tsunehimatoi/psd2live.git",
+    "commit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+    "patchSha256": "a785a2cd38cb9d999a1f445d9fb36c75d3731d2742a335d072a3cdadd22a17fa",
+    "patchedFiles": 8
+  }
+}

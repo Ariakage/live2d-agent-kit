@@ -19,6 +19,7 @@
 
 ### Tests / 验证
 
+- The committed `7f391f4` archive passed an independent offline source-package check: 59 Python / 28 Node tests, three byte-identical eyebrow images, and 24-layer Pink / 16-layer Minimal regeneration. The [original report](docs/verification/source-package-7f391f4.json) and [evidence index with SHA-256](docs/verification/README.md) preserve its exact revision. This check does not repeat the separately recorded cold compilation, Core or physical-camera runs.
 - 59 Python tests and 28 Node tests passed, covering source and asset boundaries, build entry points, eyebrow/landmark mapping, calibration, stale inputs, camera lifecycle races and dependency integrity.
 - Pink Sakura: 24 parameters / 26 drawables, 202 native Core poses, 22 Web checks and 91 pose captures; LOW and 4× HD MOC bytes match.
 - Final physical-camera regression: 16 checks passed on the eyebrow-bound HD model. Numeric results include real brow input, calibration, stopped-video neutralization, source takeover, no audio and device release. Three SDK log attempts were blocked by the response policy. See [camera evidence](docs/verification/camera-tracking.json).
