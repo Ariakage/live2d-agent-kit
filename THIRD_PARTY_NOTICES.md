@@ -6,6 +6,7 @@ It does not relicense upstream projects, SDKs, model weights or user artwork.
 
 | Component | Treatment in this repository |
 | --- | --- |
+| `examples/pink-sakura/` named artwork and runtime assets | User-authorized inclusion for this example only; [CC BY 4.0 asset scope](examples/pink-sakura/LICENSE.md) and [image/model provenance](examples/pink-sakura/ATTRIBUTION.md). Recipe code and original documentation remain MIT. The original reference's ChatGPT Image2.5 attribution is user supplied, not independently verified; later generated underpaintings have a separate source record. |
 | `patches/psd2live-agent-kit.patch` | Changes against tsunehimatoi/psd2live at `5526f2e16b57e5f83d34f33730d6fa26d8bc8695`; contains GPL upstream context; distributed under GPL-3.0-only. |
 | `integrations/psd2live/*.kt` | Kit integration compiled with the GPL engine; distributed under GPL-3.0-only, not the root MIT license. |
 | psd2live | Downloaded to an ignored local cache; retain its original LICENSE and notices. No upstream binary or sample artwork is committed here. |
@@ -23,5 +24,9 @@ References: [psd2live license](https://github.com/tsunehimatoi/psd2live/blob/552
 [Upscayl license](https://github.com/upscayl/upscayl/blob/main/LICENSE),
 [Real-ESRGAN license](https://github.com/xinntao/Real-ESRGAN/blob/master/LICENSE),
 [Cubism Framework license](https://github.com/Live2D/CubismWebFramework/blob/develop/LICENSE.md).
+
+The Pink Sakura exception does not authorize including any previous private character,
+unrelated user artwork, SDK, application binary or upscale model weights. Public runtime
+assets use their own listed license; licensing those assets does not relicense their tools.
 
 This project is not affiliated with Live2D Inc.

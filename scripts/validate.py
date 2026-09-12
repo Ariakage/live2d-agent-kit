@@ -378,6 +378,34 @@ def validate_manifest(manifest_path: Path) -> dict:
     return report
 
 
+PINK_EXAMPLE_MOC = PurePosixPath("examples/pink-sakura/runtime/PinkSakura.moc3")
+
+
+def validate_pink_example_exception(root: Path) -> dict:
+    """Check one user-authorized asset exception, without treating it as Core evidence."""
+    example = root / "examples" / "pink-sakura"
+    model_path = example / "runtime" / "PinkSakura.model3.json"
+    moc_path = root / PINK_EXAMPLE_MOC
+    for required in (example / "LICENSE.md", example / "ATTRIBUTION.md", model_path, moc_path):
+        # A differently licensed/located file must not borrow this exception through a symlink.
+        current = required
+        while current != root:
+            if current.is_symlink():
+                raise ValidationError("Authorized example companions must not use symlinks")
+            current = current.parent
+        if not required.is_file() or required.stat().st_size == 0:
+            raise ValidationError(f"Authorized example requires a nonempty {required.relative_to(root).as_posix()}")
+    references = model_references(load_json(model_path))
+    if safe_reference(model_path.parent, references["Moc"]) != moc_path.resolve():
+        raise ValidationError("Authorized example Model3 must reference the exact PinkSakura.moc3")
+    runtime = validate_model(model_path)
+    if not runtime["passed"]:
+        detail = "; ".join(error["message"] for error in runtime["errors"])
+        raise ValidationError(f"Authorized example runtime failed structural validation: {detail}")
+    return {"path": PINK_EXAMPLE_MOC.as_posix(), "modelJson": model_path.relative_to(root).as_posix(),
+            "mocSha256": runtime["mocSha256"], "validation": "structural-only", "nativeCoreValidated": False}
+
+
 def validate_kit(root: Path) -> dict:
     root = root.resolve()
     report = base_report("kit")
@@ -399,7 +427,14 @@ def validate_kit(root: Path) -> dict:
                 continue
         lower = path.name.lower()
         if path.suffix.lower() in {".bin", ".param", ".pth", ".pt", ".onnx", ".safetensors", ".moc3", ".cmo3", ".dylib", ".so", ".dll", ".jar"} or ("live2dcubismcore" in lower and not lower.endswith((".md", ".txt"))):
-            issue(report, "redistribution", "Generated model, SDK binary, or model weight must not be committed; provide acquisition instructions instead.", relative.as_posix())
+            if PurePosixPath(relative.as_posix()) == PINK_EXAMPLE_MOC:
+                try:
+                    evidence = validate_pink_example_exception(root)
+                    report.setdefault("authorizedRuntimeExceptions", []).append(evidence)
+                except (ValidationError, OSError, ValueError) as exc:
+                    issue(report, "redistribution", str(exc), relative.as_posix())
+            else:
+                issue(report, "redistribution", "Generated model, SDK binary, or model weight must not be committed; provide acquisition instructions instead.", relative.as_posix())
         if lower.startswith("codex-clipboard-") or lower in {"master-original.png", "master-front-v3.png"}:
             issue(report, "private_art", "Possible private character/reference artwork", relative.as_posix())
         if path.suffix.lower() not in text_suffixes:

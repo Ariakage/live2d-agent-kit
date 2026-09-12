@@ -6,6 +6,7 @@ import struct
 import sys
 import tempfile
 import unittest
+from unittest import mock
 import zipfile
 import zlib
 from pathlib import Path
@@ -213,6 +214,87 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaises(validate.ValidationError):
             packager.package_model(self.model, self.make_report_fixture(), self.root / "bad-bundle")
 
+    def test_packager_optional_credits_have_exact_hashes_in_metadata_and_zip(self):
+        attribution = self.root / "credits.txt"
+        license_file = self.root / "asset-license.md"
+        attribution.write_text("# Attribution\nArtist and tool credits.\n", encoding="utf-8")
+        license_file.write_text("# Asset terms\nA synthetic license notice for this test.\n", encoding="utf-8")
+        for include_attribution, include_license in ((False, False), (True, False), (False, True), (True, True)):
+            with self.subTest(attribution=include_attribution, license=include_license):
+                output = self.root / f"credits-bundle-{include_attribution}-{include_license}"
+                result = packager.package_model(self.model, self.make_report_fixture(), output,
+                                               attribution=attribution if include_attribution else None,
+                                               asset_license=license_file if include_license else None)
+                metadata = json.loads((output / "release-metadata.json").read_text())
+                self.assertEqual(result["runtimeFiles"], 5)
+                self.assertEqual(result["packagedFiles"], 5 + include_attribution + include_license)
+                with zipfile.ZipFile(result["zip"]) as archive:
+                    for key, included, source, destination in (("attribution", include_attribution, attribution, "ATTRIBUTION.md"),
+                                                               ("assetLicense", include_license, license_file, "ASSET-LICENSE.md")):
+                        self.assertEqual(metadata[key]["included"], included)
+                        self.assertEqual(metadata[key]["path"], destination if included else None)
+                        if included:
+                            digest = validate.sha256(source)
+                            self.assertEqual(metadata[key]["sha256"], digest)
+                            self.assertEqual(metadata["files"][destination]["sha256"], digest)
+                            self.assertEqual((output / destination).read_bytes(), source.read_bytes())
+                            self.assertEqual(archive.read(destination), source.read_bytes())
+                        else:
+                            self.assertNotIn(destination, metadata["files"])
+                            self.assertNotIn(destination, archive.namelist())
+
+    def test_packager_rejects_missing_empty_or_nontext_publication_documents(self):
+        inputs = {"missing.md": None, "empty.md": b"", "whitespace.txt": b" \t\n",
+                  "invalid.md": b"\xff\xfe", "binary.md": b"header\0payload", "script.js": b"plain text"}
+        for keyword in ("attribution", "asset_license"):
+            for name, data in inputs.items():
+                with self.subTest(keyword=keyword, file=name):
+                    source = self.root / name
+                    if data is not None:
+                        source.write_bytes(data)
+                    output = self.root / f"bad-doc-{keyword}-{name}"
+                    with self.assertRaises(validate.ValidationError):
+                        packager.package_model(self.model, self.make_report_fixture(), output, **{keyword: source})
+                    self.assertFalse(output.exists())
+                    self.assertFalse(output.with_name(output.name + ".zip").exists())
+
+    def test_packager_publication_names_cannot_collide_with_dependencies(self):
+        document = self.root / "publication.txt"
+        document.write_text("Test publication text\n", encoding="utf-8")
+        collisions = (("attribution", "ATTRIBUTION.md"), ("attribution", "attribution.MD"),
+                      ("attribution", "Attribution.md/child.json"),
+                      ("asset_license", "ASSET-LICENSE.md"), ("asset_license", "asset-license.MD"),
+                      ("asset_license", "Asset-License.md/child.json"))
+        for index, (keyword, reference) in enumerate(collisions):
+            with self.subTest(keyword=keyword, reference=reference):
+                dependency = self.model_root / reference
+                dependency.parent.mkdir(parents=True, exist_ok=True)
+                dependency.write_text("{}", encoding="utf-8")
+                self.data["FileReferences"]["UserData"] = reference
+                self.write_model()
+                output = self.root / f"colliding-bundle-{index}"
+                with self.assertRaisesRegex(validate.ValidationError, "reserved publication path"):
+                    packager.package_model(self.model, self.make_report_fixture(), output, **{keyword: document})
+                self.assertFalse(output.exists())
+                dependency.unlink()
+
+    def test_packager_rejects_publication_text_changed_after_validation(self):
+        document = self.root / "publication.txt"
+        document.write_text("Validated text\n", encoding="utf-8")
+        copy = packager.shutil.copyfile
+
+        def changed_copy(source, destination):
+            if source == document.resolve():
+                document.write_text("Different text after validation\n", encoding="utf-8")
+            return copy(source, destination)
+
+        output = self.root / "changed-credits"
+        with mock.patch.object(packager.shutil, "copyfile", side_effect=changed_copy):
+            with self.assertRaisesRegex(validate.ValidationError, "Input changed after validation: ATTRIBUTION.md"):
+                packager.package_model(self.model, self.make_report_fixture(), output, attribution=document)
+        self.assertFalse(output.exists())
+        self.assertFalse(output.with_name(output.name + ".zip").exists())
+
     def test_kit_checks_links_and_ignores_work(self):
         kit = self.root / "kit"
         kit.mkdir()
@@ -245,6 +327,119 @@ class ValidationTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertEqual({e["code"] for e in result["errors"]}, {"redistribution", "private_path"})
         self.assertEqual(result["checkedFiles"], 2)
+
+    def make_authorized_example_kit(self):
+        kit = self.root / "example-kit"
+        example = kit / "examples" / "pink-sakura"
+        runtime = example / "runtime"
+        runtime.mkdir(parents=True)
+        (example / "LICENSE.md").write_text("Synthetic fixture license notice.\n", encoding="utf-8")
+        (example / "ATTRIBUTION.md").write_text("Synthetic fixture attribution.\n", encoding="utf-8")
+        # These bytes test ONLY the publication policy and header checks, never native validity.
+        (runtime / "PinkSakura.moc3").write_bytes(b"MOC3\x05\0\0\0" + b"NOT-A-NATIVE-MODEL-TEST-FIXTURE" * 4)
+        (runtime / "texture.png").write_bytes(png_bytes())
+        model = {"Version": 3, "FileReferences": {"Moc": "PinkSakura.moc3", "Textures": ["texture.png"]}}
+        (runtime / "PinkSakura.model3.json").write_text(json.dumps(model), encoding="utf-8")
+        return kit, example, runtime
+
+    def test_kit_accepts_only_documented_exact_example_without_core_claim(self):
+        kit, _, _ = self.make_authorized_example_kit()
+        result = validate.validate_kit(kit)
+        self.assertTrue(result["passed"], result["errors"])
+        self.assertFalse(result["nativeCoreValidated"])
+        self.assertEqual(len(result["authorizedRuntimeExceptions"]), 1)
+        evidence = result["authorizedRuntimeExceptions"][0]
+        self.assertEqual(evidence["path"], "examples/pink-sakura/runtime/PinkSakura.moc3")
+        self.assertEqual(evidence["validation"], "structural-only")
+        self.assertFalse(evidence["nativeCoreValidated"])
+
+    def test_kit_example_requires_license_attribution_and_model_json(self):
+        kit, example, runtime = self.make_authorized_example_kit()
+        for required in (example / "LICENSE.md", example / "ATTRIBUTION.md", runtime / "PinkSakura.model3.json"):
+            contents = required.read_bytes()
+            for empty in (False, True):
+                with self.subTest(file=required.name, empty=empty):
+                    if empty:
+                        required.write_bytes(b"")
+                    else:
+                        required.unlink()
+                    result = validate.validate_kit(kit)
+                    self.assertFalse(result["passed"])
+                    self.assertTrue(any(e["code"] == "redistribution" and required.name in e["message"] for e in result["errors"]))
+                    self.assertNotIn("authorizedRuntimeExceptions", result)
+                    required.write_bytes(contents)
+
+    def test_kit_example_rejects_placeholder_and_broken_runtime_resources(self):
+        kit, _, runtime = self.make_authorized_example_kit()
+        changes = ((runtime / "PinkSakura.moc3", b"MOC3\x05\0\0\0"),
+                   (runtime / "texture.png", b"invalid PNG"),
+                   (runtime / "PinkSakura.model3.json", b'{"Version":2}'))
+        for file, invalid in changes:
+            with self.subTest(file=file.name):
+                original = file.read_bytes()
+                file.write_bytes(invalid)
+                result = validate.validate_kit(kit)
+                self.assertFalse(result["passed"])
+                self.assertNotIn("authorizedRuntimeExceptions", result)
+                file.write_bytes(original)
+        (runtime / "texture.png").unlink()
+        self.assertFalse(validate.validate_kit(kit)["passed"])
+
+    def test_kit_example_model_json_must_reference_exact_authorized_moc(self):
+        kit, _, runtime = self.make_authorized_example_kit()
+        other = runtime / "Other.moc3"
+        other.write_bytes((runtime / "PinkSakura.moc3").read_bytes())
+        model_path = runtime / "PinkSakura.model3.json"
+        model = json.loads(model_path.read_text())
+        model["FileReferences"]["Moc"] = other.name
+        model_path.write_text(json.dumps(model), encoding="utf-8")
+        result = validate.validate_kit(kit)
+        self.assertFalse(result["passed"])
+        self.assertNotIn("authorizedRuntimeExceptions", result)
+        self.assertTrue(any("exact PinkSakura.moc3" in e["message"] for e in result["errors"]))
+
+    def test_kit_example_does_not_allow_neighbor_models_sdk_or_weights(self):
+        kit, example, runtime = self.make_authorized_example_kit()
+        forbidden = (runtime / "Neighbor.moc3", runtime / "PinkSakura.cmo3",
+                     example / "PinkSakura.moc3", runtime / "weights.bin", runtime / "weights.param",
+                     runtime / "weights.safetensors", runtime / "weights.onnx", runtime / "sdk.jar",
+                     runtime / "live2dcubismcore.min.js", kit / "Elsewhere.moc3")
+        for file in forbidden:
+            with self.subTest(file=str(file.relative_to(kit))):
+                file.write_bytes(b"FORBIDDEN TEST FIXTURE")
+                result = validate.validate_kit(kit)
+                self.assertFalse(result["passed"])
+                self.assertTrue(any(e["code"] == "redistribution" and e["location"] == file.relative_to(kit).as_posix() for e in result["errors"]))
+                file.unlink()
+
+    def test_kit_example_cannot_borrow_companions_via_symlinks(self):
+        kit, example, runtime = self.make_authorized_example_kit()
+        for file in (example / "LICENSE.md", example / "ATTRIBUTION.md", runtime / "PinkSakura.model3.json", runtime / "PinkSakura.moc3"):
+            with self.subTest(file=file.name):
+                original = file.read_bytes()
+                outside = self.root / "linked-companion.txt"
+                outside.write_bytes(original)
+                file.unlink()
+                try:
+                    file.symlink_to(outside)
+                except OSError:
+                    file.write_bytes(original)
+                    self.skipTest("Creating symlinks is not permitted on this platform")
+                result = validate.validate_kit(kit)
+                self.assertFalse(result["passed"])
+                self.assertNotIn("authorizedRuntimeExceptions", result)
+                file.unlink()
+                file.write_bytes(original)
+
+    def test_kit_example_wrong_filename_is_not_an_exception(self):
+        kit, _, runtime = self.make_authorized_example_kit()
+        original = runtime / "PinkSakura.moc3"
+        wrong = runtime / "PinkSakura-copy.moc3"
+        original.rename(wrong)
+        result = validate.validate_kit(kit)
+        self.assertFalse(result["passed"])
+        self.assertNotIn("authorizedRuntimeExceptions", result)
+        self.assertTrue(any(e["code"] == "redistribution" and e["location"].endswith("PinkSakura-copy.moc3") for e in result["errors"]))
 
 
 if __name__ == "__main__":

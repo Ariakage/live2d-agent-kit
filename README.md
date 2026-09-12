@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/badge/License-MIT%20%2B%20GPL--3.0-32998A?style=flat-square)](THIRD_PARTY_NOTICES.md)
 [![Validation](https://img.shields.io/badge/Validation-Core%20%2B%20WebGL-3C89A3?style=flat-square)](docs/verification.md)
 
-[快速开始](#快速开始) · [工具参考库](tools/README.md) · [完整流程](docs/workflow.md) · [排错经验](docs/troubleshooting.md) · [Agent Skill](SKILL.md)
+[快速开始](#快速开始) · [角色示例](examples/pink-sakura/README.md) · [工具参考库](tools/README.md) · [完整流程](docs/workflow.md) · [排错经验](docs/troubleshooting.md) · [Agent Skill](SKILL.md)
 
 <sub>This project is not affiliated with Live2D Inc.</sub>
 
@@ -185,6 +185,15 @@ python3 work/minimal/preview/server.py --port 8793
 完整 [验证记录](docs/verification.md) 包含指纹、负例和范围。
 示例中两个眉毛参数没有测得可见绑定；参数存在与可见动画分别检查。
 
+## 角色示例与来源保护
+
+**[Pink Sakura →](examples/pink-sakura/README.md)** 正在按完整流程制作，尚未交付运行包；此处不继承上方几何示例的验收结果。
+原始参考图按用户说明标注“此图片来自 ChatGPT Image2.5 生成”，隐藏补画和模型制作分别记录来源。
+
+该示例素材采用 **[CC BY 4.0](examples/pink-sakura/LICENSE.md)**，允许署名使用和修改，禁止冒认原作者；
+配方代码仍沿用 MIT。公开的模型资源可以被复制，因此采用署名文件、来源记录和可选水印帮助追溯，
+不宣称能阻止提取。可见/隐水印的边界与验证方法见 [模型保护方案](docs/model-protection.md)。
+
 ## 经验已经整理在这里
 
 | 你正在做什么 | 从这里阅读 |
@@ -215,6 +224,7 @@ live2d-agent-kit/
 ├── scripts/                 导出、超分、Core 检查、预览与打包
 ├── templates/web-preview/   通用真实模型网页模板
 ├── examples/minimal-model/  原创几何测试素材生成器
+├── examples/pink-sakura/    授权粉色角色示例，制作中；素材 CC BY 4.0
 ├── tests/                   无 SDK 的自动检查
 └── third_party/             补丁与适配器适用的 GPL 许可文本
 ```
@@ -227,6 +237,7 @@ live2d-agent-kit/
 `patches/psd2live-agent-kit.patch` 与 `integrations/psd2live/*.kt` 采用 **GPL-3.0-only**；
 完整范围见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 用户绘画、官方样例、Live2D SDK/Framework、第三方应用和超分权重各自适用原条款。
+明确授权收录的 Pink Sakura 图片与模型资产单独采用 [CC BY 4.0](examples/pink-sakura/LICENSE.md)，不由代码 MIT 许可覆盖。
 
 感谢 psd2live、Live2D 官方资料、Upscayl / Real-ESRGAN、PixiJS、pixi-live2d-display、Playwright
 及可选 skill/MCP 项目提供的工具与文档。每个项目的原始来源均列于 [工具参考库](tools/README.md)。

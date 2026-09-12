@@ -21,6 +21,8 @@ __pycache__/
 *.so
 *.jar
 *.moc3
+# The only user-authorized published runtime; kit validation checks its companion files.
+!/examples/pink-sakura/runtime/PinkSakura.moc3
 *.cmo3
 *.psd
 *.zip
