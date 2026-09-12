@@ -11,6 +11,8 @@
 
 ## 已提交源包：7f391f4
 
+后续迁移功能提交 `526e9fbba0cd4a46cdf976f7f116279c07a9c7a3` 也已在新的空 `git archive` 副本中完成[源包复查](source-package-526e9fb.json)：61 项 Python、32 项 Node 测试通过，三张眉毛素材逐字节重建，Pink 24 层与 Minimal 16 层配方重建通过。该报告 SHA-256 为 `43a44c8ada4eb17c38259e216cbc2da65113bde98daba3497979b5a680c6d5bb`。它同样是离线源包检查，不重复引擎冷编译、超分或摄像头；下方较早记录原样保留。
+
 [source-package-7f391f4.json](source-package-7f391f4.json) 是本次原报告的逐字节副本，`passed: true`。其内容不含本机绝对路径；`work/minimal/assets/...` 是审计副本中新生成文件的相对路径。副本最初没有 `work/`、`.cache/`、`outputs/` 或 `dist/`。
 
 三个眉毛 PNG 由公开的 `prepare-brows.cjs` 与源图重新生成，并逐项核对发布字节。Pink 的八张图像依赖均位于源包内，24 层 manifest SHA 为 `dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571`，与已记录的 LOW 制作输入一致。Minimal 从 Java 源码生成 16 层。源包 JSON 保留了 Python 的 59 项测试摘要及 Node 检查通过状态；同提交的 Node 测试另行复核为 28 项通过。

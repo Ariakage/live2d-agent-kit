@@ -21,6 +21,7 @@
 
 ### Tests / 验证
 
+- The migration commit `526e9fb` also passed a fresh offline `git archive` rebuild: 61 Python / 32 Node tests and unchanged Pink/Minimal source recipes. The [report](docs/verification/source-package-526e9fb.json) records the checked revision; it does not claim another engine cold compile.
 - Migration profile regression: 61 Python / 32 Node tests pass, including configuration validation, mapping precedence, unknown parameter IDs and capture-versus-native control ownership. Earlier archived build and camera reports retain their original source identities and test counts.
 - Pink Sakura with the updated template and default empty hold profile passed [22 real WebGL checks](docs/verification/capture-defaults/README.md). Unmapped physics remained unowned by capture; this regression did not request a camera.
 - The committed `7f391f4` archive passed an independent offline source-package check: 59 Python / 28 Node tests, three byte-identical eyebrow images, and 24-layer Pink / 16-layer Minimal regeneration. The [original report](docs/verification/source-package-7f391f4.json) and [evidence index with SHA-256](docs/verification/README.md) preserve its exact revision. This check does not repeat the separately recorded cold compilation, Core or physical-camera runs.
