@@ -1,0 +1,15 @@
+{
+  "file": "banner.png",
+  "bytes": 1359472,
+  "sha256": "ae83df3f98bcfcec004bf1de14360931197c372e7cf69c1c34e4b57119372b60",
+  "width": 2172,
+  "height": 724,
+  "license": "CC-BY-4.0",
+  "provider": "Ariakage",
+  "tool": "Codex built-in Imagegen",
+  "serviceModel": "not independently verified",
+  "reference": "../../examples/pink-sakura/source/reference.png",
+  "referenceSha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca",
+  "scope": "Generated header illustration, not a runtime verification screenshot",
+  "promptRecord": "README.md"
+}

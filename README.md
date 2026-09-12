@@ -2,9 +2,9 @@
 
 # Live2D Agent Kit
 
-### 从参考图到 Live2D，把制作经验变成可复用的工作流。
+[简体中文](README.md) · [English](README.en.md)
 
-**保留原画 · 精确拆层 · 真实绑定 · 动漫超分 · 动作验证**
+<img src="assets/readme/banner.png" width="1080" alt="Live2D Agent Kit，粉色角色与二维绑定曲线头图">
 
 [![Workflow](https://img.shields.io/badge/Workflow-Art%20to%20Live2D-5277C3?style=flat-square)](docs/workflow.md)
 [![Agent](https://img.shields.io/badge/Case-GPT--6%20Astra%20Ultra-7564AB?style=flat-square)](docs/case-study.md)
@@ -20,13 +20,12 @@
 
 ---
 
-这是给 **Codex 与其他 coding agent** 的 Live2D 制作 kit：从自己的参考图或分层 PSD 出发，
-整理绘画、拆层坐标和绑定，导出真正的 `.moc3`，再用官方 Core 与网页动作检查验证。
-仓库同时提供可复用代码、工具来源、命令速查与多轮修复经验。
+Live2D Agent Kit 帮助 Codex 和其他 coding agent 把参考图或分层 PSD 制作为可运行的 `.moc3` 模型。
+仓库包含拆层配方、psd2live 适配器、超分与检查脚本，也保留了嘴周色差、闭眼接缝和断发的修复记录。
 
-实践使用 **GPT-6 Astra Ultra** 成功完成角色制作与迭代。这是一次实际案例的使用配置，
-其他 agent 也可以按流程执行。平面图里被遮挡的眼皮、口腔、后发和衣服需要补画；
-已认可的脸部和画风应作为整个流程的基准。
+本项目的角色制作与迭代使用了 **GPT-6 Astra Ultra**。其他 agent 可以按相同流程工作，
+所需工具和检查步骤都有独立入口。单张立绘看不到的眼皮、口腔、后发和衣服仍需补画，
+制作时以用户认可的脸部和画风为准。
 
 > **第一次使用：** 先跑通原创几何最小示例，确认本机导出链与 Core 可用，再开始角色美术。
 > 工具参考库记录实际使用、辅助检查与仅评估项目，获取说明和许可随条目提供。
@@ -41,6 +40,38 @@
 | **结构正确但纹理模糊** | 本地 NCNN 动漫 4× 超分、独立 alpha、来源 SHA 检查 | 保持几何与 UV 的高清运行图集 |
 | **需要预演面捕输入** | 真实 WebGL 模型、参数面板、时间线、暂停与半身合成输入 | 可检查动作与资源身份的预览网页 |
 | **准备交付** | 资源验证、原生 Core 检查、浏览器实测与打包脚本 | 自足运行包、证据与明确的验收范围 |
+
+## 角色示例与来源保护
+
+**[Pink Sakura →](examples/pink-sakura/README.md)** 已收录可运行模型、五张源素材、角色拆层配方与验证证据。
+下面的演示从实际高清模型的 WebGL 画布录制，使用合成面捕输入；没有读取摄像头。
+
+| 原始参考图 | 绑定后的全身 | 合成输入演示 |
+| :---: | :---: | :---: |
+| <img src="examples/pink-sakura/source/reference.png" width="245" alt="Pink Sakura 原始粉色角色立绘"> | <img src="examples/pink-sakura/verification/neutral-full.png" width="245" alt="Pink Sakura 实际模型全身中性姿态"> | <img src="examples/pink-sakura/verification/preview.gif" width="245" alt="实际模型转头、眨眼、嘴形与摆发演示"> |
+| 用户提供的母图 | 高清模型的 WebGL 画布 | 72 帧，12 fps，合成输入 |
+
+| 睁眼 | 闭眼 | 微笑张嘴 |
+| :---: | :---: | :---: |
+| <img src="examples/pink-sakura/verification/neutral-face.png" width="245" alt="实际模型睁眼近景"> | <img src="examples/pink-sakura/verification/eyes-closed-face.png" width="245" alt="实际模型闭眼近景"> | <img src="examples/pink-sakura/verification/mouth-smile-open-face.png" width="245" alt="实际模型微笑张嘴近景"> |
+| 保留母图五官与画风 | 检查眼角和睫毛交接 | 检查嘴形与张嘴联动的肤色接缝 |
+
+[模型文件](examples/pink-sakura/runtime/) · [重建步骤](examples/pink-sakura/README.md#复现模板) · [验证记录](examples/pink-sakura/verification/README.md)
+
+| 模型结构 | 动漫超分 | 实际验证 |
+| --- | --- | --- |
+| **22 个源层 · 24 个 Drawable · 22 个参数** | **2048² → 8192²**，AnimeVideo v3 4× | **198** 个原生姿态 · **22** 项 Web 检查 |
+| 眼睛、嘴形、头身、呼吸与 8 个头发参数 | 独立 alpha，低清/高清 MOC 逐字节一致 | **55** 个姿态、**80** 张画布截图，另录制 72 帧演示 |
+
+完整证据见 [示例验证目录](examples/pink-sakura/verification/)；VTube Studio 仍由用户验收。
+60 张去重画布已做目视复核；放大后仍有闭唇线偏淡、闭眼睫毛末端稍钝的小瑕疵，`EyeOpen` 0～0.25 保持闭眼姿态。
+这是保守角度的 2D 绑定示例，身体使用整体图层，没有独立手臂/手指追踪。
+CMO3 保留模型与绑定，但其可编辑图层从图集重建，不保留原 PSD 源图编辑链；重建时使用一并公开的源图和配方。
+原始参考图按用户说明标注“此图片来自 ChatGPT Image2.5 生成”，隐藏补画和模型制作分别记录来源。
+
+该示例素材采用 **[CC BY 4.0](examples/pink-sakura/LICENSE.md)**，允许署名使用和修改，禁止冒认原作者；
+配方代码仍沿用 MIT。公开的模型资源可以被复制，因此采用署名文件、来源记录和可选水印帮助追溯，
+不宣称能阻止提取。可见/隐水印的边界与验证方法见 [模型保护方案](docs/model-protection.md)。
 
 ## 一条完整的制作路线
 
@@ -70,12 +101,12 @@ flowchart TB
 ```
 
 
-**先修结构，再提清晰度。** 超分能改善纹理采样，发片里混入的衣服像素仍需先从正确的 alpha 轮廓中清理。
+先修正拆层和遮罩，再做超分。混入发片的衣服像素会跟着头发移动，提高分辨率只会让断口更明显。
 完整步骤、每阶段交付和恢复方式见 [workflow.md](docs/workflow.md)。
 
 ## 快速开始
 
-需要 **Git、Python 3.10+、JDK 21**；先按 [setup.md](docs/setup.md) 配好 Java。
+需要 **Git、Python 3.10+、JDK 21**；角色配方和浏览器检查还需要 **Node.js**。先按 [setup.md](docs/setup.md) 配好 Java。
 所有命令从仓库根目录运行，生成物放在忽略的 `work/`，每次实验使用新输出目录。
 
 ### 1 · 跑通真实导出
@@ -153,11 +184,42 @@ python3 work/minimal/preview/server.py --port 8793
 
 </details>
 
+## 没有 `work/`，还能复现吗？
+
+`work/` 保存导出结果、临时图层、完整动作截图和日志。Pink Sakura 的五张源图、测量坐标、补画配方以及运行模型都已提交；复现从 `examples/` 开始，不需要作者原来的工作目录。
+
+| 文件或目录 | 是否随仓库提供 | 新环境如何取得 |
+| --- | --- | --- |
+| `examples/pink-sakura/source/` 与角色配方 | 提供 | 直接重建 manifest；所有引用源图在仓库内 |
+| `examples/pink-sakura/runtime/` | 提供 | 用整份目录加载模型，保留相对路径 |
+| `integrations/`、`patches/`、`scripts/` | 提供 | 用固定引擎提交和累计补丁重建 |
+| `work/` | 不提供 | 执行示例步骤生成；输出目录必须为空 |
+| `.cache/psd2live` 与 Gradle 缓存 | 不提供 | 安装脚本获取固定源码，Gradle 下载构建依赖 |
+| 官方 Core、Web vendor、Upscayl 与权重 | 不提供 | 按各自获取说明准备，再通过参数指定路径 |
+| 过去的私有角色 | 不提供，也不参与本示例 | 使用仓库示例或自己的授权素材 |
+
+干净源包已重新生成 22 层 Pink Sakura 配方和 14 层几何素材。完整空缓存导出在 Gradle 依赖下载阶段结束，尚未验证成功；已有编译类的历史导出结果单独记录。[复现审查](docs/reproducibility.md)列出执行范围、外部依赖和源包自检命令；[本次仓库审查](docs/repository-review.md)记录文档检查和脚本修复。
+
+## 本例用了哪一个超分模型？
+
+实际使用的是 **`realesr-animevideov3-x4`**，通过 Upscayl 的 NCNN CLI 运行。没有采用 AnimeSharp 作为最终模型。
+
+| 设置 | Pink Sakura 的实际记录 |
+| --- | --- |
+| 权重文件 | 同名的 `realesr-animevideov3-x4.param` 与 `.bin` |
+| 推理配置 | 4×，tile 256，`-j 1:1:1`，同一 GPU 顺序处理 |
+| 图集 | 一页 2048² RGBA → 一页 8192² RGBA |
+| 透明边缘 | RGB 先延伸边缘颜色再神经超分；原 alpha 独立 bicubic 缩放 |
+| 几何 | 逻辑画布、归一化 UV 不变；低分与高清 MOC 逐字节一致 |
+| 来源与指纹 | [Upscayl custom-models](https://github.com/upscayl/custom-models#digital-art)、[获取及 SHA-256](docs/upscaling.md)、[实际推理记录](examples/pink-sakura/verification/upscale.json) |
+
+图集超分不会修复错误拆层，也不会把源 PSD 的所有图层改成 4× 可编辑画稿。先处理发丝与衣服的遮罩、嘴周肤色，再提高运行纹理的分辨率。
+
 ## 工具参考库
 
 **[查看完整工具目录 →](tools/README.md)** · [机器可读清单](tools/catalog.json) · [命令速查](tools/commands.md) · [宿主能力映射](tools/host-capabilities.md)
 
-参考库现有 **44 项**，分为生产使用、辅助验证、仅评估与 kit 开发。
+参考库现有 **46 项**，分为生产使用、辅助验证、仅评估与 kit 开发。
 每项记录用途、使用证据、已知版本、上游来源、获取方式和许可边界。
 仓库保留我们编写的适配器、补丁和脚本；第三方应用、权重和 SDK 通过原始来源获取。
 
@@ -186,32 +248,6 @@ python3 work/minimal/preview/server.py --port 8793
 完整 [验证记录](docs/verification.md) 包含指纹、负例和范围。
 示例中两个眉毛参数没有测得可见绑定；参数存在与可见动画分别检查。
 
-## 角色示例与来源保护
-
-**[Pink Sakura →](examples/pink-sakura/README.md)** 已收录可运行模型、五张源素材、角色拆层配方与验证证据。
-下面的演示从实际高清模型的 WebGL 画布录制，使用合成面捕输入；没有读取摄像头。
-
-<div align="center">
-
-<a href="examples/pink-sakura/README.md"><img src="examples/pink-sakura/verification/preview.gif" width="440" alt="Pink Sakura 实际 Live2D 模型：转头、眨眼、嘴形和头发摆动演示"></a>
-
-**[获取模型](examples/pink-sakura/runtime/) · [按配方重建](examples/pink-sakura/README.md#复现模板) · [原始参考](examples/pink-sakura/source/reference.png)**
-
-</div>
-
-| 模型结构 | 动漫超分 | 实际验证 |
-| --- | --- | --- |
-| **22 个源层 · 24 个 Drawable · 22 个参数** | **2048² → 8192²**，AnimeVideo v3 4× | **198** 个原生姿态 · **22** 项 Web 检查 |
-| 眼睛、嘴形、头身、呼吸与 8 个头发参数 | 独立 alpha，低清/高清 MOC 逐字节一致 | **55** 个姿态、**80** 张画布截图，另录制 72 帧演示 |
-
-完整证据见 [示例验证目录](examples/pink-sakura/verification/)；VTube Studio 仍由用户验收。
-这是保守角度的 2D 绑定示例，身体使用整体图层，没有独立手臂/手指追踪。
-原始参考图按用户说明标注“此图片来自 ChatGPT Image2.5 生成”，隐藏补画和模型制作分别记录来源。
-
-该示例素材采用 **[CC BY 4.0](examples/pink-sakura/LICENSE.md)**，允许署名使用和修改，禁止冒认原作者；
-配方代码仍沿用 MIT。公开的模型资源可以被复制，因此采用署名文件、来源记录和可选水印帮助追溯，
-不宣称能阻止提取。可见/隐水印的边界与验证方法见 [模型保护方案](docs/model-protection.md)。
-
 ## 经验已经整理在这里
 
 | 你正在做什么 | 从这里阅读 |
@@ -230,7 +266,9 @@ python3 work/minimal/preview/server.py --port 8793
 
 ```text
 live2d-agent-kit/
-├── README.md / SKILL.md      入口与 Agent 工作规范
+├── README.md / README.en.md  中英文入口
+├── SKILL.md                  Agent 工作规范
+├── assets/readme/            头图及独立素材许可
 ├── LICENSE                  原创代码与文档的 MIT 许可
 ├── THIRD_PARTY_NOTICES.md    第三方范围与归属
 ├── tools/                   完整工具目录、JSON 清单、宿主映射、命令速查
@@ -255,9 +293,9 @@ live2d-agent-kit/
 `patches/psd2live-agent-kit.patch` 与 `integrations/psd2live/*.kt` 采用 **GPL-3.0-only**；
 完整范围见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 用户绘画、官方样例、Live2D SDK/Framework、第三方应用和超分权重各自适用原条款。
-明确授权收录的 Pink Sakura 图片与模型资产单独采用 [CC BY 4.0](examples/pink-sakura/LICENSE.md)，不由代码 MIT 许可覆盖。
+Pink Sakura 图片与模型采用 [CC BY 4.0](examples/pink-sakura/LICENSE.md)。
+README [头图](assets/readme/README.md)也单独采用 CC BY 4.0；头图由内置 Imagegen 生成，正文模型截图来自实际 WebGL 画布。
 
-感谢 psd2live、Live2D 官方资料、Upscayl / Real-ESRGAN、PixiJS、pixi-live2d-display、Playwright
-及可选 skill/MCP 项目提供的工具与文档。每个项目的原始来源均列于 [工具参考库](tools/README.md)。
+工具与上游来源见 [工具参考库](tools/README.md)。中文和英文说明分别参考 Humanizer-zh 与 Humanizer 做文字审校，保留技术细节、命令和验证范围。
 
 **This project is not affiliated with Live2D Inc.**

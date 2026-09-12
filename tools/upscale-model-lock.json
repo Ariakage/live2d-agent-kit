@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "model": "realesr-animevideov3-x4",
+  "format": "NCNN param/bin",
+  "scale": 4,
+  "repository": "https://github.com/upscayl/custom-models",
+  "commit": "4b6d2cfa59c7442af115dfc6e50fd8d7d40b96ef",
+  "verifiedOn": "2026-09-12",
+  "verification": {
+    "method": "Downloaded both fixed-commit raw files with curl --fail --location; computed local SHA-256 and byte counts.",
+    "matchesRecordedProductionWeights": true,
+    "productionRecord": "docs/upscaling.md",
+    "scope": "Independent retrieval and byte-identity verification; not an upstream signature, license grant, or new inference run.",
+    "weightsIncludedInRepository": false
+  },
+  "files": [
+    {
+      "filename": "realesr-animevideov3-x4.param",
+      "url": "https://raw.githubusercontent.com/upscayl/custom-models/4b6d2cfa59c7442af115dfc6e50fd8d7d40b96ef/models/realesr-animevideov3-x4.param",
+      "httpStatus": 200,
+      "bytes": 3077,
+      "sha256": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e"
+    },
+    {
+      "filename": "realesr-animevideov3-x4.bin",
+      "url": "https://raw.githubusercontent.com/upscayl/custom-models/4b6d2cfa59c7442af115dfc6e50fd8d7d40b96ef/models/realesr-animevideov3-x4.bin",
+      "httpStatus": 200,
+      "bytes": 1247368,
+      "sha256": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
+    }
+  ]
+}

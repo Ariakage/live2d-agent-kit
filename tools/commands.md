@@ -10,6 +10,7 @@
 | --- | --- | --- |
 | 环境盘点 | [`doctor.sh`](../scripts/doctor.sh) | shell；只读，不安装软件 |
 | 维护 kit、检查 manifest / runtime | [`validate.sh`](../scripts/validate.sh) / [`validate.py`](../scripts/validate.py) | Python 3.10+ 标准库；无需 SDK |
+| 检查已提交源包 | [`check-source-package.py`](../scripts/check-source-package.py) | Git、Python、Node.js、JDK 21；离线重建源素材与配方，不运行 SDK |
 | 获取固定引擎 | [`setup-psd2live.sh`](../scripts/setup-psd2live.sh) | Git、Python、网络；获取 pin 并核对补丁 |
 | PSD 提取、manifest 导出 | [`extract-psd.sh`](../scripts/extract-psd.sh)、[`export-model.sh`](../scripts/export-model.sh) | JDK 21、引擎、Gradle 构建依赖 |
 | 原生验证 / 软件诊断渲染 | [`validate_core.sh`](../scripts/validate_core.sh)、[`render_core.sh`](../scripts/render_core.sh) | JDK 21、本机官方 Java/native Core |
@@ -25,6 +26,7 @@
 bash scripts/doctor.sh
 python3 scripts/setup-psd2live.py --help
 python3 scripts/validate.py --help
+python3 scripts/check-source-package.py --help
 python3 scripts/upscale-atlas.py --help
 python3 scripts/prepare-preview.py --help
 python3 scripts/package-model.py --help
@@ -188,6 +190,15 @@ git diff --stat
 
 上述维护检查不需要 SDK、GPU 或网络。提交前核对 diff 和文件清单，保留第三方许可边界。
 发布或推送依照当前用户指定的范围进行。
-不要将角色图片、原始 SDK、模型权重、机器专用路径和包含私人路径的完整日志加入 Git。
+图片和模型仅提交用户明确授权、已经记录来源与许可的示例；其余角色、原始 SDK、模型权重、机器专用路径和含私人路径的完整日志不加入 Git。
+
+
+只用 `HEAD` 的公开文件检查源素材与配方能否重建：
+
+```sh
+python3 scripts/check-source-package.py --report work/source-package-report.json
+```
+
+它自动建立并清理临时 `git archive` 副本，不读取旧 `work/`。需先提交待检查的改动；它不验证完整引擎编译或 Core。范围与独立空缓存导出命令见 [复现审查](../docs/reproducibility.md)。
 
 This project is not affiliated with Live2D Inc.

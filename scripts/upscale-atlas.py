@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Regenerate every runtime atlas with local NCNN; retain logical UV coordinates."""
-import argparse, datetime, hashlib, json, os, re, struct, subprocess
+import argparse, datetime, hashlib, json, os, re, shutil, struct, subprocess
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -53,19 +53,35 @@ def main():
     report_path=out/'upscale-report.json'
     report_path.write_text(json.dumps(report,indent=2)+'\n')
     hd_pages=[];source_hashes=[]
+    hd_manifest=out/'manifest-hd.json'
     try:
-        # No parallel GPU inference: finish each page before starting the next.
+        # Freeze every low page before inference. RGB preparation and alpha combine
+        # must consume the same bytes even if another export is running meanwhile.
+        snapshots=out/'source-atlases';snapshots.mkdir()
+        sources=[]
         for index,texture in enumerate(textures):
+            snapshot=snapshots/f'page-{index:02d}.png'
+            shutil.copyfile(texture,snapshot)
+            digest=sha(snapshot);w,h,kind=png(snapshot)
+            if kind!=6 or max(w,h)*4>a.max_texture_size:raise ValueError('Source atlas changed or is outside the target RGBA/size limits')
+            if sha(texture)!=digest:raise ValueError(f'Source atlas changed while taking snapshot: page {index}')
+            sources.append((texture,snapshot,digest,w,h));source_hashes.append(digest)
+        report['sourceSnapshots']=[{'source':str(texture),'snapshot':str(snapshot.relative_to(out)),
+                                    'sha256':digest,'size':[w,h]} for texture,snapshot,digest,w,h in sources]
+        report_path.write_text(json.dumps(report,indent=2)+'\n')
+        # No parallel GPU inference: finish each page before starting the next.
+        for index,(texture,snapshot,digest,w,h) in enumerate(sources):
             rgb=out/f'page-{index:02d}-rgb.png';sr=out/f'page-{index:02d}-rgb-4x.png';rgba=out/f'page-{index:02d}-rgba-4x.png'
-            subprocess.run([a.java,'-Xmx2g','--source','21',str(ROOT/'scripts/AtlasAlpha.java'),'prepare',str(texture),str(rgb)],check=True)
+            subprocess.run([a.java,'-Xmx2g','--source','21',str(ROOT/'scripts/AtlasAlpha.java'),'prepare',str(snapshot),str(rgb)],check=True)
             command=[str(binary),'-i',str(rgb),'-o',str(sr),'-m',str(models),'-n',a.model,'-z','4','-s','4','-t',str(a.tile),'-j','1:1:1','-f','png']
             with (out/f'page-{index:02d}.log').open('w') as log:subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,check=True)
-            subprocess.run([a.java,'-Xmx4g','--source','21',str(ROOT/'scripts/AtlasAlpha.java'),'combine',str(texture),str(sr),str(rgba)],check=True)
-            w,h,_=png(texture)
+            subprocess.run([a.java,'-Xmx4g','--source','21',str(ROOT/'scripts/AtlasAlpha.java'),'combine',str(snapshot),str(sr),str(rgba)],check=True)
             if png(rgba)!=(w*4,h*4,6):raise ValueError('Output is not exact 4x RGBA')
-            source_hashes.append(sha(texture));hd_pages.append(str(rgba))
-            report['pages'].append({'source':str(texture),'source_sha256':sha(texture),'source_size':[w,h],
+            hd_pages.append(str(rgba))
+            report['pages'].append({'source':str(texture),'source_sha256':digest,'source_size':[w,h],
                                     'output':rgba.name,'output_sha256':sha(rgba),'output_size':[w*4,h*4],'command':command})
+        for index,(texture,snapshot,digest,w,h) in enumerate(sources):
+            if sha(texture)!=digest:raise ValueError(f'Source atlas changed during super-resolution: page {index}; export and upscale a new revision')
         # Preserve all authored coordinates. Resolve asset references because the
         # generated recipe lives in a different directory, without rewriting its inputs.
         def absolute_assets(item):
@@ -77,10 +93,11 @@ def main():
                 for value in item:absolute_assets(value)
         absolute_assets(manifest)
         manifest.setdefault('config',{}).update(export_texture_pages=hd_pages,export_texture_source_sha256=source_hashes)
-        (out/'manifest-hd.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+        hd_manifest.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
         report['complete']=True
     except Exception as error:
+        hd_manifest.unlink(missing_ok=True)
         report['error']=str(error);raise
     finally:report_path.write_text(json.dumps(report,indent=2)+'\n')
-    print(out/'manifest-hd.json')
+    print(hd_manifest)
 if __name__=='__main__':main()

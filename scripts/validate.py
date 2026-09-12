@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+from html.parser import HTMLParser
 import json
 import math
 import re
@@ -406,6 +407,47 @@ def validate_pink_example_exception(root: Path) -> dict:
             "mocSha256": runtime["mocSha256"], "validation": "structural-only", "nativeCoreValidated": False}
 
 
+class DocumentHTMLLinks(HTMLParser):
+    """Read rendered document URLs, including GitHub README image markup."""
+
+    attributes = {"a": {"href"}, "img": {"src"}, "audio": {"src"},
+                  "video": {"src", "poster"}, "source": {"src"}}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        for name, value in attrs:
+            if name in self.attributes.get(tag, ()) and value:
+                self.links.append(value.strip())
+
+
+def document_links(content: str) -> list[str]:
+    """Extract local-link candidates, excluding fenced/inline/HTML code examples."""
+    lines = []
+    fence = None
+    for line in content.splitlines(keepends=True):
+        marker = re.match(r"^ {0,3}(`{3,}|~{3,})(.*)$", line)
+        if fence:
+            if marker and marker[1][0] == fence[0] and len(marker[1]) >= fence[1] and not marker[2].strip():
+                fence = None
+            continue
+        if marker:
+            fence = (marker[1][0], len(marker[1]))
+            continue
+        lines.append(line)
+    rendered = "".join(lines)
+    rendered = re.sub(r"<(pre|code)\b[^>]*>.*?</\1\s*>", "", rendered, flags=re.S | re.I)
+    rendered = re.sub(r"(`+)(?!`)(.*?)(?<!`)\1(?!`)", "", rendered, flags=re.S)
+    parser = DocumentHTMLLinks()
+    parser.feed(rendered)
+    parser.close()
+    links = [match.group(1).strip("<>") for match in re.finditer(
+        r"!?\[[^\]\n]*\]\(\s*(<[^>]+>|[^\s)]+)(?:\s+[^)]*)?\)", rendered)]
+    return links + parser.links
+
+
 def validate_kit(root: Path) -> dict:
     root = root.resolve()
     report = base_report("kit")
@@ -446,9 +488,7 @@ def validate_kit(root: Path) -> dict:
         if private.search(content):
             issue(report, "private_path", "Found a personal absolute home/volume path", relative.as_posix())
         if path.suffix.lower() == ".md":
-            without_code = re.sub(r"```.*?```|~~~.*?~~~", "", content, flags=re.S)
-            for match in re.finditer(r"!?\[[^\]\n]*\]\(\s*(<[^>]+>|[^\s)]+)(?:\s+[^)]*)?\)", without_code):
-                link = match.group(1).strip("<>")
+            for link in document_links(content):
                 if link.startswith("#") or urllib.parse.urlsplit(link).scheme or link.startswith("//"):
                     continue
                 target_text = urllib.parse.unquote(link.split("#", 1)[0].split("?", 1)[0])

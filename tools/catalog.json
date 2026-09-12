@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-09-12",
-  "scope": "Historical character production and this reusable kit; references only, no bundled third-party tools, weights, SDK or original character art.",
+  "scope": "Character production and reusable kit development; third-party tools, weights and SDK are referenced rather than bundled. Authorized Pink Sakura art/runtime and README header have separately documented asset licenses.",
   "status_definitions": {
     "production": "生产使用",
     "validation": "辅助验证",
@@ -1288,12 +1288,14 @@
       "acquisition": "从官方渠道或系统工具链安装；当前仓库按用户要求只本地提交，不自动 push。",
       "integration_paths": [
         "scripts/setup-psd2live.py",
-        "integrations/psd2live/engine-lock.json"
+        "integrations/psd2live/engine-lock.json",
+        "scripts/check-source-package.py"
       ],
       "evidence": {
         "kit_files": [
           "docs/verification.md",
-          "docs/tooling.md"
+          "docs/tooling.md",
+          "docs/reproducibility.md"
         ],
         "historical_records": []
       },
@@ -1328,12 +1330,14 @@
         "scripts/validate.py",
         "scripts/package-model.py",
         "scripts/upscale-atlas.py",
-        "scripts/check-preview.cjs"
+        "scripts/check-preview.cjs",
+        "scripts/check-source-package.py"
       ],
       "evidence": {
         "kit_files": [
           "docs/verification.md",
-          "docs/tooling.md"
+          "docs/tooling.md",
+          "docs/reproducibility.md"
         ],
         "historical_records": []
       },
@@ -1527,6 +1531,76 @@
         ]
       },
       "notes": "本轮 kit 文档开发实际使用；不是 Live2D 模型运行依赖，也没有上传 README。"
+    },
+    {
+      "id": "humanizer-zh",
+      "name": "Humanizer-zh",
+      "usage_status": "kit_development",
+      "observed_version": "Local user-provided skill; no declared version",
+      "purpose": "审校中文 README，删除宣传措辞和冗余铺垫，保留工具、命令和实测范围。",
+      "upstream": [
+        {
+          "title": "Humanizer-zh",
+          "url": "https://github.com/op7418/Humanizer-zh"
+        }
+      ],
+      "license": {
+        "summary": "External writing skill, referenced only; no skill text vendored. Consult the selected upstream revision.",
+        "sources": [
+          "https://github.com/op7418/Humanizer-zh"
+        ]
+      },
+      "acquisition": "Optional local skill supplied by the user; model production and source-package checks do not require it.",
+      "integration_paths": [
+        "README.md",
+        "README.en.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "README.md",
+          "README.en.md"
+        ],
+        "historical_records": [
+          "kit local editorial drafts and audit: work/readme-refresh/"
+        ]
+      },
+      "notes": "Used for prose editing only. Does not establish factual accuracy, authorship or absence of AI generation. Local skill SHA-256 records the supplied text, not a claim of matching upstream HEAD.",
+      "local_skill_sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb"
+    },
+    {
+      "id": "humanizer",
+      "name": "Humanizer",
+      "usage_status": "kit_development",
+      "observed_version": "2.8.2 (local skill frontmatter)",
+      "purpose": "审校英文 README，按草稿、自审、修订流程保持中性技术文风。",
+      "upstream": [
+        {
+          "title": "Humanizer",
+          "url": "https://github.com/blader/humanizer"
+        }
+      ],
+      "license": {
+        "summary": "External writing skill, referenced only; no skill text vendored. Consult the selected upstream revision.",
+        "sources": [
+          "https://github.com/blader/humanizer"
+        ]
+      },
+      "acquisition": "Optional local skill supplied by the user; model production and source-package checks do not require it.",
+      "integration_paths": [
+        "README.md",
+        "README.en.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "README.md",
+          "README.en.md"
+        ],
+        "historical_records": [
+          "kit local editorial drafts and audit: work/readme-refresh/"
+        ]
+      },
+      "notes": "Used for prose editing only. Does not establish factual accuracy, authorship or absence of AI generation. Local skill SHA-256 records the supplied text, not a claim of matching upstream HEAD.",
+      "local_skill_sha256": "243aecdafecb5e11c2d45e2e088b7876e3f6eee34aa50c53f624d8468039afa8"
     }
   ]
 }

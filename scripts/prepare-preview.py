@@ -48,6 +48,20 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def validate_destinations(files):
+    # A spelling such as ./model.model3.json still targets the normalized entry.
+    # Apply case-insensitive rules on every host so a prepared preview is portable.
+    destinations = {'model.model3.json': 'normalized model entry point'}
+    for relative, _ in files:
+        name = PurePosixPath(relative).as_posix().casefold()
+        if name in destinations:
+            raise ValueError(f'Resources collide at preview destination: {relative!r} and {destinations[name]!r}')
+        destinations[name] = relative
+    for name, relative in destinations.items():
+        if any(parent.as_posix() in destinations for parent in PurePosixPath(name).parents if str(parent) != '.'):
+            raise ValueError(f'Resource conflicts with a preview file/directory destination: {relative!r}')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model', required=True, type=Path)
@@ -65,7 +79,7 @@ def main():
     files = [(relative, safe_resource(root, relative)) for relative in resources(settings)]
     for name in VENDOR:
         if not (vendor / name).is_file(): raise ValueError(f'Missing dependency: {name} in --vendor-dir; obtain it separately with its license')
-    if any(relative=='model.model3.json' for relative,_ in files): raise ValueError('Resource collides with normalized entry point')
+    validate_destinations(files)
     if output.exists() and (not output.is_dir() or any(output.iterdir())): raise ValueError('Output must be absent or empty; choose a new folder to avoid overwriting work')
     config = json.loads(args.config.read_text(encoding='utf-8')) if args.config else {}
     drawing = config.get('drawing', {'width':1024,'height':1536})

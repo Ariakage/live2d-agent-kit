@@ -6,6 +6,7 @@ It does not relicense upstream projects, SDKs, model weights or user artwork.
 
 | Component | Treatment in this repository |
 | --- | --- |
+| `assets/readme/banner.png` | User-requested header illustration derived from Pink Sakura with built-in Imagegen. Its [source record and CC BY 4.0 terms](assets/readme/README.md) are separate from the root MIT code/document license. |
 | `examples/pink-sakura/` named artwork and runtime assets | User-authorized inclusion for this example only; [CC BY 4.0 asset scope](examples/pink-sakura/LICENSE.md) and [image/model provenance](examples/pink-sakura/ATTRIBUTION.md). Recipe code and original documentation remain MIT. The original reference's ChatGPT Image2.5 attribution is user supplied, not independently verified; later generated underpaintings have a separate source record. |
 | `patches/psd2live-agent-kit.patch` | Changes against tsunehimatoi/psd2live at `5526f2e16b57e5f83d34f33730d6fa26d8bc8695`; contains GPL upstream context; distributed under GPL-3.0-only. |
 | `integrations/psd2live/*.kt` | Kit integration compiled with the GPL engine; distributed under GPL-3.0-only, not the root MIT license. |

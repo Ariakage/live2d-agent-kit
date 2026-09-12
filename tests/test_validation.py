@@ -316,6 +316,46 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual([e["code"] for e in result["errors"]], ["broken_link", "broken_link"])
         self.assertEqual(result["checkedFiles"], 2)
 
+    def test_kit_checks_html_images_and_links_in_english_readme(self):
+        kit = self.root / "kit"
+        kit.mkdir()
+        (kit / "README.en.md").write_text(
+            '<p align="center"><img src="assets/readme/banner.png" width="960" /></p>\n'
+            "<a href='docs/missing-guide.md#setup'>Setup</a>\n", encoding="utf-8")
+        result = validate.validate_kit(kit)
+        self.assertFalse(result["passed"])
+        self.assertEqual([e["code"] for e in result["errors"]], ["broken_link", "broken_link"])
+        self.assertTrue(all(e["location"] == "README.en.md" for e in result["errors"]))
+        self.assertIn("assets/readme/banner.png", result["errors"][0]["message"])
+
+    def test_kit_html_links_support_entities_queries_and_relative_paths(self):
+        kit = self.root / "kit"
+        assets = kit / "assets"
+        assets.mkdir(parents=True)
+        (assets / "banner & model.png").write_bytes(png_bytes())
+        (kit / "README.md").write_text(
+            '<IMG SRC="assets/banner &amp; model.png?version=2#preview">\n'
+            '<a href="assets/banner%20%26%20model.png">Image</a>\n'
+            '<a href="#license">License</a><img src="https://example.test/banner.png">\n'
+            '<a href="//example.test">External</a>\n', encoding="utf-8")
+        self.assertTrue(validate.validate_kit(kit)["passed"])
+        (assets / "guide.md").write_text('<a href="../../outside.md">Outside</a>', encoding="utf-8")
+        result = validate.validate_kit(kit)
+        self.assertEqual([e["code"] for e in result["errors"]], ["link_escape"])
+
+    def test_kit_ignores_html_and_markdown_placeholder_links_in_code_examples(self):
+        kit = self.root / "kit"
+        kit.mkdir()
+        (kit / "README.en.md").write_text(
+            '`<img src="inline-placeholder.png">`\n'
+            '``<a href="inline-placeholder.md">a ` b</a>``\n'
+            '```html\n<img src="fenced-placeholder.png">\n[Demo](placeholder.md)\n```\n'
+            '~~~~html\n<a href="tilde-placeholder.md">Example</a>\n~~~~~\n'
+            '<pre><code><img src="html-code-placeholder.png">[Demo](placeholder.md)</code></pre>\n'
+            '<!-- <img src="comment-placeholder.png"> -->\n', encoding="utf-8")
+        result = validate.validate_kit(kit)
+        self.assertTrue(result["passed"], result["errors"])
+
     def test_kit_checks_redistribution_and_private_paths_in_tools(self):
         kit = self.root / "kit"
         tools = kit / "tools"

@@ -1,6 +1,6 @@
 # Kit 本身的复现检查
 
-> 新增角色记录：已交付的 [Pink Sakura](../examples/pink-sakura/README.md) 有独立的 [最终高清验证目录](../examples/pink-sakura/verification/README.md)，包含 198 个原生姿态、22 项 Web 检查、55 个姿态/80 帧动作矩阵和目视复核。下文的几何示例数字与历史 README 维护记录保持其原始范围。当前工具目录为 44 项；新增署名打包等回归后，2026-09-12 最终 30 项 Python 测试通过。
+> 新增角色记录：已交付的 [Pink Sakura](../examples/pink-sakura/README.md) 有独立的 [最终高清验证目录](../examples/pink-sakura/verification/README.md)，包含 198 个原生姿态、22 项 Web 检查、55 个姿态/80 帧动作矩阵和目视复核。下文的几何示例数字与历史 README 维护记录保持其原始范围。当时工具目录为 44 项，新增署名打包等回归后有 30 项 Python 测试通过。当前双语文档及输入一致性复查另见 [本次仓库审查](repository-review.md)。
 
 检查日期：2026-09-12。这份记录针对本仓库的原创几何最小示例，
 与 [原角色的历史案例](case-study.md) 分开。生成物、SDK、权重和完整本机日志

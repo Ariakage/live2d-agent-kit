@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-09-12T13:37:07.444114+00:00",
+  "passed": true,
+  "scope": {
+    "fixture": "Current public GenerateExample.java outputs: original geometric Minimal, 512x768 logical canvas, 1024 atlas; fresh LOW/HD directories.",
+    "engine": "Reused existing compiled psd2live and integration classes with existing local dependency JARs. This is a real export/upscale/Core/Web regression, not a cold build or dependency-install reproduction.",
+    "upscale": "Actual local Upscayl NCNN GPU inference, unchanged alpha algorithm, immutable low-page snapshots, no simulated inference.",
+    "web": "Actual Chrome WebGL/Cubism Core responses and 22 scripted checks. Neutral screenshot was visually inspected for rendering presence; not a comprehensive character-art review.",
+    "notPerformed": [
+      "VTube Studio acceptance",
+      "Official Cubism Editor acceptance",
+      "Camera or microphone tracking",
+      "New clean Gradle build",
+      "Public Pink Sakura asset regeneration"
+    ]
+  },
+  "engine": {
+    "upstreamCommit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+    "entryClass": {
+      "sha256": "a0fce7a775f6ea68bfedb044c0130abfbce7a89ab19e51c540669f6dd584170b",
+      "bytes": 124785
+    },
+    "jdk": "Zulu OpenJDK 21.0.11+10-LTS"
+  },
+  "inputs": {
+    "generator": {
+      "sha256": "73977d751ad6e8f843180c1f816303cffd95e55c76445e87b5adbd287f943f36",
+      "bytes": 3882
+    },
+    "manifest": {
+      "sha256": "8c9a29eda758fba36b21ee0e8ff714db3435abc99964032c3149bdb580c8b6ca",
+      "bytes": 1105
+    },
+    "lowTextures": [
+      {
+        "sha256": "37dccf5407420c7d2afebca4dc64aaf13928cb0da51515e4876303e16b661209",
+        "bytes": 28546,
+        "size": [
+          1024,
+          1024
+        ]
+      }
+    ]
+  },
+  "upscale": {
+    "model": "realesr-animevideov3-x4",
+    "scale": 4,
+    "binarySha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
+    "weights": {
+      "realesr-animevideov3-x4.param": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e",
+      "realesr-animevideov3-x4.bin": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
+    },
+    "complete": true,
+    "sourceSnapshotSha256": [
+      "37dccf5407420c7d2afebca4dc64aaf13928cb0da51515e4876303e16b661209"
+    ],
+    "sourceSnapshotMatchesLow": [
+      true
+    ],
+    "hdTextures": [
+      {
+        "sha256": "81e9be5518184af753b33f3711a58dacd31f91df245939b9b79aeaee478108c6",
+        "bytes": 4522405,
+        "size": [
+          4096,
+          4096
+        ]
+      }
+    ]
+  },
+  "rigIdentity": {
+    "byteIdenticalLowAndHdMoc": true,
+    "low": {
+      "sha256": "46213ca7f0523902a42f307a49f037c205eecd2e43b1726ee87dd627ed9c8aa9",
+      "bytes": 5311424
+    },
+    "hd": {
+      "sha256": "46213ca7f0523902a42f307a49f037c205eecd2e43b1726ee87dd627ed9c8aa9",
+      "bytes": 5311424
+    }
+  },
+  "nativeCore": {
+    "lowPassed": true,
+    "hdPassed": true,
+    "version": "06.00.0257 (100663553)",
+    "counts": {
+      "parameters": 19,
+      "drawables": 16,
+      "vertices": 2996,
+      "triangles": 3638
+    },
+    "warnings": [
+      "Parameters without a measurable direct vertex/opacity/order effect: ParamBrowLY, ParamBrowRY"
+    ],
+    "errors": []
+  },
+  "web": {
+    "passed": true,
+    "checks": 22,
+    "allChecksPassed": true,
+    "browser": {
+      "name": "chromium",
+      "version": "152.0.7977.83",
+      "playwrightPackage": "playwright",
+      "playwrightVersion": "1.63.0",
+      "explicitExecutablePath": true
+    },
+    "runtime": {
+      "coreVersionNumber": 83951616,
+      "coreVersion": "5.1.0",
+      "renderer": "WebGL",
+      "maxTextureSize": 16384,
+      "requestedClippingMaskSize": 1024,
+      "clippingMaskSize": 1024
+    },
+    "cameraRequests": 0,
+    "visibleParameterCount": 17,
+    "parametersWithoutObservedGeometryChange": [
+      "ParamBrowLY",
+      "ParamBrowRY"
+    ],
+    "loadedResourceHashes": [
+      {
+        "name": "model.model3.json",
+        "sha256": "1757285a3171db22cae51c5bf81338e21cb30c20a2800f07ada8fffead5cc9b9",
+        "status": 200
+      },
+      {
+        "name": "model.model3.json",
+        "sha256": "1757285a3171db22cae51c5bf81338e21cb30c20a2800f07ada8fffead5cc9b9",
+        "status": 200
+      },
+      {
+        "name": "Minimal.moc3",
+        "sha256": "46213ca7f0523902a42f307a49f037c205eecd2e43b1726ee87dd627ed9c8aa9",
+        "status": 200
+      },
+      {
+        "name": "texture_00.png",
+        "sha256": "81e9be5518184af753b33f3711a58dacd31f91df245939b9b79aeaee478108c6",
+        "status": 200
+      }
+    ],
+    "warnings": []
+  },
+  "unitTests": {
+    "passed": true,
+    "count": 41,
+    "scope": "Python tests; external-process fixtures do not establish neural/Core results."
+  },
+  "readmeLayout": [
+    {
+      "lang": "zh",
+      "size": "desktop",
+      "mermaid": 1,
+      "mermaidError": null,
+      "viewport": 1440,
+      "bodyWidth": 1440,
+      "tables": 9,
+      "errors": [],
+      "passed": true,
+      "localImagesLoaded": 7
+    },
+    {
+      "lang": "zh",
+      "size": "mobile",
+      "mermaid": 1,
+      "mermaidError": null,
+      "viewport": 390,
+      "bodyWidth": 390,
+      "tables": 9,
+      "errors": [],
+      "passed": true,
+      "localImagesLoaded": 7
+    },
+    {
+      "lang": "en",
+      "size": "desktop",
+      "mermaid": 1,
+      "mermaidError": null,
+      "viewport": 1440,
+      "bodyWidth": 1440,
+      "tables": 6,
+      "errors": [],
+      "passed": true,
+      "localImagesLoaded": 5
+    },
+    {
+      "lang": "en",
+      "size": "mobile",
+      "mermaid": 1,
+      "mermaidError": null,
+      "viewport": 390,
+      "bodyWidth": 390,
+      "tables": 6,
+      "errors": [],
+      "passed": true,
+      "localImagesLoaded": 5
+    }
+  ]
+}

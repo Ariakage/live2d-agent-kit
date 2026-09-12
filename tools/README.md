@@ -74,7 +74,7 @@
 TrustMark 的评估不算已完成模型保护。图集原文件的标识不能直接推定在 UV 变形、透明混合后的画面中仍可读取。
 [C2PA](https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html)是关联来源记录的标准，当前只作为文档参考，未执行签名，也不单独计入已运行工具。
 
-## Kit 开发 · 5 项
+## Kit 开发 · 7 项
 
 | 工具 / 官方入口 | 观察基线 | 具体用途 | Kit 入口 |
 | --- | --- | --- | --- |
@@ -83,6 +83,9 @@ TrustMark 的评估不算已完成模型保护。图集原文件的标识不能�
 | [Python unittest / 语法检查](https://docs.python.org/3/library/unittest.html) | Python 标准库；版本随解释器 | 验证路径边界、模型结构、报告身份、打包和脚本语法。 | [test_validation.py](../tests/test_validation.py) |
 | [Mermaid](https://github.com/mermaid-js/mermaid) | 11.17.2 | 渲染 README 的 8 节点工作流图，在独立本地浏览器检查排版。 | [README.md](../README.md) |
 | [Marked](https://github.com/markedjs/marked) | 17.0.5 | 将 README Markdown 转成临时本地预览 HTML，配合 Playwright 验证窄屏排版。 | [README.md](../README.md) |
+| [Humanizer-zh](https://github.com/op7418/Humanizer-zh) | 用户提供的本地 skill；未声明版本 | 中文 README 文字审校，保留技术事实与命令 | [README.md](../README.md) |
+| [Humanizer](https://github.com/blader/humanizer) | 本地 frontmatter 2.8.2 | 英文 README 草稿、自审与修订 | [README.en.md](../README.en.md) |
+
 
 ## 获取与复现
 

@@ -39,6 +39,18 @@ realesr-animevideov3-x4.bin
   sha256: 548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d
 ```
 
+### 已核对的固定权重下载源
+
+2026-09-12 另行使用 `curl --fail --location` 从 custom-models 固定提交
+[`4b6d2cfa59c7442af115dfc6e50fd8d7d40b96ef`](https://github.com/upscayl/custom-models/tree/4b6d2cfa59c7442af115dfc6e50fd8d7d40b96ef/models)
+实际下载以下文件。两次下载均返回 HTTP 200，字节数及本地计算的 SHA-256 与上面的制作权重记录完全一致：
+
+- [realesr-animevideov3-x4.param（固定提交原始文件）](https://raw.githubusercontent.com/upscayl/custom-models/4b6d2cfa59c7442af115dfc6e50fd8d7d40b96ef/models/realesr-animevideov3-x4.param)
+- [realesr-animevideov3-x4.bin（固定提交原始文件）](https://raw.githubusercontent.com/upscayl/custom-models/4b6d2cfa59c7442af115dfc6e50fd8d7d40b96ef/models/realesr-animevideov3-x4.bin)
+
+可机器读取的来源、固定提交、文件大小和摘要见
+[`tools/upscale-model-lock.json`](../tools/upscale-model-lock.json)。这是对公开取得路径的独立核对；不改变历史制作记录，也不将 SHA 当作上游签名。复现时下载这两个同名文件并核对摘要，随后把所在目录传给 `--models`。本仓库仅保存获取记录，未纳入下载的权重文件。
+
 ## 先修原图结构
 
 把头发图层单独放在深灰、浅灰与棋盘背景上。实际遇到过“鬓发遮罩顺便切下背带、衣服和黑色腰线”：这些像素跟着头发移动，覆盖身体底图上的完整背带，造成断口。超分把断口变得更清晰，却无法分清哪些像素属于头发。
@@ -54,6 +66,8 @@ realesr-animevideov3-x4.bin
 本 kit 使用修补后的路径：先在原逻辑画布上完成拆层、图集排布与绑定，然后用 **同一布局、同一页数、统一整数倍** 的高清 PNG 替换纹理页。图集像素从例如 2048² 变为 8192²，而逻辑画布、网格位置和归一化 UV 保持不变。补丁还保留原打包尺寸供位置验证使用。
 
 `export_texture_source_sha256` 绑定低清页的精确字节：只要重新拆层、改遮罩或重新打包导致低清页变化，旧超分页就应拒绝注入并重新生成。严禁为了通过检查而把新哈希填进旧超分结果。
+
+包装脚本在推理前把所有低清页固定到输出目录的 `source-atlases/`，RGB 准备和 alpha 合成均读取同一快照，报告记录快照 SHA。全部推理结束后还会检查原图集是否变化；若被另一导出改写，本轮会失败退出、保留 `complete: false` 的诊断报告，并移除 `manifest-hd.json`。此时重新导出与超分到新目录，不复用失败结果。
 
 先规划最终纹理尺寸。包装脚本的 `--max-texture-size` 默认 **8192**，允许配置 1024–16384；这是防止误生成过大纹理的上限，不是自动探测到的 GPU 能力。默认条件下，4× 的低清页每边最多 2048。通用最小样例使用 `atlas_size: 1024`，对应 4096 的高清页；不要把适配器的较大默认页尺寸不加判断地套到所有模型。
 
