@@ -62,13 +62,17 @@
 | [CUA / 宿主浏览器工具](https://openai.com/codex/) | unknown；宿主接口可能变化 | 在可见网页中操作并查看真实模型，与 Playwright 回归互补。 | [README.md](../mcp/README.md) |
 | [官方文档 / 源码浏览与 HTTP](https://github.com/) | unknown；宿主提供 | 核实上游能力、固定版本、许可、样例与错误边界。 | [tooling.md](../docs/tooling.md) |
 
-## 仅评估 · 3 项
+## 仅评估 · 4 项
 
 | 工具 / 官方入口 | 观察基线 | 具体用途 | Kit 入口 |
 | --- | --- | --- | --- |
 | [Live2D Cubism Editor](https://www.live2d.com/en/cubism/) | 本机 5.3.03；5.4 Alpha 仅资料审查 | 检查本机资源与 External Edit API 适用性；官方编辑器人工验收未完成。 | [README.md](../mcp/README.md) |
 | [psd2live 内置 MCP](https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/docs/zh/MCP_AUTHORING.md) | `5526f2e16b57` | 审查交互式工作区、参数、历史和透明图层接口。 | [README.md](../mcp/README.md) |
 | [CubismExternalEditMCP](https://github.com/nana7chi/CubismExternalEditMCP) | 1.0.3 · `863ebc87d0fe` | 审查 Editor 查询/编辑能力，检查本机版本和接口监听情况。 | [README.md](../mcp/README.md) |
+| [TrustMark](https://github.com/adobe/trustmark) · [官方 FAQ](https://opensource.contentauthenticity.org/docs/durable-cr/tm-faq/) | unknown；官方实现 MIT，仅资料评估 | 可选的像素来源标识。**未安装、未加标、未检测测试**；RGBA 需独立保留 alpha，Live2D 渲染截图的检出能力尚未验证。 | [水印与来源方案](../docs/model-protection.md) |
+
+TrustMark 的评估不算已完成模型保护。图集原文件的标识不能直接推定在 UV 变形、透明混合后的画面中仍可读取。
+[C2PA](https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html)是关联来源记录的标准，当前只作为文档参考，未执行签名，也不单独计入已运行工具。
 
 ## Kit 开发 · 5 项
 
@@ -92,6 +96,7 @@
 | 复查源图 / PSD | 按需安装 Pillow、NumPy、psd-tools；它们是诊断工具，不是 `.moc3` 运行依赖 |
 | 研究 MCP | 阅读 [MCP 接入与边界](../mcp/README.md)；查本机服务能力、版本和权限后再配置，目录中的链接不会替你启用服务 |
 | 打包交付 | [package-model.py](../scripts/package-model.py)复制实际引用资源；需要对应 MOC 的 Core 报告，最后由 VTube Studio 用户验收 |
+| 记录署名与评估水印 | 先读 [模型保护方案](../docs/model-protection.md)；署名/许可文本可随包复制，TrustMark 属未安装、未验证的可选实验 |
 
 ### 超分权重必须按文件识别
 

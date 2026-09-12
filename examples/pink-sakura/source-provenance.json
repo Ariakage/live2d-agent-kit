@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "example": "Pink Sakura",
+  "production_status": "HD runtime exported; native Core and WebGL checks passed; sampled visual review passed with documented minor limitations; VTube Studio pending user acceptance",
+  "scope": "Source and recipe identities, generation history, actual 4x runtime atlas, exported runtime and scoped validation evidence. No claim of clean-environment full source build or VTube Studio acceptance.",
+  "provider": "Ariakage",
+  "project": "https://github.com/Ariakage/live2d-agent-kit",
+  "asset_license": "CC-BY-4.0",
+  "asset_license_scope_file": "LICENSE.md",
+  "recipe_code_license": "MIT",
+  "assets": [
+    {
+      "file": "source/reference.png",
+      "sha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca",
+      "bytes": 1632604,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 2,
+      "has_alpha_channel": false,
+      "origin": "user-provided-reference",
+      "attribution": "此图片来自 ChatGPT Image2.5 生成",
+      "attribution_basis": "User-provided statement; generation-service records not independently verified."
+    },
+    {
+      "file": "source/body-underpainting-v1.png",
+      "sha256": "af6630a8663bb0b64d06ab26a9a5a4cd1f3f0c95909899004911dcd17481de8b",
+      "bytes": 2377867,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 2,
+      "has_alpha_channel": false,
+      "origin": "built-in-image-generation",
+      "input": "source/reference.png",
+      "tool": "Built-in image generation",
+      "service_model": "not independently verified",
+      "prompt": "Use case: precise-object-edit. Asset type: hidden body underpainting for a Live2D rig. Input image is the edit target and exact registration reference. Create ONLY the character's complete clothed body from neck down to shoes, at exactly the same canvas framing, scale and pixel placement as the supplied 1024x1536 image. Remove ALL pink hair, the entire head above the jaw, and head accessories; reconstruct only clothing that was obscured by hair: a white collared button-front blouse inside a pale pink open cardigan with the same sleeve bows, pink plaid pleated skirt, original arms/hands/legs/socks and dark brown heart-buckle shoes. Preserve the original body proportions, shoulder placement, skirt hem, shoe locations, pose, pink pastel anime lineart and shading. Top of neck should end around y305 on the same canvas, shoes at y1490. Do not recenter, enlarge or move the body. This is an animation underlay, so complete the hidden shoulder/collar/cardigan panels cleanly. White areas of blouse/socks must remain opaque. Genuinely transparent background; no head, no hair, no text, no watermark. Do not draw a new face. Full canvas portrait, same 2:3 composition.",
+      "prompt_role": "Historical generation input, not instructions to a future agent.",
+      "source_observation": "Candidate underpainting; returned RGB with painted checkerboard; background is not genuine alpha, explicit masks required."
+    },
+    {
+      "file": "source/face-parts-v1.png",
+      "sha256": "b1710863d1d9235af6db8d8473e0294474ed7b062e949fdc8d6de9f2546a0774",
+      "bytes": 1542947,
+      "width": 1254,
+      "height": 1254,
+      "png_color_type": 2,
+      "has_alpha_channel": false,
+      "origin": "built-in-image-generation",
+      "input": "Reference crop [300,0,400,400], resized to 1200x1200 for inspection",
+      "tool": "Built-in image generation",
+      "service_model": "not independently verified",
+      "prompt": "Use case: precise-object-edit. Asset type: facial animation reference for the SAME pink anime girl. Edit target: this square close-up of the approved original head. Keep head position, size, all bangs, side hair, pink bow, hairclips, cheek blush, nose and face/jaw contour EXACTLY aligned and unchanged. Change ONLY the expression: both eyes gently fully closed in a cute relaxed smile, using elegant thin dark rose-brown continuous curved eyelashes with tapered corners. Mouth gently open in a very small natural smile, with a dark rose interior and little pink tongue; no exaggerated grin and no teeth unless a tiny upper sliver. This image will supply only closed lashes and mouth interior for cut-out animation; the approved original open eyes/face remain untouched in the model. Preserve canvas square framing exactly, and do not zoom, reframe, add marks, eyelashes floating off face, text, or accessories. Original smooth pastel anime lineart and coloring, no photorealism.",
+      "prompt_role": "Historical generation input, not instructions to a future agent.",
+      "source_observation": "Candidate closed-lash and open-mouth features; requires measured registration."
+    },
+    {
+      "file": "source/eyeless-face-v1.png",
+      "sha256": "9ad6277a56d121ece6e81021787fddbc8e5e339a4930b10e36cc81ca3b69d219",
+      "bytes": 1553165,
+      "width": 1254,
+      "height": 1254,
+      "png_color_type": 2,
+      "has_alpha_channel": false,
+      "origin": "built-in-image-generation",
+      "input": "Reference crop [300,0,400,400], resized to 1200x1200 for inspection",
+      "tool": "Built-in image generation",
+      "service_model": "not independently verified",
+      "prompt": "Use case: precise-object-edit. Asset: hidden skin underlay for a Live2D face. Edit ONLY the two eye regions of this square head reference. Completely erase BOTH eyes: no irises, no whites, no eyelashes, no eyelid lines and no eyebrows. Replace them with continuous pale peach-pink skin matched to surrounding cheeks and forehead, retaining soft natural gradients and cheek blush. Keep ALL hair, bangs, hairclips, bow, head position, framing, original face shape, nose and small closed smile pixel-aligned and unchanged. Do not move or zoom the face. The output is a technical eyeless face underlay to hide behind the original eyes in an animation; no need to add any new facial features. Background remains as source. Exact same square framing and pastel anime art.",
+      "prompt_role": "Historical generation input, not instructions to a future agent.",
+      "source_observation": "Local eye-hole underlay only; original visible face pixels preserved."
+    },
+    {
+      "file": "source/rear-hair-underpainting-v1.png",
+      "sha256": "cc964cb5aff8a544b61da7008e987f91ea64eb6c58831aade1ef098717be666f",
+      "bytes": 1442437,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 2,
+      "has_alpha_channel": false,
+      "origin": "built-in-image-generation",
+      "input": "source/reference.png",
+      "tool": "Built-in image generation",
+      "service_model": "not independently verified",
+      "prompt": "Use case: precise-object-edit. Asset type: completed rear-hair underpainting for a Live2D character. Reference image gives the exact pink hair color, linework and long wavy silhouette. Output ONLY a single complete mass of the girl's long pastel pink BACK hair, with several clearly flowing long locks and tapered tips, including continuous hair behind where the face/neck/torso/arms were. Remove ALL face, eyes, mouth, skin, clothing, body, hands, legs, hair clips and bows. Fill the former covered region with matching softly shaded pink hair flowing downwards. It is an animation underlay, not a portrait: no facial features. Preserve the reference's airy curved outer locks, soft rose outlines, pale pink highlights, and natural voluminous inner locks. Hair should span original x65..935, top y40..925 on a 1024x1536 portrait canvas, keep the lower 600px blank; DO NOT stretch hair to the bottom of the full canvas. Use a perfectly flat solid bright GREEN #00FF00 background everywhere outside the hair, no checkerboard and no background shadow. Original pastel anime cel painting, not photorealism; no whitebackground, text or watermark.",
+      "prompt_role": "Historical generation input, not instructions to a future agent.",
+      "generation_observation": "Hidden under-body hair fill; green-screen RGB, sample only registered non-green interior. Original visible rear strands retained.",
+      "generation_observation_scope": "Historical observation at initial candidate generation; current use was revised after failed overlap tests.",
+      "current_usage": "Continuous generated natural rear-hair base, including visible portions; crop [0,100,1024,940] mapped to [20,90,983,846], known-green alpha extraction, whole-layer G > B + 8 alpha rejection and green despill. Original outer/arc strands overlay separately."
+    }
+  ],
+  "recipe_files": [
+    "build-manifest.cjs",
+    "body-regions.json",
+    "face-regions.json",
+    "body-topwear-patch.json",
+    "preview-config.json",
+    "check-poses.cjs",
+    "capture-demo.cjs"
+  ],
+  "recipe_status": "Published source recipe used for final low-06b and HD exports; executable environment recovery and source identities recorded separately.",
+  "registration_notes": [
+    "Original logical reference canvas is 1024x1536. Approved face, front hair and clothing retain the original as their primary source; outer/arc rear strands also remain original overlays.",
+    "Facial generation inputs used reference crop [300,0,400,400] resized to 1200x1200; returned files are 1254x1254 and need measured registration.",
+    "All five source PNGs are RGB without an alpha channel. Painted checkerboard or green backgrounds are not transparency.",
+    "Body candidate contains a painted checkerboard; explicit source masks and registered hidden-hole fills are required. body-topwear-patch.json now contains only clothing hidden-fill and leg-edge corrections.",
+    "Rear-hair base uses the generated natural silhouette as one continuous source layer: source crop [0,100,1024,940] mapped to logical canvas x20,y90,w983,h846. Known-green automatic alpha extraction and green despill retain natural strand tips.",
+    "The rear-hair source_color_filter sets alpha to zero wherever G > B + 8 across the entire source layer, not only edges. It is specific to this pink/white plate with no intended green; other characters with green artwork require different measured masking. This preprocessing precedes independent upscaling of the cleaned alpha.",
+    "Original outer/arc rear strands overlay the generated base and move independently. Some visible rear-hair pixels now come from the generated base; an all-original-visible-rear-pixels claim is no longer accurate.",
+    "Original upper-lid folds are isolated as face_detail-upper-lid-folds, separate from thresholded moving dark lashes. The mouth_open layer is registered at logical y277 for this specific source.",
+    "Recorded prompts request visual constraints but do not establish that generated results satisfied them. Results and generated-service versions are recorded separately."
+  ],
+  "final_evidence": {
+    "runtime_model": "runtime/PinkSakura.model3.json",
+    "runtime_model_sha256": "34023a308cb00c621e6a199afb1598819b1196eb7d864a4ad50dd2dbe7bc4ee5",
+    "runtime_moc_sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+    "low_hd_moc_byte_identical": true,
+    "hd_textures": [
+      {
+        "file": "runtime/PinkSakura.8192/texture_00.png",
+        "bytes": 44825773,
+        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+        "width": 8192,
+        "height": 8192,
+        "channels": "RGBA"
+      }
+    ],
+    "runtime_files": [
+      {
+        "file": "runtime/ASSET-LICENSE.md",
+        "bytes": 1392,
+        "sha256": "1d5a80ece404d21357a8027168e4903acddec1ee335686a46ad809d3dba63dc3"
+      },
+      {
+        "file": "runtime/ATTRIBUTION.md",
+        "bytes": 1602,
+        "sha256": "14248d25674eb8ae549ff042f1b0ed74fca49def0419a9e11c3f9ea756ff0c1e"
+      },
+      {
+        "file": "runtime/PinkSakura.8192/texture_00.png",
+        "bytes": 44825773,
+        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8"
+      },
+      {
+        "file": "runtime/PinkSakura.blink.motion3.json",
+        "bytes": 1155,
+        "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110"
+      },
+      {
+        "file": "runtime/PinkSakura.cdi3.json",
+        "bytes": 4716,
+        "sha256": "7d5c2a01664e18c67cfdb22425bf724f1f82c5db0801a12ce5b9545f0e3d9631"
+      },
+      {
+        "file": "runtime/PinkSakura.idle.motion3.json",
+        "bytes": 2282,
+        "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990"
+      },
+      {
+        "file": "runtime/PinkSakura.moc3",
+        "bytes": 388544,
+        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+      },
+      {
+        "file": "runtime/PinkSakura.model3.json",
+        "bytes": 757,
+        "sha256": "34023a308cb00c621e6a199afb1598819b1196eb7d864a4ad50dd2dbe7bc4ee5"
+      },
+      {
+        "file": "runtime/PinkSakura.nod.motion3.json",
+        "bytes": 1751,
+        "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418"
+      },
+      {
+        "file": "runtime/PinkSakura.physics3.json",
+        "bytes": 18649,
+        "sha256": "cad996de99c0dd1e7217665533b568f00cca4a45d51144999aa77bf731f3d076"
+      },
+      {
+        "file": "runtime/PinkSakura.shake.motion3.json",
+        "bytes": 1571,
+        "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01"
+      },
+      {
+        "file": "runtime/release-metadata.json",
+        "bytes": 2842,
+        "sha256": "09de05e40d4fc39d854eb6716f8a5da587f3ecc4a72c323883d3f20e9e7ad466"
+      }
+    ],
+    "native_core": {
+      "status": "passed",
+      "report": "verification/native-core.json",
+      "version": "06.00.0257 (100663553)",
+      "checked_at": "2026-09-12T12:36:26.431146Z",
+      "tested_pose_count": 198,
+      "mouth_combined_pose_count": 125,
+      "parameters_without_measured_effect": [],
+      "errors": [],
+      "warnings": [],
+      "scope": "Official native parsing and finite geometry/indices/UV/opacity/parameter updates; no artistic or tracking acceptance."
+    },
+    "webgl": {
+      "status": "automated-checks-passed",
+      "smoke_report": "verification/web-smoke.json",
+      "pose_report": "verification/web-poses.json",
+      "smoke_checks": 22,
+      "parameters_without_observed_geometry_change": [],
+      "poses": 55,
+      "captured_frames": 80,
+      "browser": {
+        "name": "chromium",
+        "version": "152.0.7977.83",
+        "playwrightPackage": "playwright",
+        "playwrightVersion": "1.63.0",
+        "explicitExecutablePath": true
+      },
+      "web_core_version": "5.1.0",
+      "max_texture_size": 16384,
+      "camera_requests": 0,
+      "resource_identity_scope": "Actual browser responses matched final MOC and texture bytes; prepared preview model3 is reformatted/renamed and has its own recorded hash.",
+      "frame_publication_scope": "All 80 frame identities recorded; only selected screenshots shipped. Reproduce the full sweep with check-poses.cjs."
+    },
+    "visual_review": {
+      "status": "passed-with-documented-minor-visual-limitations",
+      "report": "verification/visual-review.json",
+      "face_report": "verification/face-review.json",
+      "body_report": "verification/body-review.json",
+      "unique_reviewed_frames": 60,
+      "face_reviewed_frames": 33,
+      "body_reviewed_frames": 29,
+      "total_automated_frames": 80,
+      "exhaustive": false,
+      "scope": "Final HD model; independent agent visual review of actual WebGL PNG captures. This is sampled review, not exhaustive animation or target-app acceptance.",
+      "limitations": [
+        "Magnified thin closed-mouth line is somewhat pale/grainy.",
+        "Closed lash tips are slightly blunt with residual edge steps under magnification.",
+        "EyeOpen 0 through 0.25 shares a closed-eye hold interval.",
+        "Conservative 2D head/body motion; no independent arm/finger rig or real camera capture.",
+        "VTube Studio acceptance remains with the user."
+      ],
+      "low_hd_drawable_state_comparisons": 80
+    },
+    "vtube_studio": "pending-user-acceptance",
+    "export_limitations": {
+      "report": "verification/export-warnings.txt",
+      "cmo3": "Editable atlas-rebuilt layers and model/rig data; original PSD source-image edit chain not retained. Official Editor manual acceptance not performed.",
+      "default_bounds_notices": [
+        "Closed-eye meshes relocated for continuous lashes; visual transition review required.",
+        "ArtMeshBackHairL3 original bounds about 10x32 logical pixels; default top differs by about 7 pixels."
+      ],
+      "core_scope_note": "Empty native errors/warnings do not remove exporter warnings."
+    },
+    "clean_environment_full_build_validated": false,
+    "report_identities": [
+      {
+        "file": "verification/native-core.json",
+        "bytes": 275004,
+        "sha256": "20f11d201dbd659ebceb089fa15489d2850ff52dc3baa8e6ac4bdb4dc6e8d067"
+      },
+      {
+        "file": "verification/structural.json",
+        "bytes": 2478,
+        "sha256": "0b1b794f8bdfd285e2180f3093574bf341883c8ff2dd012233a91ce2a95ea09a"
+      },
+      {
+        "file": "verification/web-smoke.json",
+        "bytes": 11137,
+        "sha256": "e28dad74aee5d9065876fc16841edadd7fc2102aaf11115c10c0b6ee0c450016"
+      },
+      {
+        "file": "verification/web-poses.json",
+        "bytes": 195247,
+        "sha256": "9b8a994c0cf3e38701d289110131fbe9423b76c90fc32b707eb52385d4c19ffb"
+      },
+      {
+        "file": "verification/upscale.json",
+        "bytes": 1818,
+        "sha256": "391a181b89553ea30230dc9b72d7f2e2a04f6d0dd34207da6a6a23d7256982e6"
+      },
+      {
+        "file": "verification/export-warnings.txt",
+        "bytes": 2175,
+        "sha256": "c68c06d3db66302ff68a48c3039bdce1c303d1fcfe7d80f5f565e5210865b9f0"
+      },
+      {
+        "file": "verification/build-environment.json",
+        "bytes": 12669,
+        "sha256": "bdea8e7f8da673ff6b1c93ec86caa718d38ce297f013bb863da85c260d5b46e0"
+      },
+      {
+        "file": "verification/compiled-classes.json",
+        "bytes": 363189,
+        "sha256": "e02f72ed4d41917295ce82ecbf71a7123ed067e5252d481783345ec752d1399a"
+      },
+      {
+        "file": "verification/headless-dependencies.json",
+        "bytes": 6063,
+        "sha256": "2901d5fc889841bfdf5be5a76adf2c482062a9f2de066ecb29c57f8b0bbff933"
+      },
+      {
+        "file": "verification/demo.json",
+        "bytes": 139247,
+        "sha256": "c6604ce974d4c1f9b4b68e241e256d2253ba9b98a2b978a403dd65adb5a1a7f3"
+      },
+      {
+        "file": "verification/visual-review.json",
+        "bytes": 3376,
+        "sha256": "60f4a71ee4bbd6d9619fa9d6843ca62d1197957668ea9bd274af38d912b79132"
+      },
+      {
+        "file": "verification/face-review.json",
+        "bytes": 16673,
+        "sha256": "d24ff52cd73600957ada8fa0f56bc0ce122316322b85ebb225a550462be14b7e"
+      },
+      {
+        "file": "verification/body-review.json",
+        "bytes": 19216,
+        "sha256": "5c25c8b63fbc6b542fd95f390ba73ea12e3e87ca6ac14a1796127d87be008449"
+      },
+      {
+        "file": "verification/README.md",
+        "bytes": 3168,
+        "sha256": "59b41e902660b565b29fcf6b961143f3d480bc30213dc92c420ffa6991e2b71e"
+      }
+    ],
+    "demo": {
+      "file": "verification/preview.gif",
+      "frames": 72,
+      "fps": 12,
+      "capture": "actual WebGL canvas with synthetic input; no camera/microphone input",
+      "identity": {
+        "file": "verification/preview.gif",
+        "bytes": 5881951,
+        "sha256": "30975545a8795b618363feb37e58c2f78d37b3e9cf4ed7fe7209d6868971af00"
+      }
+    },
+    "public_report_hash_scope": "These report hashes identify the published bytes. Where present, originalLocalReportSha256 inside a report identifies its unredacted local predecessor; it is not the published report hash.",
+    "public_recipe_rebuild": {
+      "status": "passed",
+      "source": "Published example source and recipe copied to a fresh local working directory",
+      "source_layers": 22,
+      "manifest_sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a",
+      "matches_actual_low_export_input_bytes": true,
+      "structural_validation": "passed",
+      "scope": "Source-to-manifest regeneration only; no new full engine compilation or clean-environment export is claimed."
+    }
+  },
+  "watermark_status": {
+    "visible": "not applied by this provenance record",
+    "invisible": "evaluated only; not installed, encoded or detection-tested",
+    "c2pa": "Project did not add/sign C2PA; generated source PNGs retain embedded caBX blocks, their claims/signatures not independently verified."
+  },
+  "iteration_notes": [
+    {
+      "stage": "early narrow rear-hair overlap",
+      "outcome": "Not accepted: 18-20 logical-pixel strips did not cover large-roll relative movement near long strand tips."
+    },
+    {
+      "stage": "expanded hidden-region selection",
+      "recipe": "body-overlap-full-patch.json",
+      "outcome": "Discarded experiment, not a public build dependency: manually truncated boundaries and split central fills could expose straight edges or center seams."
+    },
+    {
+      "stage": "complete natural rear-hair base",
+      "outcome": "Adopted in final low-06b and HD exports: full generated natural silhouette beneath original outer/arc strands; additional whole-layer G > B + 8 transparency rejection removes residual chroma for this pink/white plate. Neural upscaling, native/Web checks and sampled visual review completed; minor visual limitations documented, VTube Studio remains pending."
+    }
+  ],
+  "recipe_file_identities": [
+    {
+      "file": "build-manifest.cjs",
+      "bytes": 7974,
+      "sha256": "5d08199c22e5ec5378b7a5809440f1d8903666c2c640f6d2f31d9761d76cbffb"
+    },
+    {
+      "file": "body-regions.json",
+      "bytes": 684166,
+      "sha256": "1f163639cd22713fede158daf4dab4391fc0f61a5b8bd7775715921a2fa5afd3"
+    },
+    {
+      "file": "face-regions.json",
+      "bytes": 21443,
+      "sha256": "fffcd4b9e693b692d8a6c8e8a2480b347f6d1754d5f2aeb5d4a3195594da6816"
+    },
+    {
+      "file": "body-topwear-patch.json",
+      "bytes": 145716,
+      "sha256": "575c6e96896e6574c86d50f6df58ca16bca424354447a74a978027e88b0745b2"
+    },
+    {
+      "file": "preview-config.json",
+      "bytes": 265,
+      "sha256": "5b2c5c26ad6c9b656edb5a0acaceb0f99b26c5b0db54aef9d5e766bb9caf3274"
+    },
+    {
+      "file": "check-poses.cjs",
+      "bytes": 17959,
+      "sha256": "8ea8a3cf337ce91d2ba043fc07f9a0658bf712f815aa2f4f074e7b73b11596c2"
+    },
+    {
+      "file": "capture-demo.cjs",
+      "bytes": 4032,
+      "sha256": "23460601d83c2c8e89a86775bab68910c8547502ffa1647c24f085dec548a119"
+    }
+  ],
+  "runtime_statistics": {
+    "source_layers": 22,
+    "runtime_parameters": 22,
+    "drawables": 24,
+    "vertices": 7117,
+    "triangles": 11824,
+    "hair_swing_parameters": 8,
+    "hair_swing_parameter_ids": [
+      "ParamFrontHairSideLSwing",
+      "ParamFrontHairSideRSwing",
+      "ParamBackHairOuterLSwing",
+      "ParamBackHairOuterRSwing",
+      "ParamBackHairArcLSwing",
+      "ParamBackHairArcRSwing",
+      "ParamBackHairBaseRSwing",
+      "ParamBackHairBaseLSwing"
+    ],
+    "basis": "Actual final MOC parsed and updated by official native Core; source-layer and runtime drawable counts are distinct. Every declared parameter had a measured effect, not a claim of equal visual movement amplitude."
+  },
+  "upscale": {
+    "status": "completed",
+    "report": "verification/upscale.json",
+    "tool": "Upscayl NCNN local CLI",
+    "model": "realesr-animevideov3-x4",
+    "scale": 4,
+    "method": "Local NCNN neural RGB 4x; independent bicubic alpha; unchanged logical UVs",
+    "input_manifest_sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a",
+    "binary_sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
+    "weights": {
+      "realesr-animevideov3-x4.param": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e",
+      "realesr-animevideov3-x4.bin": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
+    },
+    "atlas_pages": 1,
+    "low_atlas_size": [
+      2048,
+      2048
+    ],
+    "hd_atlas_size": [
+      8192,
+      8192
+    ],
+    "logical_canvas": [
+      1024,
+      1536
+    ],
+    "source_psd_resolution_scope": "Neural 4x applies to the runtime atlas RGB. Source image pixels and PSD logical canvas/layer coordinates remain their recorded original sizes; not a 4x redrawn source PSD.",
+    "low_texture_sha256": "29704262548bd4ea51984f589cca4bac56092fad07f264d099776154a2179338",
+    "hd_texture_sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+    "ncnn_flags": [
+      "-n",
+      "realesr-animevideov3-x4",
+      "-z",
+      "4",
+      "-s",
+      "4",
+      "-t",
+      "256",
+      "-j",
+      "1:1:1",
+      "-f",
+      "png"
+    ]
+  }
+}

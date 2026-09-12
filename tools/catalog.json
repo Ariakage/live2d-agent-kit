@@ -1047,6 +1047,45 @@
       "notes": "本次未成功连接编辑；审查版本不支持提交任意 ArtMesh 顶点形状；Alpha 有时效需重新核实。"
     },
     {
+      "id": "trustmark",
+      "name": "TrustMark",
+      "usage_status": "evaluated",
+      "observed_version": "unknown；仅查阅官方仓库与 FAQ，未安装",
+      "purpose": "评估像素隐水印作为示例来源标识的可选方案；未编码、解码或进行模型/截图检测测试。",
+      "upstream": [
+        {
+          "title": "Official repository",
+          "url": "https://github.com/adobe/trustmark"
+        },
+        {
+          "title": "Official FAQ",
+          "url": "https://opensource.contentauthenticity.org/docs/durable-cr/tm-faq/"
+        },
+        {
+          "title": "C2PA provenance explainer (standard reference, not an executed tool)",
+          "url": "https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html"
+        }
+      ],
+      "license": {
+        "summary": "官方实现标注 MIT；本仓库仅链接和评估，不捆绑程序或权重。",
+        "sources": [
+          "https://github.com/adobe/trustmark#license",
+          "https://opensource.contentauthenticity.org/docs/durable-cr/tm-faq/"
+        ]
+      },
+      "acquisition": "可选：按官方仓库说明在独立本地实验环境取得；当前未安装、未下载权重、未执行水印流程，不是模型生产依赖。",
+      "integration_paths": [
+        "docs/model-protection.md"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/model-protection.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "官方说明其处理 RGB，不考虑 alpha；若后续用于 RGBA 图集须独立保留 alpha 并检查颜色和接缝。Live2D UV 采样、变形、合成后的截图检测尚未验证。标识可被移除或伪造，不能单独证明作者或防止提取；C2PA 只作为来源标准参考，不计作已运行工具。"
+    },
+    {
       "id": "codex-agent",
       "name": "Codex / GPT-6 Astra Ultra",
       "usage_status": "production",

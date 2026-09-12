@@ -1,0 +1,420 @@
+{
+  "url": "http://127.0.0.1:8849/",
+  "checks": [
+    {
+      "name": "model entry captured from actual browser response",
+      "pass": true,
+      "detail": {
+        "modelUrl": "http://127.0.0.1:8849/model/model.model3.json"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: model3",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8849/model/model.model3.json"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: moc3",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8849/model/PinkSakura.moc3"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: texture",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png"
+      }
+    },
+    {
+      "name": "texture dimensions within WebGL limit",
+      "pass": true,
+      "detail": [
+        {
+          "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png",
+          "texture": {
+            "width": 8192,
+            "height": 8192
+          }
+        }
+      ]
+    },
+    {
+      "name": "prepared manifest readable",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8849/preview-manifest.json",
+        "status": 200
+      }
+    },
+    {
+      "name": "manifest model entry matches runtime",
+      "pass": true,
+      "detail": {
+        "manifestEntry": "model/model.model3.json",
+        "modelUrl": "http://127.0.0.1:8849/model/model.model3.json"
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: model3",
+      "pass": true,
+      "detail": {
+        "path": "model/model.model3.json",
+        "expectedSha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+        "observedSha256": [
+          "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+          "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
+        ]
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: moc3",
+      "pass": true,
+      "detail": {
+        "path": "model/PinkSakura.moc3",
+        "expectedSha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+        "observedSha256": [
+          "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+        ]
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: texture",
+      "pass": true,
+      "detail": {
+        "path": "model/PinkSakura.8192/texture_00.png",
+        "expectedSha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+        "observedSha256": [
+          "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8"
+        ]
+      }
+    },
+    {
+      "name": "real Cubism Core and native drawables",
+      "pass": true,
+      "detail": {
+        "parameters": 22,
+        "drawables": 24,
+        "vertices": 7117,
+        "triangles": 11824
+      }
+    },
+    {
+      "name": "manual parameters reach native Core",
+      "pass": true,
+      "detail": [
+        {
+          "id": "ParamAngleX",
+          "requested": 45,
+          "actual": 45,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamAngleY",
+          "requested": 30,
+          "actual": 30,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamAngleZ",
+          "requested": 30,
+          "actual": 30,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleX",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleY",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleZ",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeLOpen",
+          "requested": 0,
+          "actual": 0,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeROpen",
+          "requested": 0,
+          "actual": 0,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallX",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallForm",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamMouthForm",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamMouthOpenY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBreath",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamFrontHairSideLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamFrontHairSideRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairOuterLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairOuterRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairArcLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairArcRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairBaseRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairBaseLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        }
+      ]
+    },
+    {
+      "name": "reset restores native defaults",
+      "pass": true
+    },
+    {
+      "name": "simulation advances",
+      "pass": true
+    },
+    {
+      "name": "simulator only writes native targets",
+      "pass": true
+    },
+    {
+      "name": "pause freezes timeline, parameters and physics",
+      "pass": true
+    },
+    {
+      "name": "timeline seeks while paused",
+      "pass": true
+    },
+    {
+      "name": "mapped simulated values reach Core",
+      "pass": true
+    },
+    {
+      "name": "stop restores defaults",
+      "pass": true
+    },
+    {
+      "name": "no camera or microphone request",
+      "pass": true
+    },
+    {
+      "name": "no browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "pass": true
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "cameraRequests": 0,
+  "browser": {
+    "name": "chromium",
+    "version": "152.0.7977.83",
+    "playwrightPackage": "playwright",
+    "playwrightVersion": "1.63.0",
+    "explicitExecutablePath": true
+  },
+  "loadedResources": {
+    "modelUrl": "http://127.0.0.1:8849/model/model.model3.json",
+    "observed": [
+      {
+        "url": "http://127.0.0.1:8849/media/reference.png",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 1632604,
+        "sha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca",
+        "texture": {
+          "width": 1024,
+          "height": 1536
+        }
+      },
+      {
+        "url": "http://127.0.0.1:8849/model/model.model3.json",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 900,
+        "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8849/model/model.model3.json",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 900,
+        "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8849/model/PinkSakura.moc3",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 388544,
+        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 44825773,
+        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+        "texture": {
+          "width": 8192,
+          "height": 8192
+        }
+      }
+    ],
+    "manifest": {
+      "present": true,
+      "url": "http://127.0.0.1:8849/preview-manifest.json",
+      "sha256": "eecd4c11581b72339f249bfff6044261f0e63366c032c4f32e7eed6ead838416",
+      "matched": [
+        {
+          "path": "model/model.model3.json",
+          "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
+        },
+        {
+          "path": "model/PinkSakura.moc3",
+          "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+        },
+        {
+          "path": "model/PinkSakura.8192/texture_00.png",
+          "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8"
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "coreVersionNumber": 83951616,
+    "coreVersion": "5.1.0",
+    "renderer": "WebGL",
+    "maxTextureSize": 16384,
+    "requestedClippingMaskSize": 1024,
+    "clippingMaskSize": 1024
+  },
+  "screenshots": {
+    "neutral": "work/pink-sakura/web-hd-smoke/neutral.png",
+    "simulated-paused": "work/pink-sakura/web-hd-smoke/simulated-paused.png"
+  },
+  "visibleBindingEvidence": [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamAngleZ",
+    "ParamBodyAngleX",
+    "ParamBodyAngleY",
+    "ParamBodyAngleZ",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamEyeBallX",
+    "ParamEyeBallY",
+    "ParamEyeBallForm",
+    "ParamMouthForm",
+    "ParamMouthOpenY",
+    "ParamBreath",
+    "ParamFrontHairSideLSwing",
+    "ParamFrontHairSideRSwing",
+    "ParamBackHairOuterLSwing",
+    "ParamBackHairOuterRSwing",
+    "ParamBackHairArcLSwing",
+    "ParamBackHairArcRSwing",
+    "ParamBackHairBaseRSwing",
+    "ParamBackHairBaseLSwing"
+  ],
+  "parametersWithoutObservedGeometryChange": [],
+  "simulatedTargets": [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamAngleZ",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamEyeBallX",
+    "ParamEyeBallY",
+    "ParamMouthOpenY",
+    "ParamMouthForm",
+    "ParamBodyAngleX",
+    "ParamBodyAngleY",
+    "ParamBodyAngleZ",
+    "ParamBreath"
+  ],
+  "pass": true,
+  "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
+  "originalLocalReportSha256": "ae006c525d125ad9d2a862192338d82939c92809b818471f4b0212fe82d3d1ba"
+}

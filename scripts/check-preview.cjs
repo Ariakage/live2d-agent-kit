@@ -1,7 +1,17 @@
 #!/usr/bin/env node
 /** Real browser/Core smoke test; no hidden camera/device fallback. */
+// Optional PLAYWRIGHT_CHROMIUM_EXECUTABLE selects an existing Chromium binary.
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
-let chromium;try{({chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'));}catch{console.error('Install Playwright separately or set PLAYWRIGHT_MODULE to an existing module. No dependencies are downloaded by this script.');process.exit(1);}
+const playwrightModule=process.env.PLAYWRIGHT_MODULE||'playwright';
+let chromium;try{({chromium}=require(playwrightModule));}catch{console.error('Install Playwright separately or set PLAYWRIGHT_MODULE to an existing module. No dependencies are downloaded by this script.');process.exit(1);}
+function playwrightPackageInfo(moduleSpec){
+  try{let directory=path.dirname(require.resolve(moduleSpec));while(true){
+    const file=path.join(directory,'package.json');
+    if(fs.existsSync(file)){const info=JSON.parse(fs.readFileSync(file,'utf8'));if(['playwright','playwright-core','@playwright/test'].includes(info.name))return{name:info.name,version:info.version};}
+    const parent=path.dirname(directory);if(parent===directory)break;directory=parent;
+  }}catch{/* A wrapper may not expose package metadata. */}return{name:null,version:null};
+}
+function redactBrowserError(message){let safe=String(message);const executable=process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;if(executable?.trim())safe=safe.split(executable).join('[explicit Chromium executable]');const userHome=process.env.HOME||process.env.USERPROFILE;if(userHome)safe=safe.split(userHome).join('[home]');return safe;}
 const args=process.argv.slice(2),arg=(name,fallback)=>{const i=args.indexOf(name);return i<0?fallback:args[i+1];};
 const url=arg('--url','http://127.0.0.1:8793/'),out=path.resolve(arg('--output','work/preview-smoke.json'));
 const screenshotDir=arg('--screenshots',null);
@@ -11,9 +21,16 @@ function pngDimensions(bytes){return bytes.length>=24&&bytes.subarray(0,8).equal
 async function snapshot(page,name){if(!screenshotDir)return;fs.mkdirSync(screenshotDir,{recursive:true});const file=path.resolve(screenshotDir,name+'.png');await page.screenshot({path:file,fullPage:true});(report.screenshots??={})[name]=file;}
 const check=(name,ok,detail)=>{report.checks.push({name,pass:Boolean(ok),detail});if(!ok)throw new Error(name+': '+JSON.stringify(detail));};
 (async()=>{let browser;try{
-  browser=await chromium.launch({headless:true});const page=await browser.newPage({viewport:{width:1200,height:900}});
+  const executable=process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
+  const launchOptions={headless:true,...(executable?.trim()?{executablePath:executable}:{})};
+  const packageInfo=playwrightPackageInfo(playwrightModule);
+  report.browser={name:'chromium',version:null,playwrightPackage:packageInfo.name,playwrightVersion:packageInfo.version,explicitExecutablePath:Boolean(launchOptions.executablePath)};
+  browser=await chromium.launch(launchOptions);
+  report.browser.version=browser.version();
+  if(!packageInfo.version)report.warnings.push('Playwright package version is unavailable from the selected module.');
+  const page=await browser.newPage({viewport:{width:1200,height:900}});
   await page.addInitScript(()=>{window.__cameraCalls=0;if(navigator.mediaDevices)navigator.mediaDevices.getUserMedia=async()=>{window.__cameraCalls++;throw new Error('Camera/microphone forbidden in smoke test');};});
-  page.on('pageerror',error=>report.errors.push(error.message));
+  page.on('pageerror',error=>report.errors.push(redactBrowserError(error.message)));
   // Install before navigation: these are bytes returned to this browser's actual
   // model requests, never a later fetch that merely resembles the loaded input.
   const observed=[], responseReads=[];
@@ -24,7 +41,7 @@ const check=(name,ok,detail)=>{report.checks.push({name,pass:Boolean(ok),detail}
       const record={url:resourceURL,status:response.status(),source:'browser-response'};
       observed.push(record);
       try {const bytes=await response.body();record.bytes=bytes.length;record.sha256=digest(bytes);record.texture=pngDimensions(bytes);record.body=bytes;}
-      catch(error){record.readError=error.message;}
+      catch(error){record.readError=redactBrowserError(error.message);}
     })());
   });
   await page.goto(url,{waitUntil:'networkidle'});await page.waitForFunction(()=>window.previewApp?.viewer,{timeout:45000});
@@ -88,4 +105,4 @@ const check=(name,ok,detail)=>{report.checks.push({name,pass:Boolean(ok),detail}
   report.cameraRequests=await page.evaluate(()=>window.__cameraCalls);check('no camera or microphone request',report.cameraRequests===0);check('no browser exceptions',report.errors.length===0,report.errors);
   await page.setViewportSize({width:390,height:844});check('mobile no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   report.pass=true;
-}catch(error){report.pass=false;report.failure=error.message;process.exitCode=1;}finally{await browser?.close();fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({pass:report.pass,report:out,warnings:report.warnings,failure:report.failure}));}})();
+}catch(error){report.pass=false;report.failure=redactBrowserError(error.message);process.exitCode=1;}finally{await browser?.close();fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({pass:report.pass,report:out,warnings:report.warnings,failure:report.failure}));}})();

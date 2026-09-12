@@ -1,0 +1,53 @@
+{
+  "complete": true,
+  "created_at": "2026-09-12T12:31:44.881551+00:00",
+  "method": "Local NCNN neural RGB 4x; independent bicubic alpha; unchanged logical UVs",
+  "input_manifest_sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a",
+  "binary_sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
+  "model": "realesr-animevideov3-x4",
+  "weights": {
+    "realesr-animevideov3-x4.param": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e",
+    "realesr-animevideov3-x4.bin": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
+  },
+  "scale": 4,
+  "max_texture_size": 8192,
+  "pages": [
+    {
+      "source": "work/pink-sakura/low-06b/PinkSakura.2048/texture_00.png",
+      "source_sha256": "29704262548bd4ea51984f589cca4bac56092fad07f264d099776154a2179338",
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output": "page-00-rgba-4x.png",
+      "output_sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+      "output_size": [
+        8192,
+        8192
+      ],
+      "command": [
+        "<local-upscayl-bin>",
+        "-i",
+        "work/pink-sakura/upscale/page-00-rgb.png",
+        "-o",
+        "work/pink-sakura/upscale/page-00-rgb-4x.png",
+        "-m",
+        "<local-ncnn-models>",
+        "-n",
+        "realesr-animevideov3-x4",
+        "-z",
+        "4",
+        "-s",
+        "4",
+        "-t",
+        "256",
+        "-j",
+        "1:1:1",
+        "-f",
+        "png"
+      ]
+    }
+  ],
+  "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
+  "originalLocalReportSha256": "bfe36c012fe648dda21d3f7917c8d9c24827dbf25c922ca93e15e0cfd53c14f6"
+}

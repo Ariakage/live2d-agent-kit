@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-09-12T12:37:01.998535+00:00",
+  "purpose": "Final low and HD exports used the same existing compiled classes after dependency-cache recovery; this record does not claim a fresh full Gradle build.",
+  "runtime": {
+    "jdk_executable": "<local-jdk21-java>",
+    "java_version_output": "openjdk version \"21.0.11\" 2026-04-21 LTS\nOpenJDK Runtime Environment Zulu21.50+19-CA (build 21.0.11+10-LTS)\nOpenJDK 64-Bit Server VM Zulu21.50+19-CA (build 21.0.11+10-LTS, mixed mode, sharing)",
+    "language_target": "JDK 21 / class major 65",
+    "main_class": "io.github.psd2live.agentkit.ManifestExportKt",
+    "classpath_relative_to_repo": ".cache/psd2live/build/classes/kotlin/main:.cache/psd2live/build/resources/main:work/pink-sakura/headless-libs/*",
+    "invocation_scope": "Same entrypoint as scripts/psd2live-init.gradle; direct headless execution, no source rebuild in this fallback."
+  },
+  "engine": {
+    "upstream_url": "https://github.com/tsunehimatoi/psd2live.git",
+    "upstream_commit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+    "engine_lock": {
+      "path": "integrations/psd2live/engine-lock.json",
+      "bytes": 1284,
+      "sha256": "8a34be2559c1aeb4c02ebf95588d7e3789de065207db5a7445be3eb18fc41e98"
+    },
+    "cumulative_patch": {
+      "path": "patches/psd2live-agent-kit.patch",
+      "bytes": 58678,
+      "sha256": "a785a2cd38cb9d999a1f445d9fb36c75d3731d2742a335d072a3cdadd22a17fa"
+    },
+    "patched_source_files": [
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/agent/AgentPlacementValidation.kt",
+        "sha256": "c7a75fec807ee50ae4335ec4711efe03f59a0ae022d090ba5b2a76fd997d53fd",
+        "matches_lock": true
+      },
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/core/Analyzer.kt",
+        "sha256": "c040d7c33095bebb644cf48a6e1cd46f039b55152c957e5c711c114eb2dd98a8",
+        "matches_lock": true
+      },
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/core/AtlasPacker.kt",
+        "sha256": "8cebd8470bd592631990d85b90c15b30f4283ffb372a0b708190f853f7faac0d",
+        "matches_lock": true
+      },
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/core/Model.kt",
+        "sha256": "c419b127c8e744eb1e727d9d58cf7f8e1278a095b7730fc102882095ef732c31",
+        "matches_lock": true
+      },
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/core/NinePoseFaceRig.kt",
+        "sha256": "2a0f4cd9efe370373b292daa398ff73f2049494241c734ab3e745d50a8adee89",
+        "matches_lock": true
+      },
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/core/PSD2LivePipeline.kt",
+        "sha256": "fa32c6a3a951e84ca3dad1641c2192992a348d975bedb811f2b1275c24424711",
+        "matches_lock": true
+      },
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/core/RigBuilder.kt",
+        "sha256": "42f7d897ee2eefbe35422877cd1ae402ca82aded154f3cf5e22624a868154fcc",
+        "matches_lock": true
+      },
+      {
+        "engine_relative_path": "src/main/kotlin/io/github/psd2live/core/TextureOverride.kt",
+        "sha256": "396e3f306c459fbf12eba10e560d693fd729713e580b37da5725106362264e7b",
+        "matches_lock": true
+      }
+    ],
+    "all_lock_file_hashes_match": true,
+    "integration_source": {
+      "path": "integrations/psd2live/ManifestExport.kt",
+      "bytes": 59628,
+      "sha256": "b8bfe9c87e7d334baed7413d1cb596eaace2e2abc9dbdd4d2d4596b1d8454537"
+    },
+    "gradle_init_script": {
+      "path": "scripts/psd2live-init.gradle",
+      "bytes": 1267,
+      "sha256": "5e13ae8f16fd12c30b1faf651a1e50f99ee294cf024ba67f61b977b7aefe719f"
+    },
+    "compiled_output_record": {
+      "path": "work/pink-sakura/compiled-classes-record.json",
+      "bytes": 362898,
+      "sha256": "bb040ae222a1ce89aa3b4ea7a0da5f352e5a3c995db6d194e91225b43511f706"
+    },
+    "compiled_tree_sha256_v2": "e062a5eb359add7f59e9350ccb6708223bb3326ba252c5e180b704ae738e633b",
+    "resources_tree_sha256": "123381da55b9f753625f98eeb380c8dad8c2f1c88220bef2c3f158e7bdc61f33"
+  },
+  "jars": [
+    {
+      "coordinate": "com.squareup.okio:okio-jvm:3.17.0",
+      "path": "work/pink-sakura/headless-libs/okio-jvm-3.17.0.jar",
+      "bytes": 381985,
+      "sha256": "3b13dcc3e1573047c2d507fc4f7fcb0bb0cbcd9d395da21d20e09406e2cd6a73",
+      "verified_sha1": "a12d684ec0df9541b3869ae60a4a5257fd3613df",
+      "source_url": "https://repo.maven.apache.org/maven2/com/squareup/okio/okio-jvm/3.17.0/okio-jvm-3.17.0.jar",
+      "official_sha1_url": "https://repo.maven.apache.org/maven2/com/squareup/okio/okio-jvm/3.17.0/okio-jvm-3.17.0.jar.sha1",
+      "zip_crc_verified": true
+    },
+    {
+      "coordinate": "org.jdom:jdom:1.1.3",
+      "path": "work/pink-sakura/headless-libs/jdom-1.1.3.jar",
+      "bytes": 151304,
+      "sha256": "02bd61a725e8af9b0176b43bf29816d0c748b8ab951385bd127be37489325a0a",
+      "verified_sha1": "8bdfeb39fa929c35f5e4f0b02d34350db39a1efc",
+      "source_url": "https://repo.maven.apache.org/maven2/org/jdom/jdom/1.1.3/jdom-1.1.3.jar",
+      "official_sha1_url": "https://repo.maven.apache.org/maven2/org/jdom/jdom/1.1.3/jdom-1.1.3.jar.sha1",
+      "zip_crc_verified": true
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-reflect:2.4.10",
+      "path": "work/pink-sakura/headless-libs/kotlin-reflect-2.4.10.jar",
+      "bytes": 3750100,
+      "sha256": "25a1aef7454d46548ecaaf51021b0e52e38141a62ed75af124da109b7324c4e5",
+      "verified_sha1": "b413f69cc12908061adefa8b7161274b46a17752",
+      "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/2.4.10/kotlin-reflect-2.4.10.jar",
+      "official_sha1_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/2.4.10/kotlin-reflect-2.4.10.jar.sha1",
+      "zip_crc_verified": true
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-stdlib:2.4.10",
+      "path": "work/pink-sakura/headless-libs/kotlin-stdlib-2.4.10.jar",
+      "bytes": 1841933,
+      "sha256": "4ec0293bc3751423b203f1d8493251c57c42e73eb6377a6b8560d0974ff0a6df",
+      "verified_sha1": "8943c84ddc6d5cc00a10dbc3736c397066eeaab5",
+      "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.4.10/kotlin-stdlib-2.4.10.jar",
+      "official_sha1_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.4.10/kotlin-stdlib-2.4.10.jar.sha1",
+      "zip_crc_verified": true
+    },
+    {
+      "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.8.0",
+      "path": "work/pink-sakura/headless-libs/kotlinx-datetime-jvm-0.8.0.jar",
+      "bytes": 724820,
+      "sha256": "ee44b51f8977c2f51d575299a4fc6782ab3700eba4cfc7fad548cced1543936a",
+      "verified_sha1": "316346a7d44778581ff91154f72dfa576bce4ee2",
+      "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-datetime-jvm/0.8.0/kotlinx-datetime-jvm-0.8.0.jar",
+      "official_sha1_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-datetime-jvm/0.8.0/kotlinx-datetime-jvm-0.8.0.jar.sha1",
+      "zip_crc_verified": true
+    },
+    {
+      "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.11.0",
+      "path": "work/pink-sakura/headless-libs/kotlinx-serialization-core-jvm-1.11.0.jar",
+      "bytes": 404509,
+      "sha256": "f4a801c647d4351327cd9e1ac4113e2be9ea37a64ab0abae269c25a52e28f35d",
+      "verified_sha1": "c1905c9bf7452b045d5af9248835abe64ddad6bf",
+      "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.11.0/kotlinx-serialization-core-jvm-1.11.0.jar",
+      "official_sha1_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.11.0/kotlinx-serialization-core-jvm-1.11.0.jar.sha1",
+      "zip_crc_verified": true
+    },
+    {
+      "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.11.0",
+      "path": "work/pink-sakura/headless-libs/kotlinx-serialization-json-jvm-1.11.0.jar",
+      "bytes": 294166,
+      "sha256": "563a25b4eb5c9128ae9c2479f3d1a5c44dcd176112b91cf03682e906eba5c935",
+      "verified_sha1": "e7e045e99e56f07599bb9ccb708c2190e2af0606",
+      "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.11.0/kotlinx-serialization-json-jvm-1.11.0.jar",
+      "official_sha1_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.11.0/kotlinx-serialization-json-jvm-1.11.0.jar.sha1",
+      "zip_crc_verified": true
+    }
+  ],
+  "jar_download_record": {
+    "path": "work/pink-sakura/headless-libs/sources-and-checksums.json",
+    "bytes": 5822,
+    "sha256": "14e5a02ab7e62aa30c56d515605eade118fa2916a9b76cb249bf9aaef69ec81a"
+  },
+  "build_inputs": {
+    "manifest": {
+      "path": "work/pink-sakura/manifest.json",
+      "bytes": 742583,
+      "sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a"
+    },
+    "logical_canvas": {
+      "width": 1024,
+      "height": 1536
+    },
+    "source_layers": 22,
+    "recipe_files": [
+      {
+        "path": "work/pink-sakura/build-manifest.cjs",
+        "bytes": 7974,
+        "sha256": "5d08199c22e5ec5378b7a5809440f1d8903666c2c640f6d2f31d9761d76cbffb"
+      },
+      {
+        "path": "work/pink-sakura/body-regions.json",
+        "bytes": 684166,
+        "sha256": "1f163639cd22713fede158daf4dab4391fc0f61a5b8bd7775715921a2fa5afd3"
+      },
+      {
+        "path": "work/pink-sakura/face-regions.json",
+        "bytes": 21443,
+        "sha256": "fffcd4b9e693b692d8a6c8e8a2480b347f6d1754d5f2aeb5d4a3195594da6816"
+      },
+      {
+        "path": "work/pink-sakura/body-topwear-patch.json",
+        "bytes": 145716,
+        "sha256": "575c6e96896e6574c86d50f6df58ca16bca424354447a74a978027e88b0745b2"
+      }
+    ],
+    "source_images": [
+      {
+        "path": "work/pink-sakura/source/face-parts-v1.png",
+        "bytes": 1542947,
+        "sha256": "b1710863d1d9235af6db8d8473e0294474ed7b062e949fdc8d6de9f2546a0774"
+      },
+      {
+        "path": "work/pink-sakura/source/rear-hair-underpainting-v1.png",
+        "bytes": 1442437,
+        "sha256": "cc964cb5aff8a544b61da7008e987f91ea64eb6c58831aade1ef098717be666f"
+      },
+      {
+        "path": "work/pink-sakura/source/reference.png",
+        "bytes": 1632604,
+        "sha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca"
+      }
+    ]
+  },
+  "low06b": {
+    "artifacts": [
+      {
+        "path": "work/pink-sakura/low-06b/PinkSakura.2048/texture_00.png",
+        "bytes": 3206159,
+        "sha256": "29704262548bd4ea51984f589cca4bac56092fad07f264d099776154a2179338"
+      },
+      {
+        "path": "work/pink-sakura/low-06b/PinkSakura.moc3",
+        "bytes": 388544,
+        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+      },
+      {
+        "path": "work/pink-sakura/low-06b/PinkSakura.model3.json",
+        "bytes": 757,
+        "sha256": "784e33491c5c86e945ea515cb426f98633e2713028672c7528ad8b310d430e8b"
+      }
+    ],
+    "core_report": {
+      "path": "work/pink-sakura/core-low-06b.json",
+      "bytes": 225653,
+      "sha256": "0d668f509847d64b6861fe991a97fdf00029105abc782c7b563ddb74a887768c"
+    },
+    "web_pose_record": {
+      "path": "work/pink-sakura/web-poses-low-06b-retry/poses.json",
+      "bytes": 194809,
+      "sha256": "34d3427702e4dc3dd5df1621d5b8511bdb0fb133027eed74856044637a2535d6"
+    }
+  },
+  "hd": {
+    "modelJsonSha256": "34023a308cb00c621e6a199afb1598819b1196eb7d864a4ad50dd2dbe7bc4ee5",
+    "mocSha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+    "lowHdMocByteIdentical": true,
+    "textureSha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+    "nativeReport": "native-core.json",
+    "webReport": "web-smoke.json",
+    "poseReport": "web-poses.json"
+  },
+  "limitations": [
+    "Binary identity and source lock consistency are verified. A clean Gradle recompilation was not performed during this fallback.",
+    "Native Core, actual WebGL visual checks, and VTube Studio acceptance are separate from JVM build-input identity.",
+    "Recorded jars and compiled classes remain in ignored local work/cache; this record does not redistribute classes or establish third-party redistribution permission."
+  ],
+  "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
+  "originalLocalReportSha256": "1092be51b6ffc3fd33b9f0c71dec72fa03673ae5dc40cc29b7751f9efdf140a3"
+}

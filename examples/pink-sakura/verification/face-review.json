@@ -1,0 +1,492 @@
+{
+  "schema": "pink-sakura-independent-face-visual-review-v1",
+  "createdAt": "2026-09-12T12:47:29.968Z",
+  "reviewedModel": {
+    "name": "PinkSakura",
+    "mocSha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+    "atlasSha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+    "atlasDimensions": {
+      "width": 8192,
+      "height": 8192
+    },
+    "browser": {
+      "name": "chromium",
+      "version": "152.0.7977.83",
+      "playwrightPackage": "playwright",
+      "playwrightVersion": "1.63.0",
+      "explicitExecutablePath": true
+    },
+    "coreVersion": "5.1.0"
+  },
+  "status": "accepted-with-minor-visual-limitations",
+  "visualReviewExhaustive": false,
+  "scope": {
+    "manuallyReviewedFrames": 33,
+    "totalCapturedFrames": 80,
+    "eyeOpenness": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      0.85,
+      0.95,
+      1
+    ],
+    "mouthForm": [
+      -1,
+      0,
+      1
+    ],
+    "mouthOpen": [
+      0,
+      0.075,
+      0.15,
+      0.5,
+      1
+    ],
+    "headPoses": "Declared X/Y/Z minima and maxima plus two opposing head/body combinations",
+    "notCovered": [
+      "Every continuous parameter combination",
+      "Motion-to-motion temporal continuity across every frame",
+      "All body and hair poses",
+      "VTube Studio renderer acceptance",
+      "Actual webcam or body tracking"
+    ]
+  },
+  "method": [
+    "Actually viewed original PNG canvas captures with view_image, including neutral, all seven synchronous eye states, both winks, and several mouth states.",
+    "Viewed Java-generated diagnostic contact sheets containing all 15 mouth combinations and eight head poses; sheets only crop/assemble existing captures and do not retouch model art.",
+    "Compared same-pose low06b and HD closed-mouth canvas crops. Also compared stored native geometry/opacity hashes across all 80 matching low06b/HD pose records; this numeric comparison is distinct from the 33-frame manual visual review."
+  ],
+  "findings": [
+    {
+      "check": "Mouth skin continuity",
+      "result": "No rectangular skin-color patch or visible perimeter boundary observed in the 15 reviewed mouth combinations.",
+      "files": [
+        "mouth-form--1-open-0-face.png",
+        "mouth-form--1-open-0p075-face.png",
+        "mouth-form--1-open-0p15-face.png",
+        "mouth-form--1-open-0p5-face.png",
+        "mouth-frown-open-face.png",
+        "mouth-form-0-open-0-face.png",
+        "mouth-form-0-open-0p075-face.png",
+        "mouth-form-0-open-0p15-face.png",
+        "mouth-form-0-open-0p5-face.png",
+        "mouth-form-0-open-1-face.png",
+        "mouth-form-1-open-0-face.png",
+        "mouth-form-1-open-0p075-face.png",
+        "mouth-form-1-open-0p15-face.png",
+        "mouth-form-1-open-0p5-face.png",
+        "mouth-smile-open-face.png"
+      ]
+    },
+    {
+      "check": "Mouth seam registration",
+      "result": "Previously separated double lip lines at MouthOpen=.075 did not recur. Closed/open crossfade remains at one visible mouth location across MouthForm -1/0/1.",
+      "files": [
+        "mouth-form--1-open-0p075-face.png",
+        "mouth-form--1-open-0p15-face.png",
+        "mouth-form-0-open-0p075-face.png",
+        "mouth-form-0-open-0p15-face.png",
+        "mouth-form-1-open-0p075-face.png",
+        "mouth-form-1-open-0p15-face.png"
+      ]
+    },
+    {
+      "check": "Closed-eye corner continuity",
+      "result": "Both closed eyes and winks maintain connected eyelash silhouettes; no old white lower-eye arcs or detached corner fragments were observed.",
+      "files": [
+        "eyes-closed-face.png",
+        "eyes-25-face.png",
+        "eyes-half-face.png",
+        "eyes-75-face.png",
+        "eyes-85-face.png",
+        "eyes-95-face.png",
+        "eyes-open-face.png",
+        "wink-l-face.png",
+        "wink-r-face.png"
+      ]
+    },
+    {
+      "check": "Near-open transition and upper-lid folds",
+      "result": "At .75/.85/.95, upper-lid folds are retained as fine lines; the earlier threshold-induced brown dotted fragments were not observed. No new obvious gap between replacement and original lash was seen.",
+      "files": [
+        "eyes-75-face.png",
+        "eyes-85-face.png",
+        "eyes-95-face.png"
+      ]
+    },
+    {
+      "check": "HD registration",
+      "result": "No apparent eye/mouth relocation or new facial patch displacement observed after upscale in the sampled face/head poses. Numeric geometry and opacity hashes match across all 80 corresponding low06b/HD pose records.",
+      "geometryPairsCompared": 80,
+      "geometryDifferences": [],
+      "files": [
+        "head-x-min-face.png",
+        "head-x-max-face.png",
+        "head-y-min-face.png",
+        "head-y-max-face.png",
+        "head-z-min-face.png",
+        "head-z-max-face.png",
+        "head-left-face.png",
+        "head-right-face.png"
+      ]
+    }
+  ],
+  "visibleLimitations": [
+    {
+      "severity": "minor",
+      "area": "Very fine closed-mouth ink",
+      "detail": "In magnified HD face crops, the delicate closed smile has slightly grainy/paler sections and stronger pink corners than the low06b crop. This is an edge/color-quality limitation, not a visible skin rectangle or spatial misregistration.",
+      "files": [
+        "neutral-face.png",
+        "mouth-form--1-open-0-face.png",
+        "mouth-form-0-open-0-face.png",
+        "mouth-form-1-open-0-face.png"
+      ],
+      "comparison": "face-review-hd-mouth-comparison.png"
+    },
+    {
+      "severity": "minor",
+      "area": "Closed-lash edge quality",
+      "detail": "Closed lashes remain stylistically broad with somewhat blunt outer ends and slight stair-stepping visible under enlargement. HD does not add a separated extra stroke, but this is not the edge finesse of a fully hand-authored high-resolution eyelash alpha.",
+      "files": [
+        "eyes-closed-face.png",
+        "wink-l-face.png",
+        "wink-r-face.png"
+      ]
+    },
+    {
+      "severity": "behavioral",
+      "area": "Eye input response",
+      "detail": "EyeOpen=0 and .25 are visually identical in this rig; their captured PNG hashes are equal. The closing response is intentionally non-linear and includes a closed-pose plateau, so these static samples do not establish a linear or fully calibrated real-camera response.",
+      "files": [
+        "eyes-closed-face.png",
+        "eyes-25-face.png"
+      ]
+    },
+    {
+      "severity": "scope",
+      "area": "Head rotation",
+      "detail": "The sampled head extrema preserve the approved frontal face with modest movement. They do not demonstrate a fully drawn side profile or unrestricted large-angle rotation.",
+      "files": [
+        "head-x-min-face.png",
+        "head-x-max-face.png",
+        "head-y-min-face.png",
+        "head-y-max-face.png",
+        "head-z-min-face.png",
+        "head-z-max-face.png",
+        "head-left-face.png",
+        "head-right-face.png"
+      ]
+    }
+  ],
+  "diagnostics": [
+    "face-review-hd-mouth.png",
+    "face-review-hd-eyes.png",
+    "face-review-hd-head.png",
+    "face-review-hd-mouth-comparison.png"
+  ],
+  "evidence": [
+    {
+      "file": "web-poses-hd/neutral-face.png",
+      "sha256": "68d27469424949e7558055250aa07f50f5043010435ef50f02f1900f18621ec3",
+      "requested": {},
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/eyes-closed-face.png",
+      "sha256": "11a13b4f864b9b8e96633c1fcca5688e3153952839ce8ab44f63e68494e338a7",
+      "requested": {
+        "ParamEyeLOpen": 0,
+        "ParamEyeROpen": 0
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/eyes-25-face.png",
+      "sha256": "11a13b4f864b9b8e96633c1fcca5688e3153952839ce8ab44f63e68494e338a7",
+      "requested": {
+        "ParamEyeLOpen": 0.25,
+        "ParamEyeROpen": 0.25
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/eyes-half-face.png",
+      "sha256": "5232b8632fe141fadcd51e1aeff95b40d21231bcd80740911ab964276944a653",
+      "requested": {
+        "ParamEyeLOpen": 0.5,
+        "ParamEyeROpen": 0.5
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/eyes-75-face.png",
+      "sha256": "0577f4a62c51611b1e0437587769912f51e37fd53c7bb94094dfaff76d51a5d7",
+      "requested": {
+        "ParamEyeLOpen": 0.75,
+        "ParamEyeROpen": 0.75
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/eyes-85-face.png",
+      "sha256": "1963492574219edbf71820b801279cad4bac8a8f28fcbbefbe9ed6e2109064a3",
+      "requested": {
+        "ParamEyeLOpen": 0.85,
+        "ParamEyeROpen": 0.85
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/eyes-95-face.png",
+      "sha256": "fc67c1defe8ec0be76fbd5e3daf8b9d67da57ad71d11e5fa1f02735b88e0f49c",
+      "requested": {
+        "ParamEyeLOpen": 0.95,
+        "ParamEyeROpen": 0.95
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/eyes-open-face.png",
+      "sha256": "68d27469424949e7558055250aa07f50f5043010435ef50f02f1900f18621ec3",
+      "requested": {
+        "ParamEyeLOpen": 1,
+        "ParamEyeROpen": 1
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/wink-l-face.png",
+      "sha256": "42a6d3e01e78d98fc20f18272f5671729b0aaeda0b041482684bdc2702630175",
+      "requested": {
+        "ParamEyeLOpen": 0
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/wink-r-face.png",
+      "sha256": "1b427d20d561a1a899294182ff7343004916b40d0a2eba18946228975677a9ed",
+      "requested": {
+        "ParamEyeROpen": 0
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form--1-open-0-face.png",
+      "sha256": "547e31e8fe17d5e8a52255c1ca5af89b133a5133ed5c32e2799a8407cf22b986",
+      "requested": {
+        "ParamMouthForm": -1,
+        "ParamMouthOpenY": 0
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form--1-open-0p075-face.png",
+      "sha256": "87c0d4ed7da2073cc2dd0610927f8a74138c0dce115361331adb21b9084efb54",
+      "requested": {
+        "ParamMouthForm": -1,
+        "ParamMouthOpenY": 0.075
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form--1-open-0p15-face.png",
+      "sha256": "ea0521574808118d266eef937f389b0d8002f74fe07438ea3444ba8917a496cb",
+      "requested": {
+        "ParamMouthForm": -1,
+        "ParamMouthOpenY": 0.15
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form--1-open-0p5-face.png",
+      "sha256": "efd1f8f219619102b05517d8af8d6b29de0270a5d077ddf73f202584e4620f4e",
+      "requested": {
+        "ParamMouthForm": -1,
+        "ParamMouthOpenY": 0.5
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-frown-open-face.png",
+      "sha256": "0a8e8eb585e157c2014e86f90023b70e2e8c06a425c8e65423d1d8826ca323f9",
+      "requested": {
+        "ParamMouthForm": -1,
+        "ParamMouthOpenY": 1
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-0-open-0-face.png",
+      "sha256": "68d27469424949e7558055250aa07f50f5043010435ef50f02f1900f18621ec3",
+      "requested": {
+        "ParamMouthForm": 0,
+        "ParamMouthOpenY": 0
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-0-open-0p075-face.png",
+      "sha256": "9c20c1b17e380ba858e0b66c3676d81b1bef4a6dd46460c1dcb051073184e941",
+      "requested": {
+        "ParamMouthForm": 0,
+        "ParamMouthOpenY": 0.075
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-0-open-0p15-face.png",
+      "sha256": "5204bc302d684547f7a45842e7076a75e735ca9cae99ffbc5ff8f9fc571c2454",
+      "requested": {
+        "ParamMouthForm": 0,
+        "ParamMouthOpenY": 0.15
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-0-open-0p5-face.png",
+      "sha256": "9df6c04c4f09558eac34ac0c2ef65421b61444e39673867b065820a334ebb031",
+      "requested": {
+        "ParamMouthForm": 0,
+        "ParamMouthOpenY": 0.5
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-0-open-1-face.png",
+      "sha256": "f60878c7eb32d939494b29d659fb84a7c2be85f630fe7f61572484116734ea0e",
+      "requested": {
+        "ParamMouthForm": 0,
+        "ParamMouthOpenY": 1
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-1-open-0-face.png",
+      "sha256": "be264aa50d9a1c5ac1f62bcef6e4cc0859ab9d387328e6e3d987444bc5457a83",
+      "requested": {
+        "ParamMouthForm": 1,
+        "ParamMouthOpenY": 0
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-1-open-0p075-face.png",
+      "sha256": "46977f7366f4797c8d9ecff11380b725b7f02e1794be10151845e82158737694",
+      "requested": {
+        "ParamMouthForm": 1,
+        "ParamMouthOpenY": 0.075
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-1-open-0p15-face.png",
+      "sha256": "86903e4a54b43773a4b10c1ad558e4fae8ad214450775c19f6a1f38394ffb58a",
+      "requested": {
+        "ParamMouthForm": 1,
+        "ParamMouthOpenY": 0.15
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-form-1-open-0p5-face.png",
+      "sha256": "1f6e1ba36feb8eb4e88a0573169c9eb389b120beae58632e7efe1b70edabc140",
+      "requested": {
+        "ParamMouthForm": 1,
+        "ParamMouthOpenY": 0.5
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/mouth-smile-open-face.png",
+      "sha256": "b30bf02ef736a654b2f8f188fa8d0c5d32adb0381b951e42637405a9d69492c7",
+      "requested": {
+        "ParamMouthForm": 1,
+        "ParamMouthOpenY": 1
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-x-min-face.png",
+      "sha256": "fb36036497c57ae8ba4de6942ac330b83d55ee0aba4121755e4f2ee8fba2c0ec",
+      "requested": {
+        "ParamAngleX": -45
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-x-max-face.png",
+      "sha256": "88e5b7f18b56ec11bfbb0716e2bf676c6d2a6d0c17e5a83e128523cd0f41a70b",
+      "requested": {
+        "ParamAngleX": 45
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-y-min-face.png",
+      "sha256": "aa9920538d70c22838e79ea87c69265bf9d9ed57950111c26b484df22c91c998",
+      "requested": {
+        "ParamAngleY": -30
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-y-max-face.png",
+      "sha256": "7414081c57149b052c8a473c13d93bf49d45700085f9bdf2d4e9a66e4a4d6f2c",
+      "requested": {
+        "ParamAngleY": 30
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-z-min-face.png",
+      "sha256": "1645b81307f09fc34e4bcce85b9688bc3ad3b63ebbb31178d9f17e5c180614b2",
+      "requested": {
+        "ParamAngleZ": -30
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-z-max-face.png",
+      "sha256": "1a55330b2bd1a0cb68f0c367e40f4afd7e7f6abe38b6c4db81a5d47331100c81",
+      "requested": {
+        "ParamAngleZ": 30
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-left-face.png",
+      "sha256": "2349cb6979d3cf01cbcbc7822f630a656bf2b22e58e6117fdfbdcc50fe62e3bd",
+      "requested": {
+        "ParamAngleX": -45,
+        "ParamBodyAngleX": 10,
+        "ParamAngleY": 30,
+        "ParamBodyAngleY": -10,
+        "ParamAngleZ": -30,
+        "ParamBodyAngleZ": 10
+      },
+      "parameterValuesVerified": true
+    },
+    {
+      "file": "web-poses-hd/head-right-face.png",
+      "sha256": "3f21ce4b59a864c8182bd23e8a922e12e734a3357893b826285c446e266ea636",
+      "requested": {
+        "ParamAngleX": 45,
+        "ParamBodyAngleX": -10,
+        "ParamAngleY": -30,
+        "ParamBodyAngleY": 10,
+        "ParamAngleZ": 30,
+        "ParamBodyAngleZ": -10
+      },
+      "parameterValuesVerified": true
+    }
+  ],
+  "deviceAccess": {
+    "thisReviewOpenedVTubeStudio": false,
+    "thisReviewAccessedCamera": false,
+    "captureReportDeviceRequests": []
+  },
+  "conclusion": "The reviewed HD facial samples resolve the earlier skin-block, separated-mouth-line and disconnected-eye-corner failures. Minor thin-line and eyelash-alpha edge limitations remain and are explicitly recorded. This is a bounded visual review, not exhaustive animation or VTube Studio acceptance."
+}

@@ -8,7 +8,8 @@
 
 [![Workflow](https://img.shields.io/badge/Workflow-Art%20to%20Live2D-5277C3?style=flat-square)](docs/workflow.md)
 [![Agent](https://img.shields.io/badge/Case-GPT--6%20Astra%20Ultra-7564AB?style=flat-square)](docs/case-study.md)
-[![License](https://img.shields.io/badge/License-MIT%20%2B%20GPL--3.0-32998A?style=flat-square)](THIRD_PARTY_NOTICES.md)
+[![Code license](https://img.shields.io/badge/Code-MIT%20%2B%20GPL--3.0-32998A?style=flat-square)](THIRD_PARTY_NOTICES.md)
+[![Example assets](https://img.shields.io/badge/Example%20assets-CC%20BY%204.0-C47D98?style=flat-square)](examples/pink-sakura/LICENSE.md)
 [![Validation](https://img.shields.io/badge/Validation-Core%20%2B%20WebGL-3C89A3?style=flat-square)](docs/verification.md)
 
 [快速开始](#快速开始) · [角色示例](examples/pink-sakura/README.md) · [工具参考库](tools/README.md) · [完整流程](docs/workflow.md) · [排错经验](docs/troubleshooting.md) · [Agent Skill](SKILL.md)
@@ -156,7 +157,7 @@ python3 work/minimal/preview/server.py --port 8793
 
 **[查看完整工具目录 →](tools/README.md)** · [机器可读清单](tools/catalog.json) · [命令速查](tools/commands.md) · [宿主能力映射](tools/host-capabilities.md)
 
-参考库现有 **43 项**，分为生产使用、辅助验证、仅评估与 kit 开发。
+参考库现有 **44 项**，分为生产使用、辅助验证、仅评估与 kit 开发。
 每项记录用途、使用证据、已知版本、上游来源、获取方式和许可边界。
 仓库保留我们编写的适配器、补丁和脚本；第三方应用、权重和 SDK 通过原始来源获取。
 
@@ -187,7 +188,24 @@ python3 work/minimal/preview/server.py --port 8793
 
 ## 角色示例与来源保护
 
-**[Pink Sakura →](examples/pink-sakura/README.md)** 正在按完整流程制作，尚未交付运行包；此处不继承上方几何示例的验收结果。
+**[Pink Sakura →](examples/pink-sakura/README.md)** 已收录可运行模型、五张源素材、角色拆层配方与验证证据。
+下面的演示从实际高清模型的 WebGL 画布录制，使用合成面捕输入；没有读取摄像头。
+
+<div align="center">
+
+<a href="examples/pink-sakura/README.md"><img src="examples/pink-sakura/verification/preview.gif" width="440" alt="Pink Sakura 实际 Live2D 模型：转头、眨眼、嘴形和头发摆动演示"></a>
+
+**[获取模型](examples/pink-sakura/runtime/) · [按配方重建](examples/pink-sakura/README.md#复现模板) · [原始参考](examples/pink-sakura/source/reference.png)**
+
+</div>
+
+| 模型结构 | 动漫超分 | 实际验证 |
+| --- | --- | --- |
+| **22 个源层 · 24 个 Drawable · 22 个参数** | **2048² → 8192²**，AnimeVideo v3 4× | **198** 个原生姿态 · **22** 项 Web 检查 |
+| 眼睛、嘴形、头身、呼吸与 8 个头发参数 | 独立 alpha，低清/高清 MOC 逐字节一致 | **55** 个姿态、**80** 张画布截图，另录制 72 帧演示 |
+
+完整证据见 [示例验证目录](examples/pink-sakura/verification/)；VTube Studio 仍由用户验收。
+这是保守角度的 2D 绑定示例，身体使用整体图层，没有独立手臂/手指追踪。
 原始参考图按用户说明标注“此图片来自 ChatGPT Image2.5 生成”，隐藏补画和模型制作分别记录来源。
 
 该示例素材采用 **[CC BY 4.0](examples/pink-sakura/LICENSE.md)**，允许署名使用和修改，禁止冒认原作者；
@@ -224,7 +242,7 @@ live2d-agent-kit/
 ├── scripts/                 导出、超分、Core 检查、预览与打包
 ├── templates/web-preview/   通用真实模型网页模板
 ├── examples/minimal-model/  原创几何测试素材生成器
-├── examples/pink-sakura/    授权粉色角色示例，制作中；素材 CC BY 4.0
+├── examples/pink-sakura/    粉色角色源图、配方、高清模型与证据；素材 CC BY 4.0
 ├── tests/                   无 SDK 的自动检查
 └── third_party/             补丁与适配器适用的 GPL 许可文本
 ```

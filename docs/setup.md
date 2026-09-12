@@ -53,6 +53,84 @@ export PSD2LIVE_DIR=/path/to/isolated/psd2live
 引擎是 GPL，不是 MIT；参见 [第三方声明](../THIRD_PARTY_NOTICES.md)。
 本机缓存不会提交到仓库。验证过的补丁也不意味着上游新版本可直接套用。
 
+## 依赖缓存缺失时怎样恢复
+
+先确定缺失的是构建工具、运行依赖、已编译类还是浏览器。保存失败命令与原始错误、源代码提交及补丁身份，不要先删掉尚能使用的缓存。`ClassNotFoundException`、Gradle 下载失败、Playwright 找不到浏览器和模型解析失败应分别处理；它们不会因为都出现在导出/预览阶段就成为同一个模型问题。
+
+### 优先恢复固定版本的正常构建
+
+在隔离工作目录中核对 JDK 21、固定上游提交和 `engine-lock.json`，再让原 Gradle Wrapper 恢复依赖。沿用构建文件声明的仓库与版本，记录实际下载来源及 SHA；不要为绕过下载失败临时替换为“最新版”。Gradle 的离线模式只能使用已经存在的依赖，缺少所需模块时仍会失败；`--refresh-dependencies` 会重新检查依赖，不能被当作断网修复。见 [Gradle 缓存说明](https://docs.gradle.org/current/userguide/dependency_caching.html)。
+
+### 已有编译类只能作为有记录的恢复路径
+
+Pink Sakura 制作中曾保留同一工作版本已经编译好的 headless engine 类，在运行依赖缓存丢失后，从 Maven Central 补齐以下七个 JAR，恢复了 `low-06b` 的实际导出。该记录证明已有环境的运行入口恢复，**不是在干净环境中重新编译完整 psd2live、GUI、MCP 和全部依赖的验证**。
+
+| 该次局部运行依赖 | 记录版本 |
+| --- | --- |
+| `org.jetbrains.kotlin:kotlin-stdlib` | 2.4.10 |
+| `org.jetbrains.kotlin:kotlin-reflect` | 2.4.10 |
+| `org.jetbrains.kotlinx:kotlinx-serialization-core-jvm` | 1.11.0 |
+| `org.jetbrains.kotlinx:kotlinx-serialization-json-jvm` | 1.11.0 |
+| `org.jetbrains.kotlinx:kotlinx-datetime-jvm` | 0.8.0 |
+| `com.squareup.okio:okio-jvm` | 3.17.0 |
+| `org.jdom:jdom` | 1.1.3 |
+
+这七项是该次已编译入口实际需要的运行依赖，不是可替代 Gradle 的完整依赖锁文件。记录它们的坐标、版本、取得 URL、字节数与 SHA-256；JAR 和类文件保留在本机忽略目录，不提交到仓库，也不随角色运行包分发。
+
+复用之前，要能说明编译类来自哪个源代码与补丁版本、编译工具版本，以及此后是否改过引擎/适配器。记录类文件树和入口类指纹，并写明文件树摘要的算法与排序规则；只保存一个无法解释的摘要不足以重建来源。源代码变更后应重新构建；不能拿旧类执行成功，声称新源码已经通过构建。临时手动 classpath 也应整理为相对工作目录记录，不复制个人缓存路径。
+
+恢复后对新生成的 MOC 重新运行 Core 和资源检查，保留导出器自己的 warnings。若之后恢复了完整 Gradle 构建，应在新目录重跑并单独记录结果；已有类恢复、干净构建、最终美术与 VTS 验收分别报告。
+
+### 浏览器模块与浏览器程序分别恢复
+
+`PLAYWRIGHT_MODULE` 只指定 Node.js 模块，不会自动提供浏览器二进制或把默认浏览器改为 Chrome。先确认选中的 Playwright 包版本，再恢复它对应的浏览器。Playwright 官方说明不同版本对应特定浏览器版本，也允许通过 `channel: 'chrome'` 选择已安装的 Google Chrome；品牌浏览器与默认 headless shell 的行为需要分别验证。见 [Playwright 浏览器说明](https://playwright.dev/docs/browsers)。
+
+此次恢复实际使用 Playwright **1.63.0** 与已安装的 Google Chrome **152.0.7977.83**，完成 Pink Sakura 最终高清模型的 22 项 Web 自动检查和 55 个姿态、80 帧画布检查。Web Core 为 5.1.0，WebGL 最大纹理尺寸实测 16384；浏览器实际收到的 MOC 和图集 SHA 与交付文件一致。结果见 [Web 检查报告](../examples/pink-sakura/verification/web-smoke.json)和[姿态记录](../examples/pink-sakura/verification/web-poses.json)，视觉与 VTS 验收分别记录。
+
+仓库检查脚本支持通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/path/to/chrome` 显式指定已有 Chromium/Chrome 程序，并在报告中记录实际版本。它与 `PLAYWRIGHT_MODULE` 分工不同；未设置程序路径时仍使用 Playwright 默认浏览器。该次恢复使用显式程序路径，不应改写成默认浏览器测试或干净环境安装验证。
+
+恢复期间使用单独浏览器上下文，不复用用户登录资料或已有页面。检查 WebGL 是否可用，再验证实际页面载入的 MOC、纹理和 Core 文件身份；浏览器能启动不代表模型正确。Core Web、PixiJS 等页面依赖也与 Playwright 的浏览器程序分开记录。
+
+### 可公开的恢复元数据
+
+公开记录可以包含组件版本、来源 URL、文件指纹和验证范围；用户名、机器缓存绝对路径、浏览器配置文件、类/JAR/SDK 二进制不进入仓库。下面是**待填写的记录结构**，不是一份通过报告；未知字段保留 `null`，不要补造。
+
+```json
+{
+  "schemaVersion": 1,
+  "recordType": "dependency-recovery",
+  "scope": "existing-compiled-classes recovery; clean source build not validated",
+  "engineLock": "integrations/psd2live/engine-lock.json",
+  "compiledClasses": {
+    "reused": true,
+    "sourceIdentity": null,
+    "classTreeSha256": null,
+    "classTreeDigestMethod": null,
+    "entryClassSha256": null
+  },
+  "runtimeDependencies": [
+    {"coordinate": "group:artifact:version", "sourceUrl": null, "bytes": null, "sha256": null}
+  ],
+  "browser": {
+    "playwrightVersion": "1.63.0",
+    "explicitExecutablePath": true,
+    "actualBrowserVersion": null,
+    "launcherSha256": null,
+    "webReport": null
+  },
+  "validation": {
+    "cleanSourceBuildValidated": false,
+    "exportReport": null,
+    "exportWarnings": null,
+    "nativeCoreReport": null,
+    "finalHdAndWebStatus": "pending",
+    "vtubeStudioStatus": "pending-user-acceptance"
+  }
+}
+```
+
+对每个实际恢复的 JAR 各写一条，报告路径使用仓库或发布记录的相对路径。正式填写后，这份说明与最终资源 SHA、Core 报告、Web 报告一起用于解释制作过程；它不能替代任何一个实际验收结果。
+
 ## 配置本机官方 Core
 
 从 [Live2D 官方 SDK](https://www.live2d.com/en/sdk/download/) 或现有合法安装中
@@ -91,7 +169,7 @@ export VALIDATOR_JAVA=/path/to/jdk-21/bin/java
 默认端口 8793 被占用时选择另一个端口，不要关闭别的服务。
 
 如需自动网页检查，在工作机安装 Playwright 与 Chromium；可使用已有模块并通过
-`PLAYWRIGHT_MODULE` 指定其路径。测试脚本不会安装浏览器或访问摄像头。
+`PLAYWRIGHT_MODULE` 指定其路径，或再通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE` 选择已安装的 Chromium/Chrome 程序。测试脚本不会安装浏览器或访问摄像头。
 
 [动漫超分说明](upscaling.md) 包含 NCNN 模型获取、实际使用指纹、命令参数和验证步骤。
 本仓库不包含 `.bin/.param/.pth` 等权重。已有权重直接传 `--models`，不要求固定磁盘名。

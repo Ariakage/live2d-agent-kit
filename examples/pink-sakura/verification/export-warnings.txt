@@ -1,0 +1,11 @@
+检测到同名图层：back hair-arc, back hair-outer, front hair-side, eyewhite, irides, eyelash；已通过稳定图层 ID 区分。
+生成模型：ArtMeshEyeCloseL 默认姿态与 PSD 有明显偏差；期望=Bounds(left=524.0, top=228.0, right=580.0, bottom=245.0)，实际=Bounds(left=519.4926, top=209.26668, right=582.8206, bottom=229.27116)
+生成模型：ArtMeshEyeCloseR 默认姿态与 PSD 有明显偏差；期望=Bounds(left=413.0, top=229.0, right=470.0, bottom=246.0)，实际=Bounds(left=412.627, top=212.39005, right=469.65393, bottom=230.01816)
+生成模型：ArtMeshBackHairL3 默认姿态与 PSD 有明显偏差；期望=Bounds(left=652.0, top=268.0, right=662.0, bottom=300.0)，实际=Bounds(left=651.99994, top=275.235, right=661.9999, bottom=300.00006)
+MOC3 回读：ArtMeshEyeCloseR 默认姿态与 PSD 有明显偏差；期望=Bounds(left=413.0, top=229.0, right=470.0, bottom=246.0)，实际=Bounds(left=412.62808, top=212.39044, right=469.65433, bottom=230.01848)
+MOC3 回读：ArtMeshEyeCloseL 默认姿态与 PSD 有明显偏差；期望=Bounds(left=524.0, top=228.0, right=580.0, bottom=245.0)，实际=Bounds(left=519.4917, top=209.26639, right=582.8208, bottom=229.27095)
+MOC3 回读：ArtMeshBackHairL3 默认姿态与 PSD 有明显偏差；期望=Bounds(left=652.0, top=268.0, right=662.0, bottom=300.0)，实际=Bounds(left=651.9888, top=275.248, right=662.0114, bottom=300.01224)
+CMO3：未保留原始 PSD 源图编辑链；已从 1 页贴图重建可编辑图层（模型/Rig 数据仍保留）
+CMO3 回读：ArtMeshEyeCloseR 默认姿态与 PSD 有明显偏差；期望=Bounds(left=413.0, top=229.0, right=470.0, bottom=246.0)，实际=Bounds(left=412.62808, top=212.39044, right=469.65433, bottom=230.01848)
+CMO3 回读：ArtMeshEyeCloseL 默认姿态与 PSD 有明显偏差；期望=Bounds(left=524.0, top=228.0, right=580.0, bottom=245.0)，实际=Bounds(left=519.4917, top=209.26639, right=582.8208, bottom=229.27095)
+CMO3 回读：ArtMeshBackHairL3 默认姿态与 PSD 有明显偏差；期望=Bounds(left=652.0, top=268.0, right=662.0, bottom=300.0)，实际=Bounds(left=651.9888, top=275.248, right=662.0114, bottom=300.01224)

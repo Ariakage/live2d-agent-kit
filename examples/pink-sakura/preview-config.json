@@ -1,0 +1,10 @@
+{
+ "label":"Pink Sakura · Ariakage / live2d-agent-kit",
+ "drawing":{"width":1024,"height":1536},
+ "regions":{
+  "full":{"x":38,"y":0,"w":920,"h":1536},
+  "portrait":{"x":100,"y":0,"w":800,"h":900},
+  "face":{"x":306,"y":0,"w":390,"h":365}
+ },
+ "inputMapping":{}
+}

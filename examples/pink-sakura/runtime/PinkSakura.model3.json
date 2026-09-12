@@ -1,0 +1,50 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "PinkSakura.moc3",
+		"Textures": [
+			"PinkSakura.8192/texture_00.png"
+		],
+		"Physics": "PinkSakura.physics3.json",
+		"DisplayInfo": "PinkSakura.cdi3.json",
+		"Motions": {
+			"Idle": [
+				{
+					"File": "PinkSakura.idle.motion3.json"
+				}
+			],
+			"Blink": [
+				{
+					"File": "PinkSakura.blink.motion3.json"
+				}
+			],
+			"Nod": [
+				{
+					"File": "PinkSakura.nod.motion3.json"
+				}
+			],
+			"Shake": [
+				{
+					"File": "PinkSakura.shake.motion3.json"
+				}
+			]
+		}
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthOpenY"
+			]
+		}
+	]
+}
