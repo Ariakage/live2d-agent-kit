@@ -1,0 +1,206 @@
+{
+  "scope": "Current GenerateExample with two original geometric eyebrows; real LOW/HD exports using existing compiled classes, actual NCNN AnimeVideo 4x, native Core, real WebGL simulation. Not a cold build, camera or VTS test.",
+  "passed": true,
+  "mocSha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9",
+  "lowHdMocIdentical": true,
+  "counts": {
+    "parameters": 19,
+    "drawables": 18,
+    "vertices": 3050,
+    "triangles": 3702
+  },
+  "coreVersion": "06.00.0257 (100663553)",
+  "coreWarnings": [],
+  "webChecks": 22,
+  "webWarnings": [],
+  "visibleParameters": [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamAngleZ",
+    "ParamBodyAngleX",
+    "ParamBodyAngleY",
+    "ParamBodyAngleZ",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamEyeBallX",
+    "ParamEyeBallY",
+    "ParamEyeBallForm",
+    "ParamBrowLY",
+    "ParamBrowRY",
+    "ParamMouthForm",
+    "ParamMouthOpenY",
+    "ParamBreath",
+    "ParamTieSwing",
+    "ParamFrontHairSwing",
+    "ParamBackHairSwing"
+  ],
+  "frames": 67,
+  "browser": {
+    "name": "chromium",
+    "version": "152.0.7977.83",
+    "playwrightPackage": "playwright",
+    "playwrightVersion": "1.63.0",
+    "explicitExecutablePath": true
+  },
+  "brows": [
+    {
+      "id": "ParamBrowLY",
+      "min": -1.0,
+      "default": 0.0,
+      "max": 1.0,
+      "minPose": {
+        "name": "ParamBrowLY:min",
+        "finite": true,
+        "activeMeshes": 15,
+        "changedMeshes": 1,
+        "changedMeshIds": [
+          "ArtMeshEyebrowL"
+        ],
+        "maxVertexDisplacementPixels": 1.080139160157934,
+        "maxOpacityChange": 0.0,
+        "degenerateTriangles": 1024,
+        "degenerateMeshes": [
+          {
+            "id": "ArtMeshMouthOpen",
+            "triangles": 1024,
+            "opacity": 0.0
+          }
+        ],
+        "trianglesFlippedFromNeutral": 0,
+        "flippedMeshes": [],
+        "boundsModelUnits": [
+          -0.19140787422657013,
+          -0.48044249415397644,
+          0.19140155613422394,
+          0.5683586597442627
+        ]
+      },
+      "maxPose": {
+        "name": "ParamBrowLY:max",
+        "finite": true,
+        "activeMeshes": 15,
+        "changedMeshes": 1,
+        "changedMeshIds": [
+          "ArtMeshEyebrowL"
+        ],
+        "maxVertexDisplacementPixels": 1.0801544189453125,
+        "maxOpacityChange": 0.0,
+        "degenerateTriangles": 1024,
+        "degenerateMeshes": [
+          {
+            "id": "ArtMeshMouthOpen",
+            "triangles": 1024,
+            "opacity": 0.0
+          }
+        ],
+        "trianglesFlippedFromNeutral": 0,
+        "flippedMeshes": [],
+        "boundsModelUnits": [
+          -0.19140787422657013,
+          -0.48044249415397644,
+          0.19140155613422394,
+          0.5683586597442627
+        ]
+      },
+      "affectsModel": true
+    },
+    {
+      "id": "ParamBrowRY",
+      "min": -1.0,
+      "default": 0.0,
+      "max": 1.0,
+      "minPose": {
+        "name": "ParamBrowRY:min",
+        "finite": true,
+        "activeMeshes": 15,
+        "changedMeshes": 1,
+        "changedMeshIds": [
+          "ArtMeshEyebrowR"
+        ],
+        "maxVertexDisplacementPixels": 1.0801391601629862,
+        "maxOpacityChange": 0.0,
+        "degenerateTriangles": 1024,
+        "degenerateMeshes": [
+          {
+            "id": "ArtMeshMouthOpen",
+            "triangles": 1024,
+            "opacity": 0.0
+          }
+        ],
+        "trianglesFlippedFromNeutral": 0,
+        "flippedMeshes": [],
+        "boundsModelUnits": [
+          -0.19140787422657013,
+          -0.48044249415397644,
+          0.19140155613422394,
+          0.5683586597442627
+        ]
+      },
+      "maxPose": {
+        "name": "ParamBrowRY:max",
+        "finite": true,
+        "activeMeshes": 15,
+        "changedMeshes": 1,
+        "changedMeshIds": [
+          "ArtMeshEyebrowR"
+        ],
+        "maxVertexDisplacementPixels": 1.0801391601629862,
+        "maxOpacityChange": 0.0,
+        "degenerateTriangles": 1024,
+        "degenerateMeshes": [
+          {
+            "id": "ArtMeshMouthOpen",
+            "triangles": 1024,
+            "opacity": 0.0
+          }
+        ],
+        "trianglesFlippedFromNeutral": 0,
+        "flippedMeshes": [],
+        "boundsModelUnits": [
+          -0.19140787422657013,
+          -0.48044249415397644,
+          0.19140155613422394,
+          0.5683586597442627
+        ]
+      },
+      "affectsModel": true
+    }
+  ],
+  "atlas": {
+    "low": [
+      1024,
+      1024
+    ],
+    "hd": [
+      4096,
+      4096
+    ],
+    "lowSha256": "da54af0069a6122a3da0a6cd101d153ca498d77f98af9d4ffced99f5ece9a42d",
+    "hdSha256": "28b8ed4911b7fd883c790131c7598bcfb20803caaf529ba3fbb74ff76259aac7"
+  },
+  "ownServerStopped": true,
+  "sourceLayers": 16,
+  "generatorSha256": "d3b036c7f181219277b63c085532496356ba862b8816f4601b3fa3a8e85b94e3",
+  "localEvidenceIdentities": [
+    {
+      "file": "work/brow-minimal/core-hd.json",
+      "sha256": "567dc8c841a7fb77186512f8dadcd7f5c529204cfd34252d29119c7dbbc4d9cc",
+      "bytes": 274657
+    },
+    {
+      "file": "work/brow-minimal/web.json",
+      "sha256": "47445f19fe96f7331894e87874f6fc808f24cda6a6a711913438ab2847b24041",
+      "bytes": 9740
+    },
+    {
+      "file": "work/brow-minimal/web-poses/poses.json",
+      "sha256": "04f877e62d8bba6c5053e5075843573fba265ff2665abaa612553722a69f722d",
+      "bytes": 147568
+    },
+    {
+      "file": "work/brow-minimal/upscale/upscale-report.json",
+      "sha256": "672a7961cc858afce4467e5a60857e1279effcf39946ca285dcddea0b75afc0f",
+      "bytes": 2103
+    }
+  ]
+}

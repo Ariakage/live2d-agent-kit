@@ -9602,5 +9602,11 @@
     ]
   },
   "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
-  "originalLocalReportSha256": "bb040ae222a1ce89aa3b4ea7a0da5f352e5a3c995db6d194e91225b43511f706"
+  "originalLocalReportSha256": "bb040ae222a1ce89aa3b4ea7a0da5f352e5a3c995db6d194e91225b43511f706",
+  "current_export_recheck": {
+    "checked_at": "2026-09-12T14:45:36.304602+00:00",
+    "matched_recorded_files": 1912,
+    "moc_sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+    "scope": "All recorded class/resource file SHA values rechecked before publication; no recompilation performed for this export."
+  }
 }

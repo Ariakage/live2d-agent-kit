@@ -1,0 +1,165 @@
+{
+  "initialSourceSnapshot": {
+    "createdAt": "2026-09-12T13:56:48.987385+00:00",
+    "commit": "2afd9d2ac29d1ef93c39b86215c3d81d89cb7f6d",
+    "sourceArchiveSha256": "662932f0a542044b23d86f18845ac6fc1c9011f0b6919eba57ecf44d904096ee",
+    "initial": {
+      "engineExists": false,
+      "gradleUserHomeExists": false,
+      "kitWorkExists": false,
+      "kitCacheExists": false,
+      "kitBuildExists": false
+    },
+    "reusedCompiledClasses": false,
+    "reusedDownloadedJars": false,
+    "java": "Zulu 21.0.11+10-LTS"
+  },
+  "buildTimeKitDifferences": {
+    "baseCommit": "2afd9d2ac29d1ef93c39b86215c3d81d89cb7f6d",
+    "currentFiles": {
+      "scripts/setup-psd2live.py": "9f238ebdd428309eb2c5a0e4a0399a2852dc45948e70f80aaa65e23c65f644d3",
+      "scripts/psd2live-init.gradle": "609057647ae208c9aac88b493320de8e0f9dc7ea531b0cf678d86bf6d1871d94",
+      "scripts/export-model.sh": "905598dc9a254b05ad1dbea37a855f14a5b9045b59c859896bd090b2fbc106dc",
+      "scripts/maven-curl-relay.py": "95d661558b623d826108b876f2e8e4e1bd8c30c0b3838f42636cd6e5a662c502",
+      "examples/minimal-model/GenerateExample.java": "d3b036c7f181219277b63c085532496356ba862b8816f4601b3fa3a8e85b94e3"
+    }
+  },
+  "finalPublicEntryScript": {
+    "path": "scripts/export-model.sh",
+    "sha256": "982cbe1630d49863f7449ebe4375f1a2fccf5968684d30ab35cf20322a7c62b0"
+  },
+  "pinkPublicInputs": {
+    "startedAt": "2026-09-12T15:05:31.435628+00:00",
+    "publicSourceFiles": [
+      {
+        "path": "examples/pink-sakura/build-manifest.cjs",
+        "bytes": 8495,
+        "sha256": "0d10d03ccdf25a08864bf6a54e087e28253e5f8e24ab13814fdfc81ef27ec361"
+      },
+      {
+        "path": "examples/pink-sakura/body-regions.json",
+        "bytes": 684166,
+        "sha256": "1f163639cd22713fede158daf4dab4391fc0f61a5b8bd7775715921a2fa5afd3"
+      },
+      {
+        "path": "examples/pink-sakura/face-regions.json",
+        "bytes": 21443,
+        "sha256": "fffcd4b9e693b692d8a6c8e8a2480b347f6d1754d5f2aeb5d4a3195594da6816"
+      },
+      {
+        "path": "examples/pink-sakura/brow-regions.json",
+        "bytes": 1591,
+        "sha256": "476a6524714818a86b49a3e38a5b894acd996143d350f1c84f69afd015646524"
+      },
+      {
+        "path": "examples/pink-sakura/body-topwear-patch.json",
+        "bytes": 145716,
+        "sha256": "575c6e96896e6574c86d50f6df58ca16bca424354447a74a978027e88b0745b2"
+      },
+      {
+        "path": "examples/pink-sakura/prepare-brows.cjs",
+        "bytes": 1006,
+        "sha256": "fce75db833f5faf9d4b61cf19c3cbb8d8ecd353526a54c4079767439352527f0"
+      },
+      {
+        "path": "examples/pink-sakura/PrepareBrows.java",
+        "bytes": 4638,
+        "sha256": "01eaeac09d7a17a2713b54221376119a9c45841f9cddf5a7922a9bfc5b7ee5e0"
+      },
+      {
+        "path": "examples/pink-sakura/source/body-underpainting-v1.png",
+        "bytes": 2377867,
+        "sha256": "af6630a8663bb0b64d06ab26a9a5a4cd1f3f0c95909899004911dcd17481de8b"
+      },
+      {
+        "path": "examples/pink-sakura/source/eyebrow-base-v1.png",
+        "bytes": 1615074,
+        "sha256": "4c806650224049849c87a748d0bcf32ed9a8a46addf5d487ff92b844b1739853"
+      },
+      {
+        "path": "examples/pink-sakura/source/eyebrow-l-v1.png",
+        "bytes": 6746,
+        "sha256": "5eb400d8a50a4fb1d1f016caf626921831b5d2a89b13d8ec735656a1eea5510f"
+      },
+      {
+        "path": "examples/pink-sakura/source/eyebrow-r-v1.png",
+        "bytes": 6759,
+        "sha256": "6c1dc905caa39282308a22ebf7927a7e146cdf763816f05e887226a3cf9b9518"
+      },
+      {
+        "path": "examples/pink-sakura/source/eyeless-face-v1.png",
+        "bytes": 1553165,
+        "sha256": "9ad6277a56d121ece6e81021787fddbc8e5e339a4930b10e36cc81ca3b69d219"
+      },
+      {
+        "path": "examples/pink-sakura/source/face-parts-v1.png",
+        "bytes": 1542947,
+        "sha256": "b1710863d1d9235af6db8d8473e0294474ed7b062e949fdc8d6de9f2546a0774"
+      },
+      {
+        "path": "examples/pink-sakura/source/rear-hair-underpainting-v1.png",
+        "bytes": 1442437,
+        "sha256": "cc964cb5aff8a544b61da7008e987f91ea64eb6c58831aade1ef098717be666f"
+      },
+      {
+        "path": "examples/pink-sakura/source/reference.png",
+        "bytes": 1632604,
+        "sha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca"
+      }
+    ],
+    "sourceCount": 8,
+    "sourceLayers": 24,
+    "allDependenciesWithinCopiedExample": true,
+    "deterministicBrowSourcesMatch": true,
+    "manifestSha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
+    "exportScriptSha256": "982cbe1630d49863f7449ebe4375f1a2fccf5968684d30ab35cf20322a7c62b0",
+    "engine": "same freshly compiled full source engine from build-03",
+    "reuseScope": "This audit new compiler output and dependency cache only; no production classes reused",
+    "args": [
+      "bash",
+      "kit/scripts/export-model.sh",
+      "kit/examples/pink-sakura/manifest.json",
+      "kit/work/pink-sakura/low"
+    ],
+    "exitCode": 0,
+    "finishedAt": "2026-09-12T15:08:12.125784+00:00"
+  },
+  "toolIdentities": {
+    "jdk": {
+      "command": "JDK21/bin/java",
+      "version": "openjdk version \"21.0.11\" 2026-04-21 LTS\nOpenJDK Runtime Environment Zulu21.50+19-CA (build 21.0.11+10-LTS)\nOpenJDK 64-Bit Server VM Zulu21.50+19-CA (build 21.0.11+10-LTS, mixed mode, sharing)",
+      "executableSha256": "06ad1b18ce9b4c456b6db152b76fbb91ed933eb7ce4b320e7bb11cad6a4fb74b"
+    },
+    "core": [
+      {
+        "name": "Live2DCubismCore.jar",
+        "bytes": 42458,
+        "sha256": "237372740939a5c3c2a4a017f2b127a8dc1663a5063f0adc53c857c7ffea2539"
+      },
+      {
+        "name": "libLive2DCubismCoreJNI.dylib",
+        "bytes": 162096,
+        "sha256": "1d06bcf37afa2fc9472f6cf324f73e01b3a5ae08e046dc0c3fa5b7010b2388e1"
+      }
+    ]
+  },
+  "gradleDistribution": {
+    "url": "https://services.gradle.org/distributions/gradle-9.6.1-bin.zip",
+    "checksumUrl": "https://services.gradle.org/distributions/gradle-9.6.1-bin.zip.sha256",
+    "version": "9.6.1",
+    "bytes": 140682664,
+    "sha256": "9c0f7faeeb306cb14e4279a3e084ca6b596894089a0638e68a07c945a32c9e14",
+    "matchesOfficialChecksum": true,
+    "downloadedFresh": true
+  },
+  "firstRelayState": {
+    "url": "http://127.0.0.1:60823",
+    "initialCacheEmpty": true,
+    "upstreams": {
+      "maven-central": "https://repo.maven.apache.org/maven2/",
+      "gradle-plugins": "https://plugins.gradle.org/m2/",
+      "google-maven": "https://dl.google.com/dl/android/maven2/"
+    },
+    "scope": "Fresh official-source dependency transport; no application build output reuse"
+  }
+}

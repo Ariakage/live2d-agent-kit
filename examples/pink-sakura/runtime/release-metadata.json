@@ -1,45 +1,45 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-09-12T12:38:34.022496+00:00",
+  "createdAt": "2026-09-12T14:43:34.279237+00:00",
   "entry": "PinkSakura.model3.json",
   "nativeCoreValidated": true,
   "coreEvidence": {
     "validator": "local-official-cubism-core",
-    "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+    "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
     "passed": true,
     "coreVersion": "06.00.0257 (100663553)",
-    "checkedAt": "2026-09-12T12:36:26.431146Z",
+    "checkedAt": "2026-09-12T14:35:55.300967Z",
     "source": "Supplied report matched; Core was not rerun by this command."
   },
-  "mocSha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+  "mocSha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
   "files": {
     "ASSET-LICENSE.md": {
       "sha256": "1d5a80ece404d21357a8027168e4903acddec1ee335686a46ad809d3dba63dc3",
       "bytes": 1392
     },
     "ATTRIBUTION.md": {
-      "sha256": "14248d25674eb8ae549ff042f1b0ed74fca49def0419a9e11c3f9ea756ff0c1e",
-      "bytes": 1602
+      "sha256": "636a26a1440d33c90e1b7a3ca6375deb1455ec413572fda472b0e7d01d129b09",
+      "bytes": 1749
     },
     "PinkSakura.8192/texture_00.png": {
-      "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
-      "bytes": 44825773
+      "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+      "bytes": 45336522
     },
     "PinkSakura.blink.motion3.json": {
       "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110",
       "bytes": 1155
     },
     "PinkSakura.cdi3.json": {
-      "sha256": "7d5c2a01664e18c67cfdb22425bf724f1f82c5db0801a12ce5b9545f0e3d9631",
-      "bytes": 4716
+      "sha256": "553917dfea91fadc66fa911fee42e0085866598c224110fdd80b26646c1af850",
+      "bytes": 5012
     },
     "PinkSakura.idle.motion3.json": {
       "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990",
       "bytes": 2282
     },
     "PinkSakura.moc3": {
-      "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
-      "bytes": 388544
+      "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+      "bytes": 395520
     },
     "PinkSakura.model3.json": {
       "sha256": "34023a308cb00c621e6a199afb1598819b1196eb7d864a4ad50dd2dbe7bc4ee5",
@@ -61,7 +61,7 @@
   "attribution": {
     "included": true,
     "path": "ATTRIBUTION.md",
-    "sha256": "14248d25674eb8ae549ff042f1b0ed74fca49def0419a9e11c3f9ea756ff0c1e"
+    "sha256": "636a26a1440d33c90e1b7a3ca6375deb1455ec413572fda472b0e7d01d129b09"
   },
   "assetLicense": {
     "included": true,

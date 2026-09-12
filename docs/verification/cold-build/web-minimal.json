@@ -1,0 +1,384 @@
+{
+  "url": "http://127.0.0.1:8854/",
+  "checks": [
+    {
+      "name": "model entry captured from actual browser response",
+      "pass": true,
+      "detail": {
+        "modelUrl": "http://127.0.0.1:8854/model/model.model3.json"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: model3",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8854/model/model.model3.json"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: moc3",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8854/model/Minimal.moc3"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: texture",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8854/model/Minimal.1024/texture_00.png"
+      }
+    },
+    {
+      "name": "texture dimensions within WebGL limit",
+      "pass": true,
+      "detail": [
+        {
+          "url": "http://127.0.0.1:8854/model/Minimal.1024/texture_00.png",
+          "texture": {
+            "width": 1024,
+            "height": 1024
+          }
+        }
+      ]
+    },
+    {
+      "name": "prepared manifest readable",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8854/preview-manifest.json",
+        "status": 200
+      }
+    },
+    {
+      "name": "manifest model entry matches runtime",
+      "pass": true,
+      "detail": {
+        "manifestEntry": "model/model.model3.json",
+        "modelUrl": "http://127.0.0.1:8854/model/model.model3.json"
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: model3",
+      "pass": true,
+      "detail": {
+        "path": "model/model.model3.json",
+        "expectedSha256": "30e614b4a30efb7fa0673b7738135d57a039b860f4d0aa7f3098bc878ac257da",
+        "observedSha256": [
+          "30e614b4a30efb7fa0673b7738135d57a039b860f4d0aa7f3098bc878ac257da",
+          "30e614b4a30efb7fa0673b7738135d57a039b860f4d0aa7f3098bc878ac257da"
+        ]
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: moc3",
+      "pass": true,
+      "detail": {
+        "path": "model/Minimal.moc3",
+        "expectedSha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9",
+        "observedSha256": [
+          "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9"
+        ]
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: texture",
+      "pass": true,
+      "detail": {
+        "path": "model/Minimal.1024/texture_00.png",
+        "expectedSha256": "da54af0069a6122a3da0a6cd101d153ca498d77f98af9d4ffced99f5ece9a42d",
+        "observedSha256": [
+          "da54af0069a6122a3da0a6cd101d153ca498d77f98af9d4ffced99f5ece9a42d"
+        ]
+      }
+    },
+    {
+      "name": "real Cubism Core and native drawables",
+      "pass": true,
+      "detail": {
+        "parameters": 19,
+        "drawables": 18,
+        "vertices": 3050,
+        "triangles": 3702
+      }
+    },
+    {
+      "name": "manual parameters reach native Core",
+      "pass": true,
+      "detail": [
+        {
+          "id": "ParamAngleX",
+          "requested": 45,
+          "actual": 45,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamAngleY",
+          "requested": 30,
+          "actual": 30,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamAngleZ",
+          "requested": 30,
+          "actual": 30,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleX",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleY",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleZ",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeLOpen",
+          "requested": 0,
+          "actual": 0,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeROpen",
+          "requested": 0,
+          "actual": 0,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallX",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallForm",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBrowLY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBrowRY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamMouthForm",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamMouthOpenY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBreath",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamTieSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamFrontHairSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        }
+      ]
+    },
+    {
+      "name": "reset restores native defaults",
+      "pass": true
+    },
+    {
+      "name": "simulation advances",
+      "pass": true
+    },
+    {
+      "name": "simulator only writes native targets",
+      "pass": true
+    },
+    {
+      "name": "pause freezes timeline, parameters and physics",
+      "pass": true
+    },
+    {
+      "name": "timeline seeks while paused",
+      "pass": true
+    },
+    {
+      "name": "mapped simulated values reach Core",
+      "pass": true
+    },
+    {
+      "name": "stop restores defaults",
+      "pass": true
+    },
+    {
+      "name": "no camera or microphone request",
+      "pass": true
+    },
+    {
+      "name": "no browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "pass": true
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "cameraRequests": 0,
+  "browser": {
+    "name": "chromium",
+    "version": "152.0.7977.83",
+    "playwrightPackage": "playwright",
+    "playwrightVersion": "1.63.0",
+    "explicitExecutablePath": true
+  },
+  "loadedResources": {
+    "modelUrl": "http://127.0.0.1:8854/model/model.model3.json",
+    "observed": [
+      {
+        "url": "http://127.0.0.1:8854/model/model.model3.json",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 876,
+        "sha256": "30e614b4a30efb7fa0673b7738135d57a039b860f4d0aa7f3098bc878ac257da",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8854/model/model.model3.json",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 876,
+        "sha256": "30e614b4a30efb7fa0673b7738135d57a039b860f4d0aa7f3098bc878ac257da",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8854/model/Minimal.moc3",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 5319360,
+        "sha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8854/model/Minimal.1024/texture_00.png",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 29340,
+        "sha256": "da54af0069a6122a3da0a6cd101d153ca498d77f98af9d4ffced99f5ece9a42d",
+        "texture": {
+          "width": 1024,
+          "height": 1024
+        }
+      }
+    ],
+    "manifest": {
+      "present": true,
+      "url": "http://127.0.0.1:8854/preview-manifest.json",
+      "sha256": "af1735056f99156168f379dd57d6ae80cd06a39e6f4ccd8adb11278930ebc4b8",
+      "matched": [
+        {
+          "path": "model/model.model3.json",
+          "sha256": "30e614b4a30efb7fa0673b7738135d57a039b860f4d0aa7f3098bc878ac257da"
+        },
+        {
+          "path": "model/Minimal.moc3",
+          "sha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9"
+        },
+        {
+          "path": "model/Minimal.1024/texture_00.png",
+          "sha256": "da54af0069a6122a3da0a6cd101d153ca498d77f98af9d4ffced99f5ece9a42d"
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "coreVersionNumber": 83951616,
+    "coreVersion": "5.1.0",
+    "renderer": "WebGL",
+    "maxTextureSize": 16384,
+    "requestedClippingMaskSize": 1024,
+    "clippingMaskSize": 1024
+  },
+  "visibleBindingEvidence": [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamAngleZ",
+    "ParamBodyAngleX",
+    "ParamBodyAngleY",
+    "ParamBodyAngleZ",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamEyeBallX",
+    "ParamEyeBallY",
+    "ParamEyeBallForm",
+    "ParamBrowLY",
+    "ParamBrowRY",
+    "ParamMouthForm",
+    "ParamMouthOpenY",
+    "ParamBreath",
+    "ParamTieSwing",
+    "ParamFrontHairSwing",
+    "ParamBackHairSwing"
+  ],
+  "parametersWithoutObservedGeometryChange": [],
+  "simulatedTargets": [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamAngleZ",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamEyeBallX",
+    "ParamEyeBallY",
+    "ParamMouthOpenY",
+    "ParamMouthForm",
+    "ParamBrowLY",
+    "ParamBrowRY",
+    "ParamBodyAngleX",
+    "ParamBodyAngleY",
+    "ParamBodyAngleZ",
+    "ParamBreath"
+  ],
+  "pass": true
+}

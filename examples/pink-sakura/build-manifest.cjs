@@ -6,6 +6,7 @@ const root = __dirname;
 const rect = (x,y,w,h) => [[x,y],[x+w,y],[x+w,y+h],[x,y+h]];
 const body = JSON.parse(fs.readFileSync(path.join(root,'body-regions.json')));
 const face = JSON.parse(fs.readFileSync(path.join(root,'face-regions.json')));
+const brows = JSON.parse(fs.readFileSync(path.join(root,'brow-regions.json')));
 // Outer selection deliberately retains the original outline; a conservative
 // border-connected white matte removes only the background around the head.
 const head = [[334,225],[336,179],[337,149],[343,115],[354,92],[368,80],
@@ -79,6 +80,7 @@ const lashHoles = features.map(f=>f.open_eyelash_polygon);
 const mouth = face.reference.mouth_closed;
 const allHoles=[...eyeHoles,...lashHoles,mouth.polygon,face.reference.r.open_eyelash_aux_polygon];
 layers.push(original('face',[head],[325,0,343,342],30,{
+ path:'source/eyebrow-base-v1.png',
  source_alpha_holes:body.background_head_alpha_holes,source_holes:allHoles,
  source_hole_expansions:[6,6,4,4,1,4],source_polygons_expand:1,
  source_hole_fill_image:{path:'source/eyeless-face-v1.png',source_rect:[0,0,1254,1254],
@@ -120,6 +122,14 @@ const mo=face.generated_face.mouth_open;
 layers.push({name:'mouth_open',path:'source/face-parts-v1.png',
  source_polygons:[mo.outline_polygon],source_mask_antialias:true,source_mask_feather:1,
  crop:mo.crop_xywh,x:485,y:277,w:28,h:16,z:61});
+// Prepared dark-only source mattes retain bright residuals and crossing hair
+// contours in the head base. Append layers to preserve existing feature IDs.
+for (const side of ['r','l']) {
+ const f=brows[side];
+ layers.push({name:`eyebrow-${side}`,path:`source/eyebrow-${side}-v1.png`,
+  crop:f.patch_rect_xywh,x:f.patch_rect_xywh[0],y:f.patch_rect_xywh[1],z:56,
+  parent_deformer:'DeformFaceContour'});
+}
 if (process.argv.includes('--import-only')) manifest.import_only=true;
 fs.writeFileSync(path.join(root,manifest.import_only?'manifest-import.json':'manifest.json'),
  JSON.stringify(manifest,null,2)+'\n');

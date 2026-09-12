@@ -38,12 +38,12 @@ Live2D Agent Kit 帮助 Codex 和其他 coding agent 把参考图或分层 PSD �
 | **分层 PSD / PNG 图层** | 提取适配器、固定版 psd2live 与累计补丁 | PSD、CMO3、MOC3、图集、参数和物理 |
 | **已有模型有接缝** | 嘴周色差、闭眼断线、黑边、发丝/背带错位的排查方法 | 定位到素材、绑定或采样的修复记录 |
 | **结构正确但纹理模糊** | 本地 NCNN 动漫 4× 超分、独立 alpha、来源 SHA 检查 | 保持几何与 UV 的高清运行图集 |
-| **需要预演面捕输入** | 真实 WebGL 模型、参数面板、时间线、暂停与半身合成输入 | 可检查动作与资源身份的预览网页 |
+| **需要面捕预览** | 真实 WebGL 模型、合成输入、可选的本地摄像头面部与肩部识别 | 可手调、校准、暂停和检查资源身份的预览网页 |
 | **准备交付** | 资源验证、原生 Core 检查、浏览器实测与打包脚本 | 自足运行包、证据与明确的验收范围 |
 
 ## 角色示例与来源保护
 
-**[Pink Sakura →](examples/pink-sakura/README.md)** 已收录可运行模型、五张源素材、角色拆层配方与验证证据。
+**[Pink Sakura →](examples/pink-sakura/README.md)** 已收录可运行模型、五张基础源素材、三张可重建的眉毛素材、角色拆层配方与验证证据。
 下面的演示从实际高清模型的 WebGL 画布录制，使用合成面捕输入；没有读取摄像头。
 
 | 原始参考图 | 绑定后的全身 | 合成输入演示 |
@@ -60,11 +60,11 @@ Live2D Agent Kit 帮助 Codex 和其他 coding agent 把参考图或分层 PSD �
 
 | 模型结构 | 动漫超分 | 实际验证 |
 | --- | --- | --- |
-| **22 个源层 · 24 个 Drawable · 22 个参数** | **2048² → 8192²**，AnimeVideo v3 4× | **198** 个原生姿态 · **22** 项 Web 检查 |
-| 眼睛、嘴形、头身、呼吸与 8 个头发参数 | 独立 alpha，低清/高清 MOC 逐字节一致 | **55** 个姿态、**80** 张画布截图，另录制 72 帧演示 |
+| **24 个源层 · 26 个 Drawable · 24 个参数** | **2048² → 8192²**，AnimeVideo v3 4× | **202** 个原生姿态 · **22** 项 Web 检查 |
+| 独立左右眉、眼睛、嘴形、头身、呼吸与 8 个头发参数 | 独立 alpha，低清/高清 MOC 逐字节一致 | **66** 个姿态、**91** 张画布截图，另录制 72 帧演示 |
 
 完整证据见 [示例验证目录](examples/pink-sakura/verification/)；VTube Studio 仍由用户验收。
-60 张去重画布已做目视复核；放大后仍有闭唇线偏淡、闭眼睫毛末端稍钝的小瑕疵，`EyeOpen` 0～0.25 保持闭眼姿态。
+已复核 44 张脸部原像素裁切和 31 张全身概览，精度与抽样范围见报告；放大后仍有闭唇线偏淡、闭眼睫毛末端稍钝的小瑕疵，`EyeOpen` 0～0.25 保持闭眼姿态。
 这是保守角度的 2D 绑定示例，身体使用整体图层，没有独立手臂/手指追踪。
 CMO3 保留模型与绑定，但其可编辑图层从图集重建，不保留原 PSD 源图编辑链；重建时使用一并公开的源图和配方。
 原始参考图按用户说明标注“此图片来自 ChatGPT Image2.5 生成”，隐藏补画和模型制作分别记录来源。
@@ -106,7 +106,7 @@ flowchart TB
 
 ## 快速开始
 
-需要 **Git、Python 3.10+、JDK 21**；角色配方和浏览器检查还需要 **Node.js**。先按 [setup.md](docs/setup.md) 配好 Java。
+需要 **Git、Python 3.10+、JDK 21**；角色配方和浏览器检查还需要 **Node.js 22+**。先按 [setup.md](docs/setup.md) 配好 Java。
 所有命令从仓库根目录运行，生成物放在忽略的 `work/`，每次实验使用新输出目录。
 
 ### 1 · 跑通真实导出
@@ -119,7 +119,7 @@ bash scripts/export-model.sh work/minimal/assets/manifest.json work/minimal/low
 bash scripts/validate.sh --model work/minimal/low/Minimal.model3.json
 ```
 
-这里生成 **14 个原创几何图层**，导出真正的 PSD、CMO3、MOC3 和 1024² 图集。
+这里生成 **16 个原创几何图层**，导出真正的 PSD、CMO3、MOC3 和 1024² 图集。
 最后一行检查文件结构；原生检查另外配置官方 Core。
 
 ### 2 · 交给 agent 制作自己的角色
@@ -179,14 +179,31 @@ python3 scripts/prepare-preview.py \
 python3 work/minimal/preview/server.py --port 8793
 ```
 
-端口被占用时改用空闲端口。网页提供合成面部/半身输入；真实摄像头、手臂和手指追踪不在当前实现范围。
+端口被占用时改用空闲端口。网页提供合成输入与可选的本地摄像头面部/上半身追踪；独立手臂和手指绑定不在当前实现范围。
 依赖文件名、取景、输入映射与浏览器检查见 [网页模板说明](templates/web-preview/README.md)。
 
 </details>
 
+## 用摄像头驱动面部和上半身
+
+网页提供单独的摄像头入口：眉毛、眨眼、视线、张嘴、微笑、头部角度，以及单摄像头估计的躯干/肩部姿态。模型需要对应可见绑定；切换模拟和手调参数会关闭摄像头。
+
+```sh
+python3 scripts/setup-tracking.py --directory .cache/mediapipe
+python3 scripts/prepare-preview.py \
+  --model examples/pink-sakura/runtime/PinkSakura.model3.json \
+  --output work/pink-camera-preview \
+  --cubism-core /path/to/live2dcubismcore.min.js --vendor-dir /path/to/vendor \
+  --config examples/pink-sakura/preview-config.json \
+  --tracking-dir .cache/mediapipe
+python3 work/pink-camera-preview/server.py --port 8860
+```
+
+点击“开始面捕”，允许浏览器使用摄像头，正视镜头后校准。推理在浏览器本地执行，不上传或录制画面，也不请求麦克风。识别依赖按固定 URL 与 SHA 获取，不随仓库分发。预览服务的同源连接策略会拦截 SDK 默认的统计请求；换用其它服务时也须保留该策略。上半身姿态属于近似估计，没有手臂/手指绑定。使用方法和实际测试范围见 [摄像头指引](docs/camera-tracking.md)，变更见 [更新日志](CHANGELOG.md)。本次最终模型的 [16 项真实摄像头检查](docs/verification/camera-tracking.json)已通过；上半身实测覆盖双肩，未验证髋部俯仰精度。
+
 ## 没有 `work/`，还能复现吗？
 
-`work/` 保存导出结果、临时图层、完整动作截图和日志。Pink Sakura 的五张源图、测量坐标、补画配方以及运行模型都已提交；复现从 `examples/` 开始，不需要作者原来的工作目录。
+`work/` 保存导出结果、临时图层、完整动作截图和日志。Pink Sakura 的基础源图、眉毛分解脚本与派生素材、测量坐标、补画配方以及运行模型都已提交；复现从 `examples/` 开始，不需要作者原来的工作目录。
 
 | 文件或目录 | 是否随仓库提供 | 新环境如何取得 |
 | --- | --- | --- |
@@ -198,7 +215,7 @@ python3 work/minimal/preview/server.py --port 8793
 | 官方 Core、Web vendor、Upscayl 与权重 | 不提供 | 按各自获取说明准备，再通过参数指定路径 |
 | 过去的私有角色 | 不提供，也不参与本示例 | 使用仓库示例或自己的授权素材 |
 
-干净源包已重新生成 22 层 Pink Sakura 配方和 14 层几何素材。完整空缓存导出在 Gradle 依赖下载阶段结束，尚未验证成功；已有编译类的历史导出结果单独记录。[复现审查](docs/reproducibility.md)列出执行范围、外部依赖和源包自检命令；[本次仓库审查](docs/repository-review.md)记录文档检查和脚本修复。
+新示例为 24 层 Pink Sakura 配方和 16 层几何素材。完整空缓存引擎已重新编译，最小模型通过 Native Core 与 22 项真实网页检查；公开 Pink 配方也独立导出并通过 Core，MOC 与高清版一致。获取时使用源码精简 checkout 与可选的本地 curl 下载转发，并记录了下载重试。[复现审查](docs/reproducibility.md)列出执行范围、外部依赖和源包自检命令；[本次仓库审查](docs/repository-review.md)记录文档检查和脚本修复。
 
 ## 本例用了哪一个超分模型？
 
@@ -219,7 +236,7 @@ python3 work/minimal/preview/server.py --port 8793
 
 **[查看完整工具目录 →](tools/README.md)** · [机器可读清单](tools/catalog.json) · [命令速查](tools/commands.md) · [宿主能力映射](tools/host-capabilities.md)
 
-参考库现有 **46 项**，分为生产使用、辅助验证、仅评估与 kit 开发。
+参考库现有 **47 项**，分为生产使用、辅助验证、仅评估与 kit 开发。
 每项记录用途、使用证据、已知版本、上游来源、获取方式和许可边界。
 仓库保留我们编写的适配器、补丁和脚本；第三方应用、权重和 SDK 通过原始来源获取。
 
@@ -229,6 +246,7 @@ python3 work/minimal/preview/server.py --port 8793
 | **官方基准** | [Live2D Simple Model](https://www.live2d.com/en/learn/sample/simple-model/) · [Cubism SDK](https://www.live2d.com/en/sdk/download/) · [Web SDK](https://www.live2d.com/en/sdk/download/web/) | [环境隔离检查](docs/tooling.md#先用官方简单模型隔离环境问题)、[Core 配置](docs/setup.md#配置本机官方-core) |
 | **动漫超分** | [Upscayl](https://github.com/upscayl/upscayl) · [custom-models](https://github.com/upscayl/custom-models) · [upscayl-ncnn](https://github.com/upscayl/upscayl-ncnn) · [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) | [AnimeVideo / AnimeSharp 比较与获取](docs/upscaling.md) |
 | **网页运行与检查** | [PixiJS](https://github.com/pixijs/pixijs) · [pixi-live2d-display](https://github.com/guansss/pixi-live2d-display) · [Playwright](https://github.com/microsoft/playwright) | [真实模型预览](templates/web-preview/README.md)、[实测记录](docs/verification.md) |
+| **摄像头识别** | [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe) · Face / Pose Landmarker | [安装、校准与实际测试](docs/camera-tracking.md)、[固定依赖](tools/tracking-dependencies.json) |
 | **Skill / MCP** | [本 kit Skill](SKILL.md) · [CLI-Anything Live2D](https://github.com/HKUDS/CLI-Anything/blob/main/live2d/agent-harness/cli_anything/live2d/skills/SKILL.md) · [CubismExternalEditMCP](https://github.com/nana7chi/CubismExternalEditMCP) | [MCP 能力与限制](mcp/README.md)、[宿主工具映射](tools/host-capabilities.md) |
 | **构建与图像诊断** | Java / Gradle / Kotlin、Python / Pillow / NumPy / psd-tools / ImageMagick、FFmpeg、Node.js、Git、SHA-256、ZIP | [完整目录与来源](tools/README.md)、[按任务查命令](tools/commands.md) |
 
@@ -241,12 +259,12 @@ python3 work/minimal/preview/server.py --port 8793
 
 | 导出与原生 | 高清纹理 | 浏览器 |
 | --- | --- | --- |
-| **14 层 → 真实 MOC3 / CMO3** | **1024² → 4096²** | **22 项真实 Web 检查通过** |
+| **16 层 → 真实 MOC3 / CMO3** | **1024² → 4096²** | **22 项真实 Web 检查通过** |
 | 官方 Native Core 6.0.257 | NCNN 神经 RGB 4× + 独立 alpha | Web Core 5.1.0，实际 WebGL 绘制 |
 | 192 个取样姿态，含 125 组嘴型/头身眼组合 | 低分与高清 **MOC 逐字节一致** | 浏览器载入的 MOC / PNG SHA 与清单一致 |
 
 完整 [验证记录](docs/verification.md) 包含指纹、负例和范围。
-示例中两个眉毛参数没有测得可见绑定；参数存在与可见动画分别检查。
+新版最小示例包含独立左右眉素材，19 个参数均测得可见绑定；两个空眉毛槽位的旧记录保留为历史结果。
 
 ## 经验已经整理在这里
 

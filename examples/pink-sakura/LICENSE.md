@@ -17,6 +17,7 @@
 | `source/face-parts-v1.png` | 制作期间生成的面部拆分补画 |
 | `source/eyeless-face-v1.png` | 制作期间生成的无眼底图补画 |
 | `source/rear-hair-underpainting-v1.png` | 制作期间生成的身体后方隐藏发层补画 |
+| `source/eyebrow-base-v1.png`、`source/eyebrow-l-v1.png`、`source/eyebrow-r-v1.png` | 从原始参考像素确定性分离出的眉毛底图与左右透明眉墨层；保留原始来源署名，适用同一 CC BY 4.0 素材许可 |
 | `runtime/` 内的 `.moc3`、`.model3.json`、`.cdi3.json`、`.physics3.json`、`.motion3.json`、`.exp3.json` 和纹理 `.png` | 本角色实际发布的模型运行资产 |
 | `verification/` 内的模型截图 `.png` 和演示 `.gif` | 从本角色运行模型捕获的展示画面 |
 

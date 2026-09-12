@@ -16,6 +16,8 @@
 | 原生验证 / 软件诊断渲染 | [`validate_core.sh`](../scripts/validate_core.sh)、[`render_core.sh`](../scripts/render_core.sh) | JDK 21、本机官方 Java/native Core |
 | 动漫 4× 图集超分 | [`upscale-atlas.sh`](../scripts/upscale-atlas.sh)、[`AtlasAlpha.java`](../scripts/AtlasAlpha.java) | Java、本地 NCNN CLI、模型权重、兼容 GPU |
 | 准备实际 Web 预览 | [`prepare-preview.py`](../scripts/prepare-preview.py) | Python、本地 Web Core 与两个版本匹配的渲染依赖 |
+| 本地摄像头依赖 | [`setup-tracking.py`](../scripts/setup-tracking.py) | Python 标准库与网络；固定版本获取后可离线验证，无需 curl |
+| 明确请求真实摄像头测试 | [`check-camera.cjs`](../scripts/check-camera.cjs) | 带本地识别依赖的预览、Node.js、Playwright、真实摄像头及浏览器/系统权限 |
 | 浏览器测试 | [`check-preview.cjs`](../scripts/check-preview.cjs) | 已启动的实际预览、Node.js、Playwright 与 Chromium |
 | 运行包与 ZIP | [`package-model.py`](../scripts/package-model.py) | Python、与该 MOC SHA 匹配的原生 Core 报告 |
 | 可选 Editor/MCP 编辑 | [MCP 指引](../mcp/README.md) | 支持相应 API 的本机编辑器、实际启用的接口和宿主连接 |
@@ -30,6 +32,7 @@ python3 scripts/check-source-package.py --help
 python3 scripts/upscale-atlas.py --help
 python3 scripts/prepare-preview.py --help
 python3 scripts/package-model.py --help
+python3 scripts/setup-tracking.py --help
 bash scripts/render_core.sh --help
 ```
 
@@ -165,6 +168,24 @@ PLAYWRIGHT_MODULE=/path/to/installed/playwright \
 报告记录真正响应给浏览器的 model3 / MOC / PNG 身份；合成输入不会请求摄像头或麦克风。
 检查结束只在自己启动的服务终端按 Ctrl+C，不批量杀掉同端口或其他项目的进程。
 
+## 可选摄像头与真实设备检查
+
+```sh
+python3 scripts/setup-tracking.py --directory .cache/mediapipe
+python3 scripts/setup-tracking.py --directory .cache/mediapipe --verify
+```
+
+在 `prepare-preview.py` 中加上 `--tracking-dir .cache/mediapipe`，使用空闲端口启动新预览。点击页面的“开始面捕”才会申请设备；命令行设备测试也要求显式开关：
+
+```sh
+PLAYWRIGHT_MODULE=/path/to/node_modules/playwright \
+PLAYWRIGHT_CHROMIUM_EXECUTABLE=/path/to/chrome \
+node scripts/check-camera.cjs --physical-camera \
+  --url http://127.0.0.1:8860/ --duration 15 --output work/camera-check.json
+```
+
+此命令会启动真实摄像头，需要真人正视镜头并让双肩入镜。它只保留汇总参数范围和设备释放结果，不截图、不录制摄像头画面；与无设备的 `check-preview.cjs` 分别报告。识别率和性能依赖设备、光线与遮挡。说明见 [摄像头指引](../docs/camera-tracking.md)。
+
 ## 打包给用户验收
 
 ```sh
@@ -182,6 +203,7 @@ python3 scripts/package-model.py \
 
 ```sh
 python3 -m unittest discover -s tests -v
+node --test tests/test_*.cjs
 bash scripts/validate.sh --kit
 git status --short
 git diff --check

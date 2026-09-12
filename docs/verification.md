@@ -1,12 +1,16 @@
 # Kit 本身的复现检查
 
-> 新增角色记录：已交付的 [Pink Sakura](../examples/pink-sakura/README.md) 有独立的 [最终高清验证目录](../examples/pink-sakura/verification/README.md)，包含 198 个原生姿态、22 项 Web 检查、55 个姿态/80 帧动作矩阵和目视复核。下文的几何示例数字与历史 README 维护记录保持其原始范围。当时工具目录为 44 项，新增署名打包等回归后有 30 项 Python 测试通过。当前双语文档及输入一致性复查另见 [本次仓库审查](repository-review.md)。
+> 新增角色记录：已交付的 [Pink Sakura](../examples/pink-sakura/README.md) 有独立的 [最终高清验证目录](../examples/pink-sakura/verification/README.md)，当前新增眉毛的 24 参数版本包含 202 个原生姿态、22 项 Web 检查、66 个姿态/91 帧动作矩阵和分范围目视复核。下文的几何示例数字与历史 README 维护记录保持其原始范围。当时工具目录为 44 项，新增署名打包等回归后有 30 项 Python 测试通过。当前双语文档及输入一致性复查另见 [本次仓库审查](repository-review.md)。
 
 检查日期：2026-09-12。这份记录针对本仓库的原创几何最小示例，
 与 [原角色的历史案例](case-study.md) 分开。生成物、SDK、权重和完整本机日志
 留在忽略的 `work/`；这里仅记录可复核的方法、结果和非私人指纹。
 
-## 实际执行的链路
+## 当前带眉毛的最小示例
+
+当前 [GenerateExample](../examples/minimal-model/README.md) 已加入左右眉素材：16 个源层、19 参数、18 Drawable、3050 顶点、3702 三角形，两个 BrowY 参数均实际驱动对应眉层。本次真实 LOW/NCNN 4×/HD/Core/Web 重新通过，67 帧合成画布与 22 项网页检查，详细 SHA 和范围见 [新验证摘要](../examples/minimal-model/verification.json)。该次复用既有编译类；以下 14 层、16 Drawable 和空眉毛槽位描述均为历史结果。
+
+## 历史执行链路
 
 | 检查 | 结果与范围 |
 | --- | --- |

@@ -12,6 +12,7 @@ import sys
 from urllib.parse import urlsplit
 
 VENDOR = ('pixi-6.5.10.min.js', 'pixi-live2d-display-0.4.0.min.js')
+KIT_ROOT = Path(__file__).resolve().parents[1]
 
 
 def safe_resource(root, relative):
@@ -62,12 +63,25 @@ def validate_destinations(files):
             raise ValueError(f'Resource conflicts with a preview file/directory destination: {relative!r}')
 
 
+def tracking_files(directory, lock):
+    """Accept only the exact, separately acquired files in the published lock."""
+    directory = Path(directory).resolve()
+    files = []
+    for item in lock['files']:
+        source = safe_resource(directory, item['path'])
+        if source.stat().st_size != item['bytes'] or sha(source) != item['sha256']:
+            raise ValueError(f'Tracking dependency differs from pinned bytes: {item["path"]}')
+        files.append((item, source))
+    return files
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--cubism-core', required=True, type=Path)
     parser.add_argument('--vendor-dir', required=True, type=Path)
+    parser.add_argument('--tracking-dir', type=Path, help='Optional verified local MediaPipe files from setup-tracking.py; enables explicit camera controls')
     parser.add_argument('--config', type=Path, help='Optional JSON: drawing, regions, inputMapping, label')
     parser.add_argument('--reference', type=Path, help='Optional reference image, copied separately and labeled static')
     parser.add_argument('--download', type=Path, help='Optional local model ZIP download')
@@ -79,6 +93,8 @@ def main():
     files = [(relative, safe_resource(root, relative)) for relative in resources(settings)]
     for name in VENDOR:
         if not (vendor / name).is_file(): raise ValueError(f'Missing dependency: {name} in --vendor-dir; obtain it separately with its license')
+    tracking_lock = json.loads((KIT_ROOT/'tools'/'tracking-dependencies.json').read_text()) if args.tracking_dir else None
+    tracking = tracking_files(args.tracking_dir, tracking_lock) if tracking_lock else []
     validate_destinations(files)
     if output.exists() and (not output.is_dir() or any(output.iterdir())): raise ValueError('Output must be absent or empty; choose a new folder to avoid overwriting work')
     config = json.loads(args.config.read_text(encoding='utf-8')) if args.config else {}
@@ -103,7 +119,7 @@ def main():
     if args.reference and args.reference.suffix.lower() not in ('.png','.jpg','.jpeg','.webp'):
         raise ValueError('Reference must be PNG/JPEG/WebP')
     if args.download and args.download.suffix.lower() != '.zip': raise ValueError('Download must be a ZIP')
-    template = Path(__file__).resolve().parents[1] / 'templates' / 'web-preview'
+    template = KIT_ROOT / 'templates' / 'web-preview'
     output.mkdir(parents=True, exist_ok=True)
     for source in template.iterdir():
         if source.is_file(): shutil.copy2(source, output/source.name)
@@ -115,6 +131,18 @@ def main():
     (output/'model'/'model.model3.json').write_text(json.dumps(settings,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     shutil.copy2(core, output/'vendor'/'live2dcubismcore.min.js')
     for name in VENDOR: shutil.copy2(vendor/name, output/'vendor'/name)
+    camera_assets = None
+    if tracking:
+        for item, source in tracking:
+            dest = output/'tracking'/item['path']; dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, dest)
+            if sha(dest) != item['sha256']:
+                raise ValueError(f'Tracking dependency changed during copy: {item["path"]}; prepare a new output directory')
+        # The tracker resolves these relative to the prepared document URL.
+        camera_assets = {'visionModule':'./tracking/vision_bundle.mjs', 'wasmRoot':'./tracking/wasm',
+                         'faceModel':'./tracking/models/face_landmarker.task',
+                         'poseModel':'./tracking/models/pose_landmarker_lite.task'}
+        (output/'tracking'/'dependency-lock.json').write_text(json.dumps(tracking_lock,indent=2)+'\n',encoding='utf-8')
     # Runtime support files and notices are copied only from user-provided folders.
     notices=set()
     for folder in (vendor,core.parent):
@@ -129,9 +157,10 @@ def main():
         (output/'media').mkdir();dest=output/'media'/('reference'+args.reference.suffix.lower());shutil.copy2(args.reference,dest);reference_url='./media/'+dest.name
     if args.download:
         (output/'downloads').mkdir();shutil.copy2(args.download,output/'downloads'/'model.zip');download_url='./downloads/model.zip'
-    values={'DRAWING':drawing,'REGIONS':regions,'MODEL_URL':'./model/model.model3.json','MODEL_LABEL':config.get('label',model.name.removesuffix('.model3.json')),'REFERENCE_URL':reference_url,'DOWNLOAD_URL':download_url,'INPUT_MAPPING':config.get('inputMapping',{})}
+    values={'DRAWING':drawing,'REGIONS':regions,'MODEL_URL':'./model/model.model3.json','MODEL_LABEL':config.get('label',model.name.removesuffix('.model3.json')),'REFERENCE_URL':reference_url,'DOWNLOAD_URL':download_url,'INPUT_MAPPING':config.get('inputMapping',{}),'CAMERA_ASSETS':camera_assets}
     (output/'view-config.js').write_text('// Generated configuration; drawing dimensions are independent of texture atlas resolution.\n'+''.join(f'export const {key} = {json.dumps(value,ensure_ascii=False)};\n' for key,value in values.items()),encoding='utf-8')
     manifest={'schemaVersion':1,'modelEntry':'model/model.model3.json','config':values,'dependencies':{'core':'user-provided; verify Cubism redistribution terms','pixi':'6.5.10','pixi-live2d-display':'0.4.0'},'copiedNotices':sorted(notices),'files':{str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file()}}
+    if tracking_lock: manifest['dependencies']['tracking']={'package':tracking_lock['package'],'lockSha256':sha(output/'tracking'/'dependency-lock.json')}
     (output/'preview-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(f'Prepared {output}\nStart: python3 "{output / "server.py"}" --port 8793')
     if not args.config: print('No crop config supplied: all view buttons initially show the full canvas. Set your own logical dimensions and crop regions.')

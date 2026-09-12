@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "method": "Narrow curved dark-ink matte separation from original pixels, per-column boundary fill, stationary bright residuals and protected hair crossings. No new drawing or image-generation model.",
+  "input": {
+    "file": "source/reference.png",
+    "sha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca",
+    "bytes": 1632604
+  },
+  "recipe": [
+    {
+      "file": "brow-regions.json",
+      "sha256": "476a6524714818a86b49a3e38a5b894acd996143d350f1c84f69afd015646524",
+      "bytes": 1591
+    },
+    {
+      "file": "PrepareBrows.java",
+      "sha256": "01eaeac09d7a17a2713b54221376119a9c45841f9cddf5a7922a9bfc5b7ee5e0",
+      "bytes": 4638
+    },
+    {
+      "file": "prepare-brows.cjs",
+      "sha256": "fce75db833f5faf9d4b61cf19c3cbb8d8ecd353526a54c4079767439352527f0",
+      "bytes": 1006
+    }
+  ],
+  "outputs": [
+    {
+      "file": "source/eyebrow-base-v1.png",
+      "sha256": "4c806650224049849c87a748d0bcf32ed9a8a46addf5d487ff92b844b1739853",
+      "bytes": 1615074,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 2,
+      "has_alpha_channel": false,
+      "origin": "deterministic-source-pixel-decomposition",
+      "derived_from": "source/reference.png",
+      "generator": "PrepareBrows.java via prepare-brows.cjs",
+      "license": "CC-BY-4.0",
+      "byte_identical_regeneration": true
+    },
+    {
+      "file": "source/eyebrow-l-v1.png",
+      "sha256": "5eb400d8a50a4fb1d1f016caf626921831b5d2a89b13d8ec735656a1eea5510f",
+      "bytes": 6746,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "origin": "deterministic-source-pixel-decomposition",
+      "derived_from": "source/reference.png",
+      "generator": "PrepareBrows.java via prepare-brows.cjs",
+      "license": "CC-BY-4.0",
+      "byte_identical_regeneration": true
+    },
+    {
+      "file": "source/eyebrow-r-v1.png",
+      "sha256": "6c1dc905caa39282308a22ebf7927a7e146cdf763816f05e887226a3cf9b9518",
+      "bytes": 6759,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "origin": "deterministic-source-pixel-decomposition",
+      "derived_from": "source/reference.png",
+      "generator": "PrepareBrows.java via prepare-brows.cjs",
+      "license": "CC-BY-4.0",
+      "byte_identical_regeneration": true
+    }
+  ],
+  "generatorOutput": "Separated original eyebrow ink pixels=188, max neutral reconstruction channel error=1",
+  "regenerationPassed": true,
+  "neutralSourceCompositeComparison": {
+    "changedPixels": 19,
+    "outsideEyebrowRegion": 0,
+    "maxChannelDifference": 1,
+    "bounds": [
+      417,
+      178,
+      570,
+      193
+    ]
+  },
+  "comparisonScope": "New imported source composite vs previous low-06b source composite, before neural SR and Core deformation. Source RGB outside brows unchanged; not an assertion of byte-identical final HD textures."
+}

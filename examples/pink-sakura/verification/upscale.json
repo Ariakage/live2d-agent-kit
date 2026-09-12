@@ -1,8 +1,8 @@
 {
   "complete": true,
-  "created_at": "2026-09-12T12:31:44.881551+00:00",
+  "created_at": "2026-09-12T14:27:51.710695+00:00",
   "method": "Local NCNN neural RGB 4x; independent bicubic alpha; unchanged logical UVs",
-  "input_manifest_sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a",
+  "input_manifest_sha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
   "binary_sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
   "model": "realesr-animevideov3-x4",
   "weights": {
@@ -13,14 +13,14 @@
   "max_texture_size": 8192,
   "pages": [
     {
-      "source": "work/pink-sakura/low-06b/PinkSakura.2048/texture_00.png",
-      "source_sha256": "29704262548bd4ea51984f589cca4bac56092fad07f264d099776154a2179338",
+      "source": "work/brow-sakura/low-v3/PinkSakura.2048/texture_00.png",
+      "source_sha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4",
       "source_size": [
         2048,
         2048
       ],
       "output": "page-00-rgba-4x.png",
-      "output_sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+      "output_sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
       "output_size": [
         8192,
         8192
@@ -28,9 +28,9 @@
       "command": [
         "<local-upscayl-bin>",
         "-i",
-        "work/pink-sakura/upscale/page-00-rgb.png",
+        "work/brow-sakura/upscale/page-00-rgb.png",
         "-o",
-        "work/pink-sakura/upscale/page-00-rgb-4x.png",
+        "work/brow-sakura/upscale/page-00-rgb-4x.png",
         "-m",
         "<local-ncnn-models>",
         "-n",
@@ -48,6 +48,17 @@
       ]
     }
   ],
-  "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
-  "originalLocalReportSha256": "bfe36c012fe648dda21d3f7917c8d9c24827dbf25c922ca93e15e0cfd53c14f6"
+  "sourceSnapshots": [
+    {
+      "source": "work/brow-sakura/low-v3/PinkSakura.2048/texture_00.png",
+      "snapshot": "source-atlases/page-00.png",
+      "sha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4",
+      "size": [
+        2048,
+        2048
+      ]
+    }
+  ],
+  "originalLocalReportSha256": "e2dc475b8c4c980a323996d3c53f1ea46787aa8142faa101e370f62b91ecb27f",
+  "publicationNote": "Local paths replaced with repo-relative paths or placeholders. Model, texture and captured-frame bytes are unchanged."
 }

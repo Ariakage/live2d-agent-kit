@@ -8,5 +8,7 @@ Read `SKILL.md` for model-production tasks. For changes to the kit itself:
 - Put runtime experiments under ignored `work/`; do not affect unrelated preview servers.
 - Keep `patches` and the Kotlin integration's GPL license separate from the root MIT license.
 - Validate script behavior with `python3 -m unittest discover -s tests -v` and `bash scripts/validate.sh --kit`.
+- Run browser-input unit tests with `node --test tests/test_*.cjs` when changing tracking code. Simulated devices or prerecorded fixtures are separate from physical-camera validation.
+- Camera tracking starts only through an explicit user action. Keep video inference local, stop tracks on exit/source changes, and do not commit camera images, recordings, device IDs or personal paths in test reports.
 - Use the geometric minimal example for an actual exporter/Core/Web test when changing that chain.
 - Keep commands and declared verification scope consistent with what has actually run.

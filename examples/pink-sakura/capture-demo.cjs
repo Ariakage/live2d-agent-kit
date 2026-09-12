@@ -40,6 +40,8 @@ async function main(){
     ParamAngleZ:10*Math.sin(phase),ParamBodyAngleX:-3*Math.sin(phase),ParamBreath:.5+.5*Math.sin(phase),
     ParamEyeLOpen:blink,ParamEyeROpen:blink,ParamMouthForm:.6,
     ParamMouthOpenY:.32*Math.pow(Math.sin(phase*3),2)};
+   for(const [id,offset]of [['ParamBrowLY',0],['ParamBrowRY',.35]]) if(parameters.has(id))
+    values[id]=.7*Math.sin(phase+offset);
    for(const [index,p] of [...parameters.values()].filter(p=>/hair/i.test(p.id)).entries()) values[p.id]=.35*Math.sin(phase+index*.4);
    validateValues(values,parameters);
    const state=await page.evaluate(values=>{

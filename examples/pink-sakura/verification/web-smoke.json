@@ -1,32 +1,32 @@
 {
-  "url": "http://127.0.0.1:8849/",
+  "url": "http://127.0.0.1:8853/",
   "checks": [
     {
       "name": "model entry captured from actual browser response",
       "pass": true,
       "detail": {
-        "modelUrl": "http://127.0.0.1:8849/model/model.model3.json"
+        "modelUrl": "http://127.0.0.1:8853/model/model.model3.json"
       }
     },
     {
       "name": "actual loaded resource recorded: model3",
       "pass": true,
       "detail": {
-        "url": "http://127.0.0.1:8849/model/model.model3.json"
+        "url": "http://127.0.0.1:8853/model/model.model3.json"
       }
     },
     {
       "name": "actual loaded resource recorded: moc3",
       "pass": true,
       "detail": {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.moc3"
+        "url": "http://127.0.0.1:8853/model/PinkSakura.moc3"
       }
     },
     {
       "name": "actual loaded resource recorded: texture",
       "pass": true,
       "detail": {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png"
+        "url": "http://127.0.0.1:8853/model/PinkSakura.8192/texture_00.png"
       }
     },
     {
@@ -34,7 +34,7 @@
       "pass": true,
       "detail": [
         {
-          "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png",
+          "url": "http://127.0.0.1:8853/model/PinkSakura.8192/texture_00.png",
           "texture": {
             "width": 8192,
             "height": 8192
@@ -46,7 +46,7 @@
       "name": "prepared manifest readable",
       "pass": true,
       "detail": {
-        "url": "http://127.0.0.1:8849/preview-manifest.json",
+        "url": "http://127.0.0.1:8853/preview-manifest.json",
         "status": 200
       }
     },
@@ -55,7 +55,7 @@
       "pass": true,
       "detail": {
         "manifestEntry": "model/model.model3.json",
-        "modelUrl": "http://127.0.0.1:8849/model/model.model3.json"
+        "modelUrl": "http://127.0.0.1:8853/model/model.model3.json"
       }
     },
     {
@@ -75,9 +75,9 @@
       "pass": true,
       "detail": {
         "path": "model/PinkSakura.moc3",
-        "expectedSha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+        "expectedSha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
         "observedSha256": [
-          "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+          "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
         ]
       }
     },
@@ -86,9 +86,9 @@
       "pass": true,
       "detail": {
         "path": "model/PinkSakura.8192/texture_00.png",
-        "expectedSha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+        "expectedSha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
         "observedSha256": [
-          "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8"
+          "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361"
         ]
       }
     },
@@ -96,10 +96,10 @@
       "name": "real Cubism Core and native drawables",
       "pass": true,
       "detail": {
-        "parameters": 22,
-        "drawables": 24,
-        "vertices": 7117,
-        "triangles": 11824
+        "parameters": 24,
+        "drawables": 26,
+        "vertices": 7180,
+        "triangles": 11904
       }
     },
     {
@@ -168,6 +168,18 @@
         },
         {
           "id": "ParamEyeBallForm",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBrowLY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBrowRY",
           "requested": 1,
           "actual": 1,
           "geometryChanged": true
@@ -293,10 +305,10 @@
     "explicitExecutablePath": true
   },
   "loadedResources": {
-    "modelUrl": "http://127.0.0.1:8849/model/model.model3.json",
+    "modelUrl": "http://127.0.0.1:8853/model/model.model3.json",
     "observed": [
       {
-        "url": "http://127.0.0.1:8849/media/reference.png",
+        "url": "http://127.0.0.1:8853/media/reference.png",
         "status": 200,
         "source": "browser-response",
         "bytes": 1632604,
@@ -307,7 +319,7 @@
         }
       },
       {
-        "url": "http://127.0.0.1:8849/model/model.model3.json",
+        "url": "http://127.0.0.1:8853/model/model.model3.json",
         "status": 200,
         "source": "browser-response",
         "bytes": 900,
@@ -315,7 +327,7 @@
         "texture": null
       },
       {
-        "url": "http://127.0.0.1:8849/model/model.model3.json",
+        "url": "http://127.0.0.1:8853/model/model.model3.json",
         "status": 200,
         "source": "browser-response",
         "bytes": 900,
@@ -323,29 +335,29 @@
         "texture": null
       },
       {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.moc3",
+        "url": "http://127.0.0.1:8853/model/PinkSakura.8192/texture_00.png",
         "status": 200,
         "source": "browser-response",
-        "bytes": 388544,
-        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
-        "texture": null
-      },
-      {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png",
-        "status": 200,
-        "source": "browser-response",
-        "bytes": 44825773,
-        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+        "bytes": 45336522,
+        "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
         "texture": {
           "width": 8192,
           "height": 8192
         }
+      },
+      {
+        "url": "http://127.0.0.1:8853/model/PinkSakura.moc3",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 395520,
+        "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+        "texture": null
       }
     ],
     "manifest": {
       "present": true,
-      "url": "http://127.0.0.1:8849/preview-manifest.json",
-      "sha256": "eecd4c11581b72339f249bfff6044261f0e63366c032c4f32e7eed6ead838416",
+      "url": "http://127.0.0.1:8853/preview-manifest.json",
+      "sha256": "0940d89bd4ae777748bfc33c25fd6ffcbb7433447aacc7111d78dcd246d0abca",
       "matched": [
         {
           "path": "model/model.model3.json",
@@ -353,11 +365,11 @@
         },
         {
           "path": "model/PinkSakura.moc3",
-          "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+          "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
         },
         {
           "path": "model/PinkSakura.8192/texture_00.png",
-          "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8"
+          "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361"
         }
       ]
     }
@@ -369,10 +381,6 @@
     "maxTextureSize": 16384,
     "requestedClippingMaskSize": 1024,
     "clippingMaskSize": 1024
-  },
-  "screenshots": {
-    "neutral": "work/pink-sakura/web-hd-smoke/neutral.png",
-    "simulated-paused": "work/pink-sakura/web-hd-smoke/simulated-paused.png"
   },
   "visibleBindingEvidence": [
     "ParamAngleX",
@@ -386,6 +394,8 @@
     "ParamEyeBallX",
     "ParamEyeBallY",
     "ParamEyeBallForm",
+    "ParamBrowLY",
+    "ParamBrowRY",
     "ParamMouthForm",
     "ParamMouthOpenY",
     "ParamBreath",
@@ -409,12 +419,14 @@
     "ParamEyeBallY",
     "ParamMouthOpenY",
     "ParamMouthForm",
+    "ParamBrowLY",
+    "ParamBrowRY",
     "ParamBodyAngleX",
     "ParamBodyAngleY",
     "ParamBodyAngleZ",
     "ParamBreath"
   ],
   "pass": true,
-  "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
-  "originalLocalReportSha256": "ae006c525d125ad9d2a862192338d82939c92809b818471f4b0212fe82d3d1ba"
+  "originalLocalReportSha256": "6f2f468cb9d5d86105a5c0a34ccd2a66f926f4613c3a9997a6264507605eda7b",
+  "publicationNote": "Local paths replaced with repo-relative paths or placeholders. Model, texture and captured-frame bytes are unchanged."
 }

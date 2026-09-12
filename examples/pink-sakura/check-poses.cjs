@@ -109,6 +109,20 @@ function makePoseMatrix(parameters) {
   const eyeNames=new Map([[0,'eyes-closed'],[0.25,'eyes-25'],[0.5,'eyes-half'],[0.75,'eyes-75'],[0.85,'eyes-85'],[0.95,'eyes-95'],[1,'eyes-open']]);
   for (const [open,name] of eyeNames) add(name,{ParamEyeLOpen:open,ParamEyeROpen:open});
   add('wink-l',{ParamEyeLOpen:0}); add('wink-r',{ParamEyeROpen:0});
+  for(const side of ['L','R']) {
+    const id='ParamBrow'+side+'Y',p=map.get(id);
+    if(p) for(const edge of ['min','max']) add(`brow-${side.toLowerCase()}-${edge}`,{[id]:p[edge]},['face'],'brows');
+  }
+  if(map.has('ParamBrowLY')&&map.has('ParamBrowRY')) {
+    const l=map.get('ParamBrowLY'),r=map.get('ParamBrowRY');
+    for(const edge of ['min','max']) add(`brows-${edge}`,{ParamBrowLY:l[edge],ParamBrowRY:r[edge]},['face'],'brows');
+    add('brows-asymmetric',{ParamBrowLY:l.max,ParamBrowRY:r.min},['face'],'brows');
+    add('brows-asymmetric-inverse',{ParamBrowLY:l.min,ParamBrowRY:r.max},['face'],'brows');
+    add('brows-closed-smile',{ParamBrowLY:l.max,ParamBrowRY:r.max,ParamEyeLOpen:0,ParamEyeROpen:0,ParamMouthForm:1,ParamMouthOpenY:.15},['face'],'brows-combined');
+    for(const edge of ['min','max']) if(map.has('ParamAngleX')) add(`brows-head-${edge}`,{
+      ParamBrowLY:l[edge],ParamBrowRY:r[edge==='min'?'max':'min'],ParamAngleX:map.get('ParamAngleX')[edge],
+      ParamEyeLOpen:.85,ParamEyeROpen:.85,ParamMouthForm:-1,ParamMouthOpenY:.075},['face'],'brows-combined');
+  }
   for(const form of [-1,0,1]) for(const open of [0,.075,.15,.5,1]) {
     const name=open===1&&form===1?'mouth-smile-open':open===1&&form===-1?'mouth-frown-open':`mouth-form-${form}-open-${String(open).replace('.','p')}`;
     add(name,{ParamMouthForm:form,ParamMouthOpenY:open});

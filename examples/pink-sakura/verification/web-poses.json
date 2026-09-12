@@ -1,7 +1,7 @@
 {
   "schema": "live2d-canvas-pose-review-v1",
-  "url": "http://127.0.0.1:8849/",
-  "startedAt": "2026-09-12T12:38:06.962Z",
+  "url": "http://127.0.0.1:8853/",
+  "startedAt": "2026-09-12T14:37:53.619Z",
   "automatedChecksPassed": true,
   "visualReview": "pending",
   "cameraRequests": [],
@@ -35,6 +35,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -52,25 +54,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723458,
-        "sha256": "68d27469424949e7558055250aa07f50f5043010435ef50f02f1900f18621ec3",
+        "bytes": 723241,
+        "sha256": "50d0537398974b0161880052ba8052f3da6e3b6064a943353e92c0fc24c6536c",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "7e36eec7fb97a202f17d8f01b6e85ce05a2f532159089df79ad2575a59e705bd",
-        "vertices": 7117,
+        "sha256": "8a1b02bc041d0a2a178465878434f54cb1cd21d353bed9d6e7bf06a10e311fc9",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -121,6 +125,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -138,25 +144,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269444,
-        "sha256": "2f7dc052acdc9379d6e2059283b3476360c5bb7c720a798dc7719b9df6ac8cd4",
+        "bytes": 269456,
+        "sha256": "f6a6a1c5785dd497f5d848957303a6eaa3e3646bfd4daf294cbd886de86d0d49",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "7e36eec7fb97a202f17d8f01b6e85ce05a2f532159089df79ad2575a59e705bd",
-        "vertices": 7117,
+        "sha256": "8a1b02bc041d0a2a178465878434f54cb1cd21d353bed9d6e7bf06a10e311fc9",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -213,6 +221,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -230,20 +240,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 709802,
-        "sha256": "11a13b4f864b9b8e96633c1fcca5688e3153952839ce8ab44f63e68494e338a7",
+        "bytes": 709659,
+        "sha256": "614bb5ab9ff8a46b8423bbe71e387a4f31575043524cc28be55e0209d08b3f5d",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "3c25bd957aa160df1e4aa34c21fd1c4a498ee8d458aa15b85159334b7e70c5aa",
-        "vertices": 7117,
+        "sha256": "eb3f0111a5d3ab0eb1c84727c93aa52e820c9e855f8a141e5010cb6b18b9a5ef",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 17,
+        "visibleDrawables": 19,
         "opacities": [
           1,
           1,
@@ -251,6 +261,8 @@
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           0,
@@ -305,6 +317,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -322,20 +336,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 709802,
-        "sha256": "11a13b4f864b9b8e96633c1fcca5688e3153952839ce8ab44f63e68494e338a7",
+        "bytes": 709659,
+        "sha256": "614bb5ab9ff8a46b8423bbe71e387a4f31575043524cc28be55e0209d08b3f5d",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "3c25bd957aa160df1e4aa34c21fd1c4a498ee8d458aa15b85159334b7e70c5aa",
-        "vertices": 7117,
+        "sha256": "eb3f0111a5d3ab0eb1c84727c93aa52e820c9e855f8a141e5010cb6b18b9a5ef",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 17,
+        "visibleDrawables": 19,
         "opacities": [
           1,
           1,
@@ -343,6 +357,8 @@
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           0,
@@ -397,6 +413,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -414,20 +432,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 711598,
-        "sha256": "5232b8632fe141fadcd51e1aeff95b40d21231bcd80740911ab964276944a653",
+        "bytes": 711423,
+        "sha256": "ef0c6c5cc57318a3e0918790f5a1d03ab1d4df6c9d6f6f39de4726f43ac6ae46",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "a573757844264c609670419883cc963dd62aaadfe8638ea4b8fa29eb8b75e790",
-        "vertices": 7117,
+        "sha256": "b47720eec19c24c59250ea938609d3090a08a7ca9e41045b4d4db24941beaef7",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           1,
           1,
@@ -435,6 +453,8 @@
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -489,6 +509,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -506,20 +528,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 717918,
-        "sha256": "0577f4a62c51611b1e0437587769912f51e37fd53c7bb94094dfaff76d51a5d7",
+        "bytes": 717717,
+        "sha256": "c35c7d100c657e889302d19dfcb6886bab600394f42581caa80787afa8556a5c",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "8d1d976f42c2f70d56173291658ffd7d085b9f462615302c791b4954eca3126e",
-        "vertices": 7117,
+        "sha256": "2ce02cdfa0513532586f4bf2b376d927241a5a9b4154dee74fc43ea1a6d1e73d",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           1,
           1,
@@ -527,6 +549,8 @@
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -581,6 +605,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -598,25 +624,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 721541,
-        "sha256": "1963492574219edbf71820b801279cad4bac8a8f28fcbbefbe9ed6e2109064a3",
+        "bytes": 721401,
+        "sha256": "ac01582a8a498daa0c1d338fee86884f2a3eee570f91c3ba59690be99a84d1d4",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "725509bc5bcb642575c86b85451f5e4b5d123686f7bd3862dd89ff77fe64c7ab",
-        "vertices": 7117,
+        "sha256": "d9f44e36b0a9fe5b7d63f8dabccadc93cddafd62260d6c398ac5b9b7f97133ae",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 23,
+        "visibleDrawables": 25,
         "opacities": [
           1,
           1,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -673,6 +701,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -690,25 +720,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723013,
-        "sha256": "fc67c1defe8ec0be76fbd5e3daf8b9d67da57ad71d11e5fa1f02735b88e0f49c",
+        "bytes": 722748,
+        "sha256": "4abe679b20d3a0c8c7309816058e93ee6c9834a79700afe78ae9d31f056dee51",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "625e7719e01cf8890f29af81b30bbdeb6e2998c80332a708d0f7ee2a6ddd8f50",
-        "vertices": 7117,
+        "sha256": "2d7b4cda59cba4eb2ddfd4d12b76e6f263e38ef78bb912e89f6596081cd77277",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 23,
+        "visibleDrawables": 25,
         "opacities": [
           0.33333349227905273,
           0.33333349227905273,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -765,6 +797,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -782,25 +816,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723458,
-        "sha256": "68d27469424949e7558055250aa07f50f5043010435ef50f02f1900f18621ec3",
+        "bytes": 723241,
+        "sha256": "50d0537398974b0161880052ba8052f3da6e3b6064a943353e92c0fc24c6536c",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "7e36eec7fb97a202f17d8f01b6e85ce05a2f532159089df79ad2575a59e705bd",
-        "vertices": 7117,
+        "sha256": "8a1b02bc041d0a2a178465878434f54cb1cd21d353bed9d6e7bf06a10e311fc9",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -855,6 +891,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -872,26 +910,28 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 716968,
-        "sha256": "42a6d3e01e78d98fc20f18272f5671729b0aaeda0b041482684bdc2702630175",
+        "bytes": 716849,
+        "sha256": "4f84fdd8bb4e8b0392de2c0e7d721d29ebaa882f48d6e515daf8c5ba6f0017ab",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "1ae23a9d98bdbf79147470174430841ff5a5da83ab040339cbbfeb4b32f9dea3",
-        "vertices": 7117,
+        "sha256": "087051ab548dc17c28bee157d794c9550e73cf8f9805c96afa3ce650e9e40bc5",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 19,
+        "visibleDrawables": 21,
         "opacities": [
           1,
           0,
           1,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -945,6 +985,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -962,20 +1004,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 716651,
-        "sha256": "1b427d20d561a1a899294182ff7343004916b40d0a2eba18946228975677a9ed",
+        "bytes": 716517,
+        "sha256": "38e4d60c9c0e81c0ded9d64962f178eeb0e958180c907834b1af388de1700c18",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "8043aba7de72cd4b0ef56c0bf3bc3472b2c7b2a67fba9d0d0f539052034c8dd5",
-        "vertices": 7117,
+        "sha256": "65c35936cf9ab6bd99671996b473db6cf5c04d5764ca8a0713bd44bfffc3006c",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 19,
+        "visibleDrawables": 21,
         "opacities": [
           0,
           1,
@@ -986,9 +1028,1087 @@
           1,
           1,
           1,
+          1,
+          1,
           0,
           1,
           0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brow-l-min-face.png",
+      "name": "brow-l-min",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": -1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": -1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": -1,
+          "ParamBrowRY": 0,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723276,
+        "sha256": "13fbacb356d40279acc7600e0aa696157535f139a55ce73c6b5600c711ae7448",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "8e3f02dec74e86a1947f8d8181ee24e55cad339e78caa4142e24c9a2b7c42afd",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brow-l-max-face.png",
+      "name": "brow-l-max",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": 1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": 1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": 1,
+          "ParamBrowRY": 0,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723260,
+        "sha256": "b3a2b630f67a281c409cb794020a25f28315531ae53f460ae1e2384b33172924",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "b7052ab2cc355e7c99491b163b920c84c27870dfc6910468575de307ae010143",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brow-r-min-face.png",
+      "name": "brow-r-min",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowRY": -1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowRY": -1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": -1,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723147,
+        "sha256": "6e224248bb12a7833f7ae1ccfbf6c5ebbb2cc66b0bf14aa5de72c9f728a390a8",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "7c3be6cdf164f36b01855f8b3e939aff5a4d66b3444001d76b6620fd91e3596a",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brow-r-max-face.png",
+      "name": "brow-r-max",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowRY": 1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowRY": 1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 1,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723313,
+        "sha256": "b2c1ed0f3243cdf7a0c789175aefa5dcdd6ada1cbd1a1b45c1859e53b1e01cc7",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "9a969c6b9c8bf19fa0241304b8c69c869d06510cba9f48883c9327308c3a4ed0",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brows-min-face.png",
+      "name": "brows-min",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": -1,
+        "ParamBrowRY": -1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": -1,
+          "ParamBrowRY": -1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": -1,
+          "ParamBrowRY": -1,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723266,
+        "sha256": "3560d2e4a15a83c93c833bffa711315934e328a757c3153b16807359cba537d3",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "83988ff3ebe9a06ce3d43b32939dda5e1d764046a9e417e2f1922774e134ba88",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brows-max-face.png",
+      "name": "brows-max",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": 1,
+        "ParamBrowRY": 1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": 1,
+          "ParamBrowRY": 1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": 1,
+          "ParamBrowRY": 1,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723332,
+        "sha256": "8cddc432faf7277a42f880b4e188ff1e6e165d88dbecf195ff0f0a062cffc49f",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "331c2da24bd66eaf272c186d32a71dcc817ab53eb59a84e5b3fa598a0ae03041",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brows-asymmetric-face.png",
+      "name": "brows-asymmetric",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": 1,
+        "ParamBrowRY": -1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": 1,
+          "ParamBrowRY": -1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": 1,
+          "ParamBrowRY": -1,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723263,
+        "sha256": "78ba64d12a905025b1396aed696b6f663e19b7c3bf5ac5c39832918e25724718",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "9976e05e9d908610788321e0f6014a46229129ddaa11a97f4da0fa374557c5e2",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brows-asymmetric-inverse-face.png",
+      "name": "brows-asymmetric-inverse",
+      "category": "brows",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": -1,
+        "ParamBrowRY": 1
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": -1,
+          "ParamBrowRY": 1
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 1,
+          "ParamEyeROpen": 1,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": -1,
+          "ParamBrowRY": 1,
+          "ParamMouthForm": 0,
+          "ParamMouthOpenY": 0,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 723285,
+        "sha256": "e8b10291b2c956bb34487ab12f40d878621df2cd22d5d9cc14d7302ffe58ae31",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "d32d2d1181edfd6eb517e3b6b299d8a525f144ddfb9f5df3afc9d0194acc751c",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 23,
+        "opacities": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brows-closed-smile-face.png",
+      "name": "brows-closed-smile",
+      "category": "brows-combined",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": 1,
+        "ParamBrowRY": 1,
+        "ParamEyeLOpen": 0,
+        "ParamEyeROpen": 0,
+        "ParamMouthForm": 1,
+        "ParamMouthOpenY": 0.15
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": 1,
+          "ParamBrowRY": 1,
+          "ParamEyeLOpen": 0,
+          "ParamEyeROpen": 0,
+          "ParamMouthForm": 1,
+          "ParamMouthOpenY": 0.15
+        },
+        "parameters": {
+          "ParamAngleX": 0,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 0,
+          "ParamEyeROpen": 0,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": 1,
+          "ParamBrowRY": 1,
+          "ParamMouthForm": 1,
+          "ParamMouthOpenY": 0.15000000596046448,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 709552,
+        "sha256": "7a85f5ad96df6bc753c6111ec2ce6606b9c17d1a0c859bf1749646aafdd2c639",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "9a1d857e238d4de7f6d694baa5f42564dc64f3835d79b06b78f6d9016d89faf9",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.435543417930603,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42704087495803833,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 19,
+        "opacities": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brows-head-min-face.png",
+      "name": "brows-head-min",
+      "category": "brows-combined",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": -1,
+        "ParamBrowRY": 1,
+        "ParamAngleX": -45,
+        "ParamEyeLOpen": 0.85,
+        "ParamEyeROpen": 0.85,
+        "ParamMouthForm": -1,
+        "ParamMouthOpenY": 0.075
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": -1,
+          "ParamBrowRY": 1,
+          "ParamAngleX": -45,
+          "ParamEyeLOpen": 0.85,
+          "ParamEyeROpen": 0.85,
+          "ParamMouthForm": -1,
+          "ParamMouthOpenY": 0.075
+        },
+        "parameters": {
+          "ParamAngleX": -45,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 0.8500000238418579,
+          "ParamEyeROpen": 0.8500000238418579,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": -1,
+          "ParamBrowRY": 1,
+          "ParamMouthForm": -1,
+          "ParamMouthOpenY": 0.07500000298023224,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 718937,
+        "sha256": "2f30f35019aebe877d3819a300f49cc146e74b11c0a32e0ba15f6acb19225269",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "ad665f39e1423084da5dcc838bdcf5162b48bffbf6ba958ff89b633813a1373a",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.43319928646087646,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42937785387039185,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 26,
+        "opacities": [
+          1,
+          1,
+          0.5,
+          0.5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "brows-head-max-face.png",
+      "name": "brows-head-max",
+      "category": "brows-combined",
+      "view": "face",
+      "requested": {
+        "ParamBrowLY": 1,
+        "ParamBrowRY": -1,
+        "ParamAngleX": 45,
+        "ParamEyeLOpen": 0.85,
+        "ParamEyeROpen": 0.85,
+        "ParamMouthForm": -1,
+        "ParamMouthOpenY": 0.075
+      },
+      "state": {
+        "autoPlay": false,
+        "pointerFollow": false,
+        "view": "face",
+        "zoom": 1,
+        "expression": "",
+        "captureActive": false,
+        "captureParameters": {},
+        "manualParameters": {
+          "ParamBrowLY": 1,
+          "ParamBrowRY": -1,
+          "ParamAngleX": 45,
+          "ParamEyeLOpen": 0.85,
+          "ParamEyeROpen": 0.85,
+          "ParamMouthForm": -1,
+          "ParamMouthOpenY": 0.075
+        },
+        "parameters": {
+          "ParamAngleX": 45,
+          "ParamAngleY": 0,
+          "ParamAngleZ": 0,
+          "ParamBodyAngleX": 0,
+          "ParamBodyAngleY": 0,
+          "ParamBodyAngleZ": 0,
+          "ParamEyeLOpen": 0.8500000238418579,
+          "ParamEyeROpen": 0.8500000238418579,
+          "ParamEyeBallX": 0,
+          "ParamEyeBallY": 0,
+          "ParamEyeBallForm": 0,
+          "ParamBrowLY": 1,
+          "ParamBrowRY": -1,
+          "ParamMouthForm": -1,
+          "ParamMouthOpenY": 0.07500000298023224,
+          "ParamBreath": 0,
+          "ParamFrontHairSideLSwing": 0,
+          "ParamFrontHairSideRSwing": 0,
+          "ParamBackHairOuterLSwing": 0,
+          "ParamBackHairOuterRSwing": 0,
+          "ParamBackHairArcLSwing": 0,
+          "ParamBackHairArcRSwing": 0,
+          "ParamBackHairBaseRSwing": 0,
+          "ParamBackHairBaseLSwing": 0
+        }
+      },
+      "parameterValuesVerified": true,
+      "canvas": {
+        "width": 760,
+        "height": 785,
+        "bytes": 719750,
+        "sha256": "67540026ccf5b40b69340109a7648329fe507fbca68f2d5470c5f8f568424359",
+        "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
+      },
+      "geometry": {
+        "sha256": "9c170001d2aa92686d68139496114f409b1c801013b1fada29e1f0f9fc68951d",
+        "vertices": 7180,
+        "bounds": {
+          "minX": -0.43788856267929077,
+          "minY": -0.7041564583778381,
+          "maxX": 0.42470496892929077,
+          "maxY": 0.7460938096046448
+        },
+        "visibleDrawables": 26,
+        "opacities": [
+          1,
+          1,
+          0.5,
+          0.5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1,
@@ -1037,6 +2157,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": -1,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -1054,25 +2176,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723413,
-        "sha256": "547e31e8fe17d5e8a52255c1ca5af89b133a5133ed5c32e2799a8407cf22b986",
+        "bytes": 723218,
+        "sha256": "a9013ff5afe40ad9431ac538cfd37e0fc98e5f33600ae7906b0f0bfeed45d313",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "35ba81556efcc1d1fd4f3f6e1e5269828bba4d5e02db31cb7e7dba324da2dca3",
-        "vertices": 7117,
+        "sha256": "cc7b44e159ad8e6b12da5eeb7097fbf9327a1a1019b9d78cca8eada938603a6e",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1129,6 +2253,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": -1,
           "ParamMouthOpenY": 0.07500000298023224,
           "ParamBreath": 0,
@@ -1146,25 +2272,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723273,
-        "sha256": "87c0d4ed7da2073cc2dd0610927f8a74138c0dce115361331adb21b9084efb54",
+        "bytes": 723016,
+        "sha256": "a8a6b78e1098bf188eb4dff4e9145a9c34c8c47984c369de505e654c82ce57f0",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "1507e4816c336ad5492d430f561b8ea447795a62e1537a0a9575835dc1a08cf7",
-        "vertices": 7117,
+        "sha256": "d7cd2989fd4f19b172ce181be7e8d9a5396e2639ded7fa73e8416654e57112a9",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 22,
+        "visibleDrawables": 24,
         "opacities": [
           0,
           0,
           0.5,
           0.5,
+          1,
+          1,
           1,
           1,
           1,
@@ -1221,6 +2349,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": -1,
           "ParamMouthOpenY": 0.15000000596046448,
           "ParamBreath": 0,
@@ -1238,24 +2368,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723070,
-        "sha256": "ea0521574808118d266eef937f389b0d8002f74fe07438ea3444ba8917a496cb",
+        "bytes": 722827,
+        "sha256": "76444fd48f19e4abb2a926de2512f5e8692055b4d25db9ab8d0276389ca15ec0",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "119affad815ad6b6d280b5d9ad36d8e43ae24f9f0ba87d316d90443af2fa7126",
-        "vertices": 7117,
+        "sha256": "039b12889de3b7d95469b7a25020a79f93e150f32e11cda85b99c33729f44fed",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1313,6 +2445,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": -1,
           "ParamMouthOpenY": 0.5,
           "ParamBreath": 0,
@@ -1330,24 +2464,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723758,
-        "sha256": "efd1f8f219619102b05517d8af8d6b29de0270a5d077ddf73f202584e4620f4e",
+        "bytes": 723552,
+        "sha256": "19fd128f1c2862f0a702a2243641a0c1498acbc387eadb6af92e948b1f1e8433",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "cde67ee5687b0259b2248574eccb49382c87d454e65cf55cf781f8c7772db4d1",
-        "vertices": 7117,
+        "sha256": "0465767faa011f5ca038f35c35f1a6d17c3ea42cc99fc681b2e6d6824a2aa63b",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1405,6 +2541,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": -1,
           "ParamMouthOpenY": 1,
           "ParamBreath": 0,
@@ -1422,24 +2560,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 724474,
-        "sha256": "0a8e8eb585e157c2014e86f90023b70e2e8c06a425c8e65423d1d8826ca323f9",
+        "bytes": 724312,
+        "sha256": "48e9e33d0332fdabfe966ee390e77f6bdc8ff915a29658eb55d3fa7ed62d624b",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "37ac481251ae9a326f4a3db59354403d8a655146cabdf25879ae6dad82804c6d",
-        "vertices": 7117,
+        "sha256": "17a793358ee363cc53544f2a2d364d8df0fa4c39e43a0218cab40352012f19ae",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1497,6 +2637,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -1514,25 +2656,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723458,
-        "sha256": "68d27469424949e7558055250aa07f50f5043010435ef50f02f1900f18621ec3",
+        "bytes": 723241,
+        "sha256": "50d0537398974b0161880052ba8052f3da6e3b6064a943353e92c0fc24c6536c",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "7e36eec7fb97a202f17d8f01b6e85ce05a2f532159089df79ad2575a59e705bd",
-        "vertices": 7117,
+        "sha256": "8a1b02bc041d0a2a178465878434f54cb1cd21d353bed9d6e7bf06a10e311fc9",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1589,6 +2733,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0.07500000298023224,
           "ParamBreath": 0,
@@ -1606,25 +2752,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723287,
-        "sha256": "9c20c1b17e380ba858e0b66c3676d81b1bef4a6dd46460c1dcb051073184e941",
+        "bytes": 723107,
+        "sha256": "52b906e08b01165857c9fa26bfbbb964273ee5f9064988b2356e5fdeab2ccb9a",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "195e621e7ebfd12a13bf55445ab310ac29f53c86a34c8d07e08d555d79944194",
-        "vertices": 7117,
+        "sha256": "9cd57ec699024e79a7fa4c5419139eb9107392691e788b11e4fba2255fc439fa",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 22,
+        "visibleDrawables": 24,
         "opacities": [
           0,
           0,
           0.5,
           0.5,
+          1,
+          1,
           1,
           1,
           1,
@@ -1681,6 +2829,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0.15000000596046448,
           "ParamBreath": 0,
@@ -1698,24 +2848,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723196,
-        "sha256": "5204bc302d684547f7a45842e7076a75e735ca9cae99ffbc5ff8f9fc571c2454",
+        "bytes": 722832,
+        "sha256": "6d229d8972402cb88f33b52130b62c004da2247c125ec7661936eb5701d54f6d",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "ba25c62fa9154f90bc0e55cd9e53af22ab1b233c5b0921ed0e8e3beb5b9a564a",
-        "vertices": 7117,
+        "sha256": "2b09d7a0e4a04f173523003a2f9b24773196c667975ce6906c4c52e56c835d4a",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1773,6 +2925,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0.5,
           "ParamBreath": 0,
@@ -1790,24 +2944,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723846,
-        "sha256": "9df6c04c4f09558eac34ac0c2ef65421b61444e39673867b065820a334ebb031",
+        "bytes": 723687,
+        "sha256": "cf6a0c29b5bb4d53bb7421f7d19810c410d7d515e049bf2dc8eb6863c54391bc",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "cafbcf123ada772139bf0612bfcd2c624a9108df15fbc1a7e7679712ebc5103b",
-        "vertices": 7117,
+        "sha256": "9fa84f6051d8d5a85d83b039bd72b6af6fbbe0229b0ae149e38a67a92372a93c",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1865,6 +3021,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 1,
           "ParamBreath": 0,
@@ -1882,24 +3040,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 724587,
-        "sha256": "f60878c7eb32d939494b29d659fb84a7c2be85f630fe7f61572484116734ea0e",
+        "bytes": 724458,
+        "sha256": "c94d3b766ba45c6f2510111fc100dbee0566e445b4e3b005bc1ca02f7e8acdec",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "c1ddbe879743d0005c340f7d4248f892143899dc26ec7f34fe8fdd4f217fc410",
-        "vertices": 7117,
+        "sha256": "5d614803f485fda262b0ae03b508c8d42df3f81bcad4ac151526244352366c37",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -1957,6 +3117,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 1,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -1974,25 +3136,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723499,
-        "sha256": "be264aa50d9a1c5ac1f62bcef6e4cc0859ab9d387328e6e3d987444bc5457a83",
+        "bytes": 723357,
+        "sha256": "3aa00d4f3b59e83b23cfe9311496a76af8736e21e366067f37838ed6b352a4ba",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "32fab54071c7d6f4b9acf2bb587913ef26c0665407398bc4120e580197eab104",
-        "vertices": 7117,
+        "sha256": "2def7fa919c9a2407f8fb023f9f5817254cf07720bbf931f7d416c81831d09d0",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2049,6 +3213,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 1,
           "ParamMouthOpenY": 0.07500000298023224,
           "ParamBreath": 0,
@@ -2066,25 +3232,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723381,
-        "sha256": "46977f7366f4797c8d9ecff11380b725b7f02e1794be10151845e82158737694",
+        "bytes": 723094,
+        "sha256": "126ae9bc8045ef707ed9871ba046707b4eee68f5f839615cb8d091d9ddf277d5",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "416a7d3dbefcff2889974771704fd224fca98ab064fba19a2e43b5af7bfdc3df",
-        "vertices": 7117,
+        "sha256": "5454a3f644c977789551d647fe4f3f561d1de49a09ce84c6de78e218f2eccdca",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 22,
+        "visibleDrawables": 24,
         "opacities": [
           0,
           0,
           0.5,
           0.5,
+          1,
+          1,
           1,
           1,
           1,
@@ -2141,6 +3309,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 1,
           "ParamMouthOpenY": 0.15000000596046448,
           "ParamBreath": 0,
@@ -2158,24 +3328,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723191,
-        "sha256": "86903e4a54b43773a4b10c1ad558e4fae8ad214450775c19f6a1f38394ffb58a",
+        "bytes": 722966,
+        "sha256": "e59308cc459c0150c373dbc0a9c7f7bc78d159e2fe87276a4462c577c1200566",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "c5ef0cbf1c32ac62cdfeb2b2b651dbec8fa76109f10c5f7a2b4aa6120f3c0adb",
-        "vertices": 7117,
+        "sha256": "ac23edd9f6ea6c09b26015745c10818fcfb7bc7d1219170419fc2b4de3d545ed",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2233,6 +3405,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 1,
           "ParamMouthOpenY": 0.5,
           "ParamBreath": 0,
@@ -2250,24 +3424,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 723958,
-        "sha256": "1f6e1ba36feb8eb4e88a0573169c9eb389b120beae58632e7efe1b70edabc140",
+        "bytes": 723721,
+        "sha256": "c09b718d2d128791af3e7341f9aa5d2c403f89fe030388fd8cf291ca6b5a3117",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "336f2af9c72db6e36fb8ee90bb8c398de5b0ad67940100dc42e0682b4ef713a1",
-        "vertices": 7117,
+        "sha256": "0be289caad525c1b26a679372654461d18335888da5ef16595113691d35fed01",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2325,6 +3501,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 1,
           "ParamMouthOpenY": 1,
           "ParamBreath": 0,
@@ -2342,24 +3520,26 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 724736,
-        "sha256": "b30bf02ef736a654b2f8f188fa8d0c5d32adb0381b951e42637405a9d69492c7",
+        "bytes": 724548,
+        "sha256": "9d0c18da2c5ff5446a4476a74c4e48e8142d2421bc67e00de31e636ba68bbb10",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "081202da7fffbcb6ec3005e94dfff15e73cd8fe4b3dfe1d37916a1c6fa70e4ae",
-        "vertices": 7117,
+        "sha256": "5f77406ee7ef7a2681e054340c386ea8fdb0a2d2102f92683a024e7f36f23ae3",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2415,6 +3595,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -2432,25 +3614,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 720911,
-        "sha256": "fb36036497c57ae8ba4de6942ac330b83d55ee0aba4121755e4f2ee8fba2c0ec",
+        "bytes": 720859,
+        "sha256": "722a51fe5d6af349d78e8ef0c0e3231394db8a073ca763f3f346aa733fe5bd12",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "ffa51e694770e9a577e3f7cfecc889ed32da94c1dc8bee300e6e221413b427ef",
-        "vertices": 7117,
+        "sha256": "a1f540fe5de818917ea1e2c348cb0dc5719976817c64926f07bcd0618b7eb188",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.43319928646087646,
           "minY": -0.7041564583778381,
           "maxX": 0.42937785387039185,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2505,6 +3689,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -2522,25 +3708,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269401,
-        "sha256": "6010c37321d228d73eb247e1d2ca303145db3322ef79183641b4072340c5d907",
+        "bytes": 269371,
+        "sha256": "b1e3ec239742a24c273688856b187eec8756d038e28131cde6e290f1439d695b",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "ffa51e694770e9a577e3f7cfecc889ed32da94c1dc8bee300e6e221413b427ef",
-        "vertices": 7117,
+        "sha256": "a1f540fe5de818917ea1e2c348cb0dc5719976817c64926f07bcd0618b7eb188",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.43319928646087646,
           "minY": -0.7041564583778381,
           "maxX": 0.42937785387039185,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2595,6 +3783,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -2612,25 +3802,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 721875,
-        "sha256": "88e5b7f18b56ec11bfbb0716e2bf676c6d2a6d0c17e5a83e128523cd0f41a70b",
+        "bytes": 721645,
+        "sha256": "0565687912eb7715dd507b98dd598e10084cc76d8120913d45a5649b0eaafa38",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "1a825827acdb4c9f4dc5c51972b2c5163f622e216942fccad14d14abea308317",
-        "vertices": 7117,
+        "sha256": "c4af66c2cbd9181c562a18a1a784d23a5ac4a5616df089a50f96bd542c38786e",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.43788856267929077,
           "minY": -0.7041564583778381,
           "maxX": 0.42470496892929077,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2685,6 +3877,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -2702,25 +3896,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269733,
-        "sha256": "5f2f7722264b91a4877e2ea657e8a115d7f883083798a952f33ce79629e9915c",
+        "bytes": 269684,
+        "sha256": "46e32883d45f9287bbb40f5194ff514999f7b424a562d490f6a4ea0ab18854ad",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "1a825827acdb4c9f4dc5c51972b2c5163f622e216942fccad14d14abea308317",
-        "vertices": 7117,
+        "sha256": "c4af66c2cbd9181c562a18a1a784d23a5ac4a5616df089a50f96bd542c38786e",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.43788856267929077,
           "minY": -0.7041564583778381,
           "maxX": 0.42470496892929077,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2775,6 +3971,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -2792,25 +3990,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 720049,
-        "sha256": "aa9920538d70c22838e79ea87c69265bf9d9ed57950111c26b484df22c91c998",
+        "bytes": 719918,
+        "sha256": "78a783a6ce2f580cc5a4d20624d04c59c4b9f1604e0263a85540332be1ec7700",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "8b9bf832210e11207f7d8a34580a06a845b5108505c875ddd2ca3412b70c6870",
-        "vertices": 7117,
+        "sha256": "e3a25468d123a64a9e5b8b2cfcc365335d9248761bc4ce67fe99fabb6444fabc",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7439947128295898
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2865,6 +4065,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -2882,25 +4084,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269179,
-        "sha256": "d0edee4dec089d1c777a5ac0df8d257f9e5ecd97dde92a67cdfdc0b4c42b0d0e",
+        "bytes": 269231,
+        "sha256": "89c471713178980e7182365509de5c77b68e960f9fa24ce0ce6aea39e7671725",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "8b9bf832210e11207f7d8a34580a06a845b5108505c875ddd2ca3412b70c6870",
-        "vertices": 7117,
+        "sha256": "e3a25468d123a64a9e5b8b2cfcc365335d9248761bc4ce67fe99fabb6444fabc",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7439947128295898
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -2955,6 +4159,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -2972,25 +4178,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 726124,
-        "sha256": "7414081c57149b052c8a473c13d93bf49d45700085f9bdf2d4e9a66e4a4d6f2c",
+        "bytes": 726012,
+        "sha256": "131dd701641f03c2f3e6ebd328b4019919d62ee5ec287155c902ff4dde3e7992",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "8633f93ac5a77706374e8c7de695b9746289ed5d0e02d0a16629338fea580bab",
-        "vertices": 7117,
+        "sha256": "1ee0d85b3f64d6d504ad14f475680f9e5af64888001dac42c8601380634cd0dc",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7483868598937988
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3045,6 +4253,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3062,25 +4272,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269609,
-        "sha256": "837d2038d9f0ad2b7ba1958e49c13c75447250255f6747bee33076c8be64e405",
+        "bytes": 269647,
+        "sha256": "466fdfa37378e28bbb4a33d4fe093ebd79cdfa014f146ce8e286f05e67adc60e",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "8633f93ac5a77706374e8c7de695b9746289ed5d0e02d0a16629338fea580bab",
-        "vertices": 7117,
+        "sha256": "1ee0d85b3f64d6d504ad14f475680f9e5af64888001dac42c8601380634cd0dc",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7483868598937988
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3135,6 +4347,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3152,25 +4366,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 737726,
-        "sha256": "1645b81307f09fc34e4bcce85b9688bc3ad3b63ebbb31178d9f17e5c180614b2",
+        "bytes": 737780,
+        "sha256": "548a8afa97d44934c4734cee8cf86b3a299d4d42395dce845559f2fec99b3808",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "77361c26f13b004e3cf8dcbd73715d67385754e64aaca33c0623a23879fb0c07",
-        "vertices": 7117,
+        "sha256": "72a872ba7bd7c1fd775697103a5cfdd23168817c248dc5ca1e1a4be1e59ff1e9",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.3784504532814026,
           "minY": -0.7041564583778381,
           "maxX": 0.47287654876708984,
           "maxY": 0.766294538974762
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3225,6 +4441,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3242,25 +4460,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 271256,
-        "sha256": "443727b2fd05a2f09f7fec0eb93da0735b771dd388a25d2310b101a27b3c77f0",
+        "bytes": 271228,
+        "sha256": "00a0400a936440acf29a463573cde9af19b9e1ecf95f86168ba34da09fd793e3",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "77361c26f13b004e3cf8dcbd73715d67385754e64aaca33c0623a23879fb0c07",
-        "vertices": 7117,
+        "sha256": "72a872ba7bd7c1fd775697103a5cfdd23168817c248dc5ca1e1a4be1e59ff1e9",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.3784504532814026,
           "minY": -0.7041564583778381,
           "maxX": 0.47287654876708984,
           "maxY": 0.766294538974762
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3315,6 +4535,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3332,25 +4554,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 731736,
-        "sha256": "1a55330b2bd1a0cb68f0c367e40f4afd7e7f6abe38b6c4db81a5d47331100c81",
+        "bytes": 731683,
+        "sha256": "be478d6d6a63f21e65bea0fdd7d543e01c203587b0ebd4aabdf5ab9820eb7871",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "91674280c9926d41cbf5ecd83e07700441d3ade7c5a59abefd8f996f50dee38d",
-        "vertices": 7117,
+        "sha256": "d3c413addd9c658b644dd53b4f79fbacf227986cb28b4af66b403b02a3992968",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.491791307926178,
           "minY": -0.7041564583778381,
           "maxX": 0.3703211545944214,
           "maxY": 0.7677168250083923
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3405,6 +4629,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3422,25 +4648,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 270477,
-        "sha256": "8f7545ce5d56f5a68351b9c5961cf4e5ce7efef3ce5c0682e760119f3d3acac7",
+        "bytes": 270465,
+        "sha256": "66f53944d3f997894d5a310fb85950ea721c3c5c12160fadfcc7f03478eaf76a",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "91674280c9926d41cbf5ecd83e07700441d3ade7c5a59abefd8f996f50dee38d",
-        "vertices": 7117,
+        "sha256": "d3c413addd9c658b644dd53b4f79fbacf227986cb28b4af66b403b02a3992968",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.491791307926178,
           "minY": -0.7041564583778381,
           "maxX": 0.3703211545944214,
           "maxY": 0.7677168250083923
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3505,6 +4733,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3522,25 +4752,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 740987,
-        "sha256": "2349cb6979d3cf01cbcbc7822f630a656bf2b22e58e6117fdfbdcc50fe62e3bd",
+        "bytes": 740782,
+        "sha256": "d6ed702f0891b161fec2e6ec4b907fd8fd1733a2bb2f273e21ccd0ab87383f12",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "d6a3e3f949ca1a82dfdf6dd7aa842b06b22d6c2898b9885dbc78c3207210a9f2",
-        "vertices": 7117,
+        "sha256": "8c404010833634f8f1f8929c25b6126c75e524241465d1956eac3d38486e5840",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.3565438985824585,
           "minY": -0.7043537497520447,
           "maxX": 0.49056893587112427,
           "maxY": 0.7729467153549194
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3605,6 +4837,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3622,25 +4856,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 273030,
-        "sha256": "3f0f099af4c4c0b2aef5a6102d534a3e6c8297dddc531ec46b3e651dd54daffd",
+        "bytes": 272946,
+        "sha256": "30d1fb21dd8396f0d196d9fb81edbfc4436fe9cc9a83d8f6d0435330c4a878a2",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "d6a3e3f949ca1a82dfdf6dd7aa842b06b22d6c2898b9885dbc78c3207210a9f2",
-        "vertices": 7117,
+        "sha256": "8c404010833634f8f1f8929c25b6126c75e524241465d1956eac3d38486e5840",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.3565438985824585,
           "minY": -0.7043537497520447,
           "maxX": 0.49056893587112427,
           "maxY": 0.7729467153549194
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3705,6 +4941,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3722,25 +4960,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 717791,
-        "sha256": "3f21ce4b59a864c8182bd23e8a922e12e734a3357893b826285c446e266ea636",
+        "bytes": 717707,
+        "sha256": "bbffb7102563198480f328ee20fe167ad8f0db5f533792e7f6eaf33ea1e974fd",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "e9babe17ff1267d50260b3c7268bc2b44743629f32926c5cfbed460ddba6e4fc",
-        "vertices": 7117,
+        "sha256": "ced5297e41de8d64cf966622321f38ee6f7d0deeb254e37b5216b8d9ce4dff9d",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.5119611024856567,
           "minY": -0.7039591073989868,
           "maxX": 0.3483622670173645,
           "maxY": 0.7659342288970947
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3805,6 +5045,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3822,25 +5064,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 271445,
-        "sha256": "3a37c4c94a6e59fc1db0e3cd4c7f31a3dd1d5d224d65c19347f2335a0f8e5ba8",
+        "bytes": 271447,
+        "sha256": "8376fe31db61053bcc44514e6b2ad9e6a4d527f54f5c3a86cd4edda6947e9888",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "e9babe17ff1267d50260b3c7268bc2b44743629f32926c5cfbed460ddba6e4fc",
-        "vertices": 7117,
+        "sha256": "ced5297e41de8d64cf966622321f38ee6f7d0deeb254e37b5216b8d9ce4dff9d",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.5119611024856567,
           "minY": -0.7039591073989868,
           "maxX": 0.3483622670173645,
           "maxY": 0.7659342288970947
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3895,6 +5139,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -3912,25 +5158,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269933,
-        "sha256": "e6518ec474c702c208070824a778d6e13ed4285e396e172bd69d4d79de4fa0a8",
+        "bytes": 269977,
+        "sha256": "106e338d217b2bacc65f8e2ca61745b0891da5a88f9c95f23b31551eea57e5fc",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "a0888ce8ebb86e97ce605609fa6d66c253f06df6e2389f5fd4f1d653bf400741",
-        "vertices": 7117,
+        "sha256": "d2b804161f1341af9db8274d9a272484df9510c37ef95bc8aaf3b277188cf835",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.4485325217247009,
           "minY": -0.7041564583778381,
           "maxX": 0.4139557480812073,
           "maxY": 0.7492937445640564
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -3985,6 +5233,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4002,25 +5252,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 270333,
-        "sha256": "551eb6a17cacfdee498f7ab6234c26cf2e25c88a36ce7fd345ec73ece69ce9d8",
+        "bytes": 270306,
+        "sha256": "ebc6d289c9464742cfed5ec23394d3315c45dc2fefff1bf304eaedb2d662fbef",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "37656b12f5d1754ea18a0e6e8791544d1713e672979162a7f33380bc3c0ec5d4",
-        "vertices": 7117,
+        "sha256": "b1641e76ba3041e77ed204da7241ad513c930f8ffed5f66353aade38bc9e28e2",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.4223797917366028,
           "minY": -0.7041564583778381,
           "maxX": 0.4399424195289612,
           "maxY": 0.7491083145141602
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -4075,6 +5327,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4092,25 +5346,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269797,
-        "sha256": "58485e8d594de9fd4910b7c32f2f58825cd793c0d2625f332276cf0461d9a51d",
+        "bytes": 269782,
+        "sha256": "1ba6225a132cda92edaf2f29b65d207b4710c467a370e16641d3363a6d053dea",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "727966edfdbb902217ceee5192afa6dfe10dd83d2beefcba5fa15b7a1ff6ec14",
-        "vertices": 7117,
+        "sha256": "7aa0563d8edeff8f0c258c7babf746a0fb43f702cf77068e9c339b235d1a09cd",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7043537497520447,
           "maxX": 0.42704087495803833,
           "maxY": 0.7483575940132141
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -4165,6 +5421,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4182,25 +5440,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269309,
-        "sha256": "ccf910568478a277edb631f586978f1472637ceb993cdf4af98297ad7e8c2d5d",
+        "bytes": 269344,
+        "sha256": "d0402642ed5d50e17ea56f78198dfd15f745688dd5e42bfd439af0bc740092e6",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "d75710f6d62637e6e55ff72a6e7c8158f47cc17c893437476f6c9dca750a15bc",
-        "vertices": 7117,
+        "sha256": "fa48b13b7f7e462ef5538707eee8534ab289e518ca332b0b009e8ab04fe160bc",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7039591073989868,
           "maxX": 0.42704087495803833,
           "maxY": 0.7438300251960754
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -4255,6 +5515,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4272,25 +5534,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269591,
-        "sha256": "7235f1c88a2f2a24b616ab4564dafc43e340eaab44f629b4ebc91a1ce4cb687d",
+        "bytes": 269644,
+        "sha256": "aee8d6b9870c9ee439fa92a5b7b3ddab3623dce3c29b82117c6979b08869e067",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "e9c99ebd7ab794f84235e007c6228a1972a4b0a841435ca51180b9426cbb49ec",
-        "vertices": 7117,
+        "sha256": "0781472f62ecfeae3db4fab33d5dc575fd2b6ac81cafdd2b38d9bf09b43afe3b",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.44025683403015137,
           "minY": -0.7041564583778381,
           "maxX": 0.42233410477638245,
           "maxY": 0.7472631931304932
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -4345,6 +5609,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4362,20 +5628,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269718,
-        "sha256": "3a808615220ac236dc8fea125e26f00f9b1814329f18cc6ff4003d61023609bd",
+        "bytes": 269689,
+        "sha256": "79d69f1e8d0f26c154f35a7614439b398907b9ffe1a85ada9fe3212cdff58391",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "3fe1e886282247e33f5435d0fc976bbabc8339a57ed599781c5bf4c82df3bdf1",
-        "vertices": 7117,
+        "sha256": "eb0e7b24fa6eabda89e85f4622e0cdbb14cfb8e5a93680cbaeef4bf9f2148950",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.4308072626590729,
           "minY": -0.7041564583778381,
           "maxX": 0.4317236840724945,
           "maxY": 0.7471961975097656
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -4400,13 +5666,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-14-ParamFrontHairSideLSwing-min-full.png",
-      "name": "hair-14-ParamFrontHairSideLSwing-min",
+      "file": "hair-16-ParamFrontHairSideLSwing-min-full.png",
+      "name": "hair-16-ParamFrontHairSideLSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -4435,6 +5703,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4452,20 +5722,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269436,
-        "sha256": "88033657e886b87fe6c2101b4d9a179264f3c6424eb8c940aa171eaf04578f66",
+        "bytes": 269475,
+        "sha256": "5b58d864ec9d45fbec422e53e8a732235a1d92341b0bada80c21501bb07d24c5",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "37204e5b3ca1299bdbf9a7398a420360726693585cd224a25147a6121ce18d7c",
-        "vertices": 7117,
+        "sha256": "4b649e85b9cc5d352b60e59d69d985afcacd17f478457b68309daeb7da5d836c",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -4490,13 +5760,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-14-ParamFrontHairSideLSwing-min-portrait.png",
-      "name": "hair-14-ParamFrontHairSideLSwing-min",
+      "file": "hair-16-ParamFrontHairSideLSwing-min-portrait.png",
+      "name": "hair-16-ParamFrontHairSideLSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -4525,6 +5797,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4542,20 +5816,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571263,
-        "sha256": "cb43196848f2b72f5f19c3aae0107eccdaeeb86054582a2845409582b3bae782",
+        "bytes": 571177,
+        "sha256": "a3beac4470ff02d83ea7019ec48887a94830b9f7c3d69b0c729c30f3e17a71d4",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "37204e5b3ca1299bdbf9a7398a420360726693585cd224a25147a6121ce18d7c",
-        "vertices": 7117,
+        "sha256": "4b649e85b9cc5d352b60e59d69d985afcacd17f478457b68309daeb7da5d836c",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -4580,13 +5854,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-14-ParamFrontHairSideLSwing-max-full.png",
-      "name": "hair-14-ParamFrontHairSideLSwing-max",
+      "file": "hair-16-ParamFrontHairSideLSwing-max-full.png",
+      "name": "hair-16-ParamFrontHairSideLSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -4615,6 +5891,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4632,20 +5910,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269596,
-        "sha256": "25361e7484dd130273547005a20d9b6fb84a6aebf39fc549b61e7bbb294677b4",
+        "bytes": 269562,
+        "sha256": "d31e69c7276043e006c71143f809c12f99f09d0f5fc2101e2dc35afa73e113c8",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "3d831c283cea3cdd299d84a197e201f1fd2cd5084d4f7c64daa3d38a32c4cf83",
-        "vertices": 7117,
+        "sha256": "b633f6a9deaa54fb570a2ad73e17a5ecf0ae384392c48c44c4f961d61410f6c0",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -4670,13 +5948,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-14-ParamFrontHairSideLSwing-max-portrait.png",
-      "name": "hair-14-ParamFrontHairSideLSwing-max",
+      "file": "hair-16-ParamFrontHairSideLSwing-max-portrait.png",
+      "name": "hair-16-ParamFrontHairSideLSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -4705,6 +5985,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4722,20 +6004,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571530,
-        "sha256": "2ae88e5d2642389ed699b685600365f68d19bfc7575151aa484c50479c1ad06d",
+        "bytes": 571492,
+        "sha256": "63f907ed97f576722275210e0f4f76ad9746cddbc6f00d57f555dd36c5260dc8",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "3d831c283cea3cdd299d84a197e201f1fd2cd5084d4f7c64daa3d38a32c4cf83",
-        "vertices": 7117,
+        "sha256": "b633f6a9deaa54fb570a2ad73e17a5ecf0ae384392c48c44c4f961d61410f6c0",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -4760,13 +6042,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-15-ParamFrontHairSideRSwing-min-full.png",
-      "name": "hair-15-ParamFrontHairSideRSwing-min",
+      "file": "hair-17-ParamFrontHairSideRSwing-min-full.png",
+      "name": "hair-17-ParamFrontHairSideRSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -4795,6 +6079,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4812,20 +6098,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269448,
-        "sha256": "0adedd4e16769d4032a63e248dfe47a5547ec6d74b1121e7b16c9a73486397e5",
+        "bytes": 269481,
+        "sha256": "8f288404fa672ccc21e79c18382b1f294052f0499dc79472b66757db686af91c",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "b6bfd258309832dddcdd458c8fc4bd6fb33361de056ec8d7de88de2cb63f2ded",
-        "vertices": 7117,
+        "sha256": "54e81df37f803d537f0591fe31eabd50765e797297639cadd862bd5329a91a84",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -4850,13 +6136,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-15-ParamFrontHairSideRSwing-min-portrait.png",
-      "name": "hair-15-ParamFrontHairSideRSwing-min",
+      "file": "hair-17-ParamFrontHairSideRSwing-min-portrait.png",
+      "name": "hair-17-ParamFrontHairSideRSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -4885,6 +6173,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4902,20 +6192,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571498,
-        "sha256": "226d9c4cee668127d076fdd2426b97653ae793b77b29d3d35cd6daf16000fc6a",
+        "bytes": 571444,
+        "sha256": "8519344434dd8bd91c1c55e355805967011b9421a65c482de98b6e8c7187532e",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "b6bfd258309832dddcdd458c8fc4bd6fb33361de056ec8d7de88de2cb63f2ded",
-        "vertices": 7117,
+        "sha256": "54e81df37f803d537f0591fe31eabd50765e797297639cadd862bd5329a91a84",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -4940,13 +6230,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-15-ParamFrontHairSideRSwing-max-full.png",
-      "name": "hair-15-ParamFrontHairSideRSwing-max",
+      "file": "hair-17-ParamFrontHairSideRSwing-max-full.png",
+      "name": "hair-17-ParamFrontHairSideRSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -4975,6 +6267,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -4992,20 +6286,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269452,
-        "sha256": "3d1898522a234eebda6bcd1dd19cf3466ae8d3da53ecf3156b77ab2737116cbb",
+        "bytes": 269470,
+        "sha256": "13e43d9fae79e795ffa98e73cffa89f5cde0bea4cb20c210b8168861a5aa7050",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "ecd36054ad3244a2f7191c62cc69fa7002ffe0662c80ce46f75fce99986f589a",
-        "vertices": 7117,
+        "sha256": "7fd48c2875cc7c57e0cdd397fc146270d93f0fd9ff1fe8027c7575e8427d392a",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5030,13 +6324,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-15-ParamFrontHairSideRSwing-max-portrait.png",
-      "name": "hair-15-ParamFrontHairSideRSwing-max",
+      "file": "hair-17-ParamFrontHairSideRSwing-max-portrait.png",
+      "name": "hair-17-ParamFrontHairSideRSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -5065,6 +6361,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5082,20 +6380,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571376,
-        "sha256": "91c7fdfb1443ead1674a4af98f845de6e543d95dbadd3378f0b9c9bbb78ce604",
+        "bytes": 571273,
+        "sha256": "6e3eddfeda690ea0d8527cc07288fa0493700daabd02d4204d1ffa4a016f7e1d",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "ecd36054ad3244a2f7191c62cc69fa7002ffe0662c80ce46f75fce99986f589a",
-        "vertices": 7117,
+        "sha256": "7fd48c2875cc7c57e0cdd397fc146270d93f0fd9ff1fe8027c7575e8427d392a",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5120,13 +6418,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-16-ParamBackHairOuterLSwing-min-full.png",
-      "name": "hair-16-ParamBackHairOuterLSwing-min",
+      "file": "hair-18-ParamBackHairOuterLSwing-min-full.png",
+      "name": "hair-18-ParamBackHairOuterLSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -5155,6 +6455,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5172,20 +6474,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 268651,
-        "sha256": "6f11c90929aadb97f212c72056a12f9954d207fa8b210b4a7187cffda46efd42",
+        "bytes": 268650,
+        "sha256": "44ce60de33ebca9197594e9eac1e303a53bd978ff18101b88e97e2aca12f446c",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "520845b4ee1d6430a2ec89d499d75ae771600a6ae2d04b8805a67c8a22caf74b",
-        "vertices": 7117,
+        "sha256": "911f309e84d5d6495b14615986b362ed5365ab677b9b18684f14365ae94e0928",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5210,13 +6512,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-16-ParamBackHairOuterLSwing-min-portrait.png",
-      "name": "hair-16-ParamBackHairOuterLSwing-min",
+      "file": "hair-18-ParamBackHairOuterLSwing-min-portrait.png",
+      "name": "hair-18-ParamBackHairOuterLSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -5245,6 +6549,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5262,20 +6568,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 569616,
-        "sha256": "64d698b7b787858d1eb64913226a5a96e3f5dc1cf8be764b8a97a33c5f728783",
+        "bytes": 569531,
+        "sha256": "79252f3630dca4d66100ef3e0bdcfefc81f99e30848534f79876d8791ba8120f",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "520845b4ee1d6430a2ec89d499d75ae771600a6ae2d04b8805a67c8a22caf74b",
-        "vertices": 7117,
+        "sha256": "911f309e84d5d6495b14615986b362ed5365ab677b9b18684f14365ae94e0928",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5300,13 +6606,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-16-ParamBackHairOuterLSwing-max-full.png",
-      "name": "hair-16-ParamBackHairOuterLSwing-max",
+      "file": "hair-18-ParamBackHairOuterLSwing-max-full.png",
+      "name": "hair-18-ParamBackHairOuterLSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -5335,6 +6643,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5352,20 +6662,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269766,
-        "sha256": "97425579b6e9717f3ded6183379544d35b63e2906eb51ec88d9c68e7163b1693",
+        "bytes": 269777,
+        "sha256": "d088e5d4ffa8d7f418da53a73c857caa429aa39ae823f0fc56454ba2a780039d",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "58e7c9570ad9158f3c40a81c4b7f3c60f5f9d89501964c01d2e6a268ae8b2c03",
-        "vertices": 7117,
+        "sha256": "1f54dca47af312177f1a816bf83e94ac9cc215f15b68ec3f054214e102e43eb5",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5390,13 +6700,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-16-ParamBackHairOuterLSwing-max-portrait.png",
-      "name": "hair-16-ParamBackHairOuterLSwing-max",
+      "file": "hair-18-ParamBackHairOuterLSwing-max-portrait.png",
+      "name": "hair-18-ParamBackHairOuterLSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -5425,6 +6737,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5442,20 +6756,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 572017,
-        "sha256": "daf8622a86c53fb4198979c24e10bc7ca2ef32f06d11a78cbe0f2a5b52830c63",
+        "bytes": 571959,
+        "sha256": "89b5e488b165909e29c5c63b704f86e8e5f58a95313cf1606b80a720935f87d7",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "58e7c9570ad9158f3c40a81c4b7f3c60f5f9d89501964c01d2e6a268ae8b2c03",
-        "vertices": 7117,
+        "sha256": "1f54dca47af312177f1a816bf83e94ac9cc215f15b68ec3f054214e102e43eb5",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5480,13 +6794,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-17-ParamBackHairOuterRSwing-min-full.png",
-      "name": "hair-17-ParamBackHairOuterRSwing-min",
+      "file": "hair-19-ParamBackHairOuterRSwing-min-full.png",
+      "name": "hair-19-ParamBackHairOuterRSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -5515,6 +6831,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5532,20 +6850,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269731,
-        "sha256": "6ec3c107e8e956490681905da4aff4537a98e95345d90dd7f15dc05282a41746",
+        "bytes": 269761,
+        "sha256": "1e6ca675ba29f6da47e25ccf74390a381668df117ef51a85701f3adee7659571",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "d00d98ee12b22e3793e71f987905a8e1fab1b39ed09c9f494a7b33ca8696826d",
-        "vertices": 7117,
+        "sha256": "a46de06cd5f1283cf8cef087f245b7dd752ea5621f6f673f63c700d43b8735d2",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.4433421492576599,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5570,13 +6888,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-17-ParamBackHairOuterRSwing-min-portrait.png",
-      "name": "hair-17-ParamBackHairOuterRSwing-min",
+      "file": "hair-19-ParamBackHairOuterRSwing-min-portrait.png",
+      "name": "hair-19-ParamBackHairOuterRSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -5605,6 +6925,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5622,20 +6944,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571943,
-        "sha256": "58e41e502a693ab3761c34de1da1039e8b89d021cb59f5ac4371dea5a9b7fede",
+        "bytes": 571853,
+        "sha256": "b5e719fe69f8221c434055c495ad20ff8bba74cc3f9ad6938471307d39961698",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "d00d98ee12b22e3793e71f987905a8e1fab1b39ed09c9f494a7b33ca8696826d",
-        "vertices": 7117,
+        "sha256": "a46de06cd5f1283cf8cef087f245b7dd752ea5621f6f673f63c700d43b8735d2",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.4433421492576599,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5660,13 +6982,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-17-ParamBackHairOuterRSwing-max-full.png",
-      "name": "hair-17-ParamBackHairOuterRSwing-max",
+      "file": "hair-19-ParamBackHairOuterRSwing-max-full.png",
+      "name": "hair-19-ParamBackHairOuterRSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -5695,6 +7019,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5712,20 +7038,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 268861,
-        "sha256": "67c771ba2f6323136a3387a2d278ac513d9ab7fcb430ee2dd00f7c0302e87699",
+        "bytes": 268857,
+        "sha256": "b7191238fbd6f356b710a43cbc4e31ae5aee1e11f9e3866f8d3b1e1b2e8cdd7e",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "1de3764ef0aec8711358f9c5cf3a86a01ba1572bad67016fb904adfdb2810c8c",
-        "vertices": 7117,
+        "sha256": "a5764a4376ea16a86780b825c40a44de5a24121a0cc95415f02e205e9cced4f5",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5750,13 +7076,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-17-ParamBackHairOuterRSwing-max-portrait.png",
-      "name": "hair-17-ParamBackHairOuterRSwing-max",
+      "file": "hair-19-ParamBackHairOuterRSwing-max-portrait.png",
+      "name": "hair-19-ParamBackHairOuterRSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -5785,6 +7113,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5802,20 +7132,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 569761,
-        "sha256": "bfb6de186327a19041b872342f75f18150cc3127c5c3ddbe3e493f40f8cab62e",
+        "bytes": 569700,
+        "sha256": "e3d6b11e3b2559059cc7e1959da27ca1ae83c6c1315d22304022818dd80a6e7e",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "1de3764ef0aec8711358f9c5cf3a86a01ba1572bad67016fb904adfdb2810c8c",
-        "vertices": 7117,
+        "sha256": "a5764a4376ea16a86780b825c40a44de5a24121a0cc95415f02e205e9cced4f5",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5840,13 +7170,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-18-ParamBackHairArcLSwing-min-full.png",
-      "name": "hair-18-ParamBackHairArcLSwing-min",
+      "file": "hair-20-ParamBackHairArcLSwing-min-full.png",
+      "name": "hair-20-ParamBackHairArcLSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -5875,6 +7207,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5892,20 +7226,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269424,
-        "sha256": "713e0a0fbb1cd523f5e807cef96085c55e24f39c561bf146e5196d9dd4573d42",
+        "bytes": 269434,
+        "sha256": "38a8ebc00988e3e2bcc7e35c90846fbfd284d07b0c3299a00835f25614fff8ce",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "fc9fde8e3d0d55f849bd3ac26c6bab0fbf8890779d649e26fe75d522115d3f98",
-        "vertices": 7117,
+        "sha256": "92d5e9f269a37b84c801261b7ad7b34ef078f8e6b8d8930b155c04aff88b644a",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -5930,13 +7264,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-18-ParamBackHairArcLSwing-min-portrait.png",
-      "name": "hair-18-ParamBackHairArcLSwing-min",
+      "file": "hair-20-ParamBackHairArcLSwing-min-portrait.png",
+      "name": "hair-20-ParamBackHairArcLSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -5965,6 +7301,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -5982,20 +7320,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571172,
-        "sha256": "5ba9653276deef397717eab76f6b6232ebecc9bb7c39425e81cb6b8275e6bf94",
+        "bytes": 571138,
+        "sha256": "a321792932a6a8969632ce0ea07a15f69568a0219c340c97974c140949eaa138",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "fc9fde8e3d0d55f849bd3ac26c6bab0fbf8890779d649e26fe75d522115d3f98",
-        "vertices": 7117,
+        "sha256": "92d5e9f269a37b84c801261b7ad7b34ef078f8e6b8d8930b155c04aff88b644a",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6020,13 +7358,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-18-ParamBackHairArcLSwing-max-full.png",
-      "name": "hair-18-ParamBackHairArcLSwing-max",
+      "file": "hair-20-ParamBackHairArcLSwing-max-full.png",
+      "name": "hair-20-ParamBackHairArcLSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -6055,6 +7395,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6072,20 +7414,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269380,
-        "sha256": "7d24a3237a88e56dbe633267e8ce2ff6f65c0f991070da5da35600e85923f4ba",
+        "bytes": 269407,
+        "sha256": "611d688237eeb9d4736c2bd34cc424ee1a0305000b0bf1680358bfee7978f8d8",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "c065b57b0f399e30db691f1fc0dba3c58cf5c44cbc4daba4747ef159cf7d4c08",
-        "vertices": 7117,
+        "sha256": "62a658747b335cf5a260c401730a47009e8f9caf422c86ce008425f9895dfe35",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6110,13 +7452,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-18-ParamBackHairArcLSwing-max-portrait.png",
-      "name": "hair-18-ParamBackHairArcLSwing-max",
+      "file": "hair-20-ParamBackHairArcLSwing-max-portrait.png",
+      "name": "hair-20-ParamBackHairArcLSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -6145,6 +7489,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6162,20 +7508,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571169,
-        "sha256": "61d91d939b72fb172b5c79951852e0af1bda521da9d50eaf9a40d42228c4d1da",
+        "bytes": 571052,
+        "sha256": "d12b2efa30baf249f6890e10a06d0736cb183fac939d7a56cd5a919c9fedc5f4",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "c065b57b0f399e30db691f1fc0dba3c58cf5c44cbc4daba4747ef159cf7d4c08",
-        "vertices": 7117,
+        "sha256": "62a658747b335cf5a260c401730a47009e8f9caf422c86ce008425f9895dfe35",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6200,13 +7546,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-19-ParamBackHairArcRSwing-min-full.png",
-      "name": "hair-19-ParamBackHairArcRSwing-min",
+      "file": "hair-21-ParamBackHairArcRSwing-min-full.png",
+      "name": "hair-21-ParamBackHairArcRSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -6235,6 +7583,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6252,20 +7602,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269399,
-        "sha256": "56289b8ab4525abc16af5966533999b9f48d9a47029bdfbbdb5a19d62d90f892",
+        "bytes": 269428,
+        "sha256": "e37918bdbc3b4c1f56999572166d6b6972971eb932ee7bcebdffba3f2fe43ecb",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "a236dba82c00612a2d79ea2de0bb320fd6efdd6c05956fa9a1e5b6228e9ffaca",
-        "vertices": 7117,
+        "sha256": "e6dcadec19606ea0f42297fc805affca63c3b6286ba84e8ed0f3cafb73108779",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6290,13 +7640,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-19-ParamBackHairArcRSwing-min-portrait.png",
-      "name": "hair-19-ParamBackHairArcRSwing-min",
+      "file": "hair-21-ParamBackHairArcRSwing-min-portrait.png",
+      "name": "hair-21-ParamBackHairArcRSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -6325,6 +7677,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6342,20 +7696,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571393,
-        "sha256": "c2b3b18f6137c11c3f9c7f9952f492e4f177707535ec2f56768db0e95ec9cb79",
+        "bytes": 571277,
+        "sha256": "d63da3d341fff1d5b9a02bbac77ee4ab22d9f8717bc564198e8f1fe55da6ba84",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "a236dba82c00612a2d79ea2de0bb320fd6efdd6c05956fa9a1e5b6228e9ffaca",
-        "vertices": 7117,
+        "sha256": "e6dcadec19606ea0f42297fc805affca63c3b6286ba84e8ed0f3cafb73108779",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6380,13 +7734,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-19-ParamBackHairArcRSwing-max-full.png",
-      "name": "hair-19-ParamBackHairArcRSwing-max",
+      "file": "hair-21-ParamBackHairArcRSwing-max-full.png",
+      "name": "hair-21-ParamBackHairArcRSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -6415,6 +7771,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6432,20 +7790,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269399,
-        "sha256": "e55c4d00ae2b1a355c38c6c6fdfb773c42853eee45661665d82e3f124583b489",
+        "bytes": 269390,
+        "sha256": "8da47c273122430535e0107b68d3088f9176f7053de15e01af3d28a25c9d2c9e",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "ca74fb551b32065b4da23a51962d702ba595e8cb24dbef518bf7ccb04aafa7a7",
-        "vertices": 7117,
+        "sha256": "f42088d37316fabcfdc29e6b8d62f93f3ac07049bad3cbf9b072e2c78dcd0c51",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6470,13 +7828,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-19-ParamBackHairArcRSwing-max-portrait.png",
-      "name": "hair-19-ParamBackHairArcRSwing-max",
+      "file": "hair-21-ParamBackHairArcRSwing-max-portrait.png",
+      "name": "hair-21-ParamBackHairArcRSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -6505,6 +7865,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6522,20 +7884,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571208,
-        "sha256": "71e1c1e19fc904b1c1e0b85604b4c3f8dbadf668b305f82d6a67a310fd8096ee",
+        "bytes": 571049,
+        "sha256": "d613ba027800f87685ef72ab06bfb1b40a4ef9e7591f31a23a489a937ee69397",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "ca74fb551b32065b4da23a51962d702ba595e8cb24dbef518bf7ccb04aafa7a7",
-        "vertices": 7117,
+        "sha256": "f42088d37316fabcfdc29e6b8d62f93f3ac07049bad3cbf9b072e2c78dcd0c51",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6560,13 +7922,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-20-ParamBackHairBaseRSwing-min-full.png",
-      "name": "hair-20-ParamBackHairBaseRSwing-min",
+      "file": "hair-22-ParamBackHairBaseRSwing-min-full.png",
+      "name": "hair-22-ParamBackHairBaseRSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -6595,6 +7959,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6612,20 +7978,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269949,
-        "sha256": "21ba04850cc11fad06a8c41e036df08610400ad0f8ebf71b16338135f304a44e",
+        "bytes": 269950,
+        "sha256": "5415958109005407c5b5252eaf3413a32a6958daa2d86036fcfde8773d450f74",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "68175034df54449366b1ca7a108e7af83ebee03a00beb121ca361aa0acfac640",
-        "vertices": 7117,
+        "sha256": "3fe7dda74afabcc3b12dcc14e641994f41cccc2b83a19b92ea62f44602e1fea5",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.44514626264572144,
           "minY": -0.7041564583778381,
           "maxX": 0.4177652597427368,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6650,13 +8016,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-20-ParamBackHairBaseRSwing-min-portrait.png",
-      "name": "hair-20-ParamBackHairBaseRSwing-min",
+      "file": "hair-22-ParamBackHairBaseRSwing-min-portrait.png",
+      "name": "hair-22-ParamBackHairBaseRSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -6685,6 +8053,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6702,20 +8072,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 572169,
-        "sha256": "7ee2f75978a2082fcce9092c4e796183284ad747384af90c69813c625a184cc9",
+        "bytes": 572163,
+        "sha256": "bd139b2b22ad60d3dee1b873b2c86de29ae5c769737e183cbaa3882b7d349131",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "68175034df54449366b1ca7a108e7af83ebee03a00beb121ca361aa0acfac640",
-        "vertices": 7117,
+        "sha256": "3fe7dda74afabcc3b12dcc14e641994f41cccc2b83a19b92ea62f44602e1fea5",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.44514626264572144,
           "minY": -0.7041564583778381,
           "maxX": 0.4177652597427368,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6740,13 +8110,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-20-ParamBackHairBaseRSwing-max-full.png",
-      "name": "hair-20-ParamBackHairBaseRSwing-max",
+      "file": "hair-22-ParamBackHairBaseRSwing-max-full.png",
+      "name": "hair-22-ParamBackHairBaseRSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -6775,6 +8147,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6792,20 +8166,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 270471,
-        "sha256": "b3fb55d4ff0caf3dc6ac13c252cd91df2e2202f0296326d48bbc889f2c9ecb58",
+        "bytes": 270489,
+        "sha256": "f518665dc9978e871c309b3f7a61e1d5f10cd6bcb6f25d431bb0a9a247f1fdd1",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "df83433be9001bbdbaac1ad43e7d834c03e3709235998b39d7378912e411eed4",
-        "vertices": 7117,
+        "sha256": "fbeb73f1973f77e40e32fb7aae8a77f5b8300a37fd16b3c4d32773802547c41a",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.43366435170173645,
           "minY": -0.7041564583778381,
           "maxX": 0.43631651997566223,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6830,13 +8204,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-20-ParamBackHairBaseRSwing-max-portrait.png",
-      "name": "hair-20-ParamBackHairBaseRSwing-max",
+      "file": "hair-22-ParamBackHairBaseRSwing-max-portrait.png",
+      "name": "hair-22-ParamBackHairBaseRSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -6865,6 +8241,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6882,20 +8260,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 573816,
-        "sha256": "9ed532448363ced09fdec470db1cfd73c1483ca190d95a17245c17061f514852",
+        "bytes": 573720,
+        "sha256": "f904d0af3c61a17bb6637adc5d4eaced752940bbfafa8a75163a6429324a7e0e",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "df83433be9001bbdbaac1ad43e7d834c03e3709235998b39d7378912e411eed4",
-        "vertices": 7117,
+        "sha256": "fbeb73f1973f77e40e32fb7aae8a77f5b8300a37fd16b3c4d32773802547c41a",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.43366435170173645,
           "minY": -0.7041564583778381,
           "maxX": 0.43631651997566223,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -6920,13 +8298,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-21-ParamBackHairBaseLSwing-min-full.png",
-      "name": "hair-21-ParamBackHairBaseLSwing-min",
+      "file": "hair-23-ParamBackHairBaseLSwing-min-full.png",
+      "name": "hair-23-ParamBackHairBaseLSwing-min",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -6955,6 +8335,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -6972,20 +8354,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269466,
-        "sha256": "9787dfbdd3fa5ae36585a253eb310fb456a018987bd82b103a9e4ad15391996c",
+        "bytes": 269472,
+        "sha256": "eca084fb48fe38424da4bc44ba789cb23d6e61ca54ae0edae1d9dfb685781ec5",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "b31fc74b1cda9f12560c6c9bd13d9f989b3dcb1792c16bc97fa2e88262696683",
-        "vertices": 7117,
+        "sha256": "4a6c9a81baf4f3553ffb9ffe205fec4a3f43098fc1708e3510d1a055ffa6a90f",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -7010,13 +8392,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-21-ParamBackHairBaseLSwing-min-portrait.png",
-      "name": "hair-21-ParamBackHairBaseLSwing-min",
+      "file": "hair-23-ParamBackHairBaseLSwing-min-portrait.png",
+      "name": "hair-23-ParamBackHairBaseLSwing-min",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -7045,6 +8429,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -7062,20 +8448,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571232,
-        "sha256": "e5ed75ee98d67f8e22d80a497a1925da52acc210f67f1a10947753fa5d24535d",
+        "bytes": 571228,
+        "sha256": "791acdcacbcee5e63342602d313134b1171caec52983bc1c3f1c6f2a53055e03",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "b31fc74b1cda9f12560c6c9bd13d9f989b3dcb1792c16bc97fa2e88262696683",
-        "vertices": 7117,
+        "sha256": "4a6c9a81baf4f3553ffb9ffe205fec4a3f43098fc1708e3510d1a055ffa6a90f",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -7100,13 +8486,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-21-ParamBackHairBaseLSwing-max-full.png",
-      "name": "hair-21-ParamBackHairBaseLSwing-max",
+      "file": "hair-23-ParamBackHairBaseLSwing-max-full.png",
+      "name": "hair-23-ParamBackHairBaseLSwing-max",
       "category": "hair",
       "view": "full",
       "requested": {
@@ -7135,6 +8523,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -7152,20 +8542,20 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 269435,
-        "sha256": "4fcebda80b94f904829ec1f396a90e2b50b7b237675e4af0c0e78f90eca67df9",
+        "bytes": 269474,
+        "sha256": "91accc4ed5d678a4d3507672ee990260bae7a0c2ca85919d46857fd217889f55",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "835489795ee7bf72a1f3d99b0aa956f80b234c366986af3abc0c12600ce3ecf2",
-        "vertices": 7117,
+        "sha256": "819bf06c78c257408a3770c7b4dd1e602f71b9876e6bb10c6a02c86240ed4ef8",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
@@ -7190,13 +8580,15 @@
           1,
           1,
           1,
+          1,
+          1,
           1
         ]
       }
     },
     {
-      "file": "hair-21-ParamBackHairBaseLSwing-max-portrait.png",
-      "name": "hair-21-ParamBackHairBaseLSwing-max",
+      "file": "hair-23-ParamBackHairBaseLSwing-max-portrait.png",
+      "name": "hair-23-ParamBackHairBaseLSwing-max",
       "category": "hair",
       "view": "portrait",
       "requested": {
@@ -7225,6 +8617,8 @@
           "ParamEyeBallX": 0,
           "ParamEyeBallY": 0,
           "ParamEyeBallForm": 0,
+          "ParamBrowLY": 0,
+          "ParamBrowRY": 0,
           "ParamMouthForm": 0,
           "ParamMouthOpenY": 0,
           "ParamBreath": 0,
@@ -7242,25 +8636,27 @@
       "canvas": {
         "width": 760,
         "height": 785,
-        "bytes": 571209,
-        "sha256": "a5db4bd3a395ce7acad8c93eb32cc879958662a47c16cc50d0b18ddce4e0d53b",
+        "bytes": 571179,
+        "sha256": "368ac8b101ddeeb0d17adc1a1d698298dec41e266fb2813b9b43c579dca033aa",
         "source": "viewer.capture()/HTMLCanvasElement.toDataURL"
       },
       "geometry": {
-        "sha256": "835489795ee7bf72a1f3d99b0aa956f80b234c366986af3abc0c12600ce3ecf2",
-        "vertices": 7117,
+        "sha256": "819bf06c78c257408a3770c7b4dd1e602f71b9876e6bb10c6a02c86240ed4ef8",
+        "vertices": 7180,
         "bounds": {
           "minX": -0.435543417930603,
           "minY": -0.7041564583778381,
           "maxX": 0.42704087495803833,
           "maxY": 0.7460938096046448
         },
-        "visibleDrawables": 21,
+        "visibleDrawables": 23,
         "opacities": [
           0,
           0,
           1,
           0,
+          1,
+          1,
           1,
           1,
           1,
@@ -7293,7 +8689,7 @@
     "explicitExecutablePath": true
   },
   "ready": {
-    "modelUrl": "http://127.0.0.1:8849/model/model.model3.json",
+    "modelUrl": "http://127.0.0.1:8853/model/model.model3.json",
     "physics": true,
     "parameters": [
       {
@@ -7379,6 +8775,22 @@
       {
         "id": "ParamEyeBallForm",
         "name": "果冻眼",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBrowLY",
+        "name": "左眉 Y",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBrowRY",
+        "name": "右眉 Y",
         "min": -1,
         "max": 1,
         "default": 0,
@@ -7490,30 +8902,30 @@
     "height": 1536
   },
   "counts": {
-    "parameters": 22,
-    "drawables": 24,
-    "vertices": 7117,
-    "triangles": 11824
+    "parameters": 24,
+    "drawables": 26,
+    "vertices": 7180,
+    "triangles": 11904
   },
   "loadedResources": {
-    "modelUrl": "http://127.0.0.1:8849/model/model.model3.json",
+    "modelUrl": "http://127.0.0.1:8853/model/model.model3.json",
     "expected": [
       {
         "kind": "model3",
-        "url": "http://127.0.0.1:8849/model/model.model3.json"
+        "url": "http://127.0.0.1:8853/model/model.model3.json"
       },
       {
         "kind": "moc3",
-        "url": "http://127.0.0.1:8849/model/PinkSakura.moc3"
+        "url": "http://127.0.0.1:8853/model/PinkSakura.moc3"
       },
       {
         "kind": "texture",
-        "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png"
+        "url": "http://127.0.0.1:8853/model/PinkSakura.8192/texture_00.png"
       }
     ],
     "observed": [
       {
-        "url": "http://127.0.0.1:8849/media/reference.png",
+        "url": "http://127.0.0.1:8853/media/reference.png",
         "status": 200,
         "source": "actual-browser-response",
         "bytes": 1632604,
@@ -7524,32 +8936,32 @@
         }
       },
       {
-        "url": "http://127.0.0.1:8849/model/model.model3.json",
+        "url": "http://127.0.0.1:8853/model/model.model3.json",
         "status": 200,
         "source": "actual-browser-response",
         "bytes": 900,
         "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
       },
       {
-        "url": "http://127.0.0.1:8849/model/model.model3.json",
+        "url": "http://127.0.0.1:8853/model/model.model3.json",
         "status": 200,
         "source": "actual-browser-response",
         "bytes": 900,
         "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
       },
       {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.moc3",
+        "url": "http://127.0.0.1:8853/model/PinkSakura.moc3",
         "status": 200,
         "source": "actual-browser-response",
-        "bytes": 388544,
-        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+        "bytes": 395520,
+        "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
       },
       {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png",
+        "url": "http://127.0.0.1:8853/model/PinkSakura.8192/texture_00.png",
         "status": 200,
         "source": "actual-browser-response",
-        "bytes": 44825773,
-        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+        "bytes": 45336522,
+        "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
         "dimensions": {
           "width": 8192,
           "height": 8192
@@ -7647,6 +9059,22 @@
       "value": 0
     },
     {
+      "id": "ParamBrowLY",
+      "name": "左眉 Y",
+      "min": -1,
+      "max": 1,
+      "default": 0,
+      "value": 0
+    },
+    {
+      "id": "ParamBrowRY",
+      "name": "右眉 Y",
+      "min": -1,
+      "max": 1,
+      "default": 0,
+      "value": 0
+    },
+    {
       "id": "ParamMouthForm",
       "name": "嘴型",
       "min": -1,
@@ -7736,13 +9164,12 @@
     }
   ],
   "matrix": {
-    "poses": 55,
-    "plannedFrames": 80,
+    "poses": 66,
+    "plannedFrames": 91,
     "skipped": [],
     "maxFrames": 96
   },
-  "finishedAt": "2026-09-12T12:38:16.135Z",
-  "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
-  "framePublicationScope": "All 80 frame identities recorded; only selected screenshots shipped. Reproduce the full sweep with check-poses.cjs.",
-  "originalLocalReportSha256": "68fb92bf946b78df4b61f448b225b47792a19e921bfbaf67543371eadb35e7ed"
+  "finishedAt": "2026-09-12T14:38:18.188Z",
+  "originalLocalReportSha256": "72b532511941e9d4ae1262935094c5cae6ed6bd228d7b5d1cfdcabdc3ca9b3f2",
+  "publicationNote": "Local paths replaced with repo-relative paths or placeholders. Model, texture and captured-frame bytes are unchanged."
 }

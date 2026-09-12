@@ -41,16 +41,16 @@ The canvas captures have transparent backgrounds, so their surroundings can appe
 
 | What was checked | Recorded result |
 | --- | --- |
-| Model structure | 22 source layers, 24 drawables, 22 parameters, 7,117 vertices and 11,824 triangles |
-| Rig controls | Eyes, mouth, head, body, breathing and 8 hair-swing parameters; all 22 parameters produced a measured drawable change |
+| Model structure | 24 source layers, 26 drawables, 24 parameters, 7,180 vertices and 11,904 triangles |
+| Rig controls | Independent eyebrows, eyes, mouth, head, body, breathing and 8 hair-swing parameters; all 24 parameters produced a measured drawable change |
 | Neural upscaling | One 2048² atlas became 8192² with `realesr-animevideov3-x4`; RGB and alpha were processed separately |
-| Native Cubism Core | 198 sampled poses passed, including 125 mouth form/open combinations |
-| Browser checks | 22 checks passed; 55 poses produced 80 canvas captures, with loaded MOC and texture hashes verified |
-| Visual review | Agents inspected 60 distinct captures: 33 face samples and 29 body/hair samples, with two overlaps |
+| Native Cubism Core | 202 sampled poses passed, including 125 mouth form/open combinations |
+| Browser checks | 22 checks passed; 66 poses produced 91 canvas captures, with loaded MOC and texture hashes verified |
+| Visual review | Agents inspected 44 face crops at source resolution and 31 reduced full-body overviews; scope and limitations are recorded |
 | Motion recording | 72 frames at 12 fps, captured from the actual WebGL canvas |
 | VTube Studio | Acceptance remains with the user; it has not been completed for this example |
 
-The visual review passed with minor limitations. Fine closed-mouth lines can look pale or grainy under magnification, closed-lash tips remain slightly blunt with edge steps, and `EyeOpen` from 0 to 0.25 holds the closed pose. The rig uses conservative 2D head/body movement and a combined body layer. It has no independent arm or finger rig, and real camera tracking is outside the current implementation. See the [visual report](examples/pink-sakura/verification/visual-review.json) for the sampled scope.
+The visual review passed with minor limitations. Fine closed-mouth lines can look pale or grainy under magnification, closed-lash tips remain slightly blunt with edge steps, and `EyeOpen` from 0 to 0.25 holds the closed pose. The rig uses conservative 2D head/body movement and a combined body layer. It has no independent arm or finger rig. Optional local camera tracking is described below. See the [visual report](examples/pink-sakura/verification/visual-review.json) for the sampled scope.
 
 The original reference carries the owner's source statement: **"此图片来自 ChatGPT Image2.5 生成"** ("This image was generated with ChatGPT Image2.5"). The project has not independently verified that service version. Generated underpainting and rig construction have separate credits in [ATTRIBUTION.md](examples/pink-sakura/ATTRIBUTION.md) and [source-provenance.json](examples/pink-sakura/source-provenance.json).
 
@@ -62,7 +62,7 @@ The original reference carries the owner's source statement: **"此图片来自 
 | Layered PSD or PNG layers | Import adapters, a pinned psd2live revision and cumulative patches | PSD, CMO3, MOC3, texture atlas, parameters and physics |
 | A model with visible seams | Diagnostics for mouth skin patches, eyelid breaks, dark borders and hair/strap misalignment | A repair tied to the source layer, rig or texture sampling |
 | Correct geometry with blurry textures | Local NCNN anime upscaling with separate alpha and source hashes | An HD runtime atlas with matching geometry and UVs |
-| Simulated tracking inputs | Actual WebGL rendering, parameter controls, timeline playback and pause | A browser preview for face and upper-body input tests |
+| Face and upper-body input | WebGL rendering, simulation, optional local camera inference, calibration and parameter controls | A browser preview for face, eyebrow and approximate shoulder/torso tracking |
 | A model ready to package | Resource validation, native Core checks and browser tests | A runtime folder, ZIP and verification evidence |
 
 CMO3 and PSD are editing outputs; `.moc3`, textures and referenced JSON files form the runtime. Keep the exporter warnings: Pink Sakura's CMO3 reconstructs editable layers from the atlas and retains model/rig data, but does not preserve the original PSD source-image editing chain. Its published source images and recipe are therefore part of the rebuild workflow.
@@ -90,7 +90,7 @@ Fix the layer structure before upscaling. A hair cutout that includes part of a 
 
 ## Quick start
 
-Install Git, Python 3.10+ and JDK 21. Node.js is also needed for the character recipe and browser tools. Follow [setup.md](docs/setup.md), then run commands from the repository root. Generated outputs belong in the ignored `work/` directory; use a new output directory for each run.
+Install Git, Python 3.10+ and JDK 21. Use Node.js 22+ for the character recipe, browser tools and module tests. Follow [setup.md](docs/setup.md), then run commands from the repository root. Generated outputs belong in the ignored `work/` directory; use a new output directory for each run.
 
 ### 1. Export the geometric example
 
@@ -102,7 +102,7 @@ bash scripts/export-model.sh work/minimal/assets/manifest.json work/minimal/low
 bash scripts/validate.sh --model work/minimal/low/Minimal.model3.json
 ```
 
-The generator creates 14 original geometric layers. The exporter writes PSD, CMO3, MOC3 and a 1024² atlas. The last command checks file structure; native Core validation is a separate step.
+The generator creates 16 original geometric layers. The exporter writes PSD, CMO3, MOC3 and a 1024² atlas. The last command checks file structure; native Core validation is a separate step.
 
 ### 2. Give your agent the artwork and task
 
@@ -178,11 +178,29 @@ The [tool catalog](tools/README.md) distinguishes production use, supporting val
 | Official baseline | [Live2D Simple Model](https://www.live2d.com/en/learn/sample/simple-model/), [Cubism SDK](https://www.live2d.com/en/sdk/download/), [Web SDK](https://www.live2d.com/en/sdk/download/web/) | [Environment checks](docs/tooling.md), [Core setup](docs/setup.md#配置本机官方-core) |
 | Anime upscaling | [Upscayl](https://github.com/upscayl/upscayl), [custom-models](https://github.com/upscayl/custom-models), [upscayl-ncnn](https://github.com/upscayl/upscayl-ncnn), [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) | [Models, alpha and UV handling](docs/upscaling.md) |
 | Browser rendering and checks | [PixiJS](https://github.com/pixijs/pixijs), [pixi-live2d-display](https://github.com/guansss/pixi-live2d-display), [Playwright](https://github.com/microsoft/playwright) | [Preview template](templates/web-preview/README.md), [verification](docs/verification.md) |
+| Camera input | [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe), Face / Pose Landmarker | [Setup and physical-device checks](docs/camera-tracking.md), [dependency lock](tools/tracking-dependencies.json) |
 | Skill and MCP | [Kit skill](SKILL.md), [CLI-Anything Live2D](https://github.com/HKUDS/CLI-Anything/blob/main/live2d/agent-harness/cli_anything/live2d/skills/SKILL.md), [CubismExternalEditMCP](https://github.com/nana7chi/CubismExternalEditMCP) | [Capabilities and limits](mcp/README.md), [host mapping](tools/host-capabilities.md) |
 | Builds and image diagnostics | Java, Gradle, Kotlin, Python, Pillow, NumPy, psd-tools, ImageMagick, FFmpeg, Node.js, Git, SHA-256 and ZIP | [Sources and usage records](tools/README.md), [commands](tools/commands.md) |
 | Documentation editing | Humanizer and Humanizer-zh | [Tool sources and writing-only scope](tools/README.md) |
 
 The official sample helps isolate loading and environment problems. File validation, SDK mesh evaluation, rendered-image review and VTube Studio acceptance answer different questions; the records identify which ones ran.
+
+## Local camera face and upper-body tracking
+
+The optional camera input drives eyebrows, eyes, gaze, mouth and head angles, with approximate torso/shoulder angles from a single camera. Each target needs a visible model binding. Simulation and manual parameter controls remain available.
+
+```sh
+python3 scripts/setup-tracking.py --directory .cache/mediapipe
+python3 scripts/prepare-preview.py \
+  --model examples/pink-sakura/runtime/PinkSakura.model3.json \
+  --output work/pink-camera-preview \
+  --cubism-core /path/to/live2dcubismcore.min.js --vendor-dir /path/to/vendor \
+  --config examples/pink-sakura/preview-config.json \
+  --tracking-dir .cache/mediapipe
+python3 work/pink-camera-preview/server.py --port 8860
+```
+
+Start the camera explicitly, grant browser access, then face forward and calibrate. Inference runs locally, with no video upload, recording or microphone request. Switching to simulation or manual controls releases the camera. Tracking dependencies are acquired separately from pinned URLs and hashes. The preview server’s same-origin connection policy blocks the SDK’s default usage-statistics requests; preserve this policy if hosting the page elsewhere. There is no independent arm or finger rig. See the [camera guide](docs/camera-tracking.md) for setup and measured test scope, and the [changelog](CHANGELOG.md) for this update. All [16 physical-camera checks](docs/verification/camera-tracking.json) passed on the final eyebrow-bound model; shoulder tracking was observed, while hip-dependent torso pitch accuracy was not verified.
 
 ## Verification and rebuilding
 
@@ -190,14 +208,14 @@ The published geometric example records are local runs from **2026-09-12**. They
 
 | Geometric example | Recorded result |
 | --- | --- |
-| Export | 14 layers produced real MOC3 and CMO3 files |
+| Export | 16 layers produced real MOC3 and CMO3 files |
 | Native Core | Core 6.0.257 evaluated 192 sampled poses, including 125 mouth/head/body/eye combinations |
 | Atlas | NCNN neural RGB 4× with separate alpha, 1024² to 4096²; low and HD MOC files were byte-identical |
 | Browser | 22 checks passed using Web Core 5.1.0 and actual WebGL rendering; loaded MOC/PNG hashes matched the manifest |
 
-Two eyebrow parameters in that minimal example had no measured visible binding. The [verification guide](docs/verification.md) includes that limitation, file hashes and negative tests. The [case study](docs/case-study.md) covers the earlier character and its repairs.
+The current minimal example has two separate eyebrow layers; all 19 parameters produced a measured drawable change. The [verification guide](docs/verification.md) separates this result from the earlier empty eyebrow slots, and includes file hashes and negative tests. The [case study](docs/case-study.md) covers the earlier character and its repairs.
 
-A fresh `git archive` regenerated Pink Sakura's identical 22-layer manifest and all 14 geometric example layers without the old `work/` or `.cache/`. The separate empty-cache engine build was stopped while Gradle was still downloading plugin dependencies, before `compileKotlin`; a complete clean build has not yet passed. Historical runtime exports reused existing compiled engine classes, so those results do not establish a clean source build. The [reproducibility guide](docs/reproducibility.md) records what can be rebuilt, what must be downloaded and which build checks have run. The [repository review](docs/repository-review.md) covers the bilingual docs and asset-input fixes.
+The current recipes contain 24 Pink Sakura layers and 16 geometric layers, with deterministic eyebrow source generation included. A full engine build from an initially empty cache compiled the source and exported the minimal model, which passed native Core and 22 real WebGL checks. The public Pink recipe also exported from that newly compiled engine, passed Core and produced a MOC identical to the HD release. This run used a source-only checkout and an optional local curl download relay; download retries are recorded separately from the successful compile. The [reproducibility guide](docs/reproducibility.md) records what can be rebuilt, what must be downloaded and which build checks have run. The [repository review](docs/repository-review.md) covers the bilingual docs and asset-input fixes.
 
 `work/` contains generated manifests, exports, upscaled atlases, previews and test outputs. Those files belong to a local run; published source recipes and recorded dependency identities are the inputs for rebuilding them. Official SDK/Core binaries and upscaling weights remain external dependencies.
 

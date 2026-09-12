@@ -57,6 +57,16 @@
 			"Name": "果冻眼"
 		},
 		{
+			"Id": "ParamBrowLY",
+			"GroupId": "ParamGroupBrows",
+			"Name": "左眉 Y"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "ParamGroupBrows",
+			"Name": "右眉 Y"
+		},
+		{
 			"Id": "ParamMouthForm",
 			"GroupId": "ParamGroupMouth",
 			"Name": "嘴型"
@@ -212,6 +222,14 @@
 		{
 			"Id": "ArtMeshEyelashR",
 			"Name": "eyelash-r"
+		},
+		{
+			"Id": "ArtMeshEyebrowL",
+			"Name": "eyebrow-l"
+		},
+		{
+			"Id": "ArtMeshEyebrowR",
+			"Name": "eyebrow-r"
 		},
 		{
 			"Id": "ArtMeshFaceDetailR",

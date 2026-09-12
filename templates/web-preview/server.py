@@ -7,11 +7,13 @@ from pathlib import Path
 import sys
 
 class Handler(SimpleHTTPRequestHandler):
-    extensions_map={**SimpleHTTPRequestHandler.extensions_map,'.js':'text/javascript','.moc3':'application/octet-stream','.wasm':'application/wasm'}
+    extensions_map={**SimpleHTTPRequestHandler.extensions_map,'.js':'text/javascript','.mjs':'text/javascript','.moc3':'application/octet-stream','.wasm':'application/wasm','.task':'application/octet-stream'}
     def end_headers(self):
         self.send_header('Cache-Control','no-cache')
         self.send_header('X-Content-Type-Options','nosniff')
-        self.send_header('Permissions-Policy','camera=(), microphone=()')
+        self.send_header('Permissions-Policy','camera=(self), microphone=()')
+        # Local inference also means SDK logging endpoints cannot receive requests.
+        self.send_header('Content-Security-Policy',"connect-src 'self'")
         super().end_headers()
 
 if __name__=='__main__':

@@ -12,7 +12,8 @@ psd2live 固定提交、官方本机 Core 与浏览器 WebGL。其他系统可�
 | PSD/PNG → Live2D | Git、JDK 21、固定提交的 psd2live 与本 kit 补丁；首次构建要下载 Gradle/JVM 依赖 |
 | 原生检查/软件诊断渲染 | 用户合法取得的 `Live2DCubismCore.jar` 及对应本机 native library |
 | 网页预览 | 支持 WebGL 的浏览器、本地 Cubism Core Web、PixiJS 6.5.10、pixi-live2d-display 0.4.0 |
-| 网页自动检查 | Node.js、Playwright 与 Chromium |
+| 网页自动检查 / JS 单元测试 | Node.js 22+（本次 22.23.1）、Playwright 与 Chromium |
+| 摄像头识别（可选） | 本地 MediaPipe 固定文件；[按依赖锁获取、校准并测试](camera-tracking.md) |
 | 专用动漫超分 | 本地 Upscayl `upscayl-bin`、匹配的 NCNN `.param/.bin` 模型及兼容 GPU |
 | 原画/隐藏区域补画 | 当前宿主可用的图像生成/编辑工具，或用户已有的绘画素材 |
 

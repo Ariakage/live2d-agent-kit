@@ -1,0 +1,23 @@
+{
+  "schema": "pink-sakura-brow-measurements-v1",
+  "coordinates": "Original source/reference.png pixels, x rightward and y downward; r is character right/viewer left.",
+  "method": "PrepareBrows.java extracts only dark original eyebrow ink in a narrow curved band against per-column upper/lower source samples. Positive bright residuals and measured hair-line crossings remain in the stationary head base. No new character drawing or image generation is used.",
+  "neutral_constraint": "The same patch boundary and selected pixels are used for base and foreground. Their neutral composite must reconstruct the source within 8-bit rounding; check actual rendered images as well.",
+  "r": {
+    "patch_rect_xywh": [407, 176, 62, 26],
+    "centerline": [[410, 197], [416, 192], [424, 187], [434, 183], [444, 181.5], [454, 181.5], [463, 183.5]],
+    "half_band_height": 2.8,
+    "protected_hair_columns_inclusive": [[408, 412], [434, 441], [448, 451], [460, 465]]
+  },
+  "l": {
+    "patch_rect_xywh": [517, 173, 60, 22],
+    "centerline": [[520, 187], [526, 181.5], [533, 178.5], [542, 179], [552, 181.5], [561, 184], [571, 185.5]],
+    "half_band_height": 2.8,
+    "protected_hair_columns_inclusive": [[530, 539], [564, 568]]
+  },
+  "limits": [
+    "The source uses light eyebrows drawn across the bangs; their original translucent anime appearance is intentional.",
+    "Vertical Y motion uses the existing eyebrow mechanism, without independent angle or shape parameters.",
+    "Closely inspect hair-line intersections and ensure the compensating base does not move with the eyebrow."
+  ]
+}

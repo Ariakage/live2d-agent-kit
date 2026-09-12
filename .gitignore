@@ -16,6 +16,8 @@ __pycache__/
 *.param
 *.pth
 *.safetensors
+*.task
+*.wasm
 *.dylib
 *.dll
 *.so

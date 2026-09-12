@@ -1,6 +1,6 @@
 # 工具参考库
 
-这里集中收录本次模型制作、排错、超分和 kit 开发中实际涉及的工具。每项保留用途、上游入口、观察版本、获取方式、许可范围和证据；第三方软件以引用收录，原始 SDK、程序、权重和角色素材由使用者另行取得。
+这里集中收录本次模型制作、排错、超分和 kit 开发中实际涉及的工具。每项保留用途、上游入口、观察版本、获取方式、许可范围和证据；第三方软件以引用收录，原始 SDK、程序和权重由使用者另行取得，已授权的 Pink Sakura 示例素材随仓库提供。
 
 **人读此页，agent 读 [catalog.json](catalog.json)。** 安装顺序见 [setup](../docs/setup.md)，操作顺序见 [workflow](../docs/workflow.md)，已有本地包装脚本见 [scripts](../scripts/)。
 
@@ -17,7 +17,7 @@
 
 这不是“所有条目都必须安装”的依赖清单。NCNN 属于推理二进制的底层组件；CLI-Anything 属于可选包审查；Editor MCP 不是批量导出的前提。
 
-## 生产使用 · 20 项
+## 生产使用 · 21 项
 
 | 工具 / 官方入口 | 观察基线 | 具体用途 | Kit 入口 |
 | --- | --- | --- | --- |
@@ -41,6 +41,7 @@
 | [Git](https://git-scm.com/) | unknown | 克隆固定上游、应用累计补丁、核对工作区并保留 main 的本地提交。 | [setup-psd2live.py](../scripts/setup-psd2live.py) |
 | [JSON / SHA-256 / ZIP 工程记录](https://docs.python.org/3/library/hashlib.html) | 算法/格式无单一工具版本；Python 标准库实现 | 把原画、权重、低清图集、MOC、预览响应和 ZIP 绑定到同一产物身份。 | [validate.py](../scripts/validate.py) |
 | [多 agent 协作](https://openai.com/codex/) | unknown；宿主提供 | 独立审查源像素、几何、工具与文档，限定文件归属后由主 agent 集成。 | [AGENTS.md](../AGENTS.md) |
+| [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe) | 1.0.1；Face / Pose Lite float16/1 | 浏览器本地面部、眉毛和肩部/躯干输入；实际调用摄像头测试 | [摄像头指引](../docs/camera-tracking.md) |
 
 ## 辅助验证 · 15 项
 
@@ -126,7 +127,7 @@ GPT-6 Astra Ultra 是本次成功实践的 agent 配置记录；本仓库的 pro
 
 `catalog.json` 的 `evidence` 分为两层：`kit_files` 是本仓库可直接查看的实现或脱敏记录；`historical_records` 是原工作区已核查记录的相对标签，也包含明确注明的 kit 本地运行报告；原文件因含角色素材或本机路径而未收录。它们不是本仓库中的可点击文件路径。
 
-已补充核查的历史证据包括：独立 psd-tools 回读、Pillow/NumPy 的源像素审查脚本、ImageMagick 的 RMSE 报告、FFmpeg 的诊断视频记录，以及 CLI-Anything 实际执行的包审查。Mermaid 和 Marked 用于本轮 README 本地排版检查，单独归入 kit 开发。没有证据的库不会因“通常可能用到”而列入，例如没有把 OpenCV、rembg、Photoshop 或摄像头追踪 SDK 写成生产依赖。
+已补充核查的历史证据包括：独立 psd-tools 回读、Pillow/NumPy 的源像素审查脚本、ImageMagick 的 RMSE 报告、FFmpeg 的诊断视频记录，以及 CLI-Anything 实际执行的包审查。Mermaid 和 Marked 用于本轮 README 本地排版检查，单独归入 kit 开发。没有证据的库不会因“通常可能用到”而列入，例如没有把 OpenCV、rembg 或 Photoshop 写成生产依赖。新增的 MediaPipe 摄像头实现有单独的依赖锁和真实设备测试记录。
 
 查看 [kit 复现记录](../docs/verification.md)与[历史案例](../docs/case-study.md)可区分通用示例和原角色的结果。官方 native Core 的 `6.0.257` 与 Web Core 的 `5.1.0` 分别来自各自实际记录，不能混为同一个版本。用户曾验收过较早的 VTS 模型，后续修订不能继承该结论。
 
@@ -137,3 +138,13 @@ GPT-6 Astra Ultra 是本次成功实践的 agent 配置记录；本仓库的 pro
 更新后运行 `bash scripts/validate.sh --kit`。跨平台程序、GPU、SDK 与权重升级需要重跑对应链路；引用目录本身不是安装脚本或许可证替代文本。完整分发边界见 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)。
 
 This project is not affiliated with Live2D Inc.
+
+## 本地摄像头输入
+
+| 工具 | 固定版本与用途 | 获取和检查 |
+| --- | --- | --- |
+| [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe) | `1.0.1`；Face Landmarker + Pose Landmarker Lite `float16/1`，本地面部/眉毛/上半身输入 | [依赖锁](tracking-dependencies.json) · [安装和设备测试](../docs/camera-tracking.md) |
+
+JS、WASM 与模型任务文件单独下载到忽略目录，并按锁核对大小和 SHA；仓库只包含集成代码和获取说明。浏览器仅在用户主动开始后申请视频流，默认模拟继续不使用设备。
+
+MediaPipe 1.0.1 虽在本机推理，仍会发送性能/使用统计，包括关闭识别器时的剩余统计。官方没有 opt-out API；本 kit 的服务返回 `Content-Security-Policy: connect-src 'self'` 阻断外连，不修改上游 SDK 字节。其它托管必须保留同等策略，并分别检查被拦截的尝试与实际发送。来源见 [Google 隐私说明](https://developers.google.com/edge/mediapipe/solutions/tasks#mediapipe_tasks_privacy_notice)与[维护者关于阻断外连的回复](https://github.com/google-ai-edge/mediapipe/issues/6306#issuecomment-4673728357)，具体边界见[摄像头指引](../docs/camera-tracking.md#网络边界与-sdk-遥测)。

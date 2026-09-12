@@ -1,0 +1,249 @@
+{
+  "pathPlaceholders": {
+    "AUDIT_ROOT": "New audit directory with isolated source checkout and caches",
+    "KIT_ROOT": "Working kit source directory",
+    "JDK21": "Installed Zulu JDK 21.0.11 home"
+  },
+  "commands": [
+    {
+      "startedAt": "2026-09-12T14:13:39.407292+00:00",
+      "args": [
+        "bash",
+        "AUDIT_ROOT/gradle-distribution/gradle-9.6.1/bin/gradle",
+        "--no-daemon",
+        "--no-build-cache",
+        "--rerun-tasks",
+        "--console=plain",
+        "--info",
+        "--init-script",
+        "AUDIT_ROOT/kit/scripts/psd2live-init.gradle",
+        "-p",
+        "AUDIT_ROOT/engine-source-only",
+        "exportManifest",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "-PagentKitIntegrationDir=AUDIT_ROOT/kit/integrations/psd2live",
+        "-PcharacterManifest=AUDIT_ROOT/kit/work/minimal/assets/manifest.json",
+        "-PcharacterOutput=AUDIT_ROOT/kit/work/minimal/low-14"
+      ],
+      "environment": {
+        "JAVA_HOME": "JDK21",
+        "GRADLE_USER_HOME": "AUDIT_ROOT/gradle-user-home"
+      },
+      "initialGradleUserHomeEmpty": true,
+      "initialEngineBuildMissing": true,
+      "reusedCompiledClasses": false,
+      "kitBaseCommit": "2afd9d2ac29d1ef93c39b86215c3d81d89cb7f6d",
+      "kitChangedFiles": {
+        "scripts/setup-psd2live.py": "9f238ebdd428309eb2c5a0e4a0399a2852dc45948e70f80aaa65e23c65f644d3"
+      },
+      "upstreamCommit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+      "engineFetchMode": "Git blob:none sparse checkout retaining complete src/.agent/gradle/licenses and root files",
+      "exitCode": 143,
+      "finishedAt": "2026-09-12T14:20:24.222790+00:00",
+      "record": "build-01-command.json"
+    },
+    {
+      "startedAt": "2026-09-12T14:26:18.507133+00:00",
+      "args": [
+        "bash",
+        "AUDIT_ROOT/gradle-distribution/gradle-9.6.1/bin/gradle",
+        "--no-daemon",
+        "--no-build-cache",
+        "--rerun-tasks",
+        "--console=plain",
+        "--info",
+        "--init-script",
+        "AUDIT_ROOT/kit/scripts/psd2live-init.gradle",
+        "-p",
+        "AUDIT_ROOT/engine-relay",
+        "exportManifest",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "-PagentKitMavenRelay=http://127.0.0.1:60823",
+        "-PagentKitIntegrationDir=AUDIT_ROOT/kit/integrations/psd2live",
+        "-PcharacterManifest=AUDIT_ROOT/kit/work/minimal16/assets/manifest.json",
+        "-PcharacterOutput=AUDIT_ROOT/kit/work/minimal16/low"
+      ],
+      "environment": {
+        "JAVA_HOME": "JDK21",
+        "GRADLE_USER_HOME": "AUDIT_ROOT/gradle-user-home-relay"
+      },
+      "initialGradleUserHomeEmpty": true,
+      "initialEngineBuildMissing": true,
+      "initialRelayCacheEmpty": true,
+      "reusedCompiledClasses": false,
+      "reusedPreviousDependencyCache": false,
+      "sourceDifferences": "kit-working-differences.json",
+      "transport": "new localhost curl relay; fixed official repository mapping",
+      "exitCode": 1,
+      "finishedAt": "2026-09-12T14:29:07.843880+00:00",
+      "record": "build-02-command.json"
+    },
+    {
+      "startedAt": "2026-09-12T14:34:19.627729+00:00",
+      "args": [
+        "bash",
+        "AUDIT_ROOT/gradle-distribution/gradle-9.6.1/bin/gradle",
+        "--no-daemon",
+        "--no-build-cache",
+        "--rerun-tasks",
+        "--console=plain",
+        "--info",
+        "--init-script",
+        "AUDIT_ROOT/kit/scripts/psd2live-init.gradle",
+        "-p",
+        "AUDIT_ROOT/engine-relay",
+        "exportManifest",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "-PagentKitMavenRelay=http://127.0.0.1:60823",
+        "-PagentKitIntegrationDir=AUDIT_ROOT/kit/integrations/psd2live",
+        "-PcharacterManifest=AUDIT_ROOT/kit/work/minimal16/assets/manifest.json",
+        "-PcharacterOutput=AUDIT_ROOT/kit/work/minimal16/low"
+      ],
+      "resumeOf": "build-02-command.json",
+      "reason": "relay complete-artifact response exceeded default Gradle read timeout; added bounded curl resume and relay-only HTTP timeout",
+      "applicationClassesExistedBeforeRetry": false,
+      "dependencyOrigin": "only this cold-build attempt own fresh official downloads",
+      "sourceDifferences": "kit-working-differences.json",
+      "exitCode": 0,
+      "finishedAt": "2026-09-12T14:45:42.538925+00:00",
+      "record": "build-03-command.json"
+    },
+    {
+      "startedAt": "2026-09-12T14:49:55.992353+00:00",
+      "args": [
+        "bash",
+        "kit/scripts/export-model.sh",
+        "kit/work/minimal16/assets/manifest.json",
+        "kit/work/minimal16/low-via-wrapper"
+      ],
+      "scope": "Public wrapper entry smoke after cold source compilation; reuses only this audit newly compiled engine and downloaded dependencies",
+      "environment": {
+        "JAVA_HOME": "JDK21",
+        "GRADLE_USER_HOME": "AUDIT_ROOT/gradle-user-home-relay",
+        "PSD2LIVE_DIR": "AUDIT_ROOT/engine-relay",
+        "PSD2LIVE_MAVEN_RELAY": "http://127.0.0.1:60823"
+      },
+      "exitCode": 1,
+      "finishedAt": "2026-09-12T14:55:57.146546+00:00",
+      "record": "wrapper-entry-command.json"
+    },
+    {
+      "startedAt": "2026-09-12T15:02:01.550465+00:00",
+      "args": [
+        "bash",
+        "kit/scripts/export-model.sh",
+        "kit/work/minimal16/assets/manifest.json",
+        "kit/work/minimal16/low-via-public-entry"
+      ],
+      "scope": "Public entry using explicit freshly acquired Gradle 9.6.1 after cold source compilation; reuses only this audit new compiled engine/dependencies",
+      "reason": "Default upstream Wrapper distribution download timed out; no wrapper or global configuration was changed",
+      "environment": {
+        "JAVA_HOME": "JDK21",
+        "GRADLE_USER_HOME": "AUDIT_ROOT/gradle-user-home-relay",
+        "PSD2LIVE_DIR": "AUDIT_ROOT/engine-relay",
+        "PSD2LIVE_MAVEN_RELAY": "http://127.0.0.1:60823",
+        "PSD2LIVE_GRADLE": "AUDIT_ROOT/gradle-distribution/gradle-9.6.1/bin/gradle"
+      },
+      "exitCode": 0,
+      "finishedAt": "2026-09-12T15:02:40.885521+00:00",
+      "record": "public-entry-command.json"
+    },
+    {
+      "startedAt": "2026-09-12T15:05:31.435628+00:00",
+      "publicSourceFiles": [
+        {
+          "path": "examples/pink-sakura/build-manifest.cjs",
+          "bytes": 8495,
+          "sha256": "0d10d03ccdf25a08864bf6a54e087e28253e5f8e24ab13814fdfc81ef27ec361"
+        },
+        {
+          "path": "examples/pink-sakura/body-regions.json",
+          "bytes": 684166,
+          "sha256": "1f163639cd22713fede158daf4dab4391fc0f61a5b8bd7775715921a2fa5afd3"
+        },
+        {
+          "path": "examples/pink-sakura/face-regions.json",
+          "bytes": 21443,
+          "sha256": "fffcd4b9e693b692d8a6c8e8a2480b347f6d1754d5f2aeb5d4a3195594da6816"
+        },
+        {
+          "path": "examples/pink-sakura/brow-regions.json",
+          "bytes": 1591,
+          "sha256": "476a6524714818a86b49a3e38a5b894acd996143d350f1c84f69afd015646524"
+        },
+        {
+          "path": "examples/pink-sakura/body-topwear-patch.json",
+          "bytes": 145716,
+          "sha256": "575c6e96896e6574c86d50f6df58ca16bca424354447a74a978027e88b0745b2"
+        },
+        {
+          "path": "examples/pink-sakura/prepare-brows.cjs",
+          "bytes": 1006,
+          "sha256": "fce75db833f5faf9d4b61cf19c3cbb8d8ecd353526a54c4079767439352527f0"
+        },
+        {
+          "path": "examples/pink-sakura/PrepareBrows.java",
+          "bytes": 4638,
+          "sha256": "01eaeac09d7a17a2713b54221376119a9c45841f9cddf5a7922a9bfc5b7ee5e0"
+        },
+        {
+          "path": "examples/pink-sakura/source/body-underpainting-v1.png",
+          "bytes": 2377867,
+          "sha256": "af6630a8663bb0b64d06ab26a9a5a4cd1f3f0c95909899004911dcd17481de8b"
+        },
+        {
+          "path": "examples/pink-sakura/source/eyebrow-base-v1.png",
+          "bytes": 1615074,
+          "sha256": "4c806650224049849c87a748d0bcf32ed9a8a46addf5d487ff92b844b1739853"
+        },
+        {
+          "path": "examples/pink-sakura/source/eyebrow-l-v1.png",
+          "bytes": 6746,
+          "sha256": "5eb400d8a50a4fb1d1f016caf626921831b5d2a89b13d8ec735656a1eea5510f"
+        },
+        {
+          "path": "examples/pink-sakura/source/eyebrow-r-v1.png",
+          "bytes": 6759,
+          "sha256": "6c1dc905caa39282308a22ebf7927a7e146cdf763816f05e887226a3cf9b9518"
+        },
+        {
+          "path": "examples/pink-sakura/source/eyeless-face-v1.png",
+          "bytes": 1553165,
+          "sha256": "9ad6277a56d121ece6e81021787fddbc8e5e339a4930b10e36cc81ca3b69d219"
+        },
+        {
+          "path": "examples/pink-sakura/source/face-parts-v1.png",
+          "bytes": 1542947,
+          "sha256": "b1710863d1d9235af6db8d8473e0294474ed7b062e949fdc8d6de9f2546a0774"
+        },
+        {
+          "path": "examples/pink-sakura/source/rear-hair-underpainting-v1.png",
+          "bytes": 1442437,
+          "sha256": "cc964cb5aff8a544b61da7008e987f91ea64eb6c58831aade1ef098717be666f"
+        },
+        {
+          "path": "examples/pink-sakura/source/reference.png",
+          "bytes": 1632604,
+          "sha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca"
+        }
+      ],
+      "sourceCount": 8,
+      "sourceLayers": 24,
+      "allDependenciesWithinCopiedExample": true,
+      "deterministicBrowSourcesMatch": true,
+      "manifestSha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
+      "exportScriptSha256": "982cbe1630d49863f7449ebe4375f1a2fccf5968684d30ab35cf20322a7c62b0",
+      "engine": "same freshly compiled full source engine from build-03",
+      "reuseScope": "This audit new compiler output and dependency cache only; no production classes reused",
+      "args": [
+        "bash",
+        "kit/scripts/export-model.sh",
+        "kit/examples/pink-sakura/manifest.json",
+        "kit/work/pink-sakura/low"
+      ],
+      "exitCode": 0,
+      "finishedAt": "2026-09-12T15:08:12.125784+00:00",
+      "record": "pink-public-source-command.json"
+    }
+  ]
+}

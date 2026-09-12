@@ -1,6 +1,6 @@
 # 通用真实 Live2D 网页预览
 
-这是从本项目实际交付时使用的预览器整理的通用模板：Cubism Core 求值、WebGL 绘制、真实参数滑块与 VTS 风格模拟输入。未加载真实 `.moc3` 时显示错误，不用静态图片或假动画冒充模型。**本目录不含模型、角色素材、超分权重或第三方运行库。** 模板代码采用仓库 MIT 许可证；依赖各自原许可证。
+这是从本项目实际交付时使用的预览器整理的通用模板：Cubism Core 求值、WebGL 绘制、真实参数滑块、VTS 风格模拟输入与可选的本地摄像头面部/上半身追踪。未加载真实 `.moc3` 时显示错误，不用静态图片或假动画冒充模型。**本目录不含模型、角色素材、超分权重或第三方运行库。** 模板代码采用仓库 MIT 许可证；依赖各自原许可证。
 
 ## 准备与启动
 
@@ -51,9 +51,28 @@ python3 work/preview/server.py --port 8793
 
 模拟输入是本地生成的 FaceAngleX/Y/Z、EyeOpenLeft/Right、左右视线、MouthOpen、MouthSmile、MocopiBodyAngleX/Y/Z。Mocopi 前缀只沿用输入命名，不表示已连接设备或复现 VTS 的算法。名义输入范围属于本模拟器；实际 VTS 的映射可以单独设置。默认目标为 Cubism 常规参数 ID，输出按实际 Core 范围缩放；MouthSmile 默认从参数默认值映射到最大值。左右眼按模型解剖命名，独立输入映射到共享眼球参数时取平均。可在 `inputMapping` 中覆盖目标和输入/输出端点，或把某输入设为 `false`。
 
-页面只列出真实 Core 参数并标记未映射输入；**有参数不等于该参数绑定了可见图形**。半身输入需要模型真的绑定 BodyAngle；没有物理配置就不会有物理联动。没有实现摄像头、麦克风、手臂、手指或眉毛的跟踪输入，不能把预留 UI 或参数槽宣传成已实现捕捉。已有表情/动作从模型文件引用中读取。
+页面只列出真实 Core 参数并标记未映射输入；**有参数不等于该参数绑定了可见图形**。半身输入需要模型真的绑定 BodyAngle；没有物理配置就不会有物理联动。摄像头入口需要单独准备 MediaPipe 识别依赖，支持眉毛、眼睛、嘴部、头部与近似躯干输入；没有麦克风、独立手臂或手指绑定。已有表情/动作从模型文件引用中读取。
 
-输入平滑在跟踪源层进行；手动滑块接管模拟；暂停会冻结全部当前参数与物理输出；拖动时间轴保持暂停；停止恢复模型原始默认值。网页服务还通过 Permissions-Policy 禁止摄像头和麦克风。
+输入平滑在跟踪源层进行；手动滑块接管模拟；暂停会冻结全部当前参数与物理输出；拖动时间轴保持暂停；停止恢复模型原始默认值。网页服务通过 Permissions-Policy 仅允许本页摄像头，禁止麦克风；加载页面和运行模拟不会请求摄像头。
+
+## 可选摄像头追踪
+
+先获取固定版本的 MediaPipe 依赖，再加入准备参数：
+
+```sh
+python3 scripts/setup-tracking.py --directory .cache/mediapipe
+python3 scripts/prepare-preview.py \
+  --model examples/pink-sakura/runtime/PinkSakura.model3.json \
+  --output work/camera-preview \
+  --cubism-core /path/to/live2dcubismcore.min.js --vendor-dir /path/to/vendor \
+  --config examples/pink-sakura/preview-config.json \
+  --tracking-dir .cache/mediapipe
+python3 work/camera-preview/server.py --port 8860
+```
+
+点击“开始面捕”后，浏览器才申请摄像头。视频和识别结果在本机处理，不上传、不录制；“显示本地画面”仅控制镜像画面的显示。正视镜头后点击“正视并校准”，再尝试抬眉、眨眼、张嘴、转头和肩部侧倾。暂停冻结模型但保留摄像头；“关闭摄像头”、手调接管、切换模拟、切换到后台页面或离开页面会释放设备。
+
+单摄像头上半身姿态是近似估计，低置信或失追时回到默认参数，不以头部角度冒充身体识别。没有 `--tracking-dir` 的预览仍可使用模拟输入；摄像头按钮会说明缺少依赖。完整安装、权限排错、追踪范围及测试方法见仓库的 [摄像头指引](../../docs/camera-tracking.md)。
 
 ## 实测
 
@@ -70,3 +89,5 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright \
 来源：本仓库工作流从实际角色制作中整理的自有 runtime、输入控制器与网页交互代码，不包含那位角色的图片/模型。经验保留了高清眼部遮罩缓冲区、源输入与物理的顺序、暂停冻结、实际参数范围、无假模型回退。
 
 This project is not affiliated with Live2D Inc.
+
+The supplied server enforces `Content-Security-Policy: connect-src 'self'` to block MediaPipe’s default usage-metric logging. Keep this response policy on other hosts. Camera inference being local does not itself disable SDK telemetry; see the [camera guide](../../docs/camera-tracking.md).

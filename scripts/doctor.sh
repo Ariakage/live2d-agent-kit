@@ -10,7 +10,8 @@ for command_name in git python3 java node; do
 done
 java -version 2>&1 || true
 python3 --version 2>&1 || true
+node --version 2>&1 || true
 echo "PSD2LIVE_DIR=${PSD2LIVE_DIR:-.cache/psd2live (kit default)}"
 echo "CUBISM_CORE_DIR=${CUBISM_CORE_DIR:-not configured (native validation unavailable)}"
-echo 'Need JDK 21 for the tested exporter, Python >=3.10, Git. Node/Playwright are for web QA.'
+echo 'Need JDK 21 for the tested exporter, Python >=3.10, Git. Node >=22 and Playwright are for web QA; JS module tests require Node >=22.'
 echo 'Upscayl binary, NCNN weights and SDKs are supplied separately; see docs/setup.md.'

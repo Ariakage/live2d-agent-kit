@@ -1601,6 +1601,57 @@
       },
       "notes": "Used for prose editing only. Does not establish factual accuracy, authorship or absence of AI generation. Local skill SHA-256 records the supplied text, not a claim of matching upstream HEAD.",
       "local_skill_sha256": "243aecdafecb5e11c2d45e2e088b7876e3f6eee34aa50c53f624d8468039afa8"
+    },
+    {
+      "id": "mediapipe-tasks-vision",
+      "name": "MediaPipe Tasks Vision · Face / Pose Landmarker",
+      "usage_status": "production",
+      "observed_version": "@mediapipe/tasks-vision 1.0.1; Face Landmarker and Pose Landmarker Lite float16/1",
+      "purpose": "在浏览器本地从摄像头视频推断面部表情、眉毛、头姿及近似肩部/躯干姿态，再映射到真实Cubism参数。",
+      "upstream": [
+        {
+          "title": "Face Landmarker Web guide",
+          "url": "https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker/web_js"
+        },
+        {
+          "title": "Pose Landmarker Web guide",
+          "url": "https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker/web_js"
+        },
+        {
+          "title": "MediaPipe source",
+          "url": "https://github.com/google-ai-edge/mediapipe"
+        },
+        {
+          "title": "MediaPipe Tasks privacy notice",
+          "url": "https://developers.google.com/edge/mediapipe/solutions/tasks#mediapipe_tasks_privacy_notice"
+        },
+        {
+          "title": "Maintainer clarification: blocking telemetry requests is supported",
+          "url": "https://github.com/google-ai-edge/mediapipe/issues/6306#issuecomment-4673728357"
+        }
+      ],
+      "license": {
+        "summary": "Tasks Vision package is Apache-2.0. Model assets remain external; retain each official distribution notice.",
+        "sources": [
+          "https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE"
+        ]
+      },
+      "acquisition": "Run scripts/setup-tracking.py into a local ignored directory, then prepare-preview.py --tracking-dir. Exact external files, versions, source URLs, sizes and hashes are in tools/tracking-dependencies.json.",
+      "integration_paths": [
+        "scripts/setup-tracking.py",
+        "scripts/check-camera.cjs",
+        "templates/web-preview/camera-tracker.js",
+        "templates/web-preview/tracking-math.js",
+        "tools/tracking-dependencies.json"
+      ],
+      "evidence": {
+        "kit_files": [
+          "docs/camera-tracking.md",
+          "CHANGELOG.md"
+        ],
+        "historical_records": []
+      },
+      "notes": "Actual physical video input is explicitly opt-in, with no recording or microphone request. Inference is local, but upstream 1.0.1 sends performance/usage telemetry and provides no opt-out API; the kit's server enforces CSP connect-src 'self' to block external sends, including close-time flushes. Other hosting must preserve equivalent CSP and verify blocked attempts separately from transmitted requests. Upstream bytes stay unchanged. Mocopi-style names do not imply a connected device; single-camera body estimates have no independent arm/finger rig."
     }
   ]
 }

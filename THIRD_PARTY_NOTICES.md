@@ -14,6 +14,7 @@ It does not relicense upstream projects, SDKs, model weights or user artwork.
 | Upscayl / upscayl-ncnn | External AGPL-3.0 tools; not bundled or relicensed. |
 | Real-ESRGAN / anime weights | External acquisition only; Real-ESRGAN is BSD-3-Clause. Check the actual weight author and distribution notice, particularly for custom models. |
 | Live2D Cubism Core, Framework and sample data | Not included. Core is proprietary; Framework has the Live2D Open Software License. Sample artwork has separate conditions. Obtain required components from their official distributions and retain their notices. |
+| MediaPipe Tasks Vision and Face/Pose task assets | Optional local camera inference. The Tasks Vision package is Apache-2.0; source URLs, versions and exact bytes are in [tracking-dependencies.json](tools/tracking-dependencies.json). Libraries, WASM and model assets are obtained separately with their official notices; no third-party tracking binary is committed. |
 | PixiJS / pixi-live2d-display | Not vendored; external MIT dependencies. The Cubism bundle also contains Framework code with separate Live2D terms. |
 | CLI-Anything / CubismExternalEditMCP | Linked and evaluated only, not bundled. See the version-specific license notes in `docs/tooling.md` and `mcp/README.md`. |
 

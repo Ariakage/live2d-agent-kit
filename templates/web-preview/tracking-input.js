@@ -1,5 +1,5 @@
 import { INPUT_MAPPING } from './view-config.js';
-/** Local synthetic signals using VTS input names, not a VTS/device connection.
+/** Shared camera/synthetic signals using VTS-style names, not a VTS/device connection.
  * Ranges are this simulator's nominal input limits; real VTS mappings are configurable.
  * Left/right are anatomical sides; confirm the actual artwork and rig naming.
  */
@@ -15,9 +15,11 @@ export const INPUTS = [
   {id:'EyeRightY', label:'右眼视线上下', min:-1, max:1, value:0, target:'ParamEyeBallY', average:true},
   {id:'MouthOpen', label:'说话开口', min:0, max:1, value:0, target:'ParamMouthOpenY'},
   {id:'MouthSmile', label:'微笑', min:0, max:1, value:0, target:'ParamMouthForm'},
-  {id:'MocopiBodyAngleX', label:'躯干左右（模拟）', min:-10, max:10, value:0, target:'ParamBodyAngleX', body:true},
-  {id:'MocopiBodyAngleY', label:'躯干俯仰（模拟）', min:-10, max:10, value:0, target:'ParamBodyAngleY', body:true},
-  {id:'MocopiBodyAngleZ', label:'肩部侧倾（模拟）', min:-10, max:10, value:0, target:'ParamBodyAngleZ', body:true},
+  {id:'BrowLeftY', label:'左眉抬起 / 压低', min:-1, max:1, value:0, target:'ParamBrowLY'},
+  {id:'BrowRightY', label:'右眉抬起 / 压低', min:-1, max:1, value:0, target:'ParamBrowRY'},
+  {id:'MocopiBodyAngleX', label:'躯干左右', min:-10, max:10, value:0, target:'ParamBodyAngleX', body:true},
+  {id:'MocopiBodyAngleY', label:'躯干俯仰', min:-10, max:10, value:0, target:'ParamBodyAngleY', body:true},
+  {id:'MocopiBodyAngleZ', label:'肩部侧倾', min:-10, max:10, value:0, target:'ParamBodyAngleZ', body:true},
 ];
 export const DURATION = 24;
 export const NEUTRAL_INPUT = Object.fromEntries(INPUTS.map(s => [s.id, s.value]));
@@ -40,6 +42,8 @@ export function simulateInput(time, profile='all') {
     v.FaceAngleZ = 6 * oscillate(t, 12);
     v.EyeLeftX = v.EyeRightX = .5 * oscillate(t, 6);
     v.EyeLeftY = v.EyeRightY = .25 * oscillate(t, 8);
+    v.BrowLeftY = .5 * oscillate(t, 8);
+    v.BrowRightY = .5 * oscillate(t, 8, .3);
   }
   if (profile === 'blink') {
     // Hold the endpoints long enough to inspect the actual closed-eye mesh.

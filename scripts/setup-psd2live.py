@@ -10,6 +10,8 @@ def run(*args, cwd=None, capture=False):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--directory',type=Path,default=ROOT/'.cache/psd2live')
+    p.add_argument('--source-only',action='store_true',
+                   help='For a new checkout, fetch all source/build resources without upstream examples or documentation images')
     a=p.parse_args(); dst=a.directory.resolve()
     lock=json.loads((ROOT/'integrations/psd2live/engine-lock.json').read_text())
     patch=ROOT/'patches/psd2live-agent-kit.patch'
@@ -28,7 +30,18 @@ def main():
         origin=run('git','remote','get-url','origin',cwd=dst,capture=True).strip()
         files={f.name for f in dst.iterdir()} - {'.git','.DS_Store'}
         if origin!=lock['url'] or files:p.error('Unborn checkout has user files or a different origin; use a new directory')
-        run('git','fetch','--depth','1','origin',lock['commit'],cwd=dst)
+        fetch=['git','fetch','--depth','1']
+        if a.source_only:
+            # All root build scripts, src/main+test, embedded resources and the
+            # agent reference files remain available. Only non-build bulk such
+            # as upstream example PSDs/textures and docs images is omitted.
+            # This option does not shrink an existing user checkout.
+            run('git','config','remote.origin.promisor','true',cwd=dst)
+            run('git','config','remote.origin.partialclonefilter','blob:none',cwd=dst)
+            run('git','sparse-checkout','init','--cone',cwd=dst)
+            run('git','sparse-checkout','set','src','.agent','gradle','licenses',cwd=dst)
+            fetch.append('--filter=blob:none')
+        run(*fetch,'origin',lock['commit'],cwd=dst)
         run('git','checkout','--detach',lock['commit'],cwd=dst)
     def changes():
         tracked=set(run('git','diff','--name-only','HEAD',cwd=dst,capture=True).splitlines())

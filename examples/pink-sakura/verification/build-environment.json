@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-09-12T12:37:01.998535+00:00",
-  "purpose": "Final low and HD exports used the same existing compiled classes after dependency-cache recovery; this record does not claim a fresh full Gradle build.",
+  "checked_at_utc": "2026-09-12T14:45:36.304602+00:00",
+  "purpose": "Brow revision LOW v3 and HD exported using the retained compiled classes; class/resource identities rechecked. This export is not a cold build.",
   "runtime": {
     "jdk_executable": "<local-jdk21-java>",
     "java_version_output": "openjdk version \"21.0.11\" 2026-04-21 LTS\nOpenJDK Runtime Environment Zulu21.50+19-CA (build 21.0.11+10-LTS)\nOpenJDK 64-Bit Server VM Zulu21.50+19-CA (build 21.0.11+10-LTS, mixed mode, sharing)",
@@ -163,89 +163,115 @@
   },
   "build_inputs": {
     "manifest": {
-      "path": "work/pink-sakura/manifest.json",
-      "bytes": 742583,
-      "sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a"
+      "file": "work/brow-sakura/recipe-v3/manifest.json",
+      "bytes": 743083,
+      "sha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571"
     },
     "logical_canvas": {
       "width": 1024,
       "height": 1536
     },
-    "source_layers": 22,
+    "source_layers": 24,
     "recipe_files": [
       {
-        "path": "work/pink-sakura/build-manifest.cjs",
-        "bytes": 7974,
-        "sha256": "5d08199c22e5ec5378b7a5809440f1d8903666c2c640f6d2f31d9761d76cbffb"
+        "file": "examples/pink-sakura/build-manifest.cjs",
+        "bytes": 8495,
+        "sha256": "0d10d03ccdf25a08864bf6a54e087e28253e5f8e24ab13814fdfc81ef27ec361"
       },
       {
-        "path": "work/pink-sakura/body-regions.json",
+        "file": "examples/pink-sakura/body-regions.json",
         "bytes": 684166,
         "sha256": "1f163639cd22713fede158daf4dab4391fc0f61a5b8bd7775715921a2fa5afd3"
       },
       {
-        "path": "work/pink-sakura/face-regions.json",
+        "file": "examples/pink-sakura/face-regions.json",
         "bytes": 21443,
         "sha256": "fffcd4b9e693b692d8a6c8e8a2480b347f6d1754d5f2aeb5d4a3195594da6816"
       },
       {
-        "path": "work/pink-sakura/body-topwear-patch.json",
+        "file": "examples/pink-sakura/body-topwear-patch.json",
         "bytes": 145716,
         "sha256": "575c6e96896e6574c86d50f6df58ca16bca424354447a74a978027e88b0745b2"
+      },
+      {
+        "file": "examples/pink-sakura/preview-config.json",
+        "bytes": 265,
+        "sha256": "5b2c5c26ad6c9b656edb5a0acaceb0f99b26c5b0db54aef9d5e766bb9caf3274"
+      },
+      {
+        "file": "examples/pink-sakura/check-poses.cjs",
+        "bytes": 19050,
+        "sha256": "e4276fcb86c2a285383286f165f05126aacf8a00711427ed871a14904e74cb7a"
+      },
+      {
+        "file": "examples/pink-sakura/capture-demo.cjs",
+        "bytes": 4165,
+        "sha256": "d4c0759b5950a16fa6a272498562accc0203444913ad6030b7606d66b9f0339a"
+      },
+      {
+        "file": "examples/pink-sakura/brow-regions.json",
+        "bytes": 1591,
+        "sha256": "476a6524714818a86b49a3e38a5b894acd996143d350f1c84f69afd015646524"
+      },
+      {
+        "file": "examples/pink-sakura/PrepareBrows.java",
+        "bytes": 4638,
+        "sha256": "01eaeac09d7a17a2713b54221376119a9c45841f9cddf5a7922a9bfc5b7ee5e0"
+      },
+      {
+        "file": "examples/pink-sakura/prepare-brows.cjs",
+        "bytes": 1006,
+        "sha256": "fce75db833f5faf9d4b61cf19c3cbb8d8ecd353526a54c4079767439352527f0"
       }
     ],
     "source_images": [
       {
-        "path": "work/pink-sakura/source/face-parts-v1.png",
+        "file": "examples/pink-sakura/source/body-underpainting-v1.png",
+        "bytes": 2377867,
+        "sha256": "af6630a8663bb0b64d06ab26a9a5a4cd1f3f0c95909899004911dcd17481de8b"
+      },
+      {
+        "file": "examples/pink-sakura/source/eyebrow-base-v1.png",
+        "bytes": 1615074,
+        "sha256": "4c806650224049849c87a748d0bcf32ed9a8a46addf5d487ff92b844b1739853"
+      },
+      {
+        "file": "examples/pink-sakura/source/eyebrow-l-v1.png",
+        "bytes": 6746,
+        "sha256": "5eb400d8a50a4fb1d1f016caf626921831b5d2a89b13d8ec735656a1eea5510f"
+      },
+      {
+        "file": "examples/pink-sakura/source/eyebrow-r-v1.png",
+        "bytes": 6759,
+        "sha256": "6c1dc905caa39282308a22ebf7927a7e146cdf763816f05e887226a3cf9b9518"
+      },
+      {
+        "file": "examples/pink-sakura/source/eyeless-face-v1.png",
+        "bytes": 1553165,
+        "sha256": "9ad6277a56d121ece6e81021787fddbc8e5e339a4930b10e36cc81ca3b69d219"
+      },
+      {
+        "file": "examples/pink-sakura/source/face-parts-v1.png",
         "bytes": 1542947,
         "sha256": "b1710863d1d9235af6db8d8473e0294474ed7b062e949fdc8d6de9f2546a0774"
       },
       {
-        "path": "work/pink-sakura/source/rear-hair-underpainting-v1.png",
+        "file": "examples/pink-sakura/source/rear-hair-underpainting-v1.png",
         "bytes": 1442437,
         "sha256": "cc964cb5aff8a544b61da7008e987f91ea64eb6c58831aade1ef098717be666f"
       },
       {
-        "path": "work/pink-sakura/source/reference.png",
+        "file": "examples/pink-sakura/source/reference.png",
         "bytes": 1632604,
         "sha256": "b996df48325439968df67651954737dea5016c86136e0c77adb1c8188a426dca"
       }
     ]
   },
-  "low06b": {
-    "artifacts": [
-      {
-        "path": "work/pink-sakura/low-06b/PinkSakura.2048/texture_00.png",
-        "bytes": 3206159,
-        "sha256": "29704262548bd4ea51984f589cca4bac56092fad07f264d099776154a2179338"
-      },
-      {
-        "path": "work/pink-sakura/low-06b/PinkSakura.moc3",
-        "bytes": 388544,
-        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
-      },
-      {
-        "path": "work/pink-sakura/low-06b/PinkSakura.model3.json",
-        "bytes": 757,
-        "sha256": "784e33491c5c86e945ea515cb426f98633e2713028672c7528ad8b310d430e8b"
-      }
-    ],
-    "core_report": {
-      "path": "work/pink-sakura/core-low-06b.json",
-      "bytes": 225653,
-      "sha256": "0d668f509847d64b6861fe991a97fdf00029105abc782c7b563ddb74a887768c"
-    },
-    "web_pose_record": {
-      "path": "work/pink-sakura/web-poses-low-06b-retry/poses.json",
-      "bytes": 194809,
-      "sha256": "34d3427702e4dc3dd5df1621d5b8511bdb0fb133027eed74856044637a2535d6"
-    }
-  },
   "hd": {
     "modelJsonSha256": "34023a308cb00c621e6a199afb1598819b1196eb7d864a4ad50dd2dbe7bc4ee5",
-    "mocSha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+    "mocSha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
     "lowHdMocByteIdentical": true,
-    "textureSha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+    "textureSha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
     "nativeReport": "native-core.json",
     "webReport": "web-smoke.json",
     "poseReport": "web-poses.json"
@@ -255,6 +281,33 @@
     "Native Core, actual WebGL visual checks, and VTube Studio acceptance are separate from JVM build-input identity.",
     "Recorded jars and compiled classes remain in ignored local work/cache; this record does not redistribute classes or establish third-party redistribution permission."
   ],
-  "publicationNote": "Local paths redacted or made relative; numeric results and artifact SHA-256 identities retained. Referenced working files are local evidence, not bundled dependencies.",
-  "originalLocalReportSha256": "1092be51b6ffc3fd33b9f0c71dec72fa03673ae5dc40cc29b7751f9efdf140a3"
+  "low": {
+    "artifacts": [
+      {
+        "file": "work/brow-sakura/low-v3/PinkSakura.2048/texture_00.png",
+        "bytes": 3207169,
+        "sha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4"
+      },
+      {
+        "file": "work/brow-sakura/low-v3/PinkSakura.moc3",
+        "bytes": 395520,
+        "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
+      },
+      {
+        "file": "work/brow-sakura/low-v3/PinkSakura.model3.json",
+        "bytes": 757,
+        "sha256": "784e33491c5c86e945ea515cb426f98633e2713028672c7528ad8b310d430e8b"
+      }
+    ],
+    "core_report": {
+      "file": "work/brow-sakura/core-low.json",
+      "bytes": 233474,
+      "sha256": "63fabd0ee860403efce979114e59417fdb9d1321ff73f9c3342c8419d66b560f"
+    },
+    "web_pose_record": {
+      "file": "work/brow-sakura/web-low-v3/poses.json",
+      "bytes": 228605,
+      "sha256": "fb830459217432d810f64e5cab9807fccd454b296f6bea7f097c075610b592de"
+    }
+  }
 }

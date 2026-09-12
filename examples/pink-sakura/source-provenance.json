@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "example": "Pink Sakura",
-  "production_status": "HD runtime exported; native Core and WebGL checks passed; sampled visual review passed with documented minor limitations; VTube Studio pending user acceptance",
+  "production_status": "24-parameter eyebrow revision: HD runtime exported; fresh native Core and WebGL checks passed; scoped visual review with limitations; VTube Studio pending user acceptance",
   "scope": "Source and recipe identities, generation history, actual 4x runtime atlas, exported runtime and scoped validation evidence. No claim of clean-environment full source build or VTube Studio acceptance.",
   "provider": "Ariakage",
   "project": "https://github.com/Ariakage/live2d-agent-kit",
@@ -86,6 +86,51 @@
       "generation_observation": "Hidden under-body hair fill; green-screen RGB, sample only registered non-green interior. Original visible rear strands retained.",
       "generation_observation_scope": "Historical observation at initial candidate generation; current use was revised after failed overlap tests.",
       "current_usage": "Continuous generated natural rear-hair base, including visible portions; crop [0,100,1024,940] mapped to [20,90,983,846], known-green alpha extraction, whole-layer G > B + 8 alpha rejection and green despill. Original outer/arc strands overlay separately."
+    },
+    {
+      "file": "source/eyebrow-base-v1.png",
+      "sha256": "4c806650224049849c87a748d0bcf32ed9a8a46addf5d487ff92b844b1739853",
+      "bytes": 1615074,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 2,
+      "has_alpha_channel": false,
+      "origin": "deterministic-source-pixel-decomposition",
+      "derived_from": "source/reference.png",
+      "generator": "PrepareBrows.java via prepare-brows.cjs",
+      "license": "CC-BY-4.0",
+      "byte_identical_regeneration": true,
+      "preparation_evidence": "verification/brow-preparation.json"
+    },
+    {
+      "file": "source/eyebrow-l-v1.png",
+      "sha256": "5eb400d8a50a4fb1d1f016caf626921831b5d2a89b13d8ec735656a1eea5510f",
+      "bytes": 6746,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "origin": "deterministic-source-pixel-decomposition",
+      "derived_from": "source/reference.png",
+      "generator": "PrepareBrows.java via prepare-brows.cjs",
+      "license": "CC-BY-4.0",
+      "byte_identical_regeneration": true,
+      "preparation_evidence": "verification/brow-preparation.json"
+    },
+    {
+      "file": "source/eyebrow-r-v1.png",
+      "sha256": "6c1dc905caa39282308a22ebf7927a7e146cdf763816f05e887226a3cf9b9518",
+      "bytes": 6759,
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "origin": "deterministic-source-pixel-decomposition",
+      "derived_from": "source/reference.png",
+      "generator": "PrepareBrows.java via prepare-brows.cjs",
+      "license": "CC-BY-4.0",
+      "byte_identical_regeneration": true,
+      "preparation_evidence": "verification/brow-preparation.json"
     }
   ],
   "recipe_files": [
@@ -95,9 +140,12 @@
     "body-topwear-patch.json",
     "preview-config.json",
     "check-poses.cjs",
-    "capture-demo.cjs"
+    "capture-demo.cjs",
+    "brow-regions.json",
+    "PrepareBrows.java",
+    "prepare-brows.cjs"
   ],
-  "recipe_status": "Published source recipe used for final low-06b and HD exports; executable environment recovery and source identities recorded separately.",
+  "recipe_status": "Public 24-source-layer recipe and deterministic eyebrow derivatives regenerated from a fresh local copy; manifest exactly matches the actual LOW v3 export input.",
   "registration_notes": [
     "Original logical reference canvas is 1024x1536. Approved face, front hair and clothing retain the original as their primary source; outer/arc rear strands also remain original overlays.",
     "Facial generation inputs used reference crop [300,0,400,400] resized to 1200x1200; returned files are 1254x1254 and need measured registration.",
@@ -107,18 +155,19 @@
     "The rear-hair source_color_filter sets alpha to zero wherever G > B + 8 across the entire source layer, not only edges. It is specific to this pink/white plate with no intended green; other characters with green artwork require different measured masking. This preprocessing precedes independent upscaling of the cleaned alpha.",
     "Original outer/arc rear strands overlay the generated base and move independently. Some visible rear-hair pixels now come from the generated base; an all-original-visible-rear-pixels claim is no longer accurate.",
     "Original upper-lid folds are isolated as face_detail-upper-lid-folds, separate from thresholded moving dark lashes. The mouth_open layer is registered at logical y277 for this specific source.",
-    "Recorded prompts request visual constraints but do not establish that generated results satisfied them. Results and generated-service versions are recorded separately."
+    "Recorded prompts request visual constraints but do not establish that generated results satisfied them. Results and generated-service versions are recorded separately.",
+    "Original shallow pink brow ink is decomposed into three deterministic derivative PNGs by PrepareBrows.java; bright residuals and measured intersecting hair contours remain stationary. Foreground brow movement preserves the approved source design; this is not a newly generated face."
   ],
   "final_evidence": {
     "runtime_model": "runtime/PinkSakura.model3.json",
     "runtime_model_sha256": "34023a308cb00c621e6a199afb1598819b1196eb7d864a4ad50dd2dbe7bc4ee5",
-    "runtime_moc_sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
+    "runtime_moc_sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
     "low_hd_moc_byte_identical": true,
     "hd_textures": [
       {
         "file": "runtime/PinkSakura.8192/texture_00.png",
-        "bytes": 44825773,
-        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+        "bytes": 45336522,
+        "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
         "width": 8192,
         "height": 8192,
         "channels": "RGBA"
@@ -132,13 +181,13 @@
       },
       {
         "file": "runtime/ATTRIBUTION.md",
-        "bytes": 1602,
-        "sha256": "14248d25674eb8ae549ff042f1b0ed74fca49def0419a9e11c3f9ea756ff0c1e"
+        "bytes": 1749,
+        "sha256": "636a26a1440d33c90e1b7a3ca6375deb1455ec413572fda472b0e7d01d129b09"
       },
       {
         "file": "runtime/PinkSakura.8192/texture_00.png",
-        "bytes": 44825773,
-        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8"
+        "bytes": 45336522,
+        "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361"
       },
       {
         "file": "runtime/PinkSakura.blink.motion3.json",
@@ -147,8 +196,8 @@
       },
       {
         "file": "runtime/PinkSakura.cdi3.json",
-        "bytes": 4716,
-        "sha256": "7d5c2a01664e18c67cfdb22425bf724f1f82c5db0801a12ce5b9545f0e3d9631"
+        "bytes": 5012,
+        "sha256": "553917dfea91fadc66fa911fee42e0085866598c224110fdd80b26646c1af850"
       },
       {
         "file": "runtime/PinkSakura.idle.motion3.json",
@@ -157,8 +206,8 @@
       },
       {
         "file": "runtime/PinkSakura.moc3",
-        "bytes": 388544,
-        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
+        "bytes": 395520,
+        "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
       },
       {
         "file": "runtime/PinkSakura.model3.json",
@@ -183,15 +232,15 @@
       {
         "file": "runtime/release-metadata.json",
         "bytes": 2842,
-        "sha256": "09de05e40d4fc39d854eb6716f8a5da587f3ecc4a72c323883d3f20e9e7ad466"
+        "sha256": "93afcd33937725ffbc2f31f2861c767b3477e7a19186197925f01b120c5f7dcb"
       }
     ],
     "native_core": {
       "status": "passed",
       "report": "verification/native-core.json",
       "version": "06.00.0257 (100663553)",
-      "checked_at": "2026-09-12T12:36:26.431146Z",
-      "tested_pose_count": 198,
+      "checked_at": "2026-09-12T14:35:55.300967Z",
+      "tested_pose_count": 202,
       "mouth_combined_pose_count": 125,
       "parameters_without_measured_effect": [],
       "errors": [],
@@ -204,8 +253,8 @@
       "pose_report": "verification/web-poses.json",
       "smoke_checks": 22,
       "parameters_without_observed_geometry_change": [],
-      "poses": 55,
-      "captured_frames": 80,
+      "poses": 66,
+      "captured_frames": 91,
       "browser": {
         "name": "chromium",
         "version": "152.0.7977.83",
@@ -217,27 +266,27 @@
       "max_texture_size": 16384,
       "camera_requests": 0,
       "resource_identity_scope": "Actual browser responses matched final MOC and texture bytes; prepared preview model3 is reformatted/renamed and has its own recorded hash.",
-      "frame_publication_scope": "All 80 frame identities recorded; only selected screenshots shipped. Reproduce the full sweep with check-poses.cjs."
+      "frame_publication_scope": "All 91 frame identities recorded; selected screenshots shipped. Reproduce the full sweep with check-poses.cjs."
     },
     "visual_review": {
       "status": "passed-with-documented-minor-visual-limitations",
       "report": "verification/visual-review.json",
       "face_report": "verification/face-review.json",
       "body_report": "verification/body-review.json",
-      "unique_reviewed_frames": 60,
-      "face_reviewed_frames": 33,
-      "body_reviewed_frames": 29,
-      "total_automated_frames": 80,
+      "unique_reviewed_frames": 75,
+      "face_reviewed_frames": 44,
+      "body_overview_frames": 31,
+      "total_automated_frames": 91,
       "exhaustive": false,
-      "scope": "Final HD model; independent agent visual review of actual WebGL PNG captures. This is sampled review, not exhaustive animation or target-app acceptance.",
+      "scope": "Current 24-parameter brow revision only. 44 face crops plus 31 full-body overview frames from actual HD WebGL captures were visually inspected; not exhaustive animation, all close-up hair frames, camera, or VTS acceptance. Prior 22-parameter reports were superseded, not reused as passes for this revision.",
       "limitations": [
-        "Magnified thin closed-mouth line is somewhat pale/grainy.",
-        "Closed lash tips are slightly blunt with residual edge steps under magnification.",
-        "EyeOpen 0 through 0.25 shares a closed-eye hold interval.",
-        "Conservative 2D head/body motion; no independent arm/finger rig or real camera capture.",
-        "VTube Studio acceptance remains with the user."
+        "Original pale pink brows move subtly. Protected intersecting hair columns remain on the face; under magnification tiny pale/segmented points can remain at crossings. No bold replacement eyebrows were painted.",
+        "Thin closed-mouth ink remains pale/grainy under magnification.",
+        "Closed lash tips remain somewhat blunt; residual stair steps are visible under magnification.",
+        "EyeOpen 0 through 0.25 has a closed-eye hold interval.",
+        "Conservative 2D motion; no independent arm/finger rig. These synthetic checks did not exercise real camera input or VTube Studio."
       ],
-      "low_hd_drawable_state_comparisons": 80
+      "low_hd_drawable_state_comparisons": 91
     },
     "vtube_studio": "pending-user-acceptance",
     "export_limitations": {
@@ -252,44 +301,44 @@
     "clean_environment_full_build_validated": false,
     "report_identities": [
       {
-        "file": "verification/native-core.json",
-        "bytes": 275004,
-        "sha256": "20f11d201dbd659ebceb089fa15489d2850ff52dc3baa8e6ac4bdb4dc6e8d067"
+        "file": "verification/README.md",
+        "bytes": 3733,
+        "sha256": "e16841a5835555ad3073e0ec16c9c9b58e4016dd59b2ccadd04327eb3c122bc9"
       },
       {
-        "file": "verification/structural.json",
-        "bytes": 2478,
-        "sha256": "0b1b794f8bdfd285e2180f3093574bf341883c8ff2dd012233a91ce2a95ea09a"
+        "file": "verification/body-review.json",
+        "bytes": 7963,
+        "sha256": "5d3076cc297029a6cb4b11e65ddf88be093fbc25dc668fa3350ddd1263cf56ff"
       },
       {
-        "file": "verification/web-smoke.json",
-        "bytes": 11137,
-        "sha256": "e28dad74aee5d9065876fc16841edadd7fc2102aaf11115c10c0b6ee0c450016"
+        "file": "verification/brow-preparation.json",
+        "bytes": 2949,
+        "sha256": "7ad56fb69ad6ac3c5858bb51c695e39a148ce227451212e89d663cd1f589c4d8"
       },
       {
-        "file": "verification/web-poses.json",
-        "bytes": 195247,
-        "sha256": "9b8a994c0cf3e38701d289110131fbe9423b76c90fc32b707eb52385d4c19ffb"
+        "file": "verification/build-environment.json",
+        "bytes": 14451,
+        "sha256": "412ff24f99585f2c49ffb7223d3c568240e1a8cdeff4bfad1c66e793060c0b16"
       },
       {
-        "file": "verification/upscale.json",
-        "bytes": 1818,
-        "sha256": "391a181b89553ea30230dc9b72d7f2e2a04f6d0dd34207da6a6a23d7256982e6"
+        "file": "verification/compiled-classes.json",
+        "bytes": 363533,
+        "sha256": "45b1c26f31eadafdcd3c57f74dada2a51b809ec5daab533c3d85b8c5b865ef23"
+      },
+      {
+        "file": "verification/demo.json",
+        "bytes": 152172,
+        "sha256": "aa094ce83753a5c7e5aae14dd5487b71630bb3a8cfb370df9969c9f9ac8dfe0d"
       },
       {
         "file": "verification/export-warnings.txt",
         "bytes": 2175,
-        "sha256": "c68c06d3db66302ff68a48c3039bdce1c303d1fcfe7d80f5f565e5210865b9f0"
+        "sha256": "56ef154c9cc28f5bdbfb11a7e46391ff09a87df5c030684929168112f6418657"
       },
       {
-        "file": "verification/build-environment.json",
-        "bytes": 12669,
-        "sha256": "bdea8e7f8da673ff6b1c93ec86caa718d38ce297f013bb863da85c260d5b46e0"
-      },
-      {
-        "file": "verification/compiled-classes.json",
-        "bytes": 363189,
-        "sha256": "e02f72ed4d41917295ce82ecbf71a7123ed067e5252d481783345ec752d1399a"
+        "file": "verification/face-review.json",
+        "bytes": 12354,
+        "sha256": "2b61bb68b6747045b884c673344ae67393dd0576a250e277fef858e6484ef52e"
       },
       {
         "file": "verification/headless-dependencies.json",
@@ -297,29 +346,34 @@
         "sha256": "2901d5fc889841bfdf5be5a76adf2c482062a9f2de066ecb29c57f8b0bbff933"
       },
       {
-        "file": "verification/demo.json",
-        "bytes": 139247,
-        "sha256": "c6604ce974d4c1f9b4b68e241e256d2253ba9b98a2b978a403dd65adb5a1a7f3"
+        "file": "verification/native-core.json",
+        "bytes": 285516,
+        "sha256": "bdc8b447543e91d65bd34b2d9b0cb323238354ea3af3eec10a2ff08681f311df"
+      },
+      {
+        "file": "verification/structural.json",
+        "bytes": 2428,
+        "sha256": "a493fd386e747d74373c5e37e5bb53c38e8de3ad703742806c65fdc1050e944d"
+      },
+      {
+        "file": "verification/upscale.json",
+        "bytes": 2064,
+        "sha256": "75e63122aff2dd65158ca1916bf9c788327c37d723efb0ffa70b33031701ff36"
       },
       {
         "file": "verification/visual-review.json",
-        "bytes": 3376,
-        "sha256": "60f4a71ee4bbd6d9619fa9d6843ca62d1197957668ea9bd274af38d912b79132"
+        "bytes": 13860,
+        "sha256": "370e4d6058d30dfa19c84a98456a894e107437b278ff436756245b77e443d83d"
       },
       {
-        "file": "verification/face-review.json",
-        "bytes": 16673,
-        "sha256": "d24ff52cd73600957ada8fa0f56bc0ce122316322b85ebb225a550462be14b7e"
+        "file": "verification/web-poses.json",
+        "bytes": 229188,
+        "sha256": "5ff89381c29001270a78cf4aee2e1aefa84a23906bca9db9ee69383805fd091d"
       },
       {
-        "file": "verification/body-review.json",
-        "bytes": 19216,
-        "sha256": "5c25c8b63fbc6b542fd95f390ba73ea12e3e87ca6ac14a1796127d87be008449"
-      },
-      {
-        "file": "verification/README.md",
-        "bytes": 3168,
-        "sha256": "59b41e902660b565b29fcf6b961143f3d480bc30213dc92c420ffa6991e2b71e"
+        "file": "verification/web-smoke.json",
+        "bytes": 11272,
+        "sha256": "8b497636d26b930b75bf7f3071048b4ebfe164112f7719263366652b206868c8"
       }
     ],
     "demo": {
@@ -329,19 +383,190 @@
       "capture": "actual WebGL canvas with synthetic input; no camera/microphone input",
       "identity": {
         "file": "verification/preview.gif",
-        "bytes": 5881951,
-        "sha256": "30975545a8795b618363feb37e58c2f78d37b3e9cf4ed7fe7209d6868971af00"
+        "bytes": 5851675,
+        "sha256": "49d67da9e1dac2e02edc26c79f0f33e5341e6c62856ed0b928d016e3a282e912"
       }
     },
     "public_report_hash_scope": "These report hashes identify the published bytes. Where present, originalLocalReportSha256 inside a report identifies its unredacted local predecessor; it is not the published report hash.",
     "public_recipe_rebuild": {
       "status": "passed",
       "source": "Published example source and recipe copied to a fresh local working directory",
-      "source_layers": 22,
-      "manifest_sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a",
+      "source_layers": 24,
+      "manifest_sha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
       "matches_actual_low_export_input_bytes": true,
       "structural_validation": "passed",
-      "scope": "Source-to-manifest regeneration only; no new full engine compilation or clean-environment export is claimed."
+      "scope": "Source-to-manifest regeneration only; no new full engine compilation or clean-environment export is claimed.",
+      "eyebrow_derivatives_byte_identical": true
+    },
+    "selected_frame_identities": [
+      {
+        "file": "verification/brows-asymmetric-face.png",
+        "bytes": 723263,
+        "sha256": "78ba64d12a905025b1396aed696b6f663e19b7c3bf5ac5c39832918e25724718"
+      },
+      {
+        "file": "verification/brows-max-face.png",
+        "bytes": 723332,
+        "sha256": "8cddc432faf7277a42f880b4e188ff1e6e165d88dbecf195ff0f0a062cffc49f"
+      },
+      {
+        "file": "verification/brows-min-face.png",
+        "bytes": 723266,
+        "sha256": "3560d2e4a15a83c93c833bffa711315934e328a757c3153b16807359cba537d3"
+      },
+      {
+        "file": "verification/eyes-95-face.png",
+        "bytes": 722748,
+        "sha256": "4abe679b20d3a0c8c7309816058e93ee6c9834a79700afe78ae9d31f056dee51"
+      },
+      {
+        "file": "verification/eyes-closed-face.png",
+        "bytes": 709659,
+        "sha256": "614bb5ab9ff8a46b8423bbe71e387a4f31575043524cc28be55e0209d08b3f5d"
+      },
+      {
+        "file": "verification/head-left-full.png",
+        "bytes": 272946,
+        "sha256": "30d1fb21dd8396f0d196d9fb81edbfc4436fe9cc9a83d8f6d0435330c4a878a2"
+      },
+      {
+        "file": "verification/head-right-full.png",
+        "bytes": 271447,
+        "sha256": "8376fe31db61053bcc44514e6b2ad9e6a4d527f54f5c3a86cd4edda6947e9888"
+      },
+      {
+        "file": "verification/mouth-form-1-open-0p075-face.png",
+        "bytes": 723094,
+        "sha256": "126ae9bc8045ef707ed9871ba046707b4eee68f5f839615cb8d091d9ddf277d5"
+      },
+      {
+        "file": "verification/mouth-smile-open-face.png",
+        "bytes": 724548,
+        "sha256": "9d0c18da2c5ff5446a4476a74c4e48e8142d2421bc67e00de31e636ba68bbb10"
+      },
+      {
+        "file": "verification/neutral-face.png",
+        "bytes": 723241,
+        "sha256": "50d0537398974b0161880052ba8052f3da6e3b6064a943353e92c0fc24c6536c"
+      },
+      {
+        "file": "verification/neutral-full.png",
+        "bytes": 269456,
+        "sha256": "f6a6a1c5785dd497f5d848957303a6eaa3e3646bfd4daf294cbd886de86d0d49"
+      }
+    ],
+    "brow_preparation": {
+      "report": "verification/brow-preparation.json",
+      "method": "Original-source dark ink decomposition, stationary bright residuals and measured crossing-hair columns; no new image generation.",
+      "parameter_ids": [
+        "ParamBrowLY",
+        "ParamBrowRY"
+      ],
+      "ranges": [
+        -1,
+        1
+      ],
+      "default": 0,
+      "local_native_bindings": [
+        {
+          "id": "ParamBrowLY",
+          "min": -1.0,
+          "default": 0.0,
+          "max": 1.0,
+          "minPose": {
+            "name": "ParamBrowLY:min",
+            "finite": true,
+            "activeMeshes": 23,
+            "changedMeshes": 1,
+            "changedMeshIds": [
+              "ArtMeshEyebrowL"
+            ],
+            "maxVertexDisplacementPixels": 1.3217773437513762,
+            "maxOpacityChange": 0.0,
+            "degenerateTriangles": 0,
+            "degenerateMeshes": [],
+            "trianglesFlippedFromNeutral": 0,
+            "flippedMeshes": [],
+            "boundsModelUnits": [
+              -0.435543417930603,
+              -0.7041564583778381,
+              0.42704087495803833,
+              0.7460938096046448
+            ]
+          },
+          "maxPose": {
+            "name": "ParamBrowLY:max",
+            "finite": true,
+            "activeMeshes": 23,
+            "changedMeshes": 1,
+            "changedMeshIds": [
+              "ArtMeshEyebrowL"
+            ],
+            "maxVertexDisplacementPixels": 1.3217773437513762,
+            "maxOpacityChange": 0.0,
+            "degenerateTriangles": 0,
+            "degenerateMeshes": [],
+            "trianglesFlippedFromNeutral": 0,
+            "flippedMeshes": [],
+            "boundsModelUnits": [
+              -0.435543417930603,
+              -0.7041564583778381,
+              0.42704087495803833,
+              0.7460938096046448
+            ]
+          },
+          "affectsModel": true
+        },
+        {
+          "id": "ParamBrowRY",
+          "min": -1.0,
+          "default": 0.0,
+          "max": 1.0,
+          "minPose": {
+            "name": "ParamBrowRY:min",
+            "finite": true,
+            "activeMeshes": 23,
+            "changedMeshes": 1,
+            "changedMeshIds": [
+              "ArtMeshEyebrowR"
+            ],
+            "maxVertexDisplacementPixels": 2.041809082045504,
+            "maxOpacityChange": 0.0,
+            "degenerateTriangles": 0,
+            "degenerateMeshes": [],
+            "trianglesFlippedFromNeutral": 0,
+            "flippedMeshes": [],
+            "boundsModelUnits": [
+              -0.435543417930603,
+              -0.7041564583778381,
+              0.42704087495803833,
+              0.7460938096046448
+            ]
+          },
+          "maxPose": {
+            "name": "ParamBrowRY:max",
+            "finite": true,
+            "activeMeshes": 23,
+            "changedMeshes": 1,
+            "changedMeshIds": [
+              "ArtMeshEyebrowR"
+            ],
+            "maxVertexDisplacementPixels": 2.041809082045504,
+            "maxOpacityChange": 0.0,
+            "degenerateTriangles": 0,
+            "degenerateMeshes": [],
+            "trianglesFlippedFromNeutral": 0,
+            "flippedMeshes": [],
+            "boundsModelUnits": [
+              -0.435543417930603,
+              -0.7041564583778381,
+              0.42704087495803833,
+              0.7460938096046448
+            ]
+          },
+          "affectsModel": true
+        }
+      ]
     }
   },
   "watermark_status": {
@@ -362,13 +587,17 @@
     {
       "stage": "complete natural rear-hair base",
       "outcome": "Adopted in final low-06b and HD exports: full generated natural silhouette beneath original outer/arc strands; additional whole-layer G > B + 8 transparency rejection removes residual chroma for this pink/white plate. Neural upscaling, native/Web checks and sampled visual review completed; minor visual limitations documented, VTube Studio remains pending."
+    },
+    {
+      "stage": "original eyebrow extraction and independent binding",
+      "outcome": "Rejected moving rectangular skin patches and bright residuals. Adopted dark-ink source decomposition with stationary bright residuals and measured crossing-hair protection columns. Five original inputs unchanged; three reproducible derivative PNGs added. New LOW -> actual NCNN 4x -> HD -> Core -> Web checks recorded."
     }
   ],
   "recipe_file_identities": [
     {
       "file": "build-manifest.cjs",
-      "bytes": 7974,
-      "sha256": "5d08199c22e5ec5378b7a5809440f1d8903666c2c640f6d2f31d9761d76cbffb"
+      "bytes": 8495,
+      "sha256": "0d10d03ccdf25a08864bf6a54e087e28253e5f8e24ab13814fdfc81ef27ec361"
     },
     {
       "file": "body-regions.json",
@@ -392,21 +621,36 @@
     },
     {
       "file": "check-poses.cjs",
-      "bytes": 17959,
-      "sha256": "8ea8a3cf337ce91d2ba043fc07f9a0658bf712f815aa2f4f074e7b73b11596c2"
+      "bytes": 19050,
+      "sha256": "e4276fcb86c2a285383286f165f05126aacf8a00711427ed871a14904e74cb7a"
     },
     {
       "file": "capture-demo.cjs",
-      "bytes": 4032,
-      "sha256": "23460601d83c2c8e89a86775bab68910c8547502ffa1647c24f085dec548a119"
+      "bytes": 4165,
+      "sha256": "d4c0759b5950a16fa6a272498562accc0203444913ad6030b7606d66b9f0339a"
+    },
+    {
+      "file": "brow-regions.json",
+      "bytes": 1591,
+      "sha256": "476a6524714818a86b49a3e38a5b894acd996143d350f1c84f69afd015646524"
+    },
+    {
+      "file": "PrepareBrows.java",
+      "bytes": 4638,
+      "sha256": "01eaeac09d7a17a2713b54221376119a9c45841f9cddf5a7922a9bfc5b7ee5e0"
+    },
+    {
+      "file": "prepare-brows.cjs",
+      "bytes": 1006,
+      "sha256": "fce75db833f5faf9d4b61cf19c3cbb8d8ecd353526a54c4079767439352527f0"
     }
   ],
   "runtime_statistics": {
-    "source_layers": 22,
-    "runtime_parameters": 22,
-    "drawables": 24,
-    "vertices": 7117,
-    "triangles": 11824,
+    "source_layers": 24,
+    "runtime_parameters": 24,
+    "drawables": 26,
+    "vertices": 7180,
+    "triangles": 11904,
     "hair_swing_parameters": 8,
     "hair_swing_parameter_ids": [
       "ParamFrontHairSideLSwing",
@@ -418,7 +662,12 @@
       "ParamBackHairBaseRSwing",
       "ParamBackHairBaseLSwing"
     ],
-    "basis": "Actual final MOC parsed and updated by official native Core; source-layer and runtime drawable counts are distinct. Every declared parameter had a measured effect, not a claim of equal visual movement amplitude."
+    "basis": "Actual final MOC parsed and updated by official native Core; source-layer and runtime drawable counts are distinct. Every declared parameter had a measured effect, not a claim of equal visual movement amplitude.",
+    "eyebrow_parameters": 2,
+    "eyebrow_parameter_ids": [
+      "ParamBrowLY",
+      "ParamBrowRY"
+    ]
   },
   "upscale": {
     "status": "completed",
@@ -427,7 +676,7 @@
     "model": "realesr-animevideov3-x4",
     "scale": 4,
     "method": "Local NCNN neural RGB 4x; independent bicubic alpha; unchanged logical UVs",
-    "input_manifest_sha256": "850504efa98ef2aa56d5d1ca022a853e607c02d699d144e8793612db0013e84a",
+    "input_manifest_sha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
     "binary_sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
     "weights": {
       "realesr-animevideov3-x4.param": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e",
@@ -447,8 +696,8 @@
       1536
     ],
     "source_psd_resolution_scope": "Neural 4x applies to the runtime atlas RGB. Source image pixels and PSD logical canvas/layer coordinates remain their recorded original sizes; not a 4x redrawn source PSD.",
-    "low_texture_sha256": "29704262548bd4ea51984f589cca4bac56092fad07f264d099776154a2179338",
-    "hd_texture_sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
+    "low_texture_sha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4",
+    "hd_texture_sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
     "ncnn_flags": [
       "-n",
       "realesr-animevideov3-x4",

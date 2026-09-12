@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check committed recipe sources in a temporary git archive, without old caches.
 
-Requires Python 3.10+, Git, Node.js and JDK 21. This offline check does not
+Requires Python 3.10+, Git, Node.js 22+ and JDK 21. This offline check does not
 compile psd2live, download dependencies, export a MOC, upscale, or validate Core.
 """
 import argparse
@@ -63,7 +63,7 @@ def main():
     parser.add_argument("--repository", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--ref", default="HEAD", help="Committed ref to archive; uncommitted changes are excluded")
     parser.add_argument("--java", default="java", help="JDK 21 java executable")
-    parser.add_argument("--node", default="node", help="Node.js executable")
+    parser.add_argument("--node", default="node", help="Node.js 22+ executable")
     parser.add_argument("--report", type=Path, help="Optional JSON report outside the temporary archive")
     args = parser.parse_args()
     report = {"schemaVersion": 1, "passed": False, "checks": [],
@@ -85,7 +85,7 @@ def main():
                 raise ValueError("Archive unexpectedly contains generated/cache directories")
 
             def run(label, command, json_output=False):
-                environment = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
+                environment = dict(os.environ, PYTHONDONTWRITEBYTECODE="1", VALIDATOR_JAVA=args.java)
                 # The archive is the only Python/Node project source root.
                 environment.pop("PYTHONPATH", None)
                 environment.pop("NODE_PATH", None)
@@ -103,7 +103,22 @@ def main():
                     raise ValueError(f"Check failed: {label}")
 
             run("unit-tests", [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"])
+            browser_tests = sorted((root / "tests").glob("test_*.cjs"))
+            if browser_tests:
+                run("tracking-unit-tests", [args.node, "--test", *[str(p.relative_to(root)) for p in browser_tests]])
             run("kit", [sys.executable, "scripts/validate.py", "--kit"], True)
+            brow_script = root / "examples/pink-sakura/prepare-brows.cjs"
+            if brow_script.is_file():
+                run("pink-brow-preparation", [args.node, str(brow_script.relative_to(root)), "work/pink-brows"])
+                report["browSources"] = []
+                for name in ("eyebrow-base-v1.png", "eyebrow-l-v1.png", "eyebrow-r-v1.png"):
+                    generated = root / "work/pink-brows" / name
+                    published = root / "examples/pink-sakura/source" / name
+                    actual = hashlib.sha256(generated.read_bytes()).hexdigest()
+                    expected = hashlib.sha256(published.read_bytes()).hexdigest()
+                    report["browSources"].append({"file": name, "sha256": actual, "matchesPublished": actual == expected})
+                    if actual != expected:
+                        raise ValueError(f"Regenerated eyebrow source differs: {name}")
             run("pink-recipe", [args.node, "examples/pink-sakura/build-manifest.cjs"])
             pink = root / "examples/pink-sakura/manifest.json"
             report["pink"] = manifest_sources(pink, root)

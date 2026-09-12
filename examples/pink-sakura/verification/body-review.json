@@ -1,88 +1,65 @@
 {
-  "schema": "live2d-agent-kit-body-hair-visual-review-v1",
-  "reviewed_at_utc": "2026-09-12T12:45:22.223123+00:00",
-  "reviewer": "Codex subagent pink_layer_plan",
-  "result": "passed-sampled-body-hair-visual-review",
-  "scope": "Final HD actual WebGL captures: body/hair geometry, neck-root coverage, sleeve/waist/thigh connections, natural strand tips and conspicuous edge color. Facial expressions are reviewed separately.",
-  "capture_record": {
-    "path": "work/pink-sakura/web-poses-hd/poses.json",
-    "sha256": "68fb92bf946b78df4b61f448b225b47792a19e921bfbaf67543371eadb35e7ed",
-    "automatedChecksPassed": true,
-    "total_recorded_frames": 80,
-    "browser": {
-      "name": "chromium",
-      "version": "152.0.7977.83",
-      "playwrightPackage": "playwright",
-      "playwrightVersion": "1.63.0",
-      "explicitExecutablePath": true
-    },
-    "core_version": "5.1.0",
-    "renderer": "WebGL",
-    "counts": {
-      "parameters": 22,
-      "drawables": 24,
-      "vertices": 7117,
-      "triangles": 11824
-    },
-    "loaded_model_resources": [
-      {
-        "url": "http://127.0.0.1:8849/model/model.model3.json",
-        "status": 200,
-        "source": "actual-browser-response",
-        "bytes": 900,
-        "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
-      },
-      {
-        "url": "http://127.0.0.1:8849/model/model.model3.json",
-        "status": 200,
-        "source": "actual-browser-response",
-        "bytes": 900,
-        "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
-      },
-      {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.moc3",
-        "status": 200,
-        "source": "actual-browser-response",
-        "bytes": 388544,
-        "sha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d"
-      },
-      {
-        "url": "http://127.0.0.1:8849/model/PinkSakura.8192/texture_00.png",
-        "status": 200,
-        "source": "actual-browser-response",
-        "bytes": 44825773,
-        "sha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
-        "dimensions": {
-          "width": 8192,
-          "height": 8192
-        }
-      }
-    ]
+  "schema_version": 1,
+  "reviewed_at": "2026-09-12T14:45:36.304602+00:00",
+  "status": "sampled-overview-no-new-large-break-observed",
+  "identity": {
+    "moc_sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+    "texture_sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+    "pose_report_sha256": "5ff89381c29001270a78cf4aee2e1aefa84a23906bca9db9ee69383805fd091d"
   },
-  "visually_reviewed_count": 29,
-  "visually_reviewed_files": [
+  "scope": "31 actual final HD full-body frames viewed as diagnostic contact sheets at 43% image scale. This is a silhouette/coverage overview, not detailed approval of every strand or pixel. Body and hair recipe were not altered in the brow revision.",
+  "reviewed_frame_count": 31,
+  "reviewed_frames": [
     {
       "file": "neutral-full.png",
-      "sha256": "2f7dc052acdc9379d6e2059283b3476360c5bb7c720a798dc7719b9df6ac8cd4",
-      "bytes": 269444,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
-      "requested": {},
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      "sha256": "f6a6a1c5785dd497f5d848957303a6eaa3e3646bfd4daf294cbd886de86d0d49",
+      "requested": {}
+    },
+    {
+      "file": "head-x-min-full.png",
+      "sha256": "b1e3ec239742a24c273688856b187eec8756d038e28131cde6e290f1439d695b",
+      "requested": {
+        "ParamAngleX": -45
+      }
+    },
+    {
+      "file": "head-x-max-full.png",
+      "sha256": "46e32883d45f9287bbb40f5194ff514999f7b424a562d490f6a4ea0ab18854ad",
+      "requested": {
+        "ParamAngleX": 45
+      }
+    },
+    {
+      "file": "head-y-min-full.png",
+      "sha256": "89c471713178980e7182365509de5c77b68e960f9fa24ce0ce6aea39e7671725",
+      "requested": {
+        "ParamAngleY": -30
+      }
+    },
+    {
+      "file": "head-y-max-full.png",
+      "sha256": "466fdfa37378e28bbb4a33d4fe093ebd79cdfa014f146ce8e286f05e67adc60e",
+      "requested": {
+        "ParamAngleY": 30
+      }
+    },
+    {
+      "file": "head-z-min-full.png",
+      "sha256": "00a0400a936440acf29a463573cde9af19b9e1ecf95f86168ba34da09fd793e3",
+      "requested": {
+        "ParamAngleZ": -30
+      }
+    },
+    {
+      "file": "head-z-max-full.png",
+      "sha256": "66f53944d3f997894d5a310fb85950ea721c3c5c12160fadfcc7f03478eaf76a",
+      "requested": {
+        "ParamAngleZ": 30
+      }
     },
     {
       "file": "head-left-full.png",
-      "sha256": "3f0f099af4c4c0b2aef5a6102d534a3e6c8297dddc531ec46b3e651dd54daffd",
-      "bytes": 273030,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "30d1fb21dd8396f0d196d9fb81edbfc4436fe9cc9a83d8f6d0435330c4a878a2",
       "requested": {
         "ParamAngleX": -45,
         "ParamBodyAngleX": 10,
@@ -90,19 +67,11 @@
         "ParamBodyAngleY": -10,
         "ParamAngleZ": -30,
         "ParamBodyAngleZ": 10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
       "file": "head-right-full.png",
-      "sha256": "3a37c4c94a6e59fc1db0e3cd4c7f31a3dd1d5d224d65c19347f2335a0f8e5ba8",
-      "bytes": 271445,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "8376fe31db61053bcc44514e6b2ad9e6a4d527f54f5c3a86cd4edda6947e9888",
       "requested": {
         "ParamAngleX": 45,
         "ParamBodyAngleX": -10,
@@ -110,457 +79,169 @@
         "ParamBodyAngleY": 10,
         "ParamAngleZ": 30,
         "ParamBodyAngleZ": -10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
       "file": "body-x-min-full.png",
-      "sha256": "e6518ec474c702c208070824a778d6e13ed4285e396e172bd69d4d79de4fa0a8",
-      "bytes": 269933,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "106e338d217b2bacc65f8e2ca61745b0891da5a88f9c95f23b31551eea57e5fc",
       "requested": {
         "ParamBodyAngleX": -10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
       "file": "body-x-max-full.png",
-      "sha256": "551eb6a17cacfdee498f7ab6234c26cf2e25c88a36ce7fd345ec73ece69ce9d8",
-      "bytes": 270333,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "ebc6d289c9464742cfed5ec23394d3315c45dc2fefff1bf304eaedb2d662fbef",
       "requested": {
         "ParamBodyAngleX": 10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
       "file": "body-y-min-full.png",
-      "sha256": "58485e8d594de9fd4910b7c32f2f58825cd793c0d2625f332276cf0461d9a51d",
-      "bytes": 269797,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "1ba6225a132cda92edaf2f29b65d207b4710c467a370e16641d3363a6d053dea",
       "requested": {
         "ParamBodyAngleY": -10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
       "file": "body-y-max-full.png",
-      "sha256": "ccf910568478a277edb631f586978f1472637ceb993cdf4af98297ad7e8c2d5d",
-      "bytes": 269309,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "d0402642ed5d50e17ea56f78198dfd15f745688dd5e42bfd439af0bc740092e6",
       "requested": {
         "ParamBodyAngleY": 10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
       "file": "body-z-min-full.png",
-      "sha256": "7235f1c88a2f2a24b616ab4564dafc43e340eaab44f629b4ebc91a1ce4cb687d",
-      "bytes": 269591,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "aee8d6b9870c9ee439fa92a5b7b3ddab3623dce3c29b82117c6979b08869e067",
       "requested": {
         "ParamBodyAngleZ": -10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
       "file": "body-z-max-full.png",
-      "sha256": "3a808615220ac236dc8fea125e26f00f9b1814329f18cc6ff4003d61023609bd",
-      "bytes": 269718,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "sha256": "79d69f1e8d0f26c154f35a7614439b398907b9ffe1a85ada9fe3212cdff58391",
       "requested": {
         "ParamBodyAngleZ": 10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-14-ParamFrontHairSideLSwing-min-full.png",
-      "sha256": "88033657e886b87fe6c2101b4d9a179264f3c6424eb8c940aa171eaf04578f66",
-      "bytes": 269436,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-16-ParamFrontHairSideLSwing-min-full.png",
+      "sha256": "5b58d864ec9d45fbec422e53e8a732235a1d92341b0bada80c21501bb07d24c5",
       "requested": {
         "ParamFrontHairSideLSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-14-ParamFrontHairSideLSwing-max-full.png",
-      "sha256": "25361e7484dd130273547005a20d9b6fb84a6aebf39fc549b61e7bbb294677b4",
-      "bytes": 269596,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-16-ParamFrontHairSideLSwing-max-full.png",
+      "sha256": "d31e69c7276043e006c71143f809c12f99f09d0f5fc2101e2dc35afa73e113c8",
       "requested": {
         "ParamFrontHairSideLSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-15-ParamFrontHairSideRSwing-min-full.png",
-      "sha256": "0adedd4e16769d4032a63e248dfe47a5547ec6d74b1121e7b16c9a73486397e5",
-      "bytes": 269448,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-17-ParamFrontHairSideRSwing-min-full.png",
+      "sha256": "8f288404fa672ccc21e79c18382b1f294052f0499dc79472b66757db686af91c",
       "requested": {
         "ParamFrontHairSideRSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-15-ParamFrontHairSideRSwing-max-full.png",
-      "sha256": "3d1898522a234eebda6bcd1dd19cf3466ae8d3da53ecf3156b77ab2737116cbb",
-      "bytes": 269452,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-17-ParamFrontHairSideRSwing-max-full.png",
+      "sha256": "13e43d9fae79e795ffa98e73cffa89f5cde0bea4cb20c210b8168861a5aa7050",
       "requested": {
         "ParamFrontHairSideRSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-16-ParamBackHairOuterLSwing-min-full.png",
-      "sha256": "6f11c90929aadb97f212c72056a12f9954d207fa8b210b4a7187cffda46efd42",
-      "bytes": 268651,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-18-ParamBackHairOuterLSwing-min-full.png",
+      "sha256": "44ce60de33ebca9197594e9eac1e303a53bd978ff18101b88e97e2aca12f446c",
       "requested": {
         "ParamBackHairOuterLSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-16-ParamBackHairOuterLSwing-max-full.png",
-      "sha256": "97425579b6e9717f3ded6183379544d35b63e2906eb51ec88d9c68e7163b1693",
-      "bytes": 269766,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-18-ParamBackHairOuterLSwing-max-full.png",
+      "sha256": "d088e5d4ffa8d7f418da53a73c857caa429aa39ae823f0fc56454ba2a780039d",
       "requested": {
         "ParamBackHairOuterLSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-17-ParamBackHairOuterRSwing-min-full.png",
-      "sha256": "6ec3c107e8e956490681905da4aff4537a98e95345d90dd7f15dc05282a41746",
-      "bytes": 269731,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-19-ParamBackHairOuterRSwing-min-full.png",
+      "sha256": "1e6ca675ba29f6da47e25ccf74390a381668df117ef51a85701f3adee7659571",
       "requested": {
         "ParamBackHairOuterRSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-17-ParamBackHairOuterRSwing-max-full.png",
-      "sha256": "67c771ba2f6323136a3387a2d278ac513d9ab7fcb430ee2dd00f7c0302e87699",
-      "bytes": 268861,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-19-ParamBackHairOuterRSwing-max-full.png",
+      "sha256": "b7191238fbd6f356b710a43cbc4e31ae5aee1e11f9e3866f8d3b1e1b2e8cdd7e",
       "requested": {
         "ParamBackHairOuterRSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-18-ParamBackHairArcLSwing-min-full.png",
-      "sha256": "713e0a0fbb1cd523f5e807cef96085c55e24f39c561bf146e5196d9dd4573d42",
-      "bytes": 269424,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-20-ParamBackHairArcLSwing-min-full.png",
+      "sha256": "38a8ebc00988e3e2bcc7e35c90846fbfd284d07b0c3299a00835f25614fff8ce",
       "requested": {
         "ParamBackHairArcLSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-18-ParamBackHairArcLSwing-max-full.png",
-      "sha256": "7d24a3237a88e56dbe633267e8ce2ff6f65c0f991070da5da35600e85923f4ba",
-      "bytes": 269380,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-20-ParamBackHairArcLSwing-max-full.png",
+      "sha256": "611d688237eeb9d4736c2bd34cc424ee1a0305000b0bf1680358bfee7978f8d8",
       "requested": {
         "ParamBackHairArcLSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-19-ParamBackHairArcRSwing-min-full.png",
-      "sha256": "56289b8ab4525abc16af5966533999b9f48d9a47029bdfbbdb5a19d62d90f892",
-      "bytes": 269399,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-21-ParamBackHairArcRSwing-min-full.png",
+      "sha256": "e37918bdbc3b4c1f56999572166d6b6972971eb932ee7bcebdffba3f2fe43ecb",
       "requested": {
         "ParamBackHairArcRSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-19-ParamBackHairArcRSwing-max-full.png",
-      "sha256": "e55c4d00ae2b1a355c38c6c6fdfb773c42853eee45661665d82e3f124583b489",
-      "bytes": 269399,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-21-ParamBackHairArcRSwing-max-full.png",
+      "sha256": "8da47c273122430535e0107b68d3088f9176f7053de15e01af3d28a25c9d2c9e",
       "requested": {
         "ParamBackHairArcRSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-20-ParamBackHairBaseRSwing-min-full.png",
-      "sha256": "21ba04850cc11fad06a8c41e036df08610400ad0f8ebf71b16338135f304a44e",
-      "bytes": 269949,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-22-ParamBackHairBaseRSwing-min-full.png",
+      "sha256": "5415958109005407c5b5252eaf3413a32a6958daa2d86036fcfde8773d450f74",
       "requested": {
         "ParamBackHairBaseRSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-20-ParamBackHairBaseRSwing-max-full.png",
-      "sha256": "b3fb55d4ff0caf3dc6ac13c252cd91df2e2202f0296326d48bbc889f2c9ecb58",
-      "bytes": 270471,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-22-ParamBackHairBaseRSwing-max-full.png",
+      "sha256": "f518665dc9978e871c309b3f7a61e1d5f10cd6bcb6f25d431bb0a9a247f1fdd1",
       "requested": {
         "ParamBackHairBaseRSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-21-ParamBackHairBaseLSwing-min-full.png",
-      "sha256": "9787dfbdd3fa5ae36585a253eb310fb456a018987bd82b103a9e4ad15391996c",
-      "bytes": 269466,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-23-ParamBackHairBaseLSwing-min-full.png",
+      "sha256": "eca084fb48fe38424da4bc44ba789cb23d6e61ca54ae0edae1d9dfb685781ec5",
       "requested": {
         "ParamBackHairBaseLSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     },
     {
-      "file": "hair-21-ParamBackHairBaseLSwing-max-full.png",
-      "sha256": "4fcebda80b94f904829ec1f396a90e2b50b7b237675e4af0c0e78f90eca67df9",
-      "bytes": 269435,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "full",
+      "file": "hair-23-ParamBackHairBaseLSwing-max-full.png",
+      "sha256": "91accc4ed5d678a4d3507672ee990260bae7a0c2ca85919d46857fd217889f55",
       "requested": {
         "ParamBackHairBaseLSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
-    },
-    {
-      "file": "head-left-face.png",
-      "sha256": "2349cb6979d3cf01cbcbc7822f630a656bf2b22e58e6117fdfbdcc50fe62e3bd",
-      "bytes": 740987,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "face",
-      "requested": {
-        "ParamAngleX": -45,
-        "ParamBodyAngleX": 10,
-        "ParamAngleY": 30,
-        "ParamBodyAngleY": -10,
-        "ParamAngleZ": -30,
-        "ParamBodyAngleZ": 10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
-    },
-    {
-      "file": "head-right-face.png",
-      "sha256": "3f21ce4b59a864c8182bd23e8a922e12e734a3357893b826285c446e266ea636",
-      "bytes": 717791,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "face",
-      "requested": {
-        "ParamAngleX": 45,
-        "ParamBodyAngleX": -10,
-        "ParamAngleY": -30,
-        "ParamBodyAngleY": 10,
-        "ParamAngleZ": 30,
-        "ParamBodyAngleZ": -10
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
-    },
-    {
-      "file": "hair-16-ParamBackHairOuterLSwing-max-portrait.png",
-      "sha256": "daf8622a86c53fb4198979c24e10bc7ca2ef32f06d11a78cbe0f2a5b52830c63",
-      "bytes": 572017,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "portrait",
-      "requested": {
-        "ParamBackHairOuterLSwing": 1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
-    },
-    {
-      "file": "hair-17-ParamBackHairOuterRSwing-min-portrait.png",
-      "sha256": "58e41e502a693ab3761c34de1da1039e8b89d021cb59f5ac4371dea5a9b7fede",
-      "bytes": 571943,
-      "capture_dimensions": [
-        760,
-        785
-      ],
-      "view": "portrait",
-      "requested": {
-        "ParamBackHairOuterRSwing": -1
-      },
-      "actual_parameters_verified_by_capture": true,
-      "review_result": "No blocking body/hair discontinuity observed in this captured pose."
+      }
     }
   ],
-  "findings": [
-    {
-      "severity": "resolved-regression",
-      "finding": "The earlier broad rectangular/flat hidden-hair cutoffs at sleeve sides and behind the outer thighs were not observed in the final HD neutral or opposed-head/body captures. Natural curved strand tips remain visible.",
-      "evidence": [
-        "neutral-full.png",
-        "head-left-full.png",
-        "head-right-full.png"
-      ]
-    },
-    {
-      "severity": "resolved-regression",
-      "finding": "Neck-root backing remains continuous during both opposed poses. The earlier black slit and detached triangular fill were not observed at the inspected face-camera scale.",
-      "evidence": [
-        "head-left-face.png",
-        "head-right-face.png"
-      ]
-    },
-    {
-      "severity": "pass",
-      "finding": "Body X/Y/Z endpoints preserve the clothing/limb silhouette. Front, outer, arc and base hair endpoint samples did not show detached strand roots, broad straight cut faces or new obvious sleeve/leg registration errors.",
-      "evidence_groups": [
-        "body-x/y/z min/max full",
-        "all eight hair parameter min/max full"
-      ]
-    },
-    {
-      "severity": "minor-observation",
-      "finding": "Very fine silhouette anti-aliasing and occasional pale edge pixels remain visible at enlarged viewing scales. No conspicuous green/yellow fringe was observed in the selected final HD frames. This is a visual finding, not a numerical claim that every edge pixel has zero color error.",
-      "evidence": [
-        "head-left-face.png",
-        "head-right-face.png",
-        "hair-16-ParamBackHairOuterLSwing-max-portrait.png",
-        "hair-17-ParamBackHairOuterRSwing-min-portrait.png"
-      ]
-    }
+  "observations": [
+    "Full-body head/body extrema and all 8 hair parameters min/max remain visible and finite.",
+    "No new large detached hair or body region, missing clothing region, or rectangular opening was seen at overview scale."
   ],
   "limitations": [
-    "29 explicitly listed still captures were visually inspected; the separate automated record covers 80 captures. This review does not claim all 80 were visually inspected by this reviewer.",
-    "Captured canvases are 760x785; this is not a per-texel inspection of every pixel in the 8192x8192 atlas.",
-    "Endpoint and opposed-pose samples do not exhaust every possible simultaneous parameter combination or continuous physics trajectory.",
-    "Transparency was inspected through the image viewer dark surround; this record does not claim exhaustive testing on all VTS backgrounds or renderers.",
-    "The full generated rear-hair base deliberately changes some visible rear hair compared with the original reference; face, front hair and clothing source preservation is a separate provenance statement.",
-    "VTube Studio acceptance remains with the user. No camera tracking or external-app acceptance is established by this WebGL review."
-  ],
-  "files_modified_by_review": [
-    "work/pink-sakura/body-review-hd.json"
+    "Fine existing hair outlines and transparency edge halos require magnified target-background review; the thumbnail overview cannot exclude small seams.",
+    "VTube Studio acceptance is left to the user."
   ]
 }

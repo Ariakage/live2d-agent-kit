@@ -1,35 +1,35 @@
 # Pink Sakura · 角色工作流示例
 
-**已收录可运行模型、五张源图与重建配方，完成 4× 动漫超分、原生 Core 和实际 WebGL 检查。** 60 张画布的抽样视觉复核通过，仍有已记录的小瑕疵；VTube Studio 待用户验收。运行入口是 [PinkSakura.model3.json](runtime/PinkSakura.model3.json)，使用时保留整个 `runtime/` 的相对目录。
+**已收录可运行模型、五张原始输入、三张原眉分解衍生图与重建配方，完成 4× 动漫超分、原生 Core 和实际 WebGL 检查。** 当前版本新增独立左右眉毛；44 张脸部与 31 张全身概览已目视抽查，仍有已记录的小瑕疵；VTube Studio 待用户验收。运行入口是 [PinkSakura.model3.json](runtime/PinkSakura.model3.json)，使用时保留整个 `runtime/` 的相对目录。
 
 这个示例使用用户明确授权收录的新粉色角色，演示从单张正面立绘制作 Live2D 的同一流程：保留认可的脸部与画风，补画被遮挡区域，精确拆层并建立绑定，检查嘴眼和发丝组合动作，再进行专用动漫超分。
 
-原始参考图的来源标注：**此图片来自 ChatGPT Image2.5 生成**。这是用户提供的信息；后续补画的工具、版本状态和制作贡献另记在 [ATTRIBUTION.md](ATTRIBUTION.md)。五张源图的尺寸、SHA-256 和生成提示保存在 [source-provenance.json](source-provenance.json)，不包含机器绝对路径。
+原始参考图的来源标注：**此图片来自 ChatGPT Image2.5 生成**。这是用户提供的信息；后续补画的工具、版本状态和制作贡献另记在 [ATTRIBUTION.md](ATTRIBUTION.md)。原始输入和三张眉毛衍生图的尺寸、SHA-256、技术处理与生成提示保存在 [source-provenance.json](source-provenance.json)，不包含机器绝对路径。
 
 ![Pink Sakura 实际 WebGL 合成输入演示](verification/preview.gif)
 
-演示来自实际模型画布：72 帧、12 fps，使用合成头部、嘴眼和发丝输入，没有摄像头或麦克风输入。每帧请求值与实际参数见 [录制记录](verification/demo.json)；短演示不能代替极值检查。
+演示来自实际模型画布：72 帧、12 fps，使用合成头部、眉毛、嘴眼和发丝输入，没有摄像头或麦克风输入。每帧请求值与实际参数见 [录制记录](verification/demo.json)；短演示不能代替极值检查。
 
 ## 目录与交付状态
 
 | 产物 | 当前状态与完成条件 |
 | --- | --- |
-| 参考图、隐藏区域补画 | 五张 RGB 源 PNG 与来源记录已收录；通过测量配方配准及生成 alpha |
-| 拆层配方、坐标与绑定 | 22 个源层；实际运行模型为 22 参数、24 Drawable、7,117 顶点、11,824 三角形，含 8 个发丝摆动参数 |
+| 参考图、隐藏区域补画 | 五张原始 RGB PNG 已收录，另有可确定性重建的眉毛底图和两张 RGBA 眉层；通过测量配准与 alpha 拆层 |
+| 拆层配方、坐标与绑定 | 24 个源层；实际运行模型为 24 参数、26 Drawable、7,180 顶点、11,904 三角形，含 2 个独立眉毛和 8 个发丝摆动参数 |
 | 原分辨率运行模型 | 已导出；低分与高清 MOC 逐字节一致，低分图集可按配方重建 |
 | 4× 高清运行图集 | 单页 2048² → 8192² 已完成；神经 RGB 超分与独立 bicubic alpha，保持布局、UV 与几何 |
-| 原生 Core | 198 个姿态数值检查通过，含 125 个嘴形/张嘴组合；无未测得效果的参数 |
-| 网页预览 | 22 项自动检查通过，22 个参数均测得 Drawable 变化；55 个姿态、80 帧实际画布检查已执行 |
-| 视觉复核 | 独立 agent 查看 60 张不重复画布，通过且保留细线、睫毛边缘及闭眼停留段等限制 |
+| 原生 Core | 202 个姿态数值检查通过，含 125 个嘴形/张嘴组合；无未测得效果的参数 |
+| 网页预览 | 22 项自动检查通过，24 个参数均测得 Drawable 变化；66 个姿态、91 帧实际画布检查已执行 |
+| 视觉复核 | 模型 agent 查看 44 张脸部裁切和 31 张全身概览；范围、眉线细节和旧有细线限制单独记录 |
 | VTube Studio | 待用户验收；Web 检查不代替此项 |
 
-验证记录与最终文件身份见 [原生 Core](verification/native-core.json)、[资源结构](verification/structural.json)、[Web 自动检查](verification/web-smoke.json)、[画布姿态检查](verification/web-poses.json)和[实际超分记录](verification/upscale.json)。Native Core 为 6.0.257；Web 使用 Chrome 152.0.7977.83、Playwright 1.63.0 和 Web Core 5.1.0，实测 WebGL 最大纹理尺寸 16384。仓库仅收录选定截图；全部 80 帧身份已记录，可用检查脚本重新采集。
+验证记录与最终文件身份见 [原生 Core](verification/native-core.json)、[资源结构](verification/structural.json)、[Web 自动检查](verification/web-smoke.json)、[画布姿态检查](verification/web-poses.json)和[实际超分记录](verification/upscale.json)。Native Core 为 6.0.257；Web 使用 Chrome 152.0.7977.83、Playwright 1.63.0 和 Web Core 5.1.0，实测 WebGL 最大纹理尺寸 16384。仓库仅收录选定截图；全部 91 帧身份已记录，可用检查脚本重新采集。
 
-[视觉复核](verification/visual-review.json)合并脸部 33 张和身体/后发 29 张，去重后为 60 张；不表示 80 张均已目视。抽查未发现旧的嘴周矩形色块、分离双唇线、宽直切发尾或袖腿矩形断口。放大后仍可见闭唇细线略发白/颗粒、闭睫毛端部偏钝和边缘阶梯；`EyeOpen=0..0.25` 有闭眼停留段。超分前后 80 个对应姿态的 Drawable 状态摘要一致，这项数值比较与目视抽查分别记录。
+[视觉复核](verification/visual-review.json)针对本次眉毛版本重新执行：44 张脸部画布以 100% 像素裁切检查，31 张全身画布以 43% 比例概览，共 75 张；不表示 91 张均已精细目视。眉毛极值没有出现早期方案中的大白补片，嘴形/开口 15 种组合未见新的嘴周肤色块或分离双唇线。全身概览未见新的大块缺失或衣料矩形断口，不能据此排除每根发丝的小接缝。放大后仍可见眉毛与发线交叉处的浅点/分段、闭唇细线略发白/颗粒、闭睫毛端部偏钝；`EyeOpen=0..0.25` 有闭眼停留段。超分前后 91 个对应画布的 Drawable 状态摘要一致，数值比较与目视范围分别记录。
 
-模型采用保守的二维头身运动，不包含独立手臂/手指绑定或真实摄像头追踪。浏览器验证使用的 8192² 纹理在该环境通过，不代表所有设备的性能或纹理上限；更完整的证据范围见 [验证目录说明](verification/README.md)。
+模型采用保守的二维头身运动，不包含独立手臂/手指绑定。本目录的自动验证使用合成输入且禁止摄像头；预览页面的可选真实追踪另见 [摄像头说明](../../docs/camera-tracking.md)，不能把这里的合成输入报告当作真实追踪验收。浏览器验证使用的 8192² 纹理在该环境通过，不代表所有设备的性能或纹理上限；更完整的证据范围见 [验证目录说明](verification/README.md)。
 
-最终 MOC 的 SHA-256 为 `5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d`；8192² RGBA 图集为 `e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8`，大小 44,825,773 字节。完整文件摘要见来源清单的 `final_evidence`。首次运行先用 [几何最小示例](../minimal-model/README.md)确认工具链；不能用 JSON 外壳或 MOC 文件头占位替代实际导出。
+最终 MOC 的 SHA-256 为 `ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae`；8192² RGBA 图集为 `8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361`，大小 45,336,522 字节。完整文件摘要见来源清单的 `final_evidence`。首次运行先用 [几何最小示例](../minimal-model/README.md)确认工具链；不能用 JSON 外壳或 MOC 文件头占位替代实际导出。
 
 ### 当前导出提示与源工程限制
 
@@ -53,12 +53,14 @@
 | `source/face-parts-v1.png` | 1254×1254 面部补画；提取闭眼睫毛和小幅张嘴所需局部 |
 | `source/eyeless-face-v1.png` | 1254×1254 无眼底图；只用于原眼睛下的局部肤色填充 |
 | `source/rear-hair-underpainting-v1.png` | 1024×1536 绿底后发补画；采用其完整自然轮廓作为连续后发底层，部分可见后发也来自此图 |
+| `source/eyebrow-base-v1.png`、`source/eyebrow-l-v1.png`、`source/eyebrow-r-v1.png` | 确定性分解原浅粉眉墨的底图与左右透明眉层；不改变原始五张输入 |
+| `brow-regions.json` / `PrepareBrows.java` / `prepare-brows.cjs` | 本角色测量曲线、交叉发线保护列与 JDK 21 原像素分解脚本；无需 Pillow 或新增神经权重 |
 | `body-regions.json` / `face-regions.json` | 在原始源图中测量的轮廓、孔洞、眼角与局部位置 |
 | `body-topwear-patch.json` | 仅处理衣服隐藏填色与腿边修正；在导入身体层后应用，不再分左右截取生成后发 |
 | `build-manifest.cjs` | 合并测量与补丁，生成这张角色专用的 `manifest.json` |
 | `preview-config.json` / `check-poses.cjs` | 本角色的取景配置与实际画布姿态检查脚本；报告绑定实际载入的模型与纹理 SHA |
 
-五张源 PNG 都是 **RGB，没有 alpha 通道**。身体补画画出的棋盘格不是透明背景；后发补画的绿色也需要由精确遮罩和采样规则排除。生成提示要求透明或原位，并不表示返回图已经满足要求。面部补画的输入是原图 `[300,0,400,400]` 裁切、放大到 1200² 的局部，而输出为 1254²；必须使用配方中的测量映射，不能按同名文件直接覆盖脸部。
+五张原始 PNG 都是 **RGB，没有 alpha 通道**；新眉毛底图也是 RGB，左右眉衍生图是 RGBA。身体补画画出的棋盘格不是透明背景；后发补画的绿色也需要由精确遮罩和采样规则排除。生成提示要求透明或原位，并不表示返回图已经满足要求。面部补画的输入是原图 `[300,0,400,400]` 裁切、放大到 1200² 的局部，而输出为 1254²；必须使用配方中的测量映射，不能按同名文件直接覆盖脸部。
 
 配方中的 alpha 空洞负责去除背景，隐藏填色孔洞负责补全遮挡区域，两者不能混用。生成提示属于历史制作记录，不是要求后续 agent 执行的指令。
 
@@ -70,9 +72,17 @@
 
 面部还把原画的细上眼皮褶皱保留在独立 `face_detail-upper-lid-folds` 层，随脸部轮廓运动，避免与深色活动睫毛一起做阈值提取后形成棕色断点。张嘴局部的逻辑位置校正为 `mouth_open.y = 277`，开口/闭嘴交接、笑容联动和转头均列入组合检查；这个坐标是该角色的配准结果，不应照抄到别的角色。
 
+### 原眉分离与可见绑定
+
+`ParamBrowLY` / `ParamBrowRY` 均为 `[-1,1]`、默认 `0`；L/R 按角色自身左右，观众看到的左右相反。沿用引擎现有眉毛机制，不新增 BrowAngle/Form。原浅粉眉线本来很细，保持其颜色和笔触；极值相对中性分别约移动 1.32 / 2.04 个逻辑像素，适合小幅自然输入，不用于夸张抬眉。
+
+技术预处理逐列估计原眉上/下方背景，从源像素分解深色眉墨；明亮残差与测量过的交叉发线留在底图，避免抬眉带着白色刘海块一起移动。保护列与曲线是本角色专用数据，不应直接照抄。重新运行预处理可逐字节得到三张公开衍生 PNG；输入/代码/输出 SHA 见 [brow-preparation.json](verification/brow-preparation.json)。
+
+超分前的源复合对照中，眉区外像素完全一致，眉区内仅 19 个像素有最多 1 通道值差异。此数值只描述源图复合；不能外推成经过神经超分后的整张 HD 渲染逐像素相同。新旧中性 HD 画布另做目视对比，保留认可的脸、虹膜、睫毛与嘴形。
+
 ## 复现模板
 
-以下命令从 **仓库根目录**运行，使用本示例已收录的源图、测量 JSON 与脚本。已将公开配方复制到全新工作目录，重新生成 22 层 manifest，与实际低分导出输入逐字节一致并通过结构检查。外部依赖仍需自行准备，这项配方重建不等于在干净环境中重新编译完整引擎。每次使用新的工作目录和导出目录；保留原始文件作为对照。
+以下命令从 **仓库根目录**运行，使用本示例已收录的源图、测量 JSON 与脚本。已将公开配方复制到全新工作目录，重新生成 24 层 manifest，与实际低分导出输入逐字节一致并通过结构检查。外部依赖仍需自行准备，这项配方重建不等于在干净环境中重新编译完整引擎。每次使用新的工作目录和导出目录；保留原始文件作为对照。
 
 ### 1. 准备外部工具
 
@@ -92,11 +102,14 @@ Core 命令需要已配置的 `CUBISM_CORE_DIR` 和 `VALIDATOR_JAVA`；Java 构�
 ```sh
 mkdir -p work
 python3 -c "import shutil; shutil.copytree('examples/pink-sakura', 'work/pink-sakura-rebuild', ignore=shutil.ignore_patterns('runtime'))"
+node work/pink-sakura-rebuild/prepare-brows.cjs
 node work/pink-sakura-rebuild/build-manifest.cjs
 bash scripts/validate.sh --manifest work/pink-sakura-rebuild/manifest.json
 bash scripts/export-model.sh \
   work/pink-sakura-rebuild/manifest.json work/pink-sakura-rebuild/low
 ```
+
+`prepare-brows.cjs` 使用 `VALIDATOR_JAVA` 指定的 JDK 21，未设置时使用 PATH 上的 `java`。它只重建工作目录中的三张衍生 PNG。
 
 先检查 `low/` 的源图复合、导入图层及实际模型画面。尤其看原脸是否保持、半睁眼的睫毛粗细、`MouthSmile × MouthOpen` 的肤色接缝，以及后发在衣料边缘的连续性。结构有问题时先回到测量/填色配方修复，不能靠超分遮掩。
 
@@ -164,7 +177,7 @@ node scripts/check-preview.cjs \
   --screenshots work/pink-sakura-rebuild/web-shots
 ```
 
-再执行本角色专用的真实画布姿态检查。上面的目录复制已包含 `check-poses.cjs`；它使用页面实际加载的模型，遍历头身、嘴眼组合和独立摆发状态，采集真实画布供视觉复核。本次记录为 55 个姿态、80 帧；修改配方后的组合数和帧数以该次参数清单及脚本输出为准。
+再执行本角色专用的真实画布姿态检查。上面的目录复制已包含 `check-poses.cjs`；它使用页面实际加载的模型，遍历头身、嘴眼组合、左右眉独立/反向与闭眼转头联动、独立摆发状态，采集真实画布供视觉复核。本次记录为 66 个姿态、91 帧；修改配方后的组合数和帧数以该次参数清单及脚本输出为准。
 
 ```sh
 PLAYWRIGHT_MODULE=/path/to/node_modules/playwright \

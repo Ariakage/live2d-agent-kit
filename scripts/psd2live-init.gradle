@@ -1,6 +1,39 @@
 // Kit-local task injection; leaves global Gradle and the engine build files alone.
+// Opt-in transport only: dependency coordinates and official source selection
+// remain unchanged. The relay itself fetches fresh HTTPS bytes using curl.
+def relay = gradle.startParameter.projectProperties['agentKitMavenRelay']
+if (relay) {
+    def endpoint = new URI(relay.toString())
+    if (endpoint.scheme != 'http' || endpoint.host != '127.0.0.1' || endpoint.port < 1 ||
+        endpoint.userInfo != null || endpoint.query != null || endpoint.fragment != null ||
+        !(endpoint.path in ['', '/'])) {
+        throw new GradleException('agentKitMavenRelay must be http://127.0.0.1:PORT')
+    }
+    // The relay verifies/caches a complete artifact before returning its body.
+    // Permit its bounded curl resume attempts without the default read timeout.
+    System.setProperty('org.gradle.internal.http.socketTimeout', '1800000')
+    def mappings = [
+        'https://repo.maven.apache.org/maven2': 'maven-central',
+        'https://plugins.gradle.org/m2': 'gradle-plugins',
+        'https://dl.google.com/dl/android/maven2': 'google-maven'
+    ]
+    gradle.settingsEvaluated { settings ->
+        [settings.pluginManagement.repositories, settings.dependencyResolutionManagement.repositories].each { repositories ->
+            repositories.each { repository ->
+                if (repository instanceof org.gradle.api.artifacts.repositories.MavenArtifactRepository) {
+                    def key = repository.url.toString().replaceAll('/+$', '')
+                    if (mappings.containsKey(key)) {
+                        repository.url = relay.toString().replaceAll('/+$', '') + '/' + mappings[key]
+                        repository.allowInsecureProtocol = true // Explicit loopback endpoint only.
+                    }
+                }
+            }
+        }
+    }
+}
 allprojects { project ->
     afterEvaluate {
+        if (!project.pluginManager.hasPlugin('org.jetbrains.kotlin.jvm')) return
         def integrationDir = project.property('agentKitIntegrationDir').toString()
         project.extensions.getByName('kotlin').sourceSets.getByName('main').kotlin.srcDir(integrationDir)
         project.tasks.register('exportManifest', JavaExec) {

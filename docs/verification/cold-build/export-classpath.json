@@ -1,0 +1,392 @@
+[
+  {
+    "path": "engine-relay/build/classes/java/main",
+    "type": "directory",
+    "exists": false
+  },
+  {
+    "path": "engine-relay/build/classes/kotlin/main",
+    "type": "directory",
+    "exists": true
+  },
+  {
+    "path": "engine-relay/build/resources/main",
+    "type": "directory",
+    "exists": true
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.modelcontextprotocol/kotlin-sdk-server-jvm/0.15.0/305eaec28f32460c3929cdc56b35ebb780c16b5e/kotlin-sdk-server-jvm-0.15.0.jar",
+    "bytes": 336303,
+    "sha256": "2a3720c631a2e1ba15194838ac0244dc93f702e79e6c361bb35b4ab2e15e3c16"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-server-auth-jvm/3.5.1/6146f1aa5208a3b8b3095b0ac3a54bd6ff44fb70/ktor-server-auth-jvm-3.5.1.jar",
+    "bytes": 289502,
+    "sha256": "eb010d7181753f3daa2dc361df471ba741b5131481655f5e1cf45e4c9a438fce"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-server-cio-jvm/3.5.1/32e77bcedfd525dd0037cfd7cfa1f4b927266681/ktor-server-cio-jvm-3.5.1.jar",
+    "bytes": 119779,
+    "sha256": "6498b6050b724477c520a0c3676c73a30ab80ea2b9870138279e30245b23bae2"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-server-content-negotiation-jvm/3.5.1/7eba258119a98b66a6407c8dda2dee9e3ead8359/ktor-server-content-negotiation-jvm-3.5.1.jar",
+    "bytes": 39750,
+    "sha256": "acb8ed35fa2e0916d6570adbd9c2337828c5d83c1b28d8fc8c90e32cdc86ed61"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-server-sse-jvm/3.5.1/3716b55aa493d0d6571111fba3c954d5de705866/ktor-server-sse-jvm-3.5.1.jar",
+    "bytes": 36607,
+    "sha256": "de9037bcf8c5a92ecfa7fc7a2fdfa9210652021add821bc3bf36879366dc2aa7"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-server-sessions-jvm/3.5.1/dac41d9b0a147532eac8c0ee23309588417ff821/ktor-server-sessions-jvm-3.5.1.jar",
+    "bytes": 188549,
+    "sha256": "ef3e27077615c9c58c57aeb911ed2ee68f66d558465bc3360e30955157a5db7c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-server-core-jvm/3.5.1/7acc00c03828a37686de8cb90e47e4a0ed7e8408/ktor-server-core-jvm-3.5.1.jar",
+    "bytes": 946622,
+    "sha256": "907792c40323b18f95fed6caeda79c3bad399509e6cdad002cd9c5ccac95b639"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.4.10/b413f69cc12908061adefa8b7161274b46a17752/kotlin-reflect-2.4.10.jar",
+    "bytes": 3750100,
+    "sha256": "25a1aef7454d46548ecaaf51021b0e52e38141a62ed75af124da109b7324c4e5"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/app.cash.sqldelight/sqlite-driver/2.0.2/5b378d7ffc90e13f5348aa59a958b08bc45aaaed/sqlite-driver-2.0.2.jar",
+    "bytes": 15057,
+    "sha256": "ba876dc63abdee4a698a5395c6a62fc062582cb181ba9bb203e97e548b8aa45c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-serialization-kotlinx-json-jvm/3.5.1/99dbf20f4082d37d8e7cfa9d956d0cf38881d8e8/ktor-serialization-kotlinx-json-jvm-3.5.1.jar",
+    "bytes": 28652,
+    "sha256": "68b907facba9caedac5bcfbd6ce3123920fd7606673267ce12d53a8c9a6aa3c3"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.modelcontextprotocol/kotlin-sdk-core-jvm/0.15.0/ca390878393c156bd4401991ec0faced637c014a/kotlin-sdk-core-jvm-0.15.0.jar",
+    "bytes": 1360937,
+    "sha256": "286b34892ab362365d4d9ba09b6c949199128470f83cf7dd410854f18cc625e1"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.desktop/desktop-jvm/1.11.1/1fee826ff9d1fafd500b57a22facfc0236bc14c7/desktop-jvm-1.11.1.jar",
+    "bytes": 9179,
+    "sha256": "9f3d221e1accd6c7c64ac2a0d7c8053537bc7f49592c44d72b766434dfce7440"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-desktop/1.11.1/2891a6f3a62dc4c367636a521d1b680a7d6ff6d/material-desktop-1.11.1.jar",
+    "bytes": 1473829,
+    "sha256": "fcd881213628bf50b1e278925db892f552c23bd63bc7edb99b968790c9e097f8"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-ripple-desktop/1.11.1/ae97a5eeb23bc3f461bc3e16e2a9882175405d17/material-ripple-desktop-1.11.1.jar",
+    "bytes": 77135,
+    "sha256": "e24ed0a740438508cc83eb3cb07dc55d83b0a2e25f233f48ffc2a0782a72e007"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.animation/animation-core-desktop/1.11.1/1bf633ecd1a38a1cf7a41630bc56cba0da9cc25b/animation-core-desktop-1.11.1.jar",
+    "bytes": 389121,
+    "sha256": "1b3af8d20627b01101d827f72e26dbadccc8d212c0ffc0c02ff2a6fc967a6ca8"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.animation/animation-desktop/1.11.1/f873fb28f1a08d45a4dd20a0130b3da8cadf383c/animation-desktop-1.11.1.jar",
+    "bytes": 412677,
+    "sha256": "bb41c6c550a471c68c51185c3bb0458482a4e803ee074bf215adc8832e2007e1"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-layout-desktop/1.11.1/853fc5d01388da6515ce40b719798914012f6469/foundation-layout-desktop-1.11.1.jar",
+    "bytes": 671113,
+    "sha256": "d79929b45521dff0c77d3184412007b3b9695755c8b1933d5ff9e4f1e93fa131"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-desktop/1.11.1/6df316e7af2c0c97f200de289925f62ca8fce53d/foundation-desktop-1.11.1.jar",
+    "bytes": 4551980,
+    "sha256": "32601653637e47cc442fa77c9e5dd95a557a0533a5304ba5200cc72c565f074a"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-tooling-preview-desktop/1.11.1/97ec578d33adc34adcaa63e9af7bb2328c6c29b7/ui-tooling-preview-desktop-1.11.1.jar",
+    "bytes": 27553,
+    "sha256": "60d3a913e550a4076248d62105cd0a8b5c6c807cf09c5de72cbaf4288dc52a90"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-util-desktop/1.11.1/4302c582878b82ab24e1f34e6e90f967f7b416ed/ui-util-desktop-1.11.1.jar",
+    "bytes": 23149,
+    "sha256": "73d04930a91fb9a2044f2c198ec6e3f1da61696ccb59a288d1ff0a15bab08eed"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-unit-desktop/1.11.1/f6c06f98da206d01dc40c1587c6bc4c40cbef623/ui-unit-desktop-1.11.1.jar",
+    "bytes": 88263,
+    "sha256": "9c91868b0bd967d64f726edc319c895e359871a44ef7e75dc69ff0cad46ac0da"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-text-desktop/1.11.1/6ded685e2601260d6231c859a849b96ee6c60368/ui-text-desktop-1.11.1.jar",
+    "bytes": 718950,
+    "sha256": "c1a8ceb1e875c6f1bb2e67eca8778fc04027dd618f31a69f886368cbdd35eeec"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-graphics-desktop/1.11.1/6ea106d02adf29694eedf12fdfb621947d3621bf/ui-graphics-desktop-1.11.1.jar",
+    "bytes": 635273,
+    "sha256": "c7d7620c78f0e64052f1f28df54a969b36cf4918e7965b566875855569346e59"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-geometry-desktop/1.11.1/5e430152487375359973ac9874653d335dcc220/ui-geometry-desktop-1.11.1.jar",
+    "bytes": 60981,
+    "sha256": "ad6d5557572708aceebf1aa626c5900e8fce61f040a6d5d971b1adca5869ab8c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-desktop/1.11.1/24c40c0d60c77a6fb34f930f13bfa4a3ff62c0f/ui-desktop-1.11.1.jar",
+    "bytes": 3444688,
+    "sha256": "442d4a2f0d95054453b68191304dca995267e72fcdcbbc0a63997bff4dcdf949"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-runtime-compose-desktop/2.9.6/7b6b6793f3c4c5996b20d1d99cf728e5fac00364/lifecycle-runtime-compose-desktop-2.9.6.jar",
+    "bytes": 452,
+    "sha256": "31c3c4b6dea38f078c46829dee2c43abba2bf8757b7ee8a0f660f31217364898"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.runtime/runtime-saveable-desktop/1.11.1/b7c8a8ed985a0f15b4d8d206de1fc6125b499388/runtime-saveable-desktop-1.11.1.jar",
+    "bytes": 4765,
+    "sha256": "7696c15dd23de0140d8150f1115f59d2a211331e3baa243f418474477e98971c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.androidx.savedstate/savedstate-compose-desktop/1.3.6/63692375ffe667f12cb3ea8aa1e605d659ed2add/savedstate-compose-desktop-1.3.6.jar",
+    "bytes": 438,
+    "sha256": "0f3d045c5fd7e1301ab6c38cd0778067b0484cf39acac1233be71a723a6a8075"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.compose.runtime/runtime-desktop/1.11.1/1941336b045aac4b87cc3be81d9fdb9977c88c61/runtime-desktop-1.11.1.jar",
+    "bytes": 4711,
+    "sha256": "bceb2c506e4209934be01ac0f45332b0c12b7886ee00dc390c7bbdfbf58f4217"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-saveable-desktop/1.11.2/1618fae89791692a224fe7aa79edbd7a8f5b7522/runtime-saveable-desktop-1.11.2.jar",
+    "bytes": 53810,
+    "sha256": "b1a17e6c226debb42ca227f580459d9d9dea62d42aa8e685ef56cd7ce770b1a1"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-annotation-jvm/1.11.2/db4aa964627ac96331b72e231b9ad54318d112f4/runtime-annotation-jvm-1.11.2.jar",
+    "bytes": 9377,
+    "sha256": "e286a8520709d7bdc66481c272660c2a8d26b12740f76102543ce45704370396"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-retain-desktop/1.11.2/3aa3ec26ef2a3d26bc556b51b33d09efc1a198e8/runtime-retain-desktop-1.11.2.jar",
+    "bytes": 53421,
+    "sha256": "9b7e62a7df333c33eff9e1a6d6c2508a4d8fe4b7a43778075538fe3da4bc4485"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.savedstate/savedstate-desktop/1.4.0/3b049a0f81643d6b4b900de95bc23efc085c32d5/savedstate-desktop-1.4.0.jar",
+    "bytes": 82073,
+    "sha256": "e965ed7a011be83a271ac7d82249a776368479ee3a2b07948c3445b51d640856"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.savedstate/savedstate-compose-desktop/1.4.0/d3d6e0e2108528eb6080dc250da925a572be4202/savedstate-compose-desktop-1.4.0.jar",
+    "bytes": 15494,
+    "sha256": "c02a98b0c2b35cdde245c0bfe6e7ff453c7b6d06a5eb8681d25b7f54b874ea48"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common-jvm/2.9.4/ab739bccdb3541983385af169565c7c035d897e7/lifecycle-common-jvm-2.9.4.jar",
+    "bytes": 60804,
+    "sha256": "37d89b2101f074ac6c260917dabb185607645ee200aa3018c7c5bde70edcf184"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-runtime-desktop/2.9.4/1cc820319ec0139e76b8a2fe4be0b356b4e624c4/lifecycle-runtime-desktop-2.9.4.jar",
+    "bytes": 47399,
+    "sha256": "2fb49f76d1021792fb359e0a9246c1509f2f5b555f0a46591d24d58deb68bd5c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-runtime-compose-desktop/2.9.4/86a4ffec845d4e488078118a0b5095bd1fabcafe/lifecycle-runtime-compose-desktop-2.9.4.jar",
+    "bytes": 43088,
+    "sha256": "d25c083df93da718a1876a3293bd15f7dc7a811e998735943bce590683a57835"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-desktop/1.11.2/e93d95553cdd86c1cb8c02f50260cc1c8e341da8/runtime-desktop-1.11.2.jar",
+    "bytes": 1944796,
+    "sha256": "69551aee8f92114921816f3d9aaa66062104db228ed5710a6666f7adbdfafe3c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-serialization-kotlinx-jvm/3.5.1/a9d2d5091a5bd1e1218c59df1387c2533a5c8c8/ktor-serialization-kotlinx-jvm-3.5.1.jar",
+    "bytes": 28889,
+    "sha256": "148cd52661c2e4cbb1c88ca4ce3e6622335b4339a3b369054139d0d11a70f630"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-client-core-jvm/3.5.1/87b25b4cd59e949d0514ebc7f027510b35ff6d2f/ktor-client-core-jvm-3.5.1.jar",
+    "bytes": 941609,
+    "sha256": "7d68a97ecc883e93f1d61a74107e44ecf63a5ffbcbab5dc01773e6d88427e859"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-http-cio-jvm/3.5.1/1a16204a224f61963937735faec75b7f1853de5f/ktor-http-cio-jvm-3.5.1.jar",
+    "bytes": 134337,
+    "sha256": "c635b73b050ba842f138c19a46a758d094c7ba6f949d74a0e4d14c78b5fd7e64"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-websocket-serialization-jvm/3.5.1/f26344135c92f3434f39262f9d6c3ac35aff7fd8/ktor-websocket-serialization-jvm-3.5.1.jar",
+    "bytes": 7236,
+    "sha256": "d2743212e59ae113d0f0bcbd1320e6bd8212013c48ca2ba52b2631035f622f1c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-serialization-jvm/3.5.1/695550e97ab815bfae0aa4d837ffddcf05e2cfa0/ktor-serialization-jvm-3.5.1.jar",
+    "bytes": 22962,
+    "sha256": "1d9ee9d0a2d489e8e592552da577cf1dd2d13ce97ab1387c864813381309574a"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-websockets-jvm/3.5.1/97dc5d4f5dc4b01b7116619e2ae99ab79a5a90ac/ktor-websockets-jvm-3.5.1.jar",
+    "bytes": 188539,
+    "sha256": "4d3f2e13068f2b6441ed2b29a3f0c5b796dce4a55e0958efd354839bd444e07f"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-network-jvm/3.5.1/aeaad6929901bf7000ce744ef81ed0e94a4ee0be/ktor-network-jvm-3.5.1.jar",
+    "bytes": 199624,
+    "sha256": "7c972c97aecc9b27db8377e3347e6f66fad4b524112c073bef2d6150d1194492"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-sse-jvm/3.5.1/537081aa4574a1228078acec7ffca808c74c8dd4/ktor-sse-jvm-3.5.1.jar",
+    "bytes": 8416,
+    "sha256": "0fd6b6dcaded1679a7a55067e8b1de982ed964d4c102637b88ef092913144c39"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-http-jvm/3.5.1/514c40c2803e18de2cb04198aaf3874e66346c9e/ktor-http-jvm-3.5.1.jar",
+    "bytes": 446305,
+    "sha256": "0ba1aad28ec212e54f1a1358510d415259efa483075436375ee48d25f8b6bcf8"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-events-jvm/3.5.1/9e4bf00bd3d980098d60c62f5e33f2588279c593/ktor-events-jvm-3.5.1.jar",
+    "bytes": 6402,
+    "sha256": "652ce716196b635e7d2988e324cdb06f649b02e526f88680c5c2511e3964bd93"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-utils-jvm/3.5.1/662afab83c79a0b0fa6fea92f32841858145553b/ktor-utils-jvm-3.5.1.jar",
+    "bytes": 372837,
+    "sha256": "daccfd4e43039bec119976cb785356b4cebac927155f501132fb3be83125fa87"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/io.ktor/ktor-io-jvm/3.5.1/e9382eba8364609db5ce3d4e266557862e5b73fd/ktor-io-jvm-3.5.1.jar",
+    "bytes": 302342,
+    "sha256": "9c43ed3370e04428b6f3e113fe53c56881459329c18f2ffea2a11008fd096dcf"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.11.0/3d57dc678bd8d72a60e7adf0eca5c54e3f4f4b79/kotlinx-coroutines-core-jvm-1.11.0.jar",
+    "bytes": 1577052,
+    "sha256": "d1d75aa01dffbb4d1c520e67e4c4e7f5f6174718e7cb4632412503f2f0e604fa"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-swing/1.11.0/3cf134b8aefd813622edc37e60d66b939b55cb36/kotlinx-coroutines-swing-1.11.0.jar",
+    "bytes": 8825,
+    "sha256": "7f658fe952b56176111faad8ac275268904608915d6c79374fa0c80fb288fb60"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.17.0/a12d684ec0df9541b3869ae60a4a5257fd3613df/okio-jvm-3.17.0.jar",
+    "bytes": 381985,
+    "sha256": "3b13dcc3e1573047c2d507fc4f7fcb0bb0cbcd9d395da21d20e09406e2cd6a73"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-datetime-jvm/0.8.0/316346a7d44778581ff91154f72dfa576bce4ee2/kotlinx-datetime-jvm-0.8.0.jar",
+    "bytes": 724820,
+    "sha256": "ee44b51f8977c2f51d575299a4fc6782ab3700eba4cfc7fad548cced1543936a"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/app.cash.sqldelight/jdbc-driver/2.0.2/6cede3d29bb08b214e2daa1455c9e34842df075c/jdbc-driver-2.0.2.jar",
+    "bytes": 25092,
+    "sha256": "076f1ac9927d3a944a98c22b9c768cca9a43cdaabea5fbc343af68249fbbcb21"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-io-jvm/1.11.0/645ed54ca9128fc217b30b3686a083141ebe635c/kotlinx-serialization-json-io-jvm-1.11.0.jar",
+    "bytes": 7054,
+    "sha256": "bbf3005522426ac4ba2acd6dc38f47ea5a3274ee82b932b8841835c7eaddab74"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm/1.11.0/c1905c9bf7452b045d5af9248835abe64ddad6bf/kotlinx-serialization-core-jvm-1.11.0.jar",
+    "bytes": 404509,
+    "sha256": "f4a801c647d4351327cd9e1ac4113e2be9ea37a64ab0abae269c25a52e28f35d"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm/1.11.0/e7e045e99e56f07599bb9ccb708c2190e2af0606/kotlinx-serialization-json-jvm-1.11.0.jar",
+    "bytes": 294166,
+    "sha256": "563a25b4eb5c9128ae9c2479f3d1a5c44dcd176112b91cf03682e906eba5c935"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/app.cash.sqldelight/runtime-jvm/2.0.2/187de9631fe1fb647b0d5c0b6805c9ae92ed04c4/runtime-jvm-2.0.2.jar",
+    "bytes": 62303,
+    "sha256": "7119363786fe3ef7d65096b1116b69ddd481c6d977d8fb0395868c81aa0029ec"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.collection/collection-jvm/1.5.0/7ba2c69414d46ebc2dd76598bdd0a75c54281a57/collection-jvm-1.5.0.jar",
+    "bytes": 877998,
+    "sha256": "70b35924e4babcdffa37d0e575ee039c56a2d97123342624c48b603233704341"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar",
+    "bytes": 11657,
+    "sha256": "65308a06b1c00ee186cb9e19321383f043b993813f1522c47f4a3e3303bdba41"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.9.1/b17951747e38bf3986a24431b9ba0d039958aa5f/annotation-jvm-1.9.1.jar",
+    "bytes": 60577,
+    "sha256": "1e343917ebf27ba96fe4dc52b1cad7fd32b738fbc6355bb6cd5b3b305d7212d0"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-io-core-jvm/0.9.1/8c926478f17f8109e01e68adee93795c68dcad3c/kotlinx-io-core-jvm-0.9.1.jar",
+    "bytes": 153576,
+    "sha256": "765d8851d8ca694706931331b92386844800867e041b720f1f193dbda874d370"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-collections-immutable-jvm/0.5.1/75cd0756424334b5b2d637a895fc8daf1d2dbbfa/kotlinx-collections-immutable-jvm-0.5.1.jar",
+    "bytes": 232029,
+    "sha256": "d5e4bb25d6e90f7471662b3500259e247523a410e6a820dcc4000d386b0c248c"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-io-bytestring-jvm/0.9.1/7a28d93fce9fc8b663a6fe19cb2ae14a6ade7e8a/kotlinx-io-bytestring-jvm-0.9.1.jar",
+    "bytes": 22776,
+    "sha256": "8589de0b7c476bfdd02a24641685f609ade72f5e595cf2909c168acdba7e6ba4"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.4.10/8943c84ddc6d5cc00a10dbc3736c397066eeaab5/kotlin-stdlib-2.4.10.jar",
+    "bytes": 1841933,
+    "sha256": "4ec0293bc3751423b203f1d8493251c57c42e73eb6377a6b8560d0974ff0a6df"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jdom/jdom/1.1.3/8bdfeb39fa929c35f5e4f0b02d34350db39a1efc/jdom-1.1.3.jar",
+    "bytes": 151304,
+    "sha256": "02bd61a725e8af9b0176b43bf29816d0c748b8ab951385bd127be37489325a0a"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.4.2/42fe74ddea580c59e079b40b5046f45b7769e3e7/lwjgl-opengl-3.4.2.jar",
+    "bytes": 953651,
+    "sha256": "b8c655fce5ccb5780287a5bae15cf32353582e76c44f1c77ea2d8fd27f1e1a67"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.4.2/412d6b86ab1930b0e3c475cae55bd2c9fd54cf40/lwjgl-3.4.2.jar",
+    "bytes": 1254890,
+    "sha256": "980072f45e9ece70d77ce8c8c4299075b2f36fa25c3b17b4e98090f7de75d639"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.18.0/a443db2a11ebf84923f1fac12f29d2969e78f58d/jna-5.18.0.jar",
+    "bytes": 2002989,
+    "sha256": "fe27c1e5e34a6aca84cb44da5f15271cd69069b1cf701ab5ba7320c57c55c439"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar",
+    "bytes": 29371,
+    "sha256": "7b0f19724082cbfcbc66e5abea2b9bc92cf08a1ea11e191933ed43801eb3cd05"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.18/78a9e7a37cd6360e0b818e86341b24123d28d4df/slf4j-api-2.0.18.jar",
+    "bytes": 69982,
+    "sha256": "44508fd1576500688c790b190acdd16fec4f8c79a3e0b900afd70503cf055f55"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-awt/0.144.6/c9bec39e3c517ed5591c71c7db0cbbe64b6be849/skiko-awt-0.144.6.jar",
+    "bytes": 1256588,
+    "sha256": "57420122ed01fef05cdb4941576c98ea6225c525f37380c216a3c046b2b5529d"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/com.typesafe/config/1.4.9/fc87584fea1adcf5df899e58501a470329e59b52/config-1.4.9.jar",
+    "bytes": 297970,
+    "sha256": "47d13e3196c84f2a8ccd014ae563738c3da5b7406b38e03505ec0601a2f4fc37"
+  },
+  {
+    "path": "gradle-user-home-relay/caches/modules-2/files-2.1/org.jspecify/jspecify/1.0.0/7425a601c1c7ec76645a78d22b8c6a627edee507/jspecify-1.0.0.jar",
+    "bytes": 3819,
+    "sha256": "1fad6e6be7557781e4d33729d49ae1cdc8fdda6fe477bb0cc68ce351eafdfbab"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "gitCommit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+  "sparsePaths": [
+    ".agent",
+    "gradle",
+    "licenses",
+    "src"
+  ],
+  "requiredTrackedSourceAndResourceFiles": 432,
+  "missing": [],
+  "patchMatches": true,
+  "patchSha256": "a785a2cd38cb9d999a1f445d9fb36c75d3731d2742a335d072a3cdadd22a17fa",
+  "buildScriptSha256": "3ca8b1133f960ded13c5e88bf8bd037e5205d55aca7e2b920760286e780b05d5",
+  "allUpstreamSourceSelected": true,
+  "compilationResult": "passed",
+  "compiledClassCount": 1899,
+  "log": "build-03.log"
+}

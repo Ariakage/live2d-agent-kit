@@ -82,6 +82,13 @@ VTube Studio acceptance belongs to the requested target workflow; if the user
 chooses to do it, deliver the checked package without opening their app or camera.
 Web input simulation does not claim real camera, hand or finger tracking.
 
+For explicitly requested camera tracking, use the optional local MediaPipe path in
+[docs/camera-tracking.md](docs/camera-tracking.md). Keep camera acquisition behind
+the start control, release device tracks when stopping or changing input source,
+and verify permission errors, calibration and lost tracking. Map only supported
+model parameters. Separate a physical camera run from prerecorded/synthetic
+test fixtures; retain numeric evidence without publishing personal camera frames.
+
 Optional MCP paths are documented in [mcp/README.md](mcp/README.md); use only tools
 actually available and verified in the current environment. The kit's CLI route
 works without them. Do not describe an evaluated tool as used in production.

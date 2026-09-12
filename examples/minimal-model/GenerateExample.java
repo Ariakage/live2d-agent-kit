@@ -36,6 +36,8 @@ public class GenerateExample {
         layer("face",30,g->shape(g,"#f4cfb5",new Ellipse2D.Double(176,112,160,198)));
         for(String side:List.of("r","l")){
             int x=side.equals("r")?195:266;
+            layer("eyebrow-"+side,55,g->{g.setColor(Color.decode("#496482"));g.setStroke(new BasicStroke(3,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
+                g.draw(new Arc2D.Double(x+3,171,44,17,15,150,Arc2D.OPEN));});
             layer("eyewhite-"+side,40,g->shape(g,"#ffffff",new Ellipse2D.Double(x,193,50,35)));
             layer("irides-"+side,50,g->{shape(g,side.equals("r")?"#8367a6":"#378997",new Ellipse2D.Double(x+16,195,21,30));
                 shape(g,"#ffffff",new Ellipse2D.Double(x+23,199,6,6));});

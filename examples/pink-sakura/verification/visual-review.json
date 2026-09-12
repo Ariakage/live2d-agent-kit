@@ -1,83 +1,484 @@
 {
-  "scope": "Final HD model; independent agent visual review of actual WebGL PNG captures. This is sampled review, not exhaustive animation or target-app acceptance.",
-  "result": "passed-with-documented-minor-visual-limitations",
-  "automatedFrames": 80,
-  "visualUniqueFrames": 60,
-  "visualFiles": [
-    "body-x-max-full.png",
-    "body-x-min-full.png",
-    "body-y-max-full.png",
-    "body-y-min-full.png",
-    "body-z-max-full.png",
-    "body-z-min-full.png",
-    "eyes-25-face.png",
-    "eyes-75-face.png",
-    "eyes-85-face.png",
-    "eyes-95-face.png",
-    "eyes-closed-face.png",
-    "eyes-half-face.png",
-    "eyes-open-face.png",
-    "hair-14-ParamFrontHairSideLSwing-max-full.png",
-    "hair-14-ParamFrontHairSideLSwing-min-full.png",
-    "hair-15-ParamFrontHairSideRSwing-max-full.png",
-    "hair-15-ParamFrontHairSideRSwing-min-full.png",
-    "hair-16-ParamBackHairOuterLSwing-max-full.png",
-    "hair-16-ParamBackHairOuterLSwing-max-portrait.png",
-    "hair-16-ParamBackHairOuterLSwing-min-full.png",
-    "hair-17-ParamBackHairOuterRSwing-max-full.png",
-    "hair-17-ParamBackHairOuterRSwing-min-full.png",
-    "hair-17-ParamBackHairOuterRSwing-min-portrait.png",
-    "hair-18-ParamBackHairArcLSwing-max-full.png",
-    "hair-18-ParamBackHairArcLSwing-min-full.png",
-    "hair-19-ParamBackHairArcRSwing-max-full.png",
-    "hair-19-ParamBackHairArcRSwing-min-full.png",
-    "hair-20-ParamBackHairBaseRSwing-max-full.png",
-    "hair-20-ParamBackHairBaseRSwing-min-full.png",
-    "hair-21-ParamBackHairBaseLSwing-max-full.png",
-    "hair-21-ParamBackHairBaseLSwing-min-full.png",
-    "head-left-face.png",
-    "head-left-full.png",
-    "head-right-face.png",
-    "head-right-full.png",
-    "head-x-max-face.png",
-    "head-x-min-face.png",
-    "head-y-max-face.png",
-    "head-y-min-face.png",
-    "head-z-max-face.png",
-    "head-z-min-face.png",
-    "mouth-form--1-open-0-face.png",
-    "mouth-form--1-open-0p075-face.png",
-    "mouth-form--1-open-0p15-face.png",
-    "mouth-form--1-open-0p5-face.png",
-    "mouth-form-0-open-0-face.png",
-    "mouth-form-0-open-0p075-face.png",
-    "mouth-form-0-open-0p15-face.png",
-    "mouth-form-0-open-0p5-face.png",
-    "mouth-form-0-open-1-face.png",
-    "mouth-form-1-open-0-face.png",
-    "mouth-form-1-open-0p075-face.png",
-    "mouth-form-1-open-0p15-face.png",
-    "mouth-form-1-open-0p5-face.png",
-    "mouth-frown-open-face.png",
-    "mouth-smile-open-face.png",
-    "neutral-face.png",
-    "neutral-full.png",
-    "wink-l-face.png",
-    "wink-r-face.png"
-  ],
-  "faceReport": "face-review.json",
-  "bodyReport": "body-review.json",
-  "mocSha256": "5de54174f6bb2b4f6b78b21f14de122319f54d7becb8bccfdb0deab5f16b527d",
-  "textureSha256": "e3e51dcc8eacd3a69613def9cb2596cacfa4c4e10092ad2ad62faf851dd86bc8",
-  "geometryBeforeAfterUpscale": "80 matching pose/view drawable-state SHA-256 comparisons; see face-review.json.",
+  "schema_version": 1,
+  "reviewed_at": "2026-09-12T14:45:36.304602+00:00",
+  "status": "passed-with-documented-minor-visual-limitations",
+  "identity": {
+    "moc_sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+    "texture_sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+    "pose_report_sha256": "5ff89381c29001270a78cf4aee2e1aefa84a23906bca9db9ee69383805fd091d"
+  },
+  "scope": "Current 24-parameter brow revision only. 44 face crops plus 31 full-body overview frames from actual HD WebGL captures were visually inspected; not exhaustive animation, all close-up hair frames, camera, or VTS acceptance. Prior 22-parameter reports were superseded, not reused as passes for this revision.",
+  "total_automated_frames": 91,
+  "unique_reviewed_frames": 75,
+  "face_reviewed_frames": 44,
+  "body_overview_frames": 31,
+  "exhaustive": false,
+  "face_report": "face-review.json",
+  "body_report": "body-review.json",
+  "source_neutral_comparison": "brow-preparation.json",
   "limitations": [
-    "Magnified thin closed-mouth line is somewhat pale/grainy.",
-    "Closed lash tips are slightly blunt with residual edge steps under magnification.",
-    "EyeOpen 0 through 0.25 shares a closed-eye hold interval.",
-    "Conservative 2D head/body motion; no independent arm/finger rig or real camera capture.",
-    "VTube Studio acceptance remains with the user."
+    "Original pale pink brows move subtly. Protected intersecting hair columns remain on the face; under magnification tiny pale/segmented points can remain at crossings. No bold replacement eyebrows were painted.",
+    "Thin closed-mouth ink remains pale/grainy under magnification.",
+    "Closed lash tips remain somewhat blunt; residual stair steps are visible under magnification.",
+    "EyeOpen 0 through 0.25 has a closed-eye hold interval.",
+    "Conservative 2D motion; no independent arm/finger rig. These synthetic checks did not exercise real camera input or VTube Studio."
   ],
-  "visibleWatermarkApplied": false,
-  "invisibleWatermarkApplied": false,
-  "vtubeStudioTested": false
+  "low_hd_moc_byte_identical": true,
+  "low_hd_drawable_state_comparisons": [
+    {
+      "file": "neutral-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "neutral-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "eyes-closed-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "eyes-25-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "eyes-half-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "eyes-75-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "eyes-85-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "eyes-95-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "eyes-open-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "wink-l-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "wink-r-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brow-l-min-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brow-l-max-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brow-r-min-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brow-r-max-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brows-min-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brows-max-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brows-asymmetric-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brows-asymmetric-inverse-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brows-closed-smile-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brows-head-min-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "brows-head-max-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form--1-open-0-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form--1-open-0p075-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form--1-open-0p15-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form--1-open-0p5-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-frown-open-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-0-open-0-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-0-open-0p075-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-0-open-0p15-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-0-open-0p5-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-0-open-1-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-1-open-0-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-1-open-0p075-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-1-open-0p15-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-form-1-open-0p5-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "mouth-smile-open-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-x-min-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-x-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-x-max-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-x-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-y-min-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-y-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-y-max-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-y-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-z-min-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-z-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-z-max-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-z-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-left-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-left-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-right-face.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "head-right-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "body-x-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "body-x-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "body-y-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "body-y-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "body-z-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "body-z-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-16-ParamFrontHairSideLSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-16-ParamFrontHairSideLSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-16-ParamFrontHairSideLSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-16-ParamFrontHairSideLSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-17-ParamFrontHairSideRSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-17-ParamFrontHairSideRSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-17-ParamFrontHairSideRSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-17-ParamFrontHairSideRSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-18-ParamBackHairOuterLSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-18-ParamBackHairOuterLSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-18-ParamBackHairOuterLSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-18-ParamBackHairOuterLSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-19-ParamBackHairOuterRSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-19-ParamBackHairOuterRSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-19-ParamBackHairOuterRSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-19-ParamBackHairOuterRSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-20-ParamBackHairArcLSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-20-ParamBackHairArcLSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-20-ParamBackHairArcLSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-20-ParamBackHairArcLSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-21-ParamBackHairArcRSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-21-ParamBackHairArcRSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-21-ParamBackHairArcRSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-21-ParamBackHairArcRSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-22-ParamBackHairBaseRSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-22-ParamBackHairBaseRSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-22-ParamBackHairBaseRSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-22-ParamBackHairBaseRSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-23-ParamBackHairBaseLSwing-min-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-23-ParamBackHairBaseLSwing-min-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-23-ParamBackHairBaseLSwing-max-full.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    },
+    {
+      "file": "hair-23-ParamBackHairBaseLSwing-max-portrait.png",
+      "same_requested_values": true,
+      "same_geometry_sha256": true
+    }
+  ]
 }

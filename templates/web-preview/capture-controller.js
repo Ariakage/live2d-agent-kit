@@ -1,20 +1,27 @@
 import {INPUTS, NEUTRAL_INPUT, DURATION, clamp, simulateInput, mapInput} from './tracking-input.js';
 
-/** Drives exactly one synthetic tracking source. No camera, network, or microphone APIs. */
+/** One input owner: simulator, manual signals or camera results. Device acquisition
+ * stays in CameraTracker; this controller maps, smooths and expires its values. */
 export class CaptureController {
-  constructor({getViewer, onPrepare, onState}={}) {
-    this.getViewer=getViewer; this.onPrepare=onPrepare; this.onState=onState;
+  constructor({getViewer, onPrepare, onState, onSourceStop}={}) {
+    this.getViewer=getViewer; this.onPrepare=onPrepare; this.onState=onState; this.onSourceStop=onSourceStop;
     this.mode='idle'; this.profile='all'; this.paused=false; this.time=0;
     this.options={strength:1,smoothing:.3,speed:1,faceVisible:true,bodyVisible:true};
     this.inputs={...NEUTRAL_INPUT}; this.offsets={}; this.parameters={};
     this.frame=0; this.generation=0; this.raf=0; this.lastTime=0; this.lastPublish=0;
+    this.cameraDetection={face:false,body:false}; this.cameraSeenAt=null; this.cameraTimestamp=-Infinity;
     this.message='选择一组模拟输入，或手动调节信号。';
   }
   getState() {
     return {mode:this.mode,profile:this.profile,paused:this.paused,time:this.time,duration:DURATION,
       options:{...this.options},inputs:{...this.inputs},parameters:{...this.parameters},
       offsets:{...this.offsets},frame:this.frame,message:this.message,
-      lastDetection:{face:this.options.faceVisible,body:this.options.bodyVisible}};
+      lastDetection:this.detection()};
+  }
+  detection() {
+    const fresh=this.cameraSeenAt!==null && performance.now()-this.cameraSeenAt<500;
+    return {face:this.options.faceVisible && (this.mode!=='camera'||fresh&&this.cameraDetection.face),
+      body:this.options.bodyVisible && (this.mode!=='camera'||fresh&&this.cameraDetection.body)};
   }
   publish() { this.onState?.(this.getState()); }
   prepare(mode, profile) {
@@ -22,6 +29,7 @@ export class CaptureController {
     this.stop({reset:false,announce:false});
     this.mode=mode; this.profile=profile; this.paused=false; this.time=0;
     this.inputs={...NEUTRAL_INPUT}; this.offsets={}; this.parameters={};
+    this.cameraDetection={face:false,body:false};this.cameraSeenAt=null;this.cameraTimestamp=-Infinity;
     this.onPrepare?.(profile);
     // Unmapped parameters remain native defaults or physics outputs.
     this.parameters={};
@@ -37,6 +45,20 @@ export class CaptureController {
     if (this.mode==='input') return true;
     if (!this.prepare('input','manual')) return false;
     this.apply(0,true); this.schedule(); this.publish(); return true;
+  }
+  startCameraInput() {
+    if (!this.prepare('camera','camera')) return false;
+    this.options.faceVisible=true;this.options.bodyVisible=true;
+    this.message='摄像头输入 · 等待识别';this.apply(0,true);this.schedule();this.publish();return true;
+  }
+  updateCameraFrame(frame={}) {
+    if (this.mode!=='camera'||this.paused||!Number.isFinite(frame.timestamp)||frame.timestamp<=this.cameraTimestamp) return false;
+    this.cameraTimestamp=frame.timestamp;this.cameraSeenAt=performance.now();
+    this.cameraDetection={face:frame.faceVisible===true,body:frame.bodyVisible===true};
+    this.inputs={...NEUTRAL_INPUT};
+    for (const spec of INPUTS) if (Number.isFinite(frame.inputs?.[spec.id])) this.inputs[spec.id]=clamp(frame.inputs[spec.id],spec.min,spec.max);
+    this.message=this.cameraDetection.face?'摄像头输入 · 面部'+(this.cameraDetection.body?'与上半身':'')+'识别中':'摄像头输入 · 未识别到面部，正在回正';
+    return true;
   }
   setInput(id,value) {
     const spec=INPUTS.find(s=>s.id===id);
@@ -58,9 +80,11 @@ export class CaptureController {
   apply(dt, immediate=false) {
     const viewer=this.getViewer(); if (!viewer || this.mode==='idle') return;
     if (this.mode==='simulation') this.inputs=simulateInput(this.time,this.profile);
-    const target=mapInput(this.inputs,{...this.options,offsets:this.offsets,descriptors:viewer.getParameters()});
+    const detected=this.detection();
+    if (this.mode==='camera' && (this.cameraSeenAt===null||performance.now()-this.cameraSeenAt>=500)) this.message='摄像头输入 · 等待新识别结果，模型回正';
+    const target=mapInput(this.inputs,{...this.options,faceVisible:detected.face,bodyVisible:detected.body,offsets:this.offsets,descriptors:viewer.getParameters()});
     const breath=viewer.getParameters().find(p=>p.id==='ParamBreath');
-    if (breath) target.ParamBreath=this.options.bodyVisible ? breath.min+(breath.max-breath.min)*(.2+.16*Math.sin(this.time*2*Math.PI/6)) : breath.default;
+    if (breath) target.ParamBreath=this.mode!=='camera'&&this.options.bodyVisible ? breath.min+(breath.max-breath.min)*(.2+.16*Math.sin(this.time*2*Math.PI/6)) : breath.default;
     for (const [id,value] of Object.entries(target)) {
       const eye=/Eye.*Open/.test(id);
       const tau=eye ? 12+this.options.smoothing*28 : 12+this.options.smoothing*280;
@@ -74,9 +98,11 @@ export class CaptureController {
     const generation=this.generation;
     const tick=(now)=>{
       if (generation!==this.generation || this.mode==='idle' || this.paused) return;
-      const dt=Math.min((now-this.lastTime)/1000,.1); this.lastTime=now;
+      const elapsed=Math.max(0,(now-this.lastTime)/1000),dt=Math.min(elapsed,.1); this.lastTime=now;
       this.time=(this.time+dt*this.options.speed)%DURATION;
-      this.apply(dt);
+      // Camera smoothing uses elapsed time even when inference stalls rendering.
+      // Only the synthetic timeline clamps a long frame to avoid jumping poses.
+      this.apply(this.mode==='camera'?elapsed:dt);
       if (now-this.lastPublish>100) {this.lastPublish=now;this.publish();}
       this.raf=requestAnimationFrame(tick);
     };
@@ -97,7 +123,8 @@ export class CaptureController {
   resume() {
     if (this.mode==='idle' || !this.paused) return;
     this.paused=false; this.getViewer()?.clearParameters();
-    this.message=this.mode==='input'?'手动输入 · 信号正在驱动模型':'模拟输入运行中';
+    this.message=this.mode==='input'?'手动输入 · 信号正在驱动模型':this.mode==='camera'?'摄像头输入 · 等待识别':'模拟输入运行中';
+    if (this.mode==='camera') {this.cameraSeenAt=null;this.cameraDetection={face:false,body:false};}
     this.apply(0,true); this.schedule(); this.publish();
   }
   seek(time) {
@@ -114,8 +141,9 @@ export class CaptureController {
     this.publish(); return true;
   }
   stop({reset=true,announce=true}={}) {
-    const active=this.mode!=='idle';
+    const previousMode=this.mode,active=this.mode!=='idle';
     this.generation++; cancelAnimationFrame(this.raf); this.mode='idle'; this.paused=false;
+    if (previousMode==='camera') this.onSourceStop?.(previousMode);
     const viewer=this.getViewer();
     viewer?.clearCaptureParameters();
     if (reset && active && viewer) {
@@ -123,7 +151,8 @@ export class CaptureController {
       for (const p of viewer.getParameters()) viewer.setParameter(p.id,p.default);
       viewer.renderNow();
     }
-    this.parameters={}; this.message='模拟已停止 · 模型恢复默认参数';
+    this.cameraSeenAt=null;this.cameraDetection={face:false,body:false};
+    this.parameters={}; this.message='跟踪已停止 · 模型恢复默认参数';
     if (announce) this.publish();
   }
 }

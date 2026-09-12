@@ -1,0 +1,214 @@
+{
+  "models": [
+    {
+      "name": "Minimal",
+      "sourceLayers": 16,
+      "artifacts": [
+        {
+          "path": "Minimal.1024/texture_00.png",
+          "bytes": 29340,
+          "sha256": "da54af0069a6122a3da0a6cd101d153ca498d77f98af9d4ffced99f5ece9a42d"
+        },
+        {
+          "path": "Minimal.blink.motion3.json",
+          "bytes": 1155,
+          "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110"
+        },
+        {
+          "path": "Minimal.cdi3.json",
+          "bytes": 3914,
+          "sha256": "c4fa1766d69d28bec37ff32e4bf0a742a1dec7b62bbecc092c93615869cb1244"
+        },
+        {
+          "path": "Minimal.cmo3",
+          "bytes": 5391295,
+          "sha256": "e84b24092cf48d3cc58a9f3b6e04b9aeebb4cc9a74b908f8001ac71fb2afaee5"
+        },
+        {
+          "path": "Minimal.export-warnings.txt",
+          "bytes": 213,
+          "sha256": "84973d166147499968869a47f9cb3e0f03318a983e0c0e98bfc4fbbfff408172"
+        },
+        {
+          "path": "Minimal.idle.motion3.json",
+          "bytes": 2282,
+          "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990"
+        },
+        {
+          "path": "Minimal.import-diagnostics.json",
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "path": "Minimal.moc3",
+          "bytes": 5319360,
+          "sha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9"
+        },
+        {
+          "path": "Minimal.model3.json",
+          "bytes": 733,
+          "sha256": "5802ef22f33bcc7cc3d6970e12d9b5438eae365400ac446dc97ff48b775a43d4"
+        },
+        {
+          "path": "Minimal.nod.motion3.json",
+          "bytes": 1751,
+          "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418"
+        },
+        {
+          "path": "Minimal.physics3.json",
+          "bytes": 8743,
+          "sha256": "5b4ae860b8e78ae77365e1bd3312f8f8e24b54cf1b9247690efd5604f7ebb9de"
+        },
+        {
+          "path": "Minimal.psd2live.json",
+          "bytes": 3722,
+          "sha256": "ac2350a0b22171f3aa3e57158c6efcb1b826c492e4b6670e215b6a5356630b69"
+        },
+        {
+          "path": "Minimal.shake.motion3.json",
+          "bytes": 1571,
+          "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01"
+        },
+        {
+          "path": "Minimal.source-preview.png",
+          "bytes": 20027,
+          "sha256": "8249ec2df6bda638edbb18b88fd502a977581e9151c24b43f5f17c913f315477"
+        },
+        {
+          "path": "Minimal.source.psd",
+          "bytes": 1597142,
+          "sha256": "b71ff54b8b4347c67f29c65816e11276933444c94739996d81ded9ccb0e12c92"
+        }
+      ],
+      "core": {
+        "passed": true,
+        "sha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9",
+        "coreVersion": "06.00.0257 (100663553)",
+        "counts": {
+          "parameters": 19,
+          "drawables": 18,
+          "vertices": 3050,
+          "triangles": 3702
+        },
+        "testedPoseCount": 192,
+        "errors": [],
+        "warnings": []
+      },
+      "exportWarnings": [
+        "检测到同名图层：eyewhite, irides, eyebrow, eyelash；已通过稳定图层 ID 区分。",
+        "CMO3：未保留原始 PSD 源图编辑链；已从 1 页贴图重建可编辑图层（模型/Rig 数据仍保留）"
+      ]
+    },
+    {
+      "name": "PinkSakura",
+      "sourceLayers": 24,
+      "artifacts": [
+        {
+          "path": "PinkSakura.2048/texture_00.png",
+          "bytes": 3207169,
+          "sha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4"
+        },
+        {
+          "path": "PinkSakura.blink.motion3.json",
+          "bytes": 1155,
+          "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110"
+        },
+        {
+          "path": "PinkSakura.cdi3.json",
+          "bytes": 5012,
+          "sha256": "553917dfea91fadc66fa911fee42e0085866598c224110fdd80b26646c1af850"
+        },
+        {
+          "path": "PinkSakura.cmo3",
+          "bytes": 5606998,
+          "sha256": "465707dcf6e8be86deb49211b8cb5e0f0f41a1b0ceb6dffebc1976d041c103b3"
+        },
+        {
+          "path": "PinkSakura.export-warnings.txt",
+          "bytes": 2175,
+          "sha256": "56ef154c9cc28f5bdbfb11a7e46391ff09a87df5c030684929168112f6418657"
+        },
+        {
+          "path": "PinkSakura.idle.motion3.json",
+          "bytes": 2282,
+          "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990"
+        },
+        {
+          "path": "PinkSakura.import-diagnostics.json",
+          "bytes": 804,
+          "sha256": "6cc4d8c6f76ea967c43f2dfd9f3397e610f2063c6de9a95903984837d7816050"
+        },
+        {
+          "path": "PinkSakura.moc3",
+          "bytes": 395520,
+          "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
+        },
+        {
+          "path": "PinkSakura.model3.json",
+          "bytes": 757,
+          "sha256": "784e33491c5c86e945ea515cb426f98633e2713028672c7528ad8b310d430e8b"
+        },
+        {
+          "path": "PinkSakura.nod.motion3.json",
+          "bytes": 1751,
+          "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418"
+        },
+        {
+          "path": "PinkSakura.physics3.json",
+          "bytes": 18649,
+          "sha256": "cad996de99c0dd1e7217665533b568f00cca4a45d51144999aa77bf731f3d076"
+        },
+        {
+          "path": "PinkSakura.psd2live.json",
+          "bytes": 6848,
+          "sha256": "e3fdf20417a4b0d83753ec5868be5d42f2b3dc31b3acc27edf7e756e1461f3c7"
+        },
+        {
+          "path": "PinkSakura.shake.motion3.json",
+          "bytes": 1571,
+          "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01"
+        },
+        {
+          "path": "PinkSakura.source-preview.png",
+          "bytes": 1038884,
+          "sha256": "8629aabd770ccc68fc3505d2b85bf80639774daf46b9624500d4af69829c7b84"
+        },
+        {
+          "path": "PinkSakura.source.psd",
+          "bytes": 9000510,
+          "sha256": "258d36df28b2e6a24fc6998de1ad9991e3f898b1c781a3028c0c13e8024aba62"
+        }
+      ],
+      "core": {
+        "passed": true,
+        "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+        "coreVersion": "06.00.0257 (100663553)",
+        "counts": {
+          "parameters": 24,
+          "drawables": 26,
+          "vertices": 7180,
+          "triangles": 11904
+        },
+        "testedPoseCount": 202,
+        "errors": [],
+        "warnings": []
+      },
+      "exportWarnings": [
+        "检测到同名图层：back hair-arc, back hair-outer, front hair-side, eyewhite, irides, eyebrow；已通过稳定图层 ID 区分。",
+        "生成模型：ArtMeshEyeCloseL 默认姿态与 PSD 有明显偏差；期望=Bounds(left=524.0, top=228.0, right=580.0, bottom=245.0)，实际=Bounds(left=519.4926, top=209.26668, right=582.8206, bottom=229.27116)",
+        "生成模型：ArtMeshEyeCloseR 默认姿态与 PSD 有明显偏差；期望=Bounds(left=413.0, top=229.0, right=470.0, bottom=246.0)，实际=Bounds(left=412.627, top=212.39005, right=469.65393, bottom=230.01816)",
+        "生成模型：ArtMeshBackHairL3 默认姿态与 PSD 有明显偏差；期望=Bounds(left=652.0, top=268.0, right=662.0, bottom=300.0)，实际=Bounds(left=651.99994, top=275.235, right=661.9999, bottom=300.00006)",
+        "MOC3 回读：ArtMeshEyeCloseR 默认姿态与 PSD 有明显偏差；期望=Bounds(left=413.0, top=229.0, right=470.0, bottom=246.0)，实际=Bounds(left=412.62808, top=212.39044, right=469.65433, bottom=230.01848)",
+        "MOC3 回读：ArtMeshEyeCloseL 默认姿态与 PSD 有明显偏差；期望=Bounds(left=524.0, top=228.0, right=580.0, bottom=245.0)，实际=Bounds(left=519.4917, top=209.26639, right=582.8208, bottom=229.27095)",
+        "MOC3 回读：ArtMeshBackHairL3 默认姿态与 PSD 有明显偏差；期望=Bounds(left=652.0, top=268.0, right=662.0, bottom=300.0)，实际=Bounds(left=651.9888, top=275.248, right=662.0114, bottom=300.01224)",
+        "CMO3：未保留原始 PSD 源图编辑链；已从 1 页贴图重建可编辑图层（模型/Rig 数据仍保留）",
+        "CMO3 回读：ArtMeshEyeCloseR 默认姿态与 PSD 有明显偏差；期望=Bounds(left=413.0, top=229.0, right=470.0, bottom=246.0)，实际=Bounds(left=412.62808, top=212.39044, right=469.65433, bottom=230.01848)",
+        "CMO3 回读：ArtMeshEyeCloseL 默认姿态与 PSD 有明显偏差；期望=Bounds(left=524.0, top=228.0, right=580.0, bottom=245.0)，实际=Bounds(left=519.4917, top=209.26639, right=582.8208, bottom=229.27095)",
+        "CMO3 回读：ArtMeshBackHairL3 默认姿态与 PSD 有明显偏差；期望=Bounds(left=652.0, top=268.0, right=662.0, bottom=300.0)，实际=Bounds(left=651.9888, top=275.248, right=662.0114, bottom=300.01224)"
+      ]
+    }
+  ],
+  "minimalPublicEntryMocIdentical": true,
+  "pinkPublicHdMocIdentical": true,
+  "scope": "Metadata only; generated MOC/CMO/PSD, SDK, Gradle binaries, dependency JARs and classes are not included in this report directory."
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "name": "@mediapipe/tasks-vision",
+    "version": "1.0.1",
+    "publisher": "mediapipe@google.com",
+    "license": "Apache-2.0",
+    "tarballUrl": "https://registry.npmjs.org/@mediapipe/tasks-vision/-/tasks-vision-1.0.1.tgz",
+    "tarballSha256": "ee318eaa3d42230aa10910d114faf2a488c577c4e4d33c7cb04126924aca505f",
+    "tarballIntegrity": "sha512-rvRE2FmAZ6ZxKSw7wq+e+jQDpN3t1B/tD2mJz9SmAzb1msoDkd4dMoE4wAh8Z30Um0PQwLiHr9QtomhmXk3aUQ=="
+  },
+  "models": {
+    "face": {
+      "name": "face_landmarker",
+      "version": "float16/1",
+      "path": "models/face_landmarker.task"
+    },
+    "pose": {
+      "name": "pose_landmarker_lite",
+      "version": "float16/1",
+      "path": "models/pose_landmarker_lite.task"
+    }
+  },
+  "assets": {
+    "visionModule": "vision_bundle.mjs",
+    "wasmRoot": "wasm",
+    "faceModel": "models/face_landmarker.task",
+    "poseModel": "models/pose_landmarker_lite.task"
+  },
+  "files": [
+    {
+      "path": "models/face_landmarker.task",
+      "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+      "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+      "bytes": 3758596,
+      "kind": "model"
+    },
+    {
+      "path": "models/pose_landmarker_lite.task",
+      "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",
+      "sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "bytes": 5777746,
+      "kind": "model"
+    },
+    {
+      "path": "notices/Apache-2.0.txt",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "kind": "notice"
+    },
+    {
+      "path": "notices/README.md",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/README.md",
+      "sha256": "8326ed0beb1983b69cccb190937c2e368388969cb3ade06010fe51e0d5339308",
+      "bytes": 9259,
+      "kind": "notice"
+    },
+    {
+      "path": "notices/package.json",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/package.json",
+      "sha256": "f685301c07427e1d19a53b08afa586e5699aa1dfc2dd8c641887cc2c821b245e",
+      "bytes": 1192,
+      "kind": "notice"
+    },
+    {
+      "path": "vision_bundle.mjs",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/vision_bundle.mjs",
+      "sha256": "d885630c297c0b20b1fe86096cb06291c4c8080876f27852e724f24ac603713f",
+      "bytes": 155439,
+      "kind": "runtime"
+    },
+    {
+      "path": "wasm/vision_wasm_internal.js",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm/vision_wasm_internal.js",
+      "sha256": "e170ee67dd4e16c1a6fcd8840a206687e5a59b22c20e4a902bc445b095454d73",
+      "bytes": 323377,
+      "kind": "runtime"
+    },
+    {
+      "path": "wasm/vision_wasm_internal.wasm",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm/vision_wasm_internal.wasm",
+      "sha256": "8da277a733926eacd0474b8704b36742d6ec3231c57a860c5b889dff8f1df886",
+      "bytes": 11756954,
+      "kind": "runtime"
+    },
+    {
+      "path": "wasm/vision_wasm_module_internal.js",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm/vision_wasm_module_internal.js",
+      "sha256": "da8934057f147b622e82cfb4c0dbd85461c598e268588b5a8ba9ca963a8ff82d",
+      "bytes": 323415,
+      "kind": "runtime"
+    },
+    {
+      "path": "wasm/vision_wasm_module_internal.wasm",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm/vision_wasm_module_internal.wasm",
+      "sha256": "2dabd8e23c60984628beb7bb338764c81a08e6837145273f59578684b5d53c1b",
+      "bytes": 11756972,
+      "kind": "runtime"
+    },
+    {
+      "path": "wasm/vision_wasm_nosimd_internal.js",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm/vision_wasm_nosimd_internal.js",
+      "sha256": "e81d715a3d42cc3373602eb2f7aff795d164934db680e32496b65dab537f9658",
+      "bytes": 323180,
+      "kind": "runtime"
+    },
+    {
+      "path": "wasm/vision_wasm_nosimd_internal.wasm",
+      "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm/vision_wasm_nosimd_internal.wasm",
+      "sha256": "a28483cd42e74e855bf5ebdb6b40d9b66a5b49e35e95020bc97669e6822a3192",
+      "bytes": 10960242,
+      "kind": "runtime"
+    }
+  ],
+  "sources": [
+    "https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js",
+    "https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker/web_js",
+    "https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker",
+    "https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker",
+    "https://registry.npmjs.org/@mediapipe/tasks-vision/1.0.1"
+  ],
+  "hashProvenance": "Runtime/notice bytes were extracted from the versioned npm tarball after matching registry SHA-512 integrity. Versioned Google model assets and Apache license text were downloaded directly and SHA-256 hashed. Installer verifies all CDN and model downloads against these exact bytes. Hashes pin content; they are not an independent publisher signature.",
+  "distribution": "Acquire externally into ignored .cache/mediapipe. Do not commit SDK/WASM/model binaries."
+}

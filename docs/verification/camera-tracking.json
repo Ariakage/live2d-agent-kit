@@ -1,0 +1,664 @@
+{
+  "schemaVersion": 1,
+  "mode": "physical-camera",
+  "scope": "Actual physical camera, local Face/Pose CPU inference and the published eyebrow-bound Pink Sakura HD model. No synthetic device, recording, camera image or landmark dump; numeric ranges and lifecycle results only. Not an accuracy benchmark or VTube Studio acceptance.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "server blocks connections outside the preview origin",
+      "passed": true
+    },
+    {
+      "name": "opening preview does not request devices",
+      "passed": true
+    },
+    {
+      "name": "camera dependencies were prepared",
+      "passed": true
+    },
+    {
+      "name": "physical camera and recognizers start",
+      "passed": true,
+      "detail": {
+        "status": "running",
+        "code": "",
+        "message": "未识别到面部，面部参数已回正。"
+      }
+    },
+    {
+      "name": "real video frames reach face inference",
+      "passed": true
+    },
+    {
+      "name": "shoulder tracking produced valid samples",
+      "passed": true,
+      "detail": {
+        "hipPitchSamples": 0,
+        "scope": "Shoulders only when hips are outside the frame"
+      }
+    },
+    {
+      "name": "camera results drive native model parameters",
+      "passed": true
+    },
+    {
+      "name": "visible face accepts neutral calibration",
+      "passed": true
+    },
+    {
+      "name": "stalled decoder loses tracking and returns mapped targets to neutral",
+      "passed": true,
+      "detail": {
+        "mode": "camera",
+        "detection": {
+          "face": false,
+          "body": false
+        },
+        "differences": [
+          {
+            "id": "ParamAngleX",
+            "value": -8.44242080688673e-08,
+            "default": 0,
+            "absoluteError": 8.44242080688673e-08
+          },
+          {
+            "id": "ParamAngleY",
+            "value": 7.001289759500651e-06,
+            "default": 0,
+            "absoluteError": 7.001289759500651e-06
+          },
+          {
+            "id": "ParamAngleZ",
+            "value": 2.1010807813581778e-06,
+            "default": 0,
+            "absoluteError": 2.1010807813581778e-06
+          },
+          {
+            "id": "ParamBodyAngleX",
+            "value": 2.9478405849658884e-06,
+            "default": 0,
+            "absoluteError": 2.9478405849658884e-06
+          },
+          {
+            "id": "ParamBodyAngleY",
+            "value": 0,
+            "default": 0,
+            "absoluteError": 0
+          },
+          {
+            "id": "ParamBodyAngleZ",
+            "value": 2.898087586800102e-06,
+            "default": 0,
+            "absoluteError": 2.898087586800102e-06
+          },
+          {
+            "id": "ParamEyeLOpen",
+            "value": 1,
+            "default": 1,
+            "absoluteError": 0
+          },
+          {
+            "id": "ParamEyeROpen",
+            "value": 1,
+            "default": 1,
+            "absoluteError": 0
+          },
+          {
+            "id": "ParamEyeBallX",
+            "value": 2.0944247225429535e-08,
+            "default": 0,
+            "absoluteError": 2.0944247225429535e-08
+          },
+          {
+            "id": "ParamEyeBallY",
+            "value": -2.2107720099029393e-07,
+            "default": 0,
+            "absoluteError": 2.2107720099029393e-07
+          },
+          {
+            "id": "ParamBrowLY",
+            "value": -6.570088828539156e-08,
+            "default": 0,
+            "absoluteError": 6.570088828539156e-08
+          },
+          {
+            "id": "ParamBrowRY",
+            "value": -4.879808912505723e-08,
+            "default": 0,
+            "absoluteError": 4.879808912505723e-08
+          },
+          {
+            "id": "ParamMouthForm",
+            "value": 3.036541504353174e-12,
+            "default": 0,
+            "absoluteError": 3.036541504353174e-12
+          },
+          {
+            "id": "ParamMouthOpenY",
+            "value": 1.488945144956233e-08,
+            "default": 0,
+            "absoluteError": 1.488945144956233e-08
+          },
+          {
+            "id": "ParamBreath",
+            "value": 0,
+            "default": 0,
+            "absoluteError": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "manual parameter control releases the physical camera",
+      "passed": true
+    },
+    {
+      "name": "face-only mode starts without pose inference",
+      "passed": true
+    },
+    {
+      "name": "simulation releases camera and takes exclusive input ownership",
+      "passed": true
+    },
+    {
+      "name": "only video was requested",
+      "passed": true
+    },
+    {
+      "name": "no external connection passed the browser policy",
+      "passed": true,
+      "detail": {
+        "attemptedOrigins": [],
+        "blockedByPolicy": [
+          {
+            "origin": "https://odml.pa.googleapis.com",
+            "directive": "connect-src"
+          },
+          {
+            "origin": "https://odml.pa.googleapis.com",
+            "directive": "connect-src"
+          },
+          {
+            "origin": "https://odml.pa.googleapis.com",
+            "directive": "connect-src"
+          }
+        ]
+      }
+    },
+    {
+      "name": "no uncaught browser error",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "final cleanup ends every video track without audio",
+      "passed": true,
+      "detail": {
+        "allTracksEnded": true,
+        "audioTracks": 0
+      }
+    }
+  ],
+  "errors": [],
+  "externalRequestOrigins": [],
+  "blockedExternalRequests": [
+    {
+      "origin": "https://odml.pa.googleapis.com",
+      "directive": "connect-src"
+    },
+    {
+      "origin": "https://odml.pa.googleapis.com",
+      "directive": "connect-src"
+    },
+    {
+      "origin": "https://odml.pa.googleapis.com",
+      "directive": "connect-src"
+    }
+  ],
+  "loadedResources": [
+    {
+      "file": "model.model3.json",
+      "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+      "bytes": 900,
+      "status": 200
+    },
+    {
+      "file": "model.model3.json",
+      "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+      "bytes": 900,
+      "status": 200
+    },
+    {
+      "file": "PinkSakura.moc3",
+      "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+      "bytes": 395520,
+      "status": 200
+    },
+    {
+      "file": "texture_00.png",
+      "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+      "bytes": 45336522,
+      "status": 200
+    }
+  ],
+  "browserVersion": "152.0.7977.83",
+  "contentSecurityPolicy": "connect-src 'self'",
+  "measurements": {
+    "samples": 80,
+    "faceSamples": 67,
+    "bodySamples": 77,
+    "hipPitchSamples": 0,
+    "inferenceFrames": 187,
+    "inputRanges": {
+      "FaceAngleX": {
+        "min": -30,
+        "max": 9.529368604288038
+      },
+      "FaceAngleY": {
+        "min": -17.842944537229073,
+        "max": 20.143394229465912
+      },
+      "FaceAngleZ": {
+        "min": -17.367784761905796,
+        "max": 11.92951163733619
+      },
+      "EyeOpenLeft": {
+        "min": 0.1653883457183838,
+        "max": 1
+      },
+      "EyeOpenRight": {
+        "min": 0.2711906433105469,
+        "max": 1
+      },
+      "EyeLeftX": {
+        "min": -0.22650928422808647,
+        "max": 0.5933340624906123
+      },
+      "EyeLeftY": {
+        "min": -0.8204120702575892,
+        "max": 0.4276981567963958
+      },
+      "EyeRightX": {
+        "min": -0.23454894870519638,
+        "max": 0.5945655780378729
+      },
+      "EyeRightY": {
+        "min": -0.8134735380299389,
+        "max": 0.2070173230022192
+      },
+      "MouthOpen": {
+        "min": 0,
+        "max": 0.103878453373909
+      },
+      "MouthSmile": {
+        "min": 0,
+        "max": 0.4871726781129837
+      },
+      "BrowLeftY": {
+        "min": -0.5483138083189261,
+        "max": 0.6121527624200098
+      },
+      "BrowRightY": {
+        "min": -0.5048505744431168,
+        "max": 0.560047997388756
+      },
+      "MocopiBodyAngleX": {
+        "min": -6.006342349133433,
+        "max": 10
+      },
+      "MocopiBodyAngleY": {
+        "min": 0,
+        "max": 0
+      },
+      "MocopiBodyAngleZ": {
+        "min": -10,
+        "max": 7.562454750539587
+      }
+    },
+    "nativeParameterRanges": {
+      "ParamAngleX": {
+        "min": -42.9699592590332,
+        "max": 12.688031196594238
+      },
+      "ParamAngleY": {
+        "min": -16.903030395507812,
+        "max": 19.830839157104492
+      },
+      "ParamAngleZ": {
+        "min": -16.991514205932617,
+        "max": 11.633713722229004
+      },
+      "ParamBodyAngleX": {
+        "min": -6.44269323348999,
+        "max": 10
+      },
+      "ParamBodyAngleY": {
+        "min": 0,
+        "max": 0
+      },
+      "ParamBodyAngleZ": {
+        "min": -9.999995231628418,
+        "max": 8.52937126159668
+      },
+      "ParamEyeLOpen": {
+        "min": 0.1696372926235199,
+        "max": 1
+      },
+      "ParamEyeROpen": {
+        "min": 0.27772122621536255,
+        "max": 1
+      },
+      "ParamEyeBallX": {
+        "min": -0.16287793219089508,
+        "max": 0.6198599338531494
+      },
+      "ParamEyeBallY": {
+        "min": -0.7598820924758911,
+        "max": 0.1986875981092453
+      },
+      "ParamEyeBallForm": {
+        "min": -0.21795861423015594,
+        "max": 0.45005011558532715
+      },
+      "ParamBrowLY": {
+        "min": -0.46491286158561707,
+        "max": 0.5446193814277649
+      },
+      "ParamBrowRY": {
+        "min": -0.48416364192962646,
+        "max": 0.5184035301208496
+      },
+      "ParamMouthForm": {
+        "min": 1.5985073431685148e-15,
+        "max": 0.24979270994663239
+      },
+      "ParamMouthOpenY": {
+        "min": 5.897963865370088e-17,
+        "max": 0.14479081332683563
+      },
+      "ParamBreath": {
+        "min": 0,
+        "max": 0
+      },
+      "ParamFrontHairSideLSwing": {
+        "min": -0.21998213231563568,
+        "max": 0.13779474794864655
+      },
+      "ParamFrontHairSideRSwing": {
+        "min": -0.2200959473848343,
+        "max": 0.1358308494091034
+      },
+      "ParamBackHairOuterLSwing": {
+        "min": -0.29687580466270447,
+        "max": 0.19080601632595062
+      },
+      "ParamBackHairOuterRSwing": {
+        "min": -0.30375391244888306,
+        "max": 0.19569432735443115
+      },
+      "ParamBackHairArcLSwing": {
+        "min": -0.29731884598731995,
+        "max": 0.19106806814670563
+      },
+      "ParamBackHairArcRSwing": {
+        "min": -0.3051777780056,
+        "max": 0.1967155635356903
+      },
+      "ParamBackHairBaseRSwing": {
+        "min": -0.3051777780056,
+        "max": 0.1967155635356903
+      },
+      "ParamBackHairBaseLSwing": {
+        "min": -0.29731884598731995,
+        "max": 0.19106806814670563
+      }
+    },
+    "inferenceFps": {
+      "min": 1.9345822368698404,
+      "max": 11.777872380329624,
+      "mean": 8.447002798087224
+    },
+    "inferenceMs": {
+      "min": 5.099999904632568,
+      "max": 163.59999990463257
+    }
+  },
+  "calibration": true,
+  "staleDecoder": {
+    "mode": "camera",
+    "detection": {
+      "face": false,
+      "body": false
+    },
+    "differences": [
+      {
+        "id": "ParamAngleX",
+        "value": -8.44242080688673e-08,
+        "default": 0,
+        "absoluteError": 8.44242080688673e-08
+      },
+      {
+        "id": "ParamAngleY",
+        "value": 7.001289759500651e-06,
+        "default": 0,
+        "absoluteError": 7.001289759500651e-06
+      },
+      {
+        "id": "ParamAngleZ",
+        "value": 2.1010807813581778e-06,
+        "default": 0,
+        "absoluteError": 2.1010807813581778e-06
+      },
+      {
+        "id": "ParamBodyAngleX",
+        "value": 2.9478405849658884e-06,
+        "default": 0,
+        "absoluteError": 2.9478405849658884e-06
+      },
+      {
+        "id": "ParamBodyAngleY",
+        "value": 0,
+        "default": 0,
+        "absoluteError": 0
+      },
+      {
+        "id": "ParamBodyAngleZ",
+        "value": 2.898087586800102e-06,
+        "default": 0,
+        "absoluteError": 2.898087586800102e-06
+      },
+      {
+        "id": "ParamEyeLOpen",
+        "value": 1,
+        "default": 1,
+        "absoluteError": 0
+      },
+      {
+        "id": "ParamEyeROpen",
+        "value": 1,
+        "default": 1,
+        "absoluteError": 0
+      },
+      {
+        "id": "ParamEyeBallX",
+        "value": 2.0944247225429535e-08,
+        "default": 0,
+        "absoluteError": 2.0944247225429535e-08
+      },
+      {
+        "id": "ParamEyeBallY",
+        "value": -2.2107720099029393e-07,
+        "default": 0,
+        "absoluteError": 2.2107720099029393e-07
+      },
+      {
+        "id": "ParamBrowLY",
+        "value": -6.570088828539156e-08,
+        "default": 0,
+        "absoluteError": 6.570088828539156e-08
+      },
+      {
+        "id": "ParamBrowRY",
+        "value": -4.879808912505723e-08,
+        "default": 0,
+        "absoluteError": 4.879808912505723e-08
+      },
+      {
+        "id": "ParamMouthForm",
+        "value": 3.036541504353174e-12,
+        "default": 0,
+        "absoluteError": 3.036541504353174e-12
+      },
+      {
+        "id": "ParamMouthOpenY",
+        "value": 1.488945144956233e-08,
+        "default": 0,
+        "absoluteError": 1.488945144956233e-08
+      },
+      {
+        "id": "ParamBreath",
+        "value": 0,
+        "default": 0,
+        "absoluteError": 0
+      }
+    ]
+  },
+  "deviceRequests": [
+    {
+      "video": true,
+      "audio": false
+    },
+    {
+      "video": true,
+      "audio": false
+    }
+  ],
+  "externalRequestOutcomes": [],
+  "cleanup": {
+    "allTracksEnded": true,
+    "audioTracks": 0
+  },
+  "testedAt": "2026-09-12T14:59:52.498699+00:00",
+  "sourceIdentity": [
+    {
+      "file": "scripts/check-camera.cjs",
+      "bytes": 11065,
+      "sha256": "895202b18279d811b11e61211341bb45fddf915383bd128d9a7ecb08cd8977d8"
+    },
+    {
+      "file": "templates/web-preview/camera-tracker.js",
+      "bytes": 13172,
+      "sha256": "40ee92740d273196c388e19a867d2c026c6dc4cb3709b680c7729645c720498f"
+    },
+    {
+      "file": "templates/web-preview/tracking-math.js",
+      "bytes": 10684,
+      "sha256": "7c817822ea59a5d9e8065a88bf81fca222df14500fd953aef3f60cedafe4d647"
+    },
+    {
+      "file": "templates/web-preview/capture-controller.js",
+      "bytes": 8964,
+      "sha256": "765e21f85d2921cf5558cc166becde95609cad89c38ef4c89ec82dd5fac115b5"
+    },
+    {
+      "file": "templates/web-preview/tracking-input.js",
+      "bytes": 5745,
+      "sha256": "31320e1f75d87ccc80af23a9ace83be4183599ed1c5898b8532e05e56f94dcf7"
+    },
+    {
+      "file": "templates/web-preview/app.js",
+      "bytes": 9757,
+      "sha256": "fe0fb9b5172d53dc0fb60fa38026bd7033db3519106a825f90d51731d2f9bf2e"
+    },
+    {
+      "file": "templates/web-preview/server.py",
+      "bytes": 1551,
+      "sha256": "9efb35c8a42e06aa43355cbe3de2018cd26f0e21eeebf9ca892da2fe4d537ae1"
+    },
+    {
+      "file": "tools/tracking-dependencies.json",
+      "bytes": 5422,
+      "sha256": "64c15452617080b8b8e5e100e18c3d9c5ed9420abea47c2c699bec5907baf480"
+    }
+  ],
+  "knownLimits": [
+    "Single-camera shoulder/torso depth is an estimate; no independent arm or finger rig.",
+    "Observed recognition rates include startup and rendering load, and are not guaranteed frame rates.",
+    "The SDK attempts usage-metric logging; the preview response CSP blocked all three observed log attempts before external transmission. Keep the policy when serving elsewhere.",
+    "Neutral-pose calibration can reject blinks or an open mouth; the test waits for an eligible real frame.",
+    "Previous development runs caught slow-frame neutralization and SDK telemetry; this report is the final rerun after controller timing and response-policy fixes."
+  ],
+  "trackingDependencyColdFetch": {
+    "initialDirectoryEmpty": true,
+    "transport": "Python urllib, fixed remote URLs; no previous files copied",
+    "downloadReportSha256": "03548b3d91abff95fbd1226da96d4a7d07e9b737ed13d145a95bd3ccf61f982c",
+    "passed": true,
+    "fileCount": 12,
+    "totalBytes": 45157730,
+    "networkRequests": 12,
+    "files": [
+      {
+        "path": "models/face_landmarker.task",
+        "bytes": 3758596,
+        "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+      },
+      {
+        "path": "models/pose_landmarker_lite.task",
+        "bytes": 5777746,
+        "sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a"
+      },
+      {
+        "path": "notices/Apache-2.0.txt",
+        "bytes": 11358,
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "path": "notices/README.md",
+        "bytes": 9259,
+        "sha256": "8326ed0beb1983b69cccb190937c2e368388969cb3ade06010fe51e0d5339308"
+      },
+      {
+        "path": "notices/package.json",
+        "bytes": 1192,
+        "sha256": "f685301c07427e1d19a53b08afa586e5699aa1dfc2dd8c641887cc2c821b245e"
+      },
+      {
+        "path": "vision_bundle.mjs",
+        "bytes": 155439,
+        "sha256": "d885630c297c0b20b1fe86096cb06291c4c8080876f27852e724f24ac603713f"
+      },
+      {
+        "path": "wasm/vision_wasm_internal.js",
+        "bytes": 323377,
+        "sha256": "e170ee67dd4e16c1a6fcd8840a206687e5a59b22c20e4a902bc445b095454d73"
+      },
+      {
+        "path": "wasm/vision_wasm_internal.wasm",
+        "bytes": 11756954,
+        "sha256": "8da277a733926eacd0474b8704b36742d6ec3231c57a860c5b889dff8f1df886"
+      },
+      {
+        "path": "wasm/vision_wasm_module_internal.js",
+        "bytes": 323415,
+        "sha256": "da8934057f147b622e82cfb4c0dbd85461c598e268588b5a8ba9ca963a8ff82d"
+      },
+      {
+        "path": "wasm/vision_wasm_module_internal.wasm",
+        "bytes": 11756972,
+        "sha256": "2dabd8e23c60984628beb7bb338764c81a08e6837145273f59578684b5d53c1b"
+      },
+      {
+        "path": "wasm/vision_wasm_nosimd_internal.js",
+        "bytes": 323180,
+        "sha256": "e81d715a3d42cc3373602eb2f7aff795d164934db680e32496b65dab537f9658"
+      },
+      {
+        "path": "wasm/vision_wasm_nosimd_internal.wasm",
+        "bytes": 10960242,
+        "sha256": "a28483cd42e74e855bf5ebdb6b40d9b66a5b49e35e95020bc97669e6822a3192"
+      }
+    ],
+    "offlineVerifyPassed": true,
+    "offlineVerifyNetworkRequests": 0
+  }
+}

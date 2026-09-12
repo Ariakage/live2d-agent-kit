@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-12T15:16:29.370423+00:00",
+  "passed": true,
+  "scope": "Cold-start full source compilation with network recovery, actual Minimal export/Core/Web and current public Pink LOW export/Core from that newly compiled engine. Later exports reuse only this audit new outputs. No physical-camera, Editor GUI, VTube Studio, cross-platform or offline validation.",
+  "sourceSnapshot": "2afd9d2ac29d1ef93c39b86215c3d81d89cb7f6d",
+  "sourceArchiveSha256": "662932f0a542044b23d86f18845ac6fc1c9011f0b6919eba57ecf44d904096ee",
+  "workingSourceDifferencesRecorded": true,
+  "sourceEngineCommit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+  "coldStart": {
+    "initialDirectoriesAbsent": {
+      "engineExists": false,
+      "gradleUserHomeExists": false,
+      "kitWorkExists": false,
+      "kitCacheExists": false,
+      "kitBuildExists": false
+    },
+    "firstRelayCacheEmpty": true,
+    "reusedProductionApplicationClasses": false,
+    "reusedPreexistingGradleOrMavenCache": false,
+    "reusedPreviousHeadlessJars": false,
+    "sameAttemptNewDownloadsResumedAfterNetworkFailures": true
+  },
+  "fullCompilation": {
+    "passed": true,
+    "flags": [
+      "--no-daemon",
+      "--no-build-cache",
+      "--rerun-tasks",
+      "-Pkotlin.compiler.execution.strategy=in-process"
+    ],
+    "compiledClassCount": 1899,
+    "compiledTreeSha256": "70beb13683e2a07935e3f5ddde6f9da8df07296ea22527598ccd3d57eee2dba8",
+    "classpathEntryCount": 78,
+    "newDownloadFileCount": 446,
+    "successfulCommandDuration": "11m21s; not total audit duration",
+    "successfulBuildLogSha256": "c6717295b6fb4713b99573d6d0ff08ea05a2f4654ee36498d636d3fe029f3265"
+  },
+  "minimal": {
+    "mocSha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9",
+    "nativePoses": 192,
+    "webChecks": 22,
+    "all19ParametersObserved": true,
+    "cameraRequests": 0,
+    "publicEntryPassed": true
+  },
+  "pink": {
+    "mocSha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+    "publicHdMocIdentical": true,
+    "publicImageDependencyCount": 8,
+    "sourceLayers": 24,
+    "nativePoses": 202,
+    "newUpscaleOrWebPoseMatrixRun": false
+  },
+  "networkRecovery": [
+    "Full Git fetch ended with curl18/early EOF; fresh partial+sparse checkout retained all source/build resources.",
+    "Direct Gradle HTTPS was slow. First empty curl relay and Gradle cache downloaded only official-source artifacts.",
+    "First relay build exceeded Gradle read timeout; bounded curl resume and per-build wait enabled. No application classes existed before successful retry.",
+    "Separate default Wrapper distribution smoke reached approximately90% then networkTimeout10000 failed; default upstream wrapper settings unchanged.",
+    "Public export-model.sh with explicitly supplied checksum-verified fresh Gradle9.6.1 succeeded for Minimal and Pink."
+  ],
+  "currentKitValidation": {
+    "pythonTests": 59,
+    "passed": true,
+    "kitPassed": true
+  },
+  "limitations": [
+    "Not a no-retry first-command success.",
+    "Engine lock is not a full transitive Gradle dependency verification lock.",
+    "CMO3 and every output byte are not promised deterministic across invocations.",
+    "CMO3 reconstructs editable layers from atlas and does not retain original PSD source-edit chain.",
+    "Preserved exporter warnings are separate from native Core errors/warnings.",
+    "Original Minimal full compiler invocation used freshly obtained official Gradle directly. Public entry smoke reused only this audit newly compiled engine.",
+    "No SDK/weights/binaries are redistributed by these records."
+  ],
+  "evidence": [
+    {
+      "path": "commands.json",
+      "bytes": 10012,
+      "sha256": "7c11d2c800d4702674d3ac63a63af27184a26036fa5fc9128bfdacac825c2655"
+    },
+    {
+      "path": "compiled-output-tree.json",
+      "bytes": 409577,
+      "sha256": "dd440e7e4485dc80c0f7a8e22f37e86a8ae54fcaab0e2566cc6b4dde7cb162a8"
+    },
+    {
+      "path": "dependency-downloads.json",
+      "bytes": 239586,
+      "sha256": "bb85853407ccb871c50b12f264a3ece0bd99a5bd5230e430bb4689614b4e66bc"
+    },
+    {
+      "path": "engine-source-check.json",
+      "bytes": 530,
+      "sha256": "e5ecff7c14d7c43de72f377a4013ce2a2e7a63ff8a406cedd436659a3e46af56"
+    },
+    {
+      "path": "export-classpath.json",
+      "bytes": 22191,
+      "sha256": "9ac70d3e1acb178493b35667b1b6ecd7fcc39598e5b62c126097652e78965611"
+    },
+    {
+      "path": "exported-artifacts.json",
+      "bytes": 9215,
+      "sha256": "947bc1d68446c758d1ac439fec88ca8d5f1c98a5580c4d38dd8cf16b0782c650"
+    },
+    {
+      "path": "inputs-and-tools.json",
+      "bytes": 6585,
+      "sha256": "7dbca2cdbfd770ad29650d1658a4f7e6c4e3dfb7cb946898fccffc51a696134e"
+    },
+    {
+      "path": "native-minimal.json",
+      "bytes": 331384,
+      "sha256": "826dc543df1b7ec4867cff6f8819f68f745ce6057eb75a40a933ac147007bf01"
+    },
+    {
+      "path": "native-pink.json",
+      "bytes": 285264,
+      "sha256": "7050be4aa7391966edec5c0badb5d303140c4aec7944607b52905539e67601be"
+    },
+    {
+      "path": "web-minimal.json",
+      "bytes": 9738,
+      "sha256": "b7cdd600b8bab4a9a6f849a54bb74aeb877155198635e4134f88b178ec2e8257"
+    }
+  ]
+}
