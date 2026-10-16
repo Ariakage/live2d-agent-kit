@@ -60,6 +60,8 @@ Live2D Agent Kit 帮助 Codex 和其他 coding agent 把参考图或分层 PSD �
 
 [面捕与复现证据索引 →](docs/verification/README.md)：真实摄像头检查、冷源码编译和已提交源包重建分别记录，不需要从完整制作日志中寻找结果。
 
+**2026-10-17 工作流同步：** 保留粉色模型原有 Idle / Blink / Nod / Shake，新增[连续动画检查](examples/pink-sakura/verification/continuous-20261017/README.md)：实际播放采集 **1,488 帧**，另重跑 202 个 Core 姿态、22 项 Web 检查和 91 张静态姿态。检查脚本核对载入资源 SHA、中间值、往返/反向和中性复位；接缝排查与可恢复打包经验已写入工作流。超分仍为 **`realesr-animevideov3-x4`**，本次没有重做素材或改变动作绑定。
+
 | 模型结构 | 动漫超分 | 实际验证 |
 | --- | --- | --- |
 | **24 个源层 · 26 个 Drawable · 24 个参数** | **2048² → 8192²**，AnimeVideo v3 4× | **202** 个原生姿态 · **22** 项 Web 检查 |

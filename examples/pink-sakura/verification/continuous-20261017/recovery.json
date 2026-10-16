@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "scope": "Runtime ZIP extracted into a new directory; CRC, member set, ordinary-file status and every member SHA checked. Not editable CMO reopening or source recompilation.",
+  "zipSha256": "37ef8ea5869c39741a75e68aa792339e809d79b9b30990c33c03ced7270dafad",
+  "members": 12,
+  "runtimeFiles": 9,
+  "publicationFiles": 2,
+  "files": {
+    "ASSET-LICENSE.md": {
+      "sha256": "1d5a80ece404d21357a8027168e4903acddec1ee335686a46ad809d3dba63dc3",
+      "bytes": 1392
+    },
+    "ATTRIBUTION.md": {
+      "sha256": "636a26a1440d33c90e1b7a3ca6375deb1455ec413572fda472b0e7d01d129b09",
+      "bytes": 1749
+    },
+    "PinkSakura.8192/texture_00.png": {
+      "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+      "bytes": 45336522
+    },
+    "PinkSakura.blink.motion3.json": {
+      "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110",
+      "bytes": 1155
+    },
+    "PinkSakura.cdi3.json": {
+      "sha256": "553917dfea91fadc66fa911fee42e0085866598c224110fdd80b26646c1af850",
+      "bytes": 5012
+    },
+    "PinkSakura.idle.motion3.json": {
+      "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990",
+      "bytes": 2282
+    },
+    "PinkSakura.moc3": {
+      "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+      "bytes": 395520
+    },
+    "PinkSakura.model3.json": {
+      "sha256": "34023a308cb00c621e6a199afb1598819b1196eb7d864a4ad50dd2dbe7bc4ee5",
+      "bytes": 757
+    },
+    "PinkSakura.nod.motion3.json": {
+      "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418",
+      "bytes": 1751
+    },
+    "PinkSakura.physics3.json": {
+      "sha256": "cad996de99c0dd1e7217665533b568f00cca4a45d51144999aa77bf731f3d076",
+      "bytes": 18649
+    },
+    "PinkSakura.shake.motion3.json": {
+      "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01",
+      "bytes": 1571
+    }
+  },
+  "cameraTested": false,
+  "vtubeStudioTested": false,
+  "originalLocalReportSha256": "e8d0cb919150d9fbbe10d6b78b22811410bfe735a4d5636cb30ef613f1d1ea27"
+}

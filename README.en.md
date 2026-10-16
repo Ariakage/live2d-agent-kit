@@ -37,6 +37,8 @@ Start with the geometric minimal example to check your local export chain before
 
 [Runtime files](examples/pink-sakura/runtime/) · [Rebuild the example](examples/pink-sakura/README.md#复现模板) · [Original reference](examples/pink-sakura/source/reference.png) · [Verification records](examples/pink-sakura/verification/README.md)
 
+**2026-10-17 workflow update:** Pink Sakura retains Idle / Blink / Nod / Shake. The new [continuous-motion review](examples/pink-sakura/verification/continuous-20261017/README.md) captured **1,488 completed WebGL frames**, alongside fresh checks of 202 native Core poses, 22 browser checks and 91 static pose captures. The runner checks loaded-resource hashes, intermediate values, reversal/repeat paths and neutral reset. Seam diagnosis and recoverable packaging lessons are now part of the workflow. The atlas still uses **`realesr-animevideov3-x4`**; this update does not redraw or re-rig the model.
+
 The canvas captures have transparent backgrounds, so their surroundings can appear light or dark depending on the README viewer's theme. The header is a separate illustration; the table contains runtime captures.
 
 | What was checked | Recorded result |

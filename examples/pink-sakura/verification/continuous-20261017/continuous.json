@@ -1,0 +1,425 @@
+{
+  "schema": "pink-continuous-review-v1",
+  "startedAt": "2026-10-16T16:02:58.380Z",
+  "url": "http://127.0.0.1:8876/",
+  "pass": true,
+  "visualReview": "pending",
+  "cameraTested": false,
+  "vtubeStudioTested": false,
+  "errors": [],
+  "tracks": [
+    {
+      "name": "motion-Idle",
+      "group": "Idle",
+      "duration": 6.5,
+      "view": "portrait",
+      "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "frameCount": 383,
+      "timing": {
+        "frames": 383,
+        "durationMs": 6515.799999952316,
+        "maxGapMs": 35.69999998807907,
+        "gapsOver100ms": 0
+      },
+      "neutralRestored": true
+    },
+    {
+      "name": "motion-Blink",
+      "group": "Blink",
+      "duration": 1.7,
+      "view": "portrait",
+      "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "frameCount": 101,
+      "timing": {
+        "frames": 101,
+        "durationMs": 1715.5,
+        "maxGapMs": 33.799999952316284,
+        "gapsOver100ms": 0
+      },
+      "neutralRestored": true
+    },
+    {
+      "name": "motion-Nod",
+      "group": "Nod",
+      "duration": 2.5,
+      "view": "portrait",
+      "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "frameCount": 149,
+      "timing": {
+        "frames": 149,
+        "durationMs": 2516.2000000476837,
+        "maxGapMs": 33.39999997615814,
+        "gapsOver100ms": 0
+      },
+      "neutralRestored": true
+    },
+    {
+      "name": "motion-Shake",
+      "group": "Shake",
+      "duration": 2.5,
+      "view": "portrait",
+      "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "frameCount": 148,
+      "timing": {
+        "frames": 148,
+        "durationMs": 2512.800000011921,
+        "maxGapMs": 33.30000001192093,
+        "gapsOver100ms": 0
+      },
+      "neutralRestored": true
+    },
+    {
+      "name": "face-cycle",
+      "duration": 6,
+      "view": "face",
+      "neutralBefore": "96bb6208c7a3206ff143544008fd2ae7a2720456ea36142fafd542add4ab89b0",
+      "neutralAfter": "96bb6208c7a3206ff143544008fd2ae7a2720456ea36142fafd542add4ab89b0",
+      "frameCount": 354,
+      "timing": {
+        "frames": 354,
+        "durationMs": 6015.600000023842,
+        "maxGapMs": 33.39999997615814,
+        "gapsOver100ms": 0
+      },
+      "neutralRestored": true
+    },
+    {
+      "name": "body-hair-cycle",
+      "duration": 6,
+      "view": "portrait",
+      "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+      "frameCount": 353,
+      "timing": {
+        "frames": 353,
+        "durationMs": 6000,
+        "maxGapMs": 33.69999998807907,
+        "gapsOver100ms": 0
+      },
+      "neutralRestored": true
+    }
+  ],
+  "browser": {
+    "name": "chromium",
+    "version": "155.0.8059.84",
+    "playwrightPackage": "playwright",
+    "playwrightVersion": "1.63.0",
+    "explicitExecutablePath": true
+  },
+  "ready": {
+    "modelUrl": "http://127.0.0.1:8876/model/model.model3.json",
+    "physics": true,
+    "parameters": [
+      {
+        "id": "ParamAngleX",
+        "name": "角度 X",
+        "min": -45,
+        "max": 45,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamAngleY",
+        "name": "角度 Y",
+        "min": -30,
+        "max": 30,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamAngleZ",
+        "name": "角度 Z",
+        "min": -30,
+        "max": 30,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBodyAngleX",
+        "name": "身体角度 X",
+        "min": -10,
+        "max": 10,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBodyAngleY",
+        "name": "身体角度 Y",
+        "min": -10,
+        "max": 10,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBodyAngleZ",
+        "name": "身体角度 Z",
+        "min": -10,
+        "max": 10,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamEyeLOpen",
+        "name": "左眼开合",
+        "min": 0,
+        "max": 1,
+        "default": 1,
+        "value": 1
+      },
+      {
+        "id": "ParamEyeROpen",
+        "name": "右眼开合",
+        "min": 0,
+        "max": 1,
+        "default": 1,
+        "value": 1
+      },
+      {
+        "id": "ParamEyeBallX",
+        "name": "眼球 X",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamEyeBallY",
+        "name": "眼球 Y",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamEyeBallForm",
+        "name": "果冻眼",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBrowLY",
+        "name": "左眉 Y",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBrowRY",
+        "name": "右眉 Y",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamMouthForm",
+        "name": "嘴型",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamMouthOpenY",
+        "name": "嘴巴开合",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBreath",
+        "name": "呼吸",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamFrontHairSideLSwing",
+        "name": "front hair-side-l sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamFrontHairSideRSwing",
+        "name": "front hair-side-r sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBackHairOuterLSwing",
+        "name": "back hair-outer-l sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBackHairOuterRSwing",
+        "name": "back hair-outer-r sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBackHairArcLSwing",
+        "name": "back hair-arc-l sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBackHairArcRSwing",
+        "name": "back hair-arc-r sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBackHairBaseRSwing",
+        "name": "back hair-base-r sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      },
+      {
+        "id": "ParamBackHairBaseLSwing",
+        "name": "back hair-base-l sway",
+        "min": -1,
+        "max": 1,
+        "default": 0,
+        "value": 0
+      }
+    ],
+    "motions": [
+      "Idle",
+      "Blink",
+      "Nod",
+      "Shake"
+    ],
+    "expressions": [],
+    "coreVersionNumber": 83951616,
+    "coreVersion": "5.1.0",
+    "renderer": "WebGL",
+    "maxTextureSize": 16384,
+    "requestedClippingMaskSize": 1024,
+    "clippingMaskSize": 1024,
+    "width": 1024,
+    "height": 1536
+  },
+  "manifestSha256": "25506a73b2bf2517c7d5ad4b28a730261e824a6655bbaed7e584cc41de878518",
+  "loadedResources": [
+    {
+      "file": "model/model.model3.json",
+      "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+      "bytes": 900
+    },
+    {
+      "file": "model/PinkSakura.moc3",
+      "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+      "bytes": 395520
+    },
+    {
+      "file": "model/PinkSakura.8192/texture_00.png",
+      "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+      "bytes": 45336522
+    },
+    {
+      "file": "model/PinkSakura.physics3.json",
+      "sha256": "cad996de99c0dd1e7217665533b568f00cca4a45d51144999aa77bf731f3d076",
+      "bytes": 18649
+    },
+    {
+      "file": "model/PinkSakura.cdi3.json",
+      "sha256": "553917dfea91fadc66fa911fee42e0085866598c224110fdd80b26646c1af850",
+      "bytes": 5012
+    },
+    {
+      "file": "model/PinkSakura.idle.motion3.json",
+      "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990",
+      "bytes": 2282
+    },
+    {
+      "file": "model/PinkSakura.blink.motion3.json",
+      "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110",
+      "bytes": 1155
+    },
+    {
+      "file": "model/PinkSakura.nod.motion3.json",
+      "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418",
+      "bytes": 1751
+    },
+    {
+      "file": "model/PinkSakura.shake.motion3.json",
+      "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01",
+      "bytes": 1571
+    }
+  ],
+  "loadedCode": [
+    {
+      "file": "/app.js",
+      "sha256": "ef4e754c6929b355e9bb2907441135abc7e3e2235552480fa38c340ee05d9993"
+    },
+    {
+      "file": "/capture-controller.js",
+      "sha256": "844041c1a763282f20175173bcafa980198a9b5f0e380cb63e6cf1d379e57be8"
+    },
+    {
+      "file": "/camera-tracker.js",
+      "sha256": "40ee92740d273196c388e19a867d2c026c6dc4cb3709b680c7729645c720498f"
+    },
+    {
+      "file": "/runtime.js",
+      "sha256": "35059f4fce3a81aed799b26ea96ab6ee93543a8b272dbfa35922212d04e02792"
+    },
+    {
+      "file": "/view-config.js",
+      "sha256": "ff1ab2e1df15984b45d196df240a41cb92723f1a0ca00c93d33cc8ff5545e25d"
+    },
+    {
+      "file": "/tracking-input.js",
+      "sha256": "31320e1f75d87ccc80af23a9ace83be4183599ed1c5898b8532e05e56f94dcf7"
+    },
+    {
+      "file": "/tracking-math.js",
+      "sha256": "7c817822ea59a5d9e8065a88bf81fca222df14500fd953aef3f60cedafe4d647"
+    },
+    {
+      "file": "/vendor/live2dcubismcore.min.js",
+      "sha256": "25ae938cb4fe282ce189b357bcc97e603d1e1f7ec78bf04150d401c23cdc792f"
+    },
+    {
+      "file": "/vendor/pixi-6.5.10.min.js",
+      "sha256": "403f2f2ee8145fa17f60c5c89403056efe2680e5096ec2762036486914ed19c5"
+    },
+    {
+      "file": "/vendor/pixi-live2d-display-0.4.0.min.js",
+      "sha256": "af1267e6d52759b245766c578d905bfa025b532d5c3cc727c370957c4409e21b"
+    }
+  ],
+  "deviceRequests": 0,
+  "finishedAt": "2026-10-16T16:03:26.033Z",
+  "rawLocalReportSha256": "5a4f72028c709ce0ca0cdeb6cb374f83447878db6e257f382f2e45d1a4a11675",
+  "frameTrace": {
+    "file": "frames.jsonl",
+    "sha256": "0dc071eaac4cdafda6ba024c16241746e248300ac99c74e47d0c15dbd482b01f",
+    "records": 1488,
+    "imageFiles": "Generated by the runner; full PNG set retained locally, not committed."
+  }
+}

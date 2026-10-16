@@ -188,6 +188,17 @@ node work/pink-sakura-rebuild/check-poses.cjs \
 
 重新执行时，应阅读实际输出，逐帧检查脸部、闭眼/睁眼过渡、嘴周、后发与衣料连接，保存对应新文件的报告；已有报告不能用于另一套 MOC 或纹理。
 
+然后检查实际播放。`check-continuous.cjs` 在 Pixi 完成绘制后采集画布，覆盖现有四个 motion、嘴眉/眨眼组合与头身/发丝往返、中途反向及重复；轨迹内部不逐帧复位。输出目录必须为空。每帧记录时间、Core 参数和 PNG SHA；超过 250 ms 的帧间隙、资源哈希不符或中性 RGBA 复位失败都会使检查失败。PNG 采集会增加负载，测得的帧率不是纯播放性能基准。
+
+```sh
+PLAYWRIGHT_MODULE=/path/to/node_modules/playwright \
+node examples/pink-sakura/check-continuous.cjs \
+  http://127.0.0.1:8837/ work/pink-sakura-rebuild/continuous
+node --test tests/test_continuous_review.cjs
+```
+
+脚本是 Pink 当前参数的检查配方，换角色时先调整输入并核对其声明范围，不能靠静默钳制掩盖错误。自动结果始终保留 `visualReview: pending`；另行记录实际看过的编号帧、区域和剩余瑕疵。此次[连续检查结果](verification/continuous-20261017/README.md)保留现有素材及动作，不包含独立手臂动作。
+
 需要录制 README 动作演示时，可从实际网页画布捕获 72 帧，再用 FFmpeg 编码。该脚本使用合成输入，另存每帧的请求值和 Core 实际参数；演示录制不代替上述极值检查。
 
 ```sh

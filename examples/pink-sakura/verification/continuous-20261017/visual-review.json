@@ -1,0 +1,109 @@
+{
+  "status": "reviewed-with-limitations",
+  "scope": "All 1488 frames viewed in 18 numbered contact sheets, at overview scale only. Five original-size PNG frames also inspected. Static poses were automatically recaptured; this run does not claim fresh detailed visual review of all 91 static images.",
+  "overviewSheets": [
+    {
+      "file": "body-hair-cycle-0000.jpg",
+      "sha256": "67669c92f8f473b195dfc1cbf4706d6a438522c2a5dfba7f71cbc2b2fdeb48d3"
+    },
+    {
+      "file": "body-hair-cycle-0100.jpg",
+      "sha256": "0dcda0d3f69316d2c3cec38f6893a0772172c8eec55aa5228a22f8f389dc6268"
+    },
+    {
+      "file": "body-hair-cycle-0200.jpg",
+      "sha256": "f2ec1d8590371b5bc7f204dd564c8c9c27d5000cc9162d6a83cd54c12cd254b2"
+    },
+    {
+      "file": "body-hair-cycle-0300.jpg",
+      "sha256": "57667dfa0304313f7e98448f8677138bb363ad7468860f1053fc2142be33d6fb"
+    },
+    {
+      "file": "face-cycle-0000.jpg",
+      "sha256": "c638a62138db8b2b46508aae2fed9e2be72be5ad29bf5ca6994235f340c29abf"
+    },
+    {
+      "file": "face-cycle-0100.jpg",
+      "sha256": "b48c1621de7fbf485e20d545ea0aef15b1a65d43c545a4ca8de6e4f48b1ebec3"
+    },
+    {
+      "file": "face-cycle-0200.jpg",
+      "sha256": "17e0fb9357954eb92ee715e6fbfb83be39a642dcb480d102f9930a208e14ec8a"
+    },
+    {
+      "file": "face-cycle-0300.jpg",
+      "sha256": "0b9b9f029e67afe0e995ecf4537a2a135d190309bc49084561582fe2001f7e79"
+    },
+    {
+      "file": "motion-Blink-0000.jpg",
+      "sha256": "a634fe2797dc219e668f404c4677ac531d803ce1c86f4f19f28b4d663f2e9ac0"
+    },
+    {
+      "file": "motion-Blink-0100.jpg",
+      "sha256": "8c82ad7de4a08013a10dd728ece805fa9c9cba965ad20e8d656c29cee2ca1023"
+    },
+    {
+      "file": "motion-Idle-0000.jpg",
+      "sha256": "16af53318424777527c39ff99c4ef72e47ff4fe0921761cb62f02d3f06c8619d"
+    },
+    {
+      "file": "motion-Idle-0100.jpg",
+      "sha256": "9f98f84799d7f13de8d38b28bb55f60adbac3a84e64acb2101600776a32f1bd2"
+    },
+    {
+      "file": "motion-Idle-0200.jpg",
+      "sha256": "37dc7543374e8b098597318402e9454b0b997843fa9d502653f63de11db5b938"
+    },
+    {
+      "file": "motion-Idle-0300.jpg",
+      "sha256": "1f07cc75995565e4957903a4e34d30e0bd3f8cd24f9fae7674d6120c875bbd4c"
+    },
+    {
+      "file": "motion-Nod-0000.jpg",
+      "sha256": "c279f776c693c38172cd658bf101005d3a8cbdf781b47b9a58fe83c5fc8f2f9c"
+    },
+    {
+      "file": "motion-Nod-0100.jpg",
+      "sha256": "488044065591790cc142933d56adb2ebdfeee6dd7ba893148cf74f218ffd0259"
+    },
+    {
+      "file": "motion-Shake-0000.jpg",
+      "sha256": "79d101fb02ff1d8508a822176e39119d44bd16055c3023b47bdf7166371265c5"
+    },
+    {
+      "file": "motion-Shake-0100.jpg",
+      "sha256": "6969479df3d8310417f4fd60fc9a54896c20f4aa86047f490f619cc7df090dfd"
+    }
+  ],
+  "originalSizeFrames": [
+    {
+      "file": "face-cycle-0018.png",
+      "sha256": "ce1658a9dbbbbce4c82ba29b68c130da00dc2bf71b0d437929b2dfb2e3f9d93b"
+    },
+    {
+      "file": "face-cycle-0032.png",
+      "sha256": "642f4186e96e1b53dbe1a82601abab2bd2dca11272fcb6ecdedd103d5d6d3266"
+    },
+    {
+      "file": "face-cycle-0200.png",
+      "sha256": "daa37f5a5e47557dc3b82205cf177300d54a3e4338a296ac842b95490397a6f9"
+    },
+    {
+      "file": "body-hair-cycle-0080.png",
+      "sha256": "616d3fc8746ea126d0e679a5db55dc8495da8e8bb0fcb70fbcced202e7f1b4c9"
+    },
+    {
+      "file": "body-hair-cycle-0280.png",
+      "sha256": "9d41fd9919aab05cd1b0e06328b5c9a711512073a2d643766e7d0ff5ce20f908"
+    }
+  ],
+  "finding": "No new gross detached parts or disappearances observed in reviewed tracks at overview scale. Face-cycle intermediate lashes remain thick/blunt; fine lip and hair-edge issues are not cleared.",
+  "limitations": [
+    "EyeOpen 0–0.25 still holds a closed pose.",
+    "Overview sheets cannot rule out subpixel seams, small skin-color shifts or fine alpha defects.",
+    "Portrait framing clips long outer hair at extremes; static full views complement this, without proving all-frame full-body acceptance.",
+    "No new arm binding, camera, VTube Studio or Editor GUI acceptance."
+  ],
+  "runtimeChanged": false,
+  "continuousReportSha256": "7bcf4fecab6938c0b1acb94c3df298e8dffce35828b406aa1ae7d9244423399f"
+}

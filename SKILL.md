@@ -71,12 +71,34 @@ on screen cannot replace actual Core model loading. A changed source, MOC or atl
 invalidates corresponding old validation. Re-run only the affected checks plus
 needed regressions; do not reuse old acceptance claims.
 
+For motion defects, review the complete path: raise, hold, lower, reversal and
+repeat for a bound gesture; blink, mouth, head/body and hair cycles for models
+without that gesture. Keep dense static pose sweeps separate from actual playback.
+Capture after the renderer finishes drawing (for example, Pixi `postrender`), not
+just on RAF ticks; retain frame numbers, timestamps, parameter traces and readable
+contact sheets. State which regions were viewed in every frame and which received
+only contextual spot checks. Geometry warnings are not counts of visible holes,
+and clean screenshots do not clear unresolved interpolation warnings.
+
+Before final capture, freeze hashes for the source recipe, MOC/CMO, textures,
+controller and capture harness. Compare a neutral face ROI under identical
+parameters, framing and physics state; an unchanged ROI does not imply an
+unchanged full frame. Keep numerical, visual and target-runtime results separate.
+
 ## Deliver and hand off
 
 Produce self-contained runtime references, source recipe/assets, editable CMO3/
 PSD when supported, and a web preview showing the same runtime bytes. Distinguish
 HD runtime atlas from original-resolution registered layers/PSD. Record hashes,
 versions, defects and verification scope so another agent can resume.
+
+Distinguish reopening the final editable CMO from replaying its build patch. A
+patch may require the exact earlier CMO/runtime and cannot safely consume its own
+output. Preserve required baseline inputs and their hashes, fixed tool versions
+and the final entry point. Test packaging from independent files, compare ZIP
+members and hashes with the checked runtime, and document any external inputs.
+Ignored `work/` directories must not hide required public-example inputs; see
+[docs/reproducibility.md](docs/reproducibility.md).
 
 VTube Studio acceptance belongs to the requested target workflow; if the user
 chooses to do it, deliver the checked package without opening their app or camera.
