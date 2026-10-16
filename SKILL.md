@@ -51,6 +51,8 @@ diagnose its source before changing physics or adding cover-up layers.
 ## Export, upscale and check
 
 Use the pinned engine and cumulative patch via `scripts/setup-psd2live.sh`.
+For later GUI/MCP or CMO editing, read [the version notes](docs/psd2live-versions.md)
+first; the 1.3/1.4 authoring routes do not replace this adapter's engine pin.
 Preserve prior outputs in revision directories. The supplied adapter defaults
 green despill off; opt in only for deliberate green-screen assets without real green.
 

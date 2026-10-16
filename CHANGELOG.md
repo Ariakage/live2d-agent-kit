@@ -1,5 +1,12 @@
 # Changelog / 更新日志
 
+## 2026-10-17 · README and psd2live authoring history / 文档整理
+
+- Reworked both READMEs around the example, quick start and production workflow. Kept detailed evidence in the linked guides and added the supplied light/dark Star History chart.
+- Documented the later psd2live 1.3.0 GUI/MCP and CMO/Swing work, plus 1.4.0 physics import, with pinned commits and a sanitized historical record. Corrected the tool catalog's outdated “evaluated only” label for the built-in MCP.
+- Updated MCP instructions to the tested `inspect` / `state` interface and linked the version notes from setup, workflow and the adapter. Kept the Apple Silicon native-motion failure and official Editor acceptance gap explicit.
+- The public examples, default engine lock, patches, artwork and runtime models are unchanged. This documentation update does not claim a new engine migration or device test.
+
 ## 2026-10-17 · Continuous motion review / 连续动作验收
 
 - Synced seam diagnosis, complete motion paths, neutral regression, artifact identity and recoverable packaging lessons into the skill and workflow. Private character assets remain excluded.

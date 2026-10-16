@@ -5,11 +5,13 @@
 脚本不会凭空获得正确的后脑、眼皮、口腔或衣服底片。
 
 导出主线基于 [psd2live](https://github.com/tsunehimatoi/psd2live)，参考其
-[Agent 架构文档](https://github.com/tsunehimatoi/psd2live/blob/master/docs/zh/AGENT_ARCHITECTURE.md)。
+[Agent 架构文档](https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/docs/zh/AGENT_ARCHITECTURE.md)。
 初次配置可用 [Live2D 官方 Simple Model](https://www.live2d.com/en/learn/sample/simple-model/)
 检查官方 Core 环境，再用本 kit 的原创最小示例验证自制导出。
 高清步骤使用 [Upscayl](https://github.com/upscayl/upscayl) 和
 [custom-models](https://github.com/upscayl/custom-models)，具体命令与许可见对应安装/超分指引。
+
+先选清楚引擎路线：公开示例沿用固定 manifest 导出链；继续编辑已有 CMO 或使用 GUI/MCP 生成独立变形器时，参考[后续 1.3/1.4 实践](psd2live-versions.md)。重新导入 PSD 会重建自动绑定，不能默认继承已有模型的参数、动作和运行时物理。
 
 ```mermaid
 flowchart LR

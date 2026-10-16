@@ -4,7 +4,7 @@
 
 **人读此页，agent 读 [catalog.json](catalog.json)。** 安装顺序见 [setup](../docs/setup.md)，操作顺序见 [workflow](../docs/workflow.md)，已有本地包装脚本见 [scripts](../scripts/)。
 
-查阅日期：2026-09-12。`observed_version: "unknown"` 表示原记录没有足够版本证据；不是最新版，也不是不曾使用。固定提交才是可复现基线，网页上游链接可能继续变化。
+初次查阅：2026-09-12；2026-10-17 补核 psd2live 1.3/1.4 的实际使用，见[版本记录](../docs/psd2live-versions.md)。`observed_version: "unknown"` 表示原记录没有足够版本证据；不是最新版，也不是不曾使用。固定提交才是可复现基线，网页上游链接可能继续变化。
 
 ## 状态说明
 
@@ -21,7 +21,7 @@
 
 | 工具 / 官方入口 | 观察基线 | 具体用途 | Kit 入口 |
 | --- | --- | --- | --- |
-| [psd2live](https://github.com/tsunehimatoi/psd2live) | `5526f2e16b57` | 将 SourceArt / PSD 转为真实网格、参数、物理、PSD、CMO3 和 MOC3。 | [setup-psd2live.sh](../scripts/setup-psd2live.sh) |
+| [psd2live](https://github.com/tsunehimatoi/psd2live) | kit：`5526f2e`；后续制作：1.3 / `3f2958f`、1.4 / `dbc25f7` | 固定 manifest 导出；后续 CMO/Swing 绑定与物理写回。 | [版本与使用记录](../docs/psd2live-versions.md) |
 | [Java / OpenJDK 21](https://openjdk.org/projects/jdk/21/) | Java 21；发行版 Zulu，补丁版本 unknown | 编译运行导出适配、调用官方 Core、处理 alpha 与原创几何示例。 | [doctor.sh](../scripts/doctor.sh) |
 | [Gradle Wrapper](https://gradle.org/) | 9.6.1 | 固定上游的 JVM 构建与导出任务。 | [psd2live-init.gradle](../scripts/psd2live-init.gradle) |
 | [Kotlin](https://kotlinlang.org/) | 2.4.10 | psd2live 与 manifest / PSD 适配器实现语言。 | [ManifestExport.kt](../integrations/psd2live/ManifestExport.kt) |
@@ -43,10 +43,11 @@
 | [多 agent 协作](https://openai.com/codex/) | unknown；宿主提供 | 独立审查源像素、几何、工具与文档，限定文件归属后由主 agent 集成。 | [AGENTS.md](../AGENTS.md) |
 | [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe) | 1.0.1；Face / Pose Lite float16/1 | 浏览器本地面部、眉毛和肩部/躯干输入；实际调用摄像头测试 | [摄像头指引](../docs/camera-tracking.md) |
 
-## 辅助验证 · 15 项
+## 辅助验证 · 16 项
 
 | 工具 / 官方入口 | 观察基线 | 具体用途 | Kit 入口 |
 | --- | --- | --- | --- |
+| [psd2live 内置 MCP](https://github.com/tsunehimatoi/psd2live/blob/3f2958f3959ced5a14e5af979f87079879ea02b5/docs/zh/agent/MCP_AUTHORING.md) | 1.3.0 · `3f2958f` | 实际创建双侧后发 Swing 候选、保存与导出；内置动态预览在当时 arm64 环境失败。 | [使用记录](../docs/psd2live-versions.md) |
 | 4x-AnimeSharp-fp32（来源未完整保存） | 本地 NCNN fp32；精确作者/下载版本 unknown | 与 AnimeVideo 对比脸部、虹膜和线条；没有用于最终运行图集。 | [upscaling.md](../docs/upscaling.md) |
 | [Live2D Cubism Core Java / native](https://www.live2d.com/en/sdk/download/) | 6.0.257 | 独立加载真实 MOC3、更新参数、读取顶点与透明度，并记录模型 SHA。 | [validate_core.java](../scripts/validate_core.java) |
 | [Live2D 官方 Simple Model](https://www.live2d.com/en/learn/sample/simple-model/) | unknown | 先用官方 runtime 隔离 Core / 浏览器环境问题。 | [tooling.md](../docs/tooling.md) |
@@ -63,12 +64,11 @@
 | [CUA / 宿主浏览器工具](https://openai.com/codex/) | unknown；宿主接口可能变化 | 在可见网页中操作并查看真实模型，与 Playwright 回归互补。 | [README.md](../mcp/README.md) |
 | [官方文档 / 源码浏览与 HTTP](https://github.com/) | unknown；宿主提供 | 核实上游能力、固定版本、许可、样例与错误边界。 | [tooling.md](../docs/tooling.md) |
 
-## 仅评估 · 4 项
+## 仅评估 · 3 项
 
 | 工具 / 官方入口 | 观察基线 | 具体用途 | Kit 入口 |
 | --- | --- | --- | --- |
 | [Live2D Cubism Editor](https://www.live2d.com/en/cubism/) | 本机 5.3.03；5.4 Alpha 仅资料审查 | 检查本机资源与 External Edit API 适用性；官方编辑器人工验收未完成。 | [README.md](../mcp/README.md) |
-| [psd2live 内置 MCP](https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/docs/zh/MCP_AUTHORING.md) | `5526f2e16b57` | 审查交互式工作区、参数、历史和透明图层接口。 | [README.md](../mcp/README.md) |
 | [CubismExternalEditMCP](https://github.com/nana7chi/CubismExternalEditMCP) | 1.0.3 · `863ebc87d0fe` | 审查 Editor 查询/编辑能力，检查本机版本和接口监听情况。 | [README.md](../mcp/README.md) |
 | [TrustMark](https://github.com/adobe/trustmark) · [官方 FAQ](https://opensource.contentauthenticity.org/docs/durable-cr/tm-faq/) | unknown；官方实现 MIT，仅资料评估 | 可选的像素来源标识。**未安装、未加标、未检测测试**；RGBA 需独立保留 alpha，Live2D 渲染截图的检出能力尚未验证。 | [水印与来源方案](../docs/model-protection.md) |
 
@@ -82,7 +82,7 @@ TrustMark 的评估不算已完成模型保护。图集原文件的标识不能�
 | [skill-creator](https://github.com/openai/skills) | 宿主内置版本 unknown | 按技能创作规范整理 SKILL.md、metadata 与渐进文档，并运行 quick_validate。 | [SKILL.md](../SKILL.md) |
 | [Live2D Agent Kit 原创脚本与通用示例](https://github.com/Ariakage/live2d-agent-kit) | 以当前 Git 提交为版本 | 将生产方法变成可重跑的 setup / export / validate / SR / preview / package 链。 | [README.md](../examples/minimal-model/README.md) |
 | [Python unittest / 语法检查](https://docs.python.org/3/library/unittest.html) | Python 标准库；版本随解释器 | 验证路径边界、模型结构、报告身份、打包和脚本语法。 | [test_validation.py](../tests/test_validation.py) |
-| [Mermaid](https://github.com/mermaid-js/mermaid) | 11.17.2 | 渲染 README 的 8 节点工作流图，在独立本地浏览器检查排版。 | [README.md](../README.md) |
+| [Mermaid](https://github.com/mermaid-js/mermaid) | 11.17.2 | 渲染 README 的工作流图，在独立本地浏览器检查排版。 | [README.md](../README.md) |
 | [Marked](https://github.com/markedjs/marked) | 17.0.5 | 将 README Markdown 转成临时本地预览 HTML，配合 Playwright 验证窄屏排版。 | [README.md](../README.md) |
 | [Humanizer-zh](https://github.com/op7418/Humanizer-zh) | 用户提供的本地 skill；未声明版本 | 中文 README 文字审校，保留技术事实与命令 | [README.md](../README.md) |
 | [Humanizer](https://github.com/blader/humanizer) | 本地 frontmatter 2.8.2 | 英文 README 草稿、自审与修订 | [README.en.md](../README.en.md) |

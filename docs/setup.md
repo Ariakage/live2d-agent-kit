@@ -54,6 +54,8 @@ export PSD2LIVE_DIR=/path/to/isolated/psd2live
 引擎是 GPL，不是 MIT；参见 [第三方声明](../THIRD_PARTY_NOTICES.md)。
 本机缓存不会提交到仓库。验证过的补丁也不意味着上游新版本可直接套用。
 
+后续制作另用过 psd2live 1.3 的 GUI/MCP、CMO/Swing 绑定与 1.4 的物理导入，见[版本与使用记录](psd2live-versions.md)。这两条路线使用独立 checkout；本节的安装脚本仍服务于公开示例的固定导出链。
+
 ## 依赖缓存缺失时怎样恢复
 
 先确定缺失的是构建工具、运行依赖、已编译类还是浏览器。保存失败命令与原始错误、源代码提交及补丁身份，不要先删掉尚能使用的缓存。`ClassNotFoundException`、Gradle 下载失败、Playwright 找不到浏览器和模型解析失败应分别处理；它们不会因为都出现在导出/预览阶段就成为同一个模型问题。

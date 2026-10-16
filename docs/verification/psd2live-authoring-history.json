@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "recordType": "curated-historical-authoring-record",
+  "reviewedAt": "2026-10-17",
+  "replayedDuringDocumentationUpdate": false,
+  "scope": "Verified retained local reports and pinned checkouts. Private character inputs and experimental scripts are not included; this is not a new build, GUI/MCP or Pink Sakura acceptance report.",
+  "upstream": "https://github.com/tsunehimatoi/psd2live",
+  "kitExportCommit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+  "guiMcp": {
+    "version": "1.3.0",
+    "commit": "3f2958f3959ced5a14e5af979f87079879ea02b5",
+    "sourceLayers": 29,
+    "parametersBefore": 18,
+    "parametersAfter": 20,
+    "operation": "swing request.mode=put on two outer-hair ArtMeshes",
+    "savedEditableProject": true,
+    "exported": true,
+    "staticPoseSamples": 17,
+    "nativeMotionPreviewPassed": false,
+    "nativeMotionPreviewError": "Cubism SDK preview requires x86_64/amd64. Unsupported os.arch=aarch64",
+    "formalRelease": false
+  },
+  "cmoSwingCandidate": {
+    "version": "1.3.0",
+    "commit": "3f2958f3959ced5a14e5af979f87079879ea02b5",
+    "api": "Cmo3Import + SwingAuthoring.put",
+    "parametersBefore": 56,
+    "parametersAfter": 58,
+    "drawables": 45,
+    "atlasPages": 2,
+    "nativeCorePoses": 145,
+    "retainedRuntimePhysicsGroups": 16,
+    "finalRuntimePhysicsGroups": 18,
+    "exportNotice": "WeldDivergence",
+    "cubismEditorRoundTripTested": false,
+    "formalRelease": false
+  },
+  "physicsImport": {
+    "version": "1.4.0",
+    "route": "Kotlin API: PhysicsAuthoring.import + Cmo3PhysicsInjector; not a recorded MCP call",
+    "upstreamCommit": "dbc25f7143d45c355082b9e1a069deccd5952040",
+    "sourceSha256": "3ea12d46895ce3385b04f5fc73975c77ed04b79fcf9a3124404f467c59b5258d",
+    "physicsJsonSha256": "291553db524e38b58c050e80c34876ad94ec485e8881f2912789b00c7e126637",
+    "outputSha256": "03cd8b89d8124d5f3a5e39b33aa5870e811f974883bd6d21d3d0fdd6a85ab6a7",
+    "sourcePhysicsGroupIds": [
+      "PhysicsEyeJelly",
+      "PhysicsTie",
+      "PhysicsFrontHairSideLSwing",
+      "PhysicsFrontHairSideRSwing",
+      "PhysicsBackHairInnerLSwing",
+      "PhysicsBackHairInnerRSwing",
+      "PhysicsBackHairOuterLSwing",
+      "PhysicsBackHairOuterRSwing"
+    ],
+    "importedPhysicsGroupIds": [
+      "PhysicsEyeJelly",
+      "PhysicsTieSwing",
+      "PhysicsFrontHairSideLSwing",
+      "PhysicsFrontHairSideRSwing",
+      "PhysicsBackHairInnerLSwing",
+      "PhysicsBackHairInnerRSwing",
+      "PhysicsBackHairOuterLSwing",
+      "PhysicsBackHairOuterRSwing",
+      "PhysicsEarLSwing",
+      "PhysicsEarRSwing",
+      "PhysicsAhogeSwing",
+      "PhysicsTieKnotSwing",
+      "PhysicsSkirtSwing",
+      "PhysicsSleeveLSwing",
+      "PhysicsSleeveRSwing",
+      "PhysicsShoulderFollow",
+      "PhysicsSwing_BackOuterR",
+      "PhysicsSwing_BackOuterL"
+    ],
+    "readbackPhysicsGroupIds": [
+      "PhysicsEyeJelly",
+      "PhysicsTieSwing",
+      "PhysicsFrontHairSideLSwing",
+      "PhysicsFrontHairSideRSwing",
+      "PhysicsBackHairInnerLSwing",
+      "PhysicsBackHairInnerRSwing",
+      "PhysicsBackHairOuterLSwing",
+      "PhysicsBackHairOuterRSwing",
+      "PhysicsEarLSwing",
+      "PhysicsEarRSwing",
+      "PhysicsAhogeSwing",
+      "PhysicsTieKnotSwing",
+      "PhysicsSkirtSwing",
+      "PhysicsSleeveLSwing",
+      "PhysicsSleeveRSwing",
+      "PhysicsShoulderFollow",
+      "PhysicsSwing_BackOuterR",
+      "PhysicsSwing_BackOuterL"
+    ],
+    "physicsFps": 60,
+    "missingParameterIds": {},
+    "disabledPhysicsGroupIds": [],
+    "parameterCountBefore": 58,
+    "parameterCountAfter": 58,
+    "parameterDefinitionsIdentical": true,
+    "drawableCountBefore": 51,
+    "drawableCountAfter": 51,
+    "deformerCountBefore": 41,
+    "deformerCountAfter": 41,
+    "atlasPageDimensionsBefore": [
+      "8192x8192",
+      "2048x2048",
+      "4096x2048"
+    ],
+    "atlasPageDimensionsAfter": [
+      "8192x8192",
+      "2048x2048",
+      "4096x2048"
+    ],
+    "physicsInputCount": 62,
+    "physicsOutputCount": 25,
+    "physicsVertexCount": 44,
+    "readbackStructureMatches": true,
+    "readbackNumericPhysicsMatches": true,
+    "embeddedPngBytesIdentical": true,
+    "embeddedPngCount": 224,
+    "sampledGeometryPoseCount": 31,
+    "sampledGeometryMaxDeltaPx": 0.0,
+    "cubismEditorRoundTripTested": false
+  },
+  "laterSleeveToolchain": {
+    "version": "1.3.0",
+    "commit": "3f2958f3959ced5a14e5af979f87079879ea02b5",
+    "javaMajor": 21,
+    "localJarSha256": "c0a0ddea7005b74660c56541764536a608093d88660d7ca9877961f55280e141",
+    "note": "Identifies the local build used for later sleeve work. Fresh JAR ZIP timestamps can differ."
+  },
+  "sourceRecordPolicy": "Labels below are relative to the private character project, not repository links. No private artwork, token, endpoint, machine path or source binary is included.",
+  "sourceRecords": [
+    {
+      "label": "research/psd2live-next-iteration.md",
+      "sha256": "fceb67bd1cd30ae5334d5ee5889e11f584fcd62ffbe718583153b537d6d605cb"
+    },
+    {
+      "label": "work/psd2live-hd-candidate/README.md",
+      "sha256": "eaf759655c3ee362d4cf58bec3d18ee3cf82e86143bb0f07468cbd830c57e9f2"
+    },
+    {
+      "label": "work/psd2live-hd-candidate/swing-right.json",
+      "sha256": "a736b148bb6d26c78e452913f5719c69a71975f7370c34f3bbac97f16db920a7"
+    },
+    {
+      "label": "work/psd2live-hd-candidate/swing-left.json",
+      "sha256": "0bf26e72ffbdb2ba4b83f783e0ce77cdeb191e441a70f2f2e3a6e1cf9d64bc92"
+    },
+    {
+      "label": "work/psd2live-hd-candidate/view-motion-response.json",
+      "sha256": "ad4ba839600595fe54223c56acea1fcf88529d62fcf98605ecf3d44b7e84938c"
+    },
+    {
+      "label": "work/psd2live-cmo-candidate/README.md",
+      "sha256": "6cedf84db1b2678659b8f1238219a95608fa6c7b609dc2f6061e262ac9956f1b"
+    },
+    {
+      "label": "r14-v31/source/authoring-notes.md",
+      "sha256": "26e277ed00392e2388e8b27e5a2ff5531ea166842664dc9b27e28ddda9c624c9"
+    },
+    {
+      "label": "r14-v31/validation/physics-import-report.json",
+      "sha256": "c25781033c28726169aad5ecefd1c7326059b88dcb7e7c90c92e6b0809f4d061"
+    },
+    {
+      "label": "r14-v37-arm/source/v37-patches/native/TOOLCHAIN.md",
+      "sha256": "6fa9c6002e3bc092b9d9b35a8a7905969d65ae6f7df956139a3e9f06bf788735"
+    }
+  ]
+}

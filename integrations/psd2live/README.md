@@ -16,3 +16,8 @@ clothes or accessories.
 
 Source-pixel face/eyelid modes require measured coordinates for the new artwork.
 The example does not enable the previous character's face recipe.
+
+This adapter still targets commit `5526f2e16b57e5f83d34f33730d6fa26d8bc8695`.
+Later character work used 1.3.0 GUI/MCP and CMO authoring, plus 1.4.0 physics
+import. See the [version notes](../../docs/psd2live-versions.md); those separate
+workflows do not establish compatibility of this adapter or patch with a newer engine.

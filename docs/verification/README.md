@@ -1,5 +1,7 @@
 # 验证记录索引 / Verification records
 
+后续 psd2live 1.3 GUI/MCP、CMO/Swing 与 1.4 物理导入已补录于[版本说明](../psd2live-versions.md)及[历史记录摘要](psd2live-authoring-history.json)。2026-10-17 核对的是保留的本地报告与 checkout，没有重新执行私有角色构建，也不将该记录转为 Pink 的新版引擎验收。
+
 **2026-10-17：** [Pink Sakura 连续动作复查](../../examples/pink-sakura/verification/continuous-20261017/README.md)同步了接缝排查、完整往返轨迹、载入资源身份和恢复打包经验，保留现有四个动作。1,488 个完成绘制帧、202 个 Core 姿态、22 项 Web 检查与 91 张静态截图均有新记录；没有继承旧摄像头或冷编译的通过状态。
 
 提交 **`e2c4679`** 已从新的 `git archive` 副本通过[离线源包复查](source-package-e2c4679.json)：61 项 Python / 35 项 Node 测试、三张眉毛 PNG 逐字节重建、Pink 24 层与 Minimal 16 层配方重建均通过。副本最初不含 `work/`、`.cache/`、`outputs/`、`dist/`。本检查不运行神经超分或引擎编译；报告 SHA-256 为 `dec48f7e8c8da6f036f9a39efff16389a3e80291bf5fbd5209ee5ed91ba6eb89`。

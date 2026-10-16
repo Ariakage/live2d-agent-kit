@@ -23,6 +23,8 @@
 
 PSD2Live 的[固定版本架构文档](https://github.com/tsunehimatoi/psd2live/blob/5526f2e16b57e5f83d34f33730d6fa26d8bc8695/docs/zh/AGENT_ARCHITECTURE.md)提供工作区与 Agent 接口背景。实际生产使用的是本地 Kotlin manifest → `SourceArt` → 导出管线；架构文档中的计划与演示不构成本 kit 已完成能力的证据。
 
+上段描述公开示例的导出基线。后续 Shironeko 制作还实际使用了 1.3.0 的 GUI/MCP、Swing 与 CMO 绑定，以及 1.4.0 的物理导入；版本、操作和限制见[后续使用记录](psd2live-versions.md)。这些记录不改变当前 kit 的引擎锁定。
+
 ## 生产主线与可选接入
 
 ```text
