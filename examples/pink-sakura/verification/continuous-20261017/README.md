@@ -75,3 +75,5 @@ bash scripts/validate.sh --kit
 静态矩阵继续使用 `check-poses.cjs`；运行包使用 `scripts/package-model.py`，然后解压并核对成员 SHA。
 源包离线复建与完整引擎冷编译的边界见[复现指引](../../../../docs/reproducibility.md)。
 本轮未申请摄像头，未打开 VTube Studio 或官方编辑器；历史摄像头检查保持原来的代码身份。
+
+提交后的[空目录源包复查](../../../../docs/verification/source-package-e2c4679.json)已通过：`e2c4679` 的公开输入可重建三张眉毛 PNG、24 层 Pink 配方与 16 层几何示例；61 项 Python / 35 项 Node 测试也在该副本中通过。它没有依赖原来的 `work/` 或缓存；官方 SDK、权重及引擎编译仍属于另外的复现阶段。

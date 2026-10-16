@@ -2,6 +2,8 @@
 
 **2026-10-17：** [Pink Sakura 连续动作复查](../../examples/pink-sakura/verification/continuous-20261017/README.md)同步了接缝排查、完整往返轨迹、载入资源身份和恢复打包经验，保留现有四个动作。1,488 个完成绘制帧、202 个 Core 姿态、22 项 Web 检查与 91 张静态截图均有新记录；没有继承旧摄像头或冷编译的通过状态。
 
+提交 **`e2c4679`** 已从新的 `git archive` 副本通过[离线源包复查](source-package-e2c4679.json)：61 项 Python / 35 项 Node 测试、三张眉毛 PNG 逐字节重建、Pink 24 层与 Minimal 16 层配方重建均通过。副本最初不含 `work/`、`.cache/`、`outputs/`、`dist/`。本检查不运行神经超分或引擎编译；报告 SHA-256 为 `dec48f7e8c8da6f036f9a39efff16389a3e80291bf5fbd5209ee5ed91ba6eb89`。
+
 这里按阶段收录检查。读一份报告时，先核对它的提交或文件 SHA，再看实际执行了哪条链路。源包可重建、引擎能编译和摄像头能驱动模型分别记录，任一项都不替代用户的 VTube Studio 验收。
 
 | 要核实的问题 | 记录与身份 | 已验证范围 | 不包含的范围 |

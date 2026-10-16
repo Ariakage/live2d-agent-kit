@@ -6,6 +6,7 @@
 - Added Pink Sakura's `check-continuous.cjs` and three focused tests. It captures after actual renderer completion, verifies Core inputs and resource hashes, measures frame gaps, and checks neutral RGBA restoration without changing the preview runtime.
 - Kept the existing four motions, model and 4× AnimeVideo v3 atlas unchanged. No chin-rest, heart or wave gestures were added.
 - Re-ran 202 native Core poses, 22 Web checks, 91 static captures and 1,488 continuous frames across six paths; reviewed 18 numbered overview sheets and five original-size frames. All automated checks passed. Fine eyelash/lip limitations remain; see the [scoped report](examples/pink-sakura/verification/continuous-20261017/README.md).
+- Commit `e2c4679` passed a fresh offline Git-archive check: no pre-existing work/cache directories, byte-identical eyebrow regeneration and both public recipe rebuilds. The [source-package report](docs/verification/source-package-e2c4679.json) keeps its checked commit identity.
 - Verified a new runtime ZIP by extraction, CRC and every member SHA. 61 Python / 35 Node tests passed. Camera, VTube Studio, neural upscaling and a cold engine compile were not rerun.
 
 ## Unreleased
