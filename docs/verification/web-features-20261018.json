@@ -1,0 +1,550 @@
+{
+  "url": "http://127.0.0.1:8864/",
+  "checks": [
+    {
+      "name": "model entry captured from actual browser response",
+      "pass": true,
+      "detail": {
+        "modelUrl": "http://127.0.0.1:8864/model/model.model3.json"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: model3",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8864/model/model.model3.json"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: moc3",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8864/model/PinkSakura.moc3"
+      }
+    },
+    {
+      "name": "actual loaded resource recorded: texture",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8864/model/PinkSakura.8192/texture_00.png"
+      }
+    },
+    {
+      "name": "texture dimensions within WebGL limit",
+      "pass": true,
+      "detail": [
+        {
+          "url": "http://127.0.0.1:8864/model/PinkSakura.8192/texture_00.png",
+          "texture": {
+            "width": 8192,
+            "height": 8192
+          }
+        }
+      ]
+    },
+    {
+      "name": "prepared manifest readable",
+      "pass": true,
+      "detail": {
+        "url": "http://127.0.0.1:8864/preview-manifest.json",
+        "status": 200
+      }
+    },
+    {
+      "name": "manifest model entry matches runtime",
+      "pass": true,
+      "detail": {
+        "manifestEntry": "model/model.model3.json",
+        "modelUrl": "http://127.0.0.1:8864/model/model.model3.json"
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: model3",
+      "pass": true,
+      "detail": {
+        "path": "model/model.model3.json",
+        "expectedSha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+        "observedSha256": [
+          "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+          "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
+        ]
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: moc3",
+      "pass": true,
+      "detail": {
+        "path": "model/PinkSakura.moc3",
+        "expectedSha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+        "observedSha256": [
+          "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
+        ]
+      }
+    },
+    {
+      "name": "loaded bytes match prepared manifest: texture",
+      "pass": true,
+      "detail": {
+        "path": "model/PinkSakura.8192/texture_00.png",
+        "expectedSha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+        "observedSha256": [
+          "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361"
+        ]
+      }
+    },
+    {
+      "name": "real Cubism Core and native drawables",
+      "pass": true,
+      "detail": {
+        "parameters": 24,
+        "drawables": 26,
+        "vertices": 7180,
+        "triangles": 11904
+      }
+    },
+    {
+      "name": "manual parameters reach native Core",
+      "pass": true,
+      "detail": [
+        {
+          "id": "ParamAngleX",
+          "requested": 45,
+          "actual": 45,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamAngleY",
+          "requested": 30,
+          "actual": 30,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamAngleZ",
+          "requested": 30,
+          "actual": 30,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleX",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleY",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBodyAngleZ",
+          "requested": 10,
+          "actual": 10,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeLOpen",
+          "requested": 0,
+          "actual": 0,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeROpen",
+          "requested": 0,
+          "actual": 0,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallX",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamEyeBallForm",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBrowLY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBrowRY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamMouthForm",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamMouthOpenY",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBreath",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamFrontHairSideLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamFrontHairSideRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairOuterLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairOuterRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairArcLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairArcRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairBaseRSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        },
+        {
+          "id": "ParamBackHairBaseLSwing",
+          "requested": 1,
+          "actual": 1,
+          "geometryChanged": true
+        }
+      ]
+    },
+    {
+      "name": "reset restores native defaults",
+      "pass": true
+    },
+    {
+      "name": "simulation advances",
+      "pass": true
+    },
+    {
+      "name": "simulator only writes native targets",
+      "pass": true
+    },
+    {
+      "name": "pause freezes timeline, parameters and physics",
+      "pass": true
+    },
+    {
+      "name": "timeline seeks while paused",
+      "pass": true
+    },
+    {
+      "name": "mapped simulated values reach Core",
+      "pass": true
+    },
+    {
+      "name": "stop restores defaults",
+      "pass": true
+    },
+    {
+      "name": "expression selection keeps simulation running",
+      "pass": true
+    },
+    {
+      "name": "expression overlays captured mouth and eyelid once",
+      "pass": true,
+      "detail": {
+        "base": {
+          "mouth": 0.046719560235752425,
+          "eye": 1
+        },
+        "actual": {
+          "mouth": 0.16671955585479736,
+          "eye": 0.800000011920929
+        }
+      }
+    },
+    {
+      "name": "paused expression and source stay frozen",
+      "pass": true
+    },
+    {
+      "name": "paused capture allows a smooth expression change",
+      "pass": true
+    },
+    {
+      "name": "clearing paused expression restores unexpressed source",
+      "pass": true
+    },
+    {
+      "name": "resume restores live input",
+      "pass": true
+    },
+    {
+      "name": "native manual controls retain precedence",
+      "pass": true
+    },
+    {
+      "name": "stale async expression cannot replace newer state or reset",
+      "pass": true
+    },
+    {
+      "name": "nodes and gaze render without video display",
+      "pass": true
+    },
+    {
+      "name": "gaze display is independent from nodes",
+      "pass": true
+    },
+    {
+      "name": "hiding overlay clears points without stopping capture",
+      "pass": true
+    },
+    {
+      "name": "expression selection preserves camera input ownership",
+      "pass": true
+    },
+    {
+      "name": "statistics receive new numeric inference frames only",
+      "pass": true
+    },
+    {
+      "name": "pause ends the statistics session without claiming completion",
+      "pass": true
+    },
+    {
+      "name": "aggregate JSON can be downloaded",
+      "pass": true
+    },
+    {
+      "name": "stop clears diagnostics and returns native defaults",
+      "pass": true
+    },
+    {
+      "name": "no camera or microphone request",
+      "pass": true
+    },
+    {
+      "name": "no browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "pass": true
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "cameraRequests": 0,
+  "browser": {
+    "name": "chromium",
+    "version": "155.0.8059.84",
+    "playwrightPackage": "playwright",
+    "playwrightVersion": "1.62.1",
+    "explicitExecutablePath": true
+  },
+  "loadedResources": {
+    "modelUrl": "http://127.0.0.1:8864/model/model.model3.json",
+    "observed": [
+      {
+        "url": "http://127.0.0.1:8864/model/model.model3.json",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 900,
+        "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8864/model/model.model3.json",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 900,
+        "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8864/model/PinkSakura.moc3",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 395520,
+        "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae",
+        "texture": null
+      },
+      {
+        "url": "http://127.0.0.1:8864/model/PinkSakura.8192/texture_00.png",
+        "status": 200,
+        "source": "browser-response",
+        "bytes": 45336522,
+        "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+        "texture": {
+          "width": 8192,
+          "height": 8192
+        }
+      }
+    ],
+    "manifest": {
+      "present": true,
+      "url": "http://127.0.0.1:8864/preview-manifest.json",
+      "sha256": "026be085a6b58efb8d7de3efa8378eca870a76d6ea6614f543ea19626445864c",
+      "matched": [
+        {
+          "path": "model/model.model3.json",
+          "sha256": "2ad6d9a5bce4f99eaaa922ef6e6878ac40eb4ea2f5de2a0af158f6625be6f6cb"
+        },
+        {
+          "path": "model/PinkSakura.moc3",
+          "sha256": "ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae"
+        },
+        {
+          "path": "model/PinkSakura.8192/texture_00.png",
+          "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361"
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "coreVersionNumber": 83951616,
+    "coreVersion": "5.1.0",
+    "renderer": "WebGL",
+    "maxTextureSize": 16384,
+    "requestedClippingMaskSize": 1024,
+    "clippingMaskSize": 1024
+  },
+  "visibleBindingEvidence": [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamAngleZ",
+    "ParamBodyAngleX",
+    "ParamBodyAngleY",
+    "ParamBodyAngleZ",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamEyeBallX",
+    "ParamEyeBallY",
+    "ParamEyeBallForm",
+    "ParamBrowLY",
+    "ParamBrowRY",
+    "ParamMouthForm",
+    "ParamMouthOpenY",
+    "ParamBreath",
+    "ParamFrontHairSideLSwing",
+    "ParamFrontHairSideRSwing",
+    "ParamBackHairOuterLSwing",
+    "ParamBackHairOuterRSwing",
+    "ParamBackHairArcLSwing",
+    "ParamBackHairArcRSwing",
+    "ParamBackHairBaseRSwing",
+    "ParamBackHairBaseLSwing"
+  ],
+  "parametersWithoutObservedGeometryChange": [],
+  "simulatedTargets": [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamAngleZ",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamEyeBallX",
+    "ParamEyeBallY",
+    "ParamMouthOpenY",
+    "ParamMouthForm",
+    "ParamBrowLY",
+    "ParamBrowRY",
+    "ParamBodyAngleX",
+    "ParamBodyAngleY",
+    "ParamBodyAngleZ",
+    "ParamBreath"
+  ],
+  "interactionFeatures": {
+    "scope": "Real Core/WebGL; synthetic tracking callbacks and temporary expression fixtures. No physical camera or inference, no 30-minute run.",
+    "runtimeAssetsModified": false
+  },
+  "pass": true,
+  "verificationDate": "2026-10-18",
+  "testSummary": {
+    "python": {
+      "passed": 61
+    },
+    "node": {
+      "passed": 59
+    },
+    "browser": {
+      "passed": 38
+    },
+    "kitStructuralPassed": true,
+    "physicalCameraTested": false,
+    "camera30MinutesTested": false,
+    "vtsTested": false,
+    "nativeExporterRebuilt": false,
+    "runtimeAssetsChanged": false
+  },
+  "visualReview": {
+    "desktop": [
+      1360,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "scope": "Preview controls and layout only; no physical camera or new model artwork review."
+  },
+  "sourceFiles": {
+    "scripts/check-preview.cjs": "1ced8ef7cfaa6876d5f49bae0a87b4b3fb42f115e1ff6c902cc903395562e532",
+    "scripts/preview-feature-checks.cjs": "63ba5766681e1a4c5a5a48ee78b34f988bfe5ff8ed082b6ed003cf6f375f04c0",
+    "templates/web-preview/acceptance-monitor.js": "fe22876d5a8e0d54c66f9a3e9f7e58cb1faa9a214f2730f00a6f4b3794271fa2",
+    "templates/web-preview/app.js": "805e246b98901e5eccdd00f5d54a7df4cd11fc97a96bdda628cac0f84071ea82",
+    "templates/web-preview/camera-tracker.js": "4fbf1a6ec649b5da1a438ca95e899564e0a73c52a31d42db6e4dd7a885e72d05",
+    "templates/web-preview/capture-controller.js": "2f385e1a8f5204bf05bd32089ef680f5cb134de9db70756abca2b06b4ea2b085",
+    "templates/web-preview/expression-layer.js": "c37eb03d295bb8f6729f86c33b1525b15da5000a0885683599bdf5a419f89c0c",
+    "templates/web-preview/index.html": "8ea8455c6b3dd44e7547af135b49d3aa79fe5aa06a8aa10a7f7151a0840ad28d",
+    "templates/web-preview/landmark-overlay.js": "f846ec7d92f962a80c49619f927f7289feac45fdd03850c674a513365b32d95e",
+    "templates/web-preview/runtime.js": "17c6beaf7107231ac064b94edfd33aeecd24e304070af9f49b47f2d5b99eb6a9",
+    "templates/web-preview/styles.css": "739451d36da9db65d4cdd2429f0cbcac52855d6cb7e29346bd1334fac43169f7",
+    "templates/web-preview/tracking-input.js": "31320e1f75d87ccc80af23a9ace83be4183599ed1c5898b8532e05e56f94dcf7",
+    "templates/web-preview/tracking-math.js": "7c817822ea59a5d9e8065a88bf81fca222df14500fd953aef3f60cedafe4d647",
+    "templates/web-preview/view-config.js": "35a34513047aed6f712d4397b742a94fe3178631f3cd9a59ecdfc7bacce0e988",
+    "tests/test_acceptance_monitor.cjs": "fc1657986681c04adf49510b8a9eea79daf113407b248372ca2be0ee85615007",
+    "tests/test_capture_controller.cjs": "c7deb45092fa4f270f101d9e42416232414c3ff5be8a40cf91f12f409ac77aa9",
+    "tests/test_continuous_review.cjs": "11c69d28f28df1b34b925ae178b6251d549c12ed65665bef5bcaa9c47dde5148",
+    "tests/test_expression_layer.cjs": "8f7eec373b37362da24cfb37381fd38c37e4d89bd6a51d6853ec204ad00233c7",
+    "tests/test_landmark_overlay.cjs": "4e8e80895f93dd564f11dc86b630aa7c02c4650e8589270ea0d18631aa5fe64c",
+    "tests/test_tracking_camera.cjs": "fea045d683c323a9587c21d1b18539f33f48db703e1993388d7d2628a820ea4e",
+    "tests/test_tracking_math.cjs": "67fc8b04ba7cc3362de4cf7b27040ae1b3dfc316f75a754f9e3e364ebff93f1c",
+    "tests/tracking_fixtures.cjs": "ae3f84e15d5a5de0a39d55281c26c0d171b2f952338c548f505190a94536f789"
+  }
+}

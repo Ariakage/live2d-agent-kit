@@ -9,7 +9,7 @@ function track(){return {readyState:'live',muted:false,stops:0,handlers:new Map(
 function stream(){const tracks=[track(),track()];return {tracks,getTracks:()=>tracks,getVideoTracks:()=>[tracks[0]]};}
 async function fixture(options={}) {
   const {CameraTracker}=await import('../templates/web-preview/camera-tracker.js');
-  const media=stream(),frames=[],states=[],rafs=new Map(),calls={permission:0,load:0,faceCreate:0,poseCreate:0,faceDetect:0,poseDetect:0,faceClose:0,poseClose:0};
+  const media=stream(),frames=[],states=[],landmarks=[],rafs=new Map(),calls={permission:0,load:0,faceCreate:0,poseCreate:0,faceDetect:0,poseDetect:0,faceClose:0,poseClose:0};
   let clock=1000,next=0;
   const video={srcObject:null,paused:true,readyState:4,videoWidth:640,videoHeight:480,currentTime:0,
     play(){this.paused=false;return Promise.resolve();},pause(){this.paused=true;}};
@@ -19,12 +19,12 @@ async function fixture(options={}) {
   const vision={FilesetResolver:{forVisionTasks:async()=>({})},
     FaceLandmarker:{createFromOptions:async(files,config)=>{calls.faceCreate++;calls.faceConfig=config;return options.faceCreation ? options.faceCreation.promise : face;}},
     PoseLandmarker:{createFromOptions:async()=>{calls.poseCreate++;if(options.poseError)throw Error('model failed');return pose;}}};
-  const tracker=new CameraTracker({video,assets:options.noAssets?null:{visionModule:'tracking/vision_bundle.mjs',wasmRoot:'tracking/wasm',faceModel:'tracking/models/face.task',poseModel:'tracking/models/pose.task'},onFrame:f=>frames.push(f),onState:s=>states.push(s)},
+  const tracker=new CameraTracker({video,assets:options.noAssets?null:{visionModule:'tracking/vision_bundle.mjs',wasmRoot:'tracking/wasm',faceModel:'tracking/models/face.task',poseModel:'tracking/models/pose.task'},onFrame:f=>frames.push(f),onState:s=>states.push(s),onLandmarks:l=>landmarks.push(l)},
     {now:()=>clock,requestFrame:cb=>{rafs.set(++next,cb);return next;},cancelFrame:id=>rafs.delete(id),secureContext:()=>true,baseURL:()=> 'http://127.0.0.1:8837/',
       getUserMedia:async constraints=>{calls.permission++;calls.constraints=constraints;if(options.permissionError)throw options.permissionError;return options.permission?options.permission.promise:media;},
       loadVision:async()=>{calls.load++;return vision;}});
   function tick(ms=100,{newVideo=true}={}){clock+=ms;if(newVideo)video.currentTime+=ms/1000;const callbacks=[...rafs.values()];rafs.clear();for(const cb of callbacks)cb();}
-  return {tracker,media,video,frames,states,rafs,calls,face,pose,detectors,tick};
+  return {tracker,media,video,frames,states,landmarks,rafs,calls,face,pose,detectors,tick};
 }
 
 test('constructor is inert with assets:null and unavailable setup cannot open a device',async()=>{
@@ -105,4 +105,38 @@ test('a cancelled late permission result cannot stop or replace a newer running 
   assert.equal(f.tracker.getState().status,'running');assert.equal(f.video.srcObject,newMedia);assert.equal(f.video.paused,false);
   assert.ok(oldMedia.tracks.every(t=>t.readyState==='ended'));assert.ok(newMedia.tracks.every(t=>t.readyState==='live'));
   f.tick();assert.equal(f.frames.at(-1).faceVisible,true);f.tracker.stop();assert.ok(newMedia.tracks.every(t=>t.readyState==='ended'));
+});
+
+
+test('landmark diagnostics are ephemeral and clear on source loss, stale input and stop',async()=>{
+  const f=await fixture();assert.equal(f.landmarks.length,0);
+  await f.tracker.start();assert.equal(f.landmarks.at(-1),null);f.tick();
+  const current=f.landmarks.at(-1);assert.equal(current.faceLandmarks.length,478);assert.equal(current.poseLandmarks.length,33);
+  assert.equal(current.width,640);assert.equal(current.height,480);assert.equal(current.eyeOpen.left,1);
+  assert.ok(!JSON.stringify(f.frames.at(-1)).includes('faceLandmarks'));
+  assert.ok(!JSON.stringify(f.tracker.getState()).includes('faceLandmarks'));
+  f.detectors.face=()=>({faceLandmarks:[]});f.tick();assert.equal(f.landmarks.at(-1).faceLandmarks,null);
+  assert.equal(f.landmarks.at(-1).poseLandmarks.length,33);
+  f.tick(400,{newVideo:false});assert.equal(f.landmarks.at(-1).poseLandmarks,null);
+  f.tracker.stop();assert.equal(f.landmarks.at(-1),null);assert.equal(f.rafs.size,0);
+});
+test('optional drawing failures do not break tracking; callbacks cannot revive a stopped session',async()=>{
+  const f=await fixture();f.tracker.onLandmarks=()=>{throw Error('drawing failed');};
+  await f.tracker.start();f.tick();assert.equal(f.tracker.getState().status,'running');assert.equal(f.frames.at(-1).faceVisible,true);
+  f.tracker.onLandmarks=payload=>{if(payload)f.tracker.stop();};f.tick();
+  assert.equal(f.tracker.getState().status,'stopped');assert.equal(f.tracker.getState().faceVisible,false);assert.equal(f.rafs.size,0);
+});
+test('hidden page releases the camera and clears diagnostics',async()=>{
+  const f=await fixture();await f.tracker.start();f.tick();assert.ok(f.landmarks.at(-1).faceLandmarks);
+  f.tracker.platform.isVisible=()=>false;f.tick();
+  assert.equal(f.tracker.getState().status,'stopped');assert.equal(f.landmarks.at(-1),null);
+  assert.ok(f.media.tracks.every(t=>t.readyState==='ended'));assert.equal(f.rafs.size,0);
+});
+test('late cancelled initialization cannot clear a newer diagnostic frame',async()=>{
+  const f=await fixture(),late=deferred(),oldMedia=stream(),newMedia=stream();let requested=0;
+  f.tracker.platform.getUserMedia=()=>++requested===1?late.promise:Promise.resolve(newMedia);
+  const oldStart=f.tracker.start();f.tracker.stop();await f.tracker.start();f.tick();
+  const current=f.landmarks.at(-1);assert.ok(current.faceLandmarks);
+  late.resolve(oldMedia);await assert.rejects(oldStart,{name:'AbortError'});
+  assert.equal(f.landmarks.at(-1),current);f.tracker.stop();
 });

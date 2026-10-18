@@ -1,5 +1,14 @@
 # Changelog / 更新日志
 
+## 2026-10-18 · Preview interaction tools / 网页交互迁移
+
+- Added independent local-video, landmark and 2D iris-gaze display switches. Stale points expire independently; stopping or backgrounding clears diagnostic data without storing it.
+- Expressions now fade over live tracking input and can change while capture is paused. The frozen source excludes expression offsets to prevent double application; manual parameters retain priority and reset remains immediate.
+- Added aggregate-only camera-session statistics, 10-second static jitter/drift samples and JSON export. Cached frames, pauses and stopped cameras cannot count toward a continuous 30-minute run.
+- Updated the bilingual README and camera/preview guides. Pink artwork, model files, four motions, bindings and the pinned exporter are unchanged; no expression library or hand gestures were added.
+- Added unit and opt-in real-Core browser regressions with synthetic callbacks and temporary expression fixtures. These tests never request a camera and do not establish physical-camera, 30-minute or VTube Studio acceptance.
+- Validation: 61 Python / 59 Node tests and 38 real WebGL checks passed; desktop and mobile controls were visually reviewed. See the [scoped report](docs/verification/web-features-20261018.json) for runtime and source identities.
+
 ## 2026-10-17 · README and psd2live authoring history / 文档整理
 
 - Reworked both READMEs around the example, quick start and production workflow. Kept detailed evidence in the linked guides and added the supplied light/dark Star History chart.

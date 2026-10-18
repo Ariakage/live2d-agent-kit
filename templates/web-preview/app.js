@@ -1,13 +1,16 @@
 import {createViewer} from './runtime.js';
 import {CaptureController} from './capture-controller.js';
 import {CameraTracker} from './camera-tracker.js';
+import {LandmarkOverlay} from './landmark-overlay.js';
+import {installAcceptanceUI} from './acceptance-monitor.js';
 import {INPUTS, mapInput} from './tracking-input.js';
 import {MODEL_URL,MODEL_LABEL,REFERENCE_URL,DOWNLOAD_URL,INPUT_MAPPING,CAMERA_ASSETS,CAPTURE_HOLD_DEFAULTS} from './view-config.js';
 const $=s=>document.querySelector(s);
-let viewer,readyInfo,camera,showingReference=false;
+let viewer,readyInfo,camera,acceptance,showingReference=false,expressionRequest=0;
 const parameterControls=new Map(),inputControls=new Map();
+const landmarkOverlay=new LandmarkOverlay({canvas:$('#camera-overlay'),viewport:$('#camera-viewport'),status:$('#camera-overlay-status')});
 const capture=new CaptureController({getViewer:()=>viewer,holdParameterDefaults:CAPTURE_HOLD_DEFAULTS,onPrepare:()=>{
-  viewer.setAutoPlay(false);viewer.setPointerFollow(false);viewer.clearParameters();viewer.setExpression('');
+  viewer.setAutoPlay(false);viewer.setPointerFollow(false);viewer.clearParameters();clearExpression();
   $('#auto-play').checked=false;$('#pointer-follow').checked=false;
 },onSourceStop:()=>camera?.stop(),onState:state=>{
   $('#capture-status').textContent=state.message;
@@ -18,18 +21,35 @@ const capture=new CaptureController({getViewer:()=>viewer,holdParameterDefaults:
   $('#capture-time-value').textContent=`${state.time.toFixed(1)} / 24 秒`;
   for(const [id,c] of inputControls){c.input.value=state.inputs[id];c.output.value=Number(state.inputs[id]).toFixed(2);}
   renderMonitor(state);
+  if(state.mode==='idle'&&!viewer?.getState().expression)clearExpressionStatus();
+  acceptance?.sync();
 }});
 camera=new CameraTracker({video:$('#camera-video'),assets:CAMERA_ASSETS,
-  onFrame:frame=>capture.updateCameraFrame(frame),onState:state=>{
+  onFrame:frame=>{
+    if(capture.updateCameraFrame(frame))acceptance?.monitor.sample({timestamp:frame.timestamp,
+      inferenceFrame:frame.metrics?.frames,face:frame.faceVisible,body:frame.bodyVisible,inputs:frame.inputs});
+  },onLandmarks:frame=>landmarkOverlay.update(frame),onState:state=>{
     const active=['starting','running'].includes(state.status);
     $('#camera-start').disabled=!CAMERA_ASSETS||!viewer||active;
     $('#camera-stop').disabled=!active;$('#camera-calibrate').disabled=state.status!=='running';
     $('#camera-body').disabled=active;
-    $('#camera-preview').hidden=!active||!$('#camera-show').checked;
+    syncCameraPreview(state.status==='running');
     if (state.status==='error' && capture.mode==='camera') capture.stop();
     $('#camera-status').textContent=state.message||'摄像头未开启';
+    acceptance?.sync();
   }});
-window.previewApp={get viewer(){return viewer;},capture,camera,get readyInfo(){return readyInfo;}};
+acceptance=installAcceptanceUI({capture,camera});
+window.previewApp={get viewer(){return viewer;},capture,camera,landmarkOverlay,acceptance,get readyInfo(){return readyInfo;}};
+function syncCameraPreview(active=camera?.getState().status==='running'){
+  const showVideo=$('#camera-show').checked,showNodes=$('#camera-nodes').checked,showGaze=$('#camera-gaze').checked;
+  $('#camera-preview').hidden=!active||!(showVideo||showNodes||showGaze);
+  $('#camera-video').classList.toggle('camera-video-hidden',!showVideo);
+  $('#camera-video').setAttribute('aria-hidden',String(!showVideo));
+  $('#camera-overlay').hidden=!(showNodes||showGaze);
+  $('#camera-preview-caption').textContent=showVideo?'本地画面 · 镜像显示':'仅追踪叠层 · 摄像头仍在本机识别';
+  $('#camera-gaze-note').hidden=!showGaze;
+  landmarkOverlay.setOptions({showVideo,showNodes,showGaze});landmarkOverlay.setActive(active);
+}
 function renderMonitor(state){
   const native=viewer?.getState().parameters || {};
   $('#capture-monitor').replaceChildren(...INPUTS.map(s=>{
@@ -45,8 +65,10 @@ function control(parent,label,id,min,max,value,onInput){
   const input=document.createElement('input');input.type='range';input.min=min;input.max=max;input.step=Math.max((max-min)/500,.001);input.value=value;input.dataset.id=id;input.setAttribute('aria-label',label);row.append(input);
   input.addEventListener('input',()=>{output.value=Number(input.value).toFixed(2);onInput(Number(input.value));});parent.append(row);return {input,output,row};
 }
-function takeManual(){capture.stop({reset:false});viewer.setAutoPlay(false);viewer.setPointerFollow(false);viewer.setExpression('');$('#auto-play').checked=false;$('#pointer-follow').checked=false;}
-function reset(){capture.stop();viewer.reset();$('#auto-play').checked=false;$('#pointer-follow').checked=false;$('#zoom').value=1;for(const b of document.querySelectorAll('[data-view]'))b.classList.toggle('selected',b.dataset.view==='full');viewer.renderNow();updateParameters(viewer.getState().parameters);}
+function clearExpressionStatus(){const status=$('#expression-status');if(status&&readyInfo?.expressions.length)status.textContent='表情已清除';}
+function clearExpression(){expressionRequest++;viewer.setExpression('',{immediate:true});clearExpressionStatus();}
+function takeManual(){capture.stop({reset:false});viewer.setAutoPlay(false);viewer.setPointerFollow(false);clearExpression();$('#auto-play').checked=false;$('#pointer-follow').checked=false;}
+function reset(){capture.stop();viewer.reset();clearExpressionStatus();$('#auto-play').checked=false;$('#pointer-follow').checked=false;$('#zoom').value=1;for(const b of document.querySelectorAll('[data-view]'))b.classList.toggle('selected',b.dataset.view==='full');viewer.renderNow();updateParameters(viewer.getState().parameters);}
 function updateParameters(parameters){for(const [id,c] of parameterControls){if(document.activeElement!==c.input)c.input.value=parameters[id];c.output.value=Number(parameters[id]).toFixed(3);}}
 $('#model-label').textContent=MODEL_LABEL;
 if(REFERENCE_URL){$('#reference').src=REFERENCE_URL;$('#reference-toggle').hidden=false;}
@@ -68,10 +90,10 @@ $('#camera-calibrate').onclick=()=>{
   const result=camera.calibrate();
   if (result===false) $('#camera-status').textContent='请正视镜头，识别到面部后再校准。';
 };
-$('#camera-show').onchange=e=>$('#camera-preview').hidden=!e.target.checked||!['starting','running'].includes(camera.getState().status);
+for(const id of ['camera-show','camera-nodes','camera-gaze'])$('#'+id).onchange=()=>syncCameraPreview();
 // Returning to a backgrounded tab requires an explicit new camera start.
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&capture.mode==='camera')capture.stop();});
-window.addEventListener('pagehide',()=>{capture.stop({reset:false,announce:false});camera.stop();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){landmarkOverlay.clear('background');if(capture.mode==='camera')capture.stop();else camera.stop();}});
+window.addEventListener('pagehide',()=>{landmarkOverlay.clear('pagehide');capture.stop({reset:false,announce:false});camera.stop();});
 $('#background').onchange=e=>$('#stage').dataset.background=e.target.value;
 $('#reset-all').onclick=()=>reset();
 $('#auto-play').onchange=e=>{capture.stop({reset:false});viewer.setAutoPlay(e.target.checked);};
@@ -94,7 +116,17 @@ try {
   const mapped=mapInput({}, {descriptors:readyInfo.parameters});
   for(const s of INPUTS){const c=control($('#capture-inputs'),`${s.label} · ${s.id}`,s.id,s.min,s.max,s.value,v=>capture.setInput(s.id,v));const target=INPUT_MAPPING[s.id]===false?null:INPUT_MAPPING[s.id]?.target||s.target;if(!(target in mapped)){c.input.disabled=true;c.row.classList.add('unavailable');c.row.title='模型无此映射目标；不会声称支持此输入';}inputControls.set(s.id,c);}
   const known=Object.keys(mapped);$('#capability-note').textContent=`可写入 ${known.length} 个跟踪目标；${readyInfo.physics?'已加载模型物理配置':'此模型未提供物理配置'}。眉毛输入需要独立眉毛绑定；存在参数仍需检查可见效果。左右按模型解剖命名，视频仅镜像显示。未实现手臂或手指绑定。`;
-  for(const name of readyInfo.expressions){const b=document.createElement('button');b.textContent=`表情：${name}`;b.onclick=()=>{takeManual();viewer.setExpression(name);};$('#expressions').append(b);}
+  const expressionStatus=document.createElement('p');expressionStatus.className='muted';expressionStatus.setAttribute('role','status');expressionStatus.id='expression-status';
+  expressionStatus.textContent=readyInfo.expressions.length?'表情可叠加在面捕上；暂停后可切换，直接参数滑块优先。':'此模型未提供预设表情文件；仍可用面捕或参数调节眼睛与嘴形。';
+  $('#expressions').append(expressionStatus);
+  for(const name of readyInfo.expressions.length?['',...readyInfo.expressions]:[]){
+    const b=document.createElement('button');b.textContent=name?`表情：${name}`:'清除表情';b.dataset.expression=name;
+    b.onclick=async()=>{
+      const request=++expressionRequest;
+      try{if(await viewer.setExpression(name)){viewer.renderNow();if(request===expressionRequest)expressionStatus.textContent=name?`当前表情：${name}`:'表情已清除';}}
+      catch(error){if(request===expressionRequest)expressionStatus.textContent=`无法切换表情：${error.message}`;}
+    };$('#expressions').append(b);
+  }
   for(const name of readyInfo.motions){const b=document.createElement('button');b.textContent=`动作：${name}`;b.onclick=()=>{takeManual();viewer.playMotion(name);};$('#motions').append(b);}
   viewer.renderNow();renderMonitor(capture.getState());
 } catch(error){$('#status').textContent='真实模型载入失败';$('#load-error').hidden=false;$('#load-error').textContent=`${error.message}\n请先运行 prepare-preview.py，提供自己已合法获取的 Core、Pixi 与 Live2D 渲染依赖，并用本地 server.py 打开。此页不会用静态图片或假动画代替真实 Core。`;console.error(error);}

@@ -1,5 +1,6 @@
 /** Real Cubism Core + WebGL model preview. Dependencies are pinned and local. */
 import { DRAWING, REGIONS } from './view-config.js';
+import { ExpressionLayer } from './expression-layer.js';
 const base = new URL('./', import.meta.url);
 let dependencyPromise;
 
@@ -42,7 +43,7 @@ async function readJSON(url) {
  * coreVersion, renderer}. onStats receives {fps,parameters:{[id]:value},autoPlay,captureActive}.
  * Manual values override expressions, motion, breathing, focus, and physics.
  * Capture is a separate source: supplied values drive physics and override its
- * outputs last, while unsupplied parameters keep defaults or physics results.
+ * outputs before the expression layer. Manual parameters always take priority.
  */
 export async function createViewer({ canvas, modelUrl, onReady, onError, onStats } = {}) {
   let app, model, resizeObserver, destroyed = false;
@@ -96,10 +97,14 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
     const expressionDefinitions = settings.FileReferences.Expressions || [];
     const motionManager = internal.motionManager;
     let autoPlay = false, pointerFollow = false, oneShot = false;
-    let selectedView = 'full', zoom = 1, expression = [], expressionName = '';
+    let selectedView = 'full', zoom = 1, expressionName = '', expressionFadeOut = .35;
+    const expressionLayer = new ExpressionLayer();
+    let currentDelta = 0, frozenCapture = null, frozenExpressionTransition = false;
     let expressionGeneration = 0, motionGeneration = 0;
     let lastStats = 0, frameCount = 0, frameElapsed = 0;
     let lastRenderedParameters = Object.fromEntries(descriptors.map(p => [p.id, p.default]));
+    // Keep the pre-expression source so a paused blink or mouth accent is never baked in twice.
+    let lastExpressionSource = Float32Array.from(defaults);
     const modelWidth = internal.width || DRAWING.width;
     const modelHeight = internal.height || DRAWING.height;
     const originalUpdate = internal.update.bind(internal);
@@ -118,10 +123,12 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
     function finalParameters() {
       if (captureActive) {
         for (const [id, value] of captureParameters) writeParameter(id, value);
-      } else {
-        for (const p of expression) writeParameter(p.Id, p.Value, p.Blend || 'Add');
-        for (const [id, value] of manual) writeParameter(id, value);
       }
+      lastExpressionSource = Float32Array.from(rawParams.values);
+      expressionLayer.step(frozenCapture && !frozenExpressionTransition ? 0 : currentDelta)
+        .apply(id => rawParams.values[indices.get(id)], writeParameter);
+      if (frozenExpressionTransition && expressionLayer.elapsed >= expressionLayer.duration) frozenExpressionTransition = false;
+      for (const [id, value] of manual) writeParameter(id, value);
       lastRenderedParameters = Object.fromEntries(descriptors.map((p, i) => [p.id, rawParams.values[i]]));
     }
     // This event is intentionally after physics and just before native vertex evaluation.
@@ -129,7 +136,12 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
     internal.updateFocus = () => { if (autoPlay && pointerFollow) originalFocus(); };
     internal.updateNaturalMovements = (dt, now) => { if (autoPlay) originalNatural(dt, now); };
     internal.update = (dt, now) => {
-      if (captureActive) {
+      currentDelta = Number.isFinite(dt) ? clamp(dt, 0, 50) / 1000 : 0;
+      if (frozenCapture) {
+        rawParams.values.set(frozenCapture);
+        finalParameters();
+        core.update();
+      } else if (captureActive) {
         // Bypass the motion manager, automatic eye blink, focus, and breath.
         // Cubism physics and pose take seconds; the Pixi update takes milliseconds.
         const dtSeconds = Number.isFinite(dt) ? clamp(dt, 0, 50) / 1000 : 0;
@@ -219,6 +231,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         if (destroyed || !parameters || typeof parameters !== 'object' || Array.isArray(parameters)) return false;
         // Each call replaces the frame rather than retaining stale tracked values.
         captureParameters.clear();
+        frozenCapture = null; frozenExpressionTransition = false;
         for (const [id, value] of Object.entries(parameters)) {
           const index = indices.get(id);
           if (index === undefined || typeof value !== 'number' || !Number.isFinite(value)) continue;
@@ -228,8 +241,19 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         captureActive = true;
         return true;
       },
-      clearCaptureParameters() { captureActive = false; captureParameters.clear(); },
+      freezeCaptureParameters() {
+        if (destroyed || !captureActive) return false;
+        frozenCapture = Float32Array.from(lastExpressionSource);
+        frozenExpressionTransition = false;
+        captureActive = false; captureParameters.clear();
+        viewer.renderNow(); return true;
+      },
+      clearCaptureParameters() {
+        captureActive = false; captureParameters.clear();
+        frozenCapture = null; frozenExpressionTransition = false;
+      },
       setAutoPlay(enabled) {
+        frozenCapture = null; frozenExpressionTransition = false;
         autoPlay = Boolean(enabled); oneShot = false; motionGeneration++;
         motionManager.stopAllMotions();
         motionManager.groups.idle = autoPlay ? 'Idle' : '__paused__';
@@ -245,14 +269,27 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         oneShot = Boolean(started);
         return started;
       },
-      async setExpression(name) {
+      async setExpression(name, {immediate = false} = {}) {
+        if (destroyed) return false;
         const generation = ++expressionGeneration;
-        if (!name || name === 'Neutral' || name === 'neutral') { expression = []; expressionName = ''; return true; }
+        if (!name || name === 'Neutral' || name === 'neutral') {
+          expressionLayer.set([], immediate ? 0 : expressionFadeOut);
+          frozenExpressionTransition = Boolean(frozenCapture); expressionName = '';
+          return true;
+        }
         const definition = expressionDefinitions.find(e => e.Name === name);
         if (!definition) return false;
-        const data = await readJSON(new URL(definition.File, absoluteModelURL));
+        let data;
+        try { data = await readJSON(new URL(definition.File, absoluteModelURL)); }
+        catch (error) {
+          if (generation !== expressionGeneration || destroyed) return false;
+          throw error;
+        }
         if (generation !== expressionGeneration || destroyed) return false;
-        expression = Array.isArray(data.Parameters) ? data.Parameters : [];
+        if (!data || typeof data !== 'object') throw new Error(`表情格式无效：${name}`);
+        expressionLayer.set(Array.isArray(data.Parameters) ? data.Parameters : [], immediate ? 0 : data.FadeInTime);
+        expressionFadeOut = Number.isFinite(data.FadeOutTime) && data.FadeOutTime >= 0 ? data.FadeOutTime : .35;
+        frozenExpressionTransition = Boolean(frozenCapture);
         expressionName = name;
         return true;
       },
@@ -261,12 +298,12 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
       setPointerFollow(enabled) { pointerFollow = Boolean(enabled); if (!pointerFollow) leave(); },
       reset() {
         viewer.clearCaptureParameters();
-        manual.clear(); expression = []; expressionName = ''; expressionGeneration++;
+        manual.clear(); expressionLayer.reset(); expressionName = ''; expressionFadeOut = .35; expressionGeneration++;
         selectedView = 'full'; zoom = 1; pointerFollow = false;
         viewer.setAutoPlay(false); fit();
       },
       getState() { return { autoPlay, pointerFollow, view: selectedView, zoom, expression: expressionName,
-        captureActive, captureParameters: Object.fromEntries(captureParameters),
+        captureActive, capturePaused: Boolean(frozenCapture), captureParameters: Object.fromEntries(captureParameters),
         manualParameters: Object.fromEntries(manual), parameters: { ...lastRenderedParameters } }; },
       getParameters() { return descriptors.map(p => ({ ...p, value: lastRenderedParameters[p.id] })); },
       getDrawableState() { return { positions: Array.from(raw.drawables.vertexPositions, v => Array.from(v)), opacities: Array.from(raw.drawables.opacities) }; },

@@ -10,6 +10,13 @@ async function fixture(options={}){
  const controller=new CaptureController({...options,getViewer:()=>viewer,onSourceStop:()=>released++});controller.setOptions({smoothing:0});
  return {controller,viewer,params,get released(){return released;},get lastCapture(){return lastCapture;},get captureWrites(){return captureWrites;}};
 }
+test('pause uses the viewer source snapshot without baking expression output into manual values',async()=>{
+ const {controller:c,viewer}=await fixture();let frozen=0,manualWrites=0;
+ viewer.freezeCaptureParameters=()=>{frozen++;return true;};viewer.setParameter=()=>manualWrites++;
+ c.startSimulation();c.pause();assert.equal(frozen,1);assert.equal(manualWrites,0);
+ c.seek(4);assert.equal(frozen,2);assert.equal(manualWrites,0);
+ c.resume();assert.equal(c.paused,false);c.stop();
+});
 test('camera frames independently map eyebrows and reset missing body without synthetic breathing',async()=>{
  const {controller:c,params}=await fixture();c.startCameraInput();
  assert.equal(c.updateCameraFrame({timestamp:10,faceVisible:true,bodyVisible:false,inputs:{BrowLeftY:.7,BrowRightY:-.4,FaceAngleX:15,EyeOpenLeft:0,MocopiBodyAngleZ:9}}),true);c.apply(.016,true);

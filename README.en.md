@@ -100,6 +100,8 @@ Optional camera tracking covers eyebrows, blinking, gaze, mouth shapes, head ang
 
 [Setup and calibration](docs/camera-tracking.md) · [Migrate an existing model](docs/migrate-existing-model.md) · [Camera test records](docs/verification/README.md#真实摄像头与网络边界)
 
+The preview also has independent video, landmark and 2D gaze display switches, plus camera-session statistics. Models with expression presets can switch them smoothly during tracking or while paused. Pink does not yet include an expression preset library; these browser controls do not add model rigging. See the [camera guide](docs/camera-tracking.md).
+
 ## Reproduction and verification
 
 **You do not need the author's original `work/` directory.** Pink Sakura's source images, eyebrow preparation script, layer recipe and runtime model are committed. Temporary files and caches can be regenerated. Obtain the official SDK, browser libraries, Upscayl and upscaling weights separately.
@@ -116,6 +118,7 @@ Each report identifies the commit or files it tested. Recent records are summari
 
 | Check | Recorded result |
 | --- | --- |
+| [Preview interactions, 2026-10-18](docs/verification/web-features-20261018.json) | 61 Python, 59 Node and 38 real WebGL checks; synthetic callbacks test overlays, expressions and statistics without opening a camera |
 | [Pink Sakura continuous motion, 2026-10-17](examples/pink-sakura/verification/continuous-20261017/README.md) | 6 paths and 1,488 completed render frames, including return paths, reversals and neutral reset; contact-sheet overview and selected full-size inspections |
 | [Core and browser checks from the same run](examples/pink-sakura/verification/continuous-20261017/summary.json) | 202 Core poses, 22 Web checks, 91 static captures; runtime ZIP extraction and hash checks passed |
 | [Fresh source archive, `e2c4679`](docs/verification/source-package-e2c4679.json) | 61 Python and 35 Node tests passed; regenerated 3 eyebrow PNGs, the 24-layer Pink recipe and the 16-layer geometric example |

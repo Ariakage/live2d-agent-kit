@@ -1,5 +1,7 @@
 # 验证记录索引 / Verification records
 
+**2026-10-18：** [通用网页交互回归](web-features-20261018.json)记录了 61 项 Python、59 项 Node 和 38 项真实 Core/WebGL 检查。新增检查使用临时测试表情与合成追踪回调，覆盖面捕/模拟输入中的表情叠加、暂停后换表情、异步结果顺序、节点/视线开关和统计导出；设备请求为 0。查看了 1360×1000 桌面与 390×844 窄屏布局。记录包含模板和脚本 SHA；未改变 Pink 模型或图集，没有重跑真实摄像头、30 分钟长跑、VTS 或引擎冷编译。
+
 后续 psd2live 1.3 GUI/MCP、CMO/Swing 与 1.4 物理导入已补录于[版本说明](../psd2live-versions.md)及[历史记录摘要](psd2live-authoring-history.json)。2026-10-17 核对的是保留的本地报告与 checkout，没有重新执行私有角色构建，也不将该记录转为 Pink 的新版引擎验收。
 
 **2026-10-17：** [Pink Sakura 连续动作复查](../../examples/pink-sakura/verification/continuous-20261017/README.md)同步了接缝排查、完整往返轨迹、载入资源身份和恢复打包经验，保留现有四个动作。1,488 个完成绘制帧、202 个 Core 姿态、22 项 Web 检查与 91 张静态截图均有新记录；没有继承旧摄像头或冷编译的通过状态。

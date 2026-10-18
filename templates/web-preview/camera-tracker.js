@@ -35,11 +35,14 @@ function publicError(error, phase) {
  * Production callers use the browser defaults and do not pass it.
  */
 export class CameraTracker {
-  constructor({video, onFrame = () => {}, onState = () => {}, assets = null, maxFps = 15, bodyFps = 8} = {}, platform = {}) {
+  constructor({video, onFrame = () => {}, onState = () => {}, onLandmarks = null, assets = null, maxFps = 15, bodyFps = 8} = {}, platform = {}) {
     this.video = video;
     this.assets = assets;
     this.onFrame = onFrame;
     this.onState = onState;
+    // Optional, ephemeral diagnostic data. Never added to getState(), the mapper,
+    // the numeric onFrame API, a recording, or browser storage.
+    this.onLandmarks = onLandmarks;
     this.maxFps = Number.isFinite(maxFps) ? Math.min(20, Math.max(1, maxFps)) : 15;
     this.bodyFps = Number.isFinite(bodyFps) ? Math.min(this.maxFps, Math.max(1, bodyFps)) : 8;
     this.platform = {
@@ -48,6 +51,7 @@ export class CameraTracker {
       cancelFrame: id => cancelAnimationFrame(id),
       baseURL: () => globalThis.location?.href,
       secureContext: () => globalThis.isSecureContext === true,
+      isVisible: () => !globalThis.document?.hidden,
       getUserMedia: constraints => {
         if (!globalThis.navigator?.mediaDevices?.getUserMedia) throw failure('camera-api-unavailable', '此浏览器未提供摄像头接口；请使用 localhost 或 HTTPS。');
         return navigator.mediaDevices.getUserMedia(constraints);
@@ -76,6 +80,11 @@ export class CameraTracker {
     if (!this.current(ctx)) throw abortError();
   }
 
+  publishLandmarks(payload) {
+    // Drawing diagnostics must not interrupt tracking or retain the camera stream.
+    try { this.onLandmarks?.(payload); } catch { /* Optional view only. */ }
+  }
+
   start({bodyEnabled = true} = {}) {
     // Construction and duplicate starts are inert. In particular, constructing with
     // assets:null must not change the ordinary preview or request camera permission.
@@ -87,6 +96,7 @@ export class CameraTracker {
       lastEmit: -Infinity, lastAnnounce: -Infinity, lastFace: null, lastPose: null,
       frames: 0, faceFrames: 0, bodyFrames: 0, lastInference: null, fps: 0};
     this.session = ctx;
+    this.publishLandmarks(null);
     this.announce({status: 'starting', code: '', message: '正在启动本地摄像头识别…',
       faceVisible: false, bodyVisible: false, bodyEnabled: ctx.bodyEnabled, calibrated: false,
       metrics: {frames: 0, faceFrames: 0, bodyFrames: 0}});
@@ -153,6 +163,7 @@ export class CameraTracker {
   tick(ctx) {
     ctx.raf = null;
     if (!this.current(ctx)) return;
+    if (!this.platform.isVisible()) { this.stop(); return; }
     try {
       const now = this.platform.now();
       if (now-ctx.lastEmit < 1000/this.maxFps) return;
@@ -190,6 +201,13 @@ export class CameraTracker {
       ctx.lastEmit = finished;
       if (!this.current(ctx)) return;
       this.onFrame(frame);
+      if (!this.current(ctx)) return;
+      this.publishLandmarks({timestamp: finished, faceTimestamp: ctx.faceTimestamp,
+        poseTimestamp: ctx.poseTimestamp, width: video.videoWidth, height: video.videoHeight,
+        faceVisible: frame.faceVisible, bodyVisible: frame.bodyVisible,
+        faceLandmarks: frame.faceVisible ? ctx.lastFace?.faceLandmarks?.[0] ?? null : null,
+        poseLandmarks: frame.bodyVisible ? ctx.lastPose?.landmarks?.[0] ?? null : null,
+        eyeOpen: {left: ctx.mapper.last?.raw.EyeOpenLeft ?? 0, right: ctx.mapper.last?.raw.EyeOpenRight ?? 0}});
       if (!this.current(ctx)) return;
       const changed = frame.faceVisible !== this.state.faceVisible || frame.bodyVisible !== this.state.bodyVisible;
       const patch = {faceVisible: frame.faceVisible, bodyVisible: frame.bodyVisible, metrics: frame.metrics};
@@ -237,6 +255,9 @@ export class CameraTracker {
     }
     ctx.lastFace = ctx.lastPose = null;
     ctx.mapper.reset();
+    // A cancelled older initialization may finish after a newer session starts.
+    // Releasing it must not erase the newer session's diagnostic frame.
+    if (!this.session || this.session === ctx) this.publishLandmarks(null);
   }
   fail(ctx, error) {
     if (!this.current(ctx)) return;
@@ -248,7 +269,7 @@ export class CameraTracker {
   }
   stop() {
     const ctx = this.session;
-    if (!ctx) return this.getState();
+    if (!ctx) { this.publishLandmarks(null); return this.getState(); }
     ctx.active = false;
     this.session = null;
     this.generation++;

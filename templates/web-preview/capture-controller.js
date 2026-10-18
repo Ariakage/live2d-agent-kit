@@ -121,6 +121,7 @@ export class CaptureController {
   }
   freeze() {
     const viewer=this.getViewer(); if (!viewer) return;
+    if (viewer.freezeCaptureParameters?.()) return;
     const frozen=viewer.getState().parameters;
     viewer.clearCaptureParameters(); viewer.clearParameters();
     for (const [id,value] of Object.entries(frozen)) viewer.setParameter(id,value);
@@ -158,7 +159,7 @@ export class CaptureController {
     const viewer=this.getViewer();
     viewer?.clearCaptureParameters();
     if (reset && active && viewer) {
-      viewer.setAutoPlay(false); viewer.setPointerFollow(false); viewer.clearParameters(); viewer.setExpression('');
+      viewer.setAutoPlay(false); viewer.setPointerFollow(false); viewer.clearParameters(); viewer.setExpression('',{immediate:true});
       for (const p of viewer.getParameters()) viewer.setParameter(p.id,p.default);
       viewer.renderNow();
     }

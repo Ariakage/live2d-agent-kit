@@ -98,6 +98,8 @@ Pink Sakura 使用 **`realesr-animevideov3-x4`**，通过 Upscayl 的 NCNN CLI �
 
 可选的摄像头模式支持眉毛、眨眼、视线、嘴形、头部角度，以及单摄像头估计的双肩和躯干姿态。点击“开始面捕”后才请求摄像头；推理在浏览器本地进行，不上传或录制画面，不请求麦克风。切换输入方式或离开页面会释放设备。上半身识别属于近似估计，模型也必须有对应绑定才能产生动作。
 
+网页还提供独立的画面、关键点与二维视线显示开关，以及摄像头长跑统计。模型提供预设表情时，可在面捕中平滑切换，暂停后也能更换或清除表情。Pink 当前没有预设表情库；这些网页能力不会自动增加模型绑定。操作方法见[面捕指南](docs/camera-tracking.md)。
+
 [安装与校准](docs/camera-tracking.md) · [迁移已有模型](docs/migrate-existing-model.md) · [摄像头测试记录](docs/verification/README.md#真实摄像头与网络边界)
 
 ## 复现与验证
@@ -116,6 +118,7 @@ CMO3 保留模型与绑定，其可编辑图层从图集重建，不包含原 PS
 
 | 检查 | 已记录的结果 |
 | --- | --- |
+| [网页交互，2026-10-18](docs/verification/web-features-20261018.json) | 61 项 Python、59 项 Node、38 项真实 WebGL 检查；合成回调验证节点、表情叠加与统计工具，未开启摄像头 |
 | [Pink Sakura 连续动作，2026-10-17](examples/pink-sakura/verification/continuous-20261017/README.md) | 6 条轨迹、1,488 个完成绘制帧；覆盖往返、反向和中性复位，并做接触表概览及局部原图检查 |
 | [同轮 Core 与网页检查](examples/pink-sakura/verification/continuous-20261017/summary.json) | 202 个 Core 姿态、22 项 Web 检查、91 张静态截图；运行包通过解压与哈希核对 |
 | [空目录源包重建，`e2c4679`](docs/verification/source-package-e2c4679.json) | 61 项 Python、35 项 Node 测试通过；三张眉毛 PNG、24 层 Pink 配方与 16 层几何示例可重建 |

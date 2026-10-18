@@ -102,6 +102,7 @@ const check=(name,ok,detail)=>{report.checks.push({name,pass:Boolean(ok),detail}
   check('mapped simulated values reach Core',await page.evaluate(()=>{const a=window.previewApp;const actual=a.viewer.getState().parameters;return Object.entries(a.capture.getState().parameters).every(([id,value])=>Math.abs(actual[id]-value)<.0001);}));
   await snapshot(page,'simulated-paused');
   await page.click('#capture-stop');await page.waitForTimeout(100);check('stop restores defaults',await page.evaluate(()=>window.previewApp.viewer.getParameters().every(p=>Math.abs(p.value-p.default)<.0001)));
+  if(args.includes('--interaction-features'))await require('./preview-feature-checks.cjs')(page,{entryURL,settings,check,report});
   report.cameraRequests=await page.evaluate(()=>window.__cameraCalls);check('no camera or microphone request',report.cameraRequests===0);check('no browser exceptions',report.errors.length===0,report.errors);
   await page.setViewportSize({width:390,height:844});check('mobile no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   report.pass=true;
