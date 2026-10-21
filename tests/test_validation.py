@@ -75,6 +75,16 @@ class ValidationTests(unittest.TestCase):
         self.assertFalse(result["nativeCoreValidated"])
         self.assertEqual(len(result["files"]), 4)
 
+    def test_dynamics_profile_requires_local_measurements(self):
+        self.manifest_data['config'] = {'pink_dynamics': 'regions.json'}
+        self.write_manifest()
+        self.assertFalse(validate.validate_manifest(self.manifest)['passed'])
+        (self.root / 'regions.json').write_text(json.dumps({'profile': 'pink-sakura-v1', 'canvas': [1024, 1536]}))
+        self.assertTrue(validate.validate_manifest(self.manifest)['passed'])
+        self.manifest_data['config']['pink_dynamics'] = '../regions.json'
+        self.write_manifest()
+        self.assertFalse(validate.validate_manifest(self.manifest)['passed'])
+
     def test_missing_texture_fails(self):
         (self.model_root / "texture.png").unlink()
         result = validate.validate_model(self.model)

@@ -40,6 +40,8 @@ def main():
     name=re.sub(r'[^A-Za-z0-9_-]','_',manifest.get('name','Character'))
     settings=json.loads((export/(name+'.model3.json')).read_text())
     textures=[local_reference(export,ref) for ref in settings['FileReferences']['Textures']]
+    dynamics_ref=manifest.get('config',{}).get('pink_dynamics')
+    dynamics=local_reference(manifest_path.parent,dynamics_ref) if dynamics_ref is not None else None
     if not textures:p.error('Export contains no texture pages')
     for texture in textures:
         w,h,kind=png(texture)
@@ -55,6 +57,13 @@ def main():
     hd_pages=[];source_hashes=[]
     hd_manifest=out/'manifest-hd.json'
     try:
+        # This input must remain inside the relocated HD recipe's own directory.
+        if dynamics is not None:
+            data=dynamics.read_bytes()
+            destination=out/'pink-dynamics.json'
+            with destination.open('xb') as target:target.write(data)
+            manifest['config']['pink_dynamics']=destination.name
+            report['dynamicsMeasurement']={'file':destination.name,'sha256':hashlib.sha256(data).hexdigest()}
         # Freeze every low page before inference. RGB preparation and alpha combine
         # must consume the same bytes even if another export is running meanwhile.
         snapshots=out/'source-atlases';snapshots.mkdir()

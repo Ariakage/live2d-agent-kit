@@ -36,7 +36,7 @@ def unpack_source(archive, destination):
 
 
 def manifest_sources(manifest_path, package_root):
-    """Verify that every image dependency resolves inside this source package."""
+    """Verify that image and rig measurement inputs stay inside this source package."""
     manifest_path, package_root = Path(manifest_path), Path(package_root).resolve()
     manifest = json.loads(manifest_path.read_text())
     references = []
@@ -46,6 +46,8 @@ def manifest_sources(manifest_path, package_root):
         if fill:
             references.append(fill["path"])
     references += manifest.get("config", {}).get("export_texture_pages", [])
+    if "pink_dynamics" in manifest.get("config", {}):
+        references.append(manifest["config"]["pink_dynamics"])
     files = {}
     for reference in references:
         path = (manifest_path.parent / reference).resolve()

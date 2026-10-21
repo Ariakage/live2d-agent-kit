@@ -1,5 +1,15 @@
 # Changelog / 更新日志
 
+## 2026-10-21 · Native Pink dynamics / 身体动态与表情动作
+
+- Pink Sakura now has 37 native parameters: shoulder, chest/waist, restrained upper-arm sway, cuffs, skirt, bow, Float and Wind join the existing face and hair rig. Nine local deformers retain the connected sleeve/body raster and preserve the neutral controls; no chin-rest, heart, wave or finger gestures were added.
+- Added the public `dynamics-regions.json` measurement profile and GPL `PinkSakuraDynamics.kt` extension using the pinned psd2live engine. Source-package checks require the measurement file, so reconstruction does not depend on a private `work/` directory.
+- Added 8 parameter-only expressions and 6 motions, bringing the motion library to 10. `build-performance.cjs` generates these from a fresh runtime and a matching passed native Core report. Quiet / Curious / Sleepy idles rotate in the web preview; motion handoffs retain the outgoing pose.
+- Mapped six upper-body estimates to native controls and added optional breathing, breeze, float and speech bob, all off by default during capture. These accents are separate from measured camera signals; calibration, tracking loss and pause/reset have regression coverage.
+- Preserved the approved face and artwork. The unchanged low-resolution atlas permits reuse of the original 8192² `realesr-animevideov3-x4` texture; no new neural upscaling was run.
+- Recompiled and exported Pink LOW / HD and the geometric Minimal example using cached Gradle dependencies. Core/Web checks, combined continuous motion and neutral-face comparison are recorded in the [scoped dynamics report](examples/pink-sakura/verification/dynamics-20261020/README.md). Automated frames and selected visual review are reported separately.
+- Partial-blink lashes and the faint closed lip remain known art limitations. This update does not claim new physical-camera, 30-minute soak, VTube Studio, official Editor or full cold-dependency acceptance.
+
 ## 2026-10-18 · Preview interaction tools / 网页交互迁移
 
 - Added independent local-video, landmark and 2D iris-gaze display switches. Stale points expire independently; stopping or backgrounding clears diagnostic data without storing it.

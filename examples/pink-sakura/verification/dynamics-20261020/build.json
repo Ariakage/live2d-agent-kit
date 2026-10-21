@@ -1,0 +1,124 @@
+{
+  "engine": {
+    "url": "https://github.com/tsunehimatoi/psd2live.git",
+    "commit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+    "patch_sha256": "a785a2cd38cb9d999a1f445d9fb36c75d3731d2742a335d072a3cdadd22a17fa",
+    "patched_files": {
+      "src/main/kotlin/io/github/psd2live/agent/AgentPlacementValidation.kt": "c7a75fec807ee50ae4335ec4711efe03f59a0ae022d090ba5b2a76fd997d53fd",
+      "src/main/kotlin/io/github/psd2live/core/Analyzer.kt": "c040d7c33095bebb644cf48a6e1cd46f039b55152c957e5c711c114eb2dd98a8",
+      "src/main/kotlin/io/github/psd2live/core/AtlasPacker.kt": "8cebd8470bd592631990d85b90c15b30f4283ffb372a0b708190f853f7faac0d",
+      "src/main/kotlin/io/github/psd2live/core/Model.kt": "c419b127c8e744eb1e727d9d58cf7f8e1278a095b7730fc102882095ef732c31",
+      "src/main/kotlin/io/github/psd2live/core/NinePoseFaceRig.kt": "2a0f4cd9efe370373b292daa398ff73f2049494241c734ab3e745d50a8adee89",
+      "src/main/kotlin/io/github/psd2live/core/PSD2LivePipeline.kt": "fa32c6a3a951e84ca3dad1641c2192992a348d975bedb811f2b1275c24424711",
+      "src/main/kotlin/io/github/psd2live/core/RigBuilder.kt": "42f7d897ee2eefbe35422877cd1ae402ca82aded154f3cf5e22624a868154fcc",
+      "src/main/kotlin/io/github/psd2live/core/TextureOverride.kt": "396e3f306c459fbf12eba10e560d693fd729713e580b37da5725106362264e7b"
+    }
+  },
+  "java": "Zulu JDK 21",
+  "gradle": "9.6.1",
+  "offlineGradleDependencyCacheReused": true,
+  "cleanDependencyBuildTested": false,
+  "actualExports": [
+    "Pink LOW v4",
+    "Pink HD v4",
+    "Minimal v4"
+  ],
+  "sourceFiles": [
+    {
+      "file": "integrations/psd2live/ManifestExport.kt",
+      "bytes": 60141,
+      "sha256": "de2b4201b5c22beccaab7d26f872d1c6421a8916f566f2dc87506494101ee4a6"
+    },
+    {
+      "file": "integrations/psd2live/PinkSakuraDynamics.kt",
+      "bytes": 15249,
+      "sha256": "3e69dda4c798d177f29f1fc772b54b9ab0a4f18171860294bf147f9838292ffe"
+    },
+    {
+      "file": "scripts/psd2live-init.gradle",
+      "bytes": 3131,
+      "sha256": "609057647ae208c9aac88b493320de8e0f9dc7ea531b0cf678d86bf6d1871d94"
+    },
+    {
+      "file": "scripts/upscale-atlas.py",
+      "bytes": 7862,
+      "sha256": "762ff72511576e3ecd5564d2e9cf9c46957e4b07faf10eefc35b5472fc84dd5c"
+    },
+    {
+      "file": "examples/pink-sakura/check-dynamics.cjs",
+      "bytes": 6850,
+      "sha256": "84042d7c843f3744e75aaea97bbe76b9b0c646a3dd1e2edd9bae8aad0348cb5a"
+    },
+    {
+      "file": "examples/pink-sakura/check-continuous.cjs",
+      "bytes": 12567,
+      "sha256": "017d7a89a2801c724486baceb555ee49d14801d0a3b886ae35c405b3d7fc419c"
+    }
+  ],
+  "compiledIntegrationClasses": [
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt$main$$inlined$sortedBy$1.class",
+      "bytes": 2166,
+      "sha256": "b06fdc9f39247481185f3d7dcd9c9808a970dbad6dfbe8e8f1938ea846e8fcd3"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt$main$source$1.class",
+      "bytes": 1799,
+      "sha256": "ab8ef6a581ccc5d6dec22185952f450e91b1ebc5b020e1d25a3f01b18605ad15"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt$sourceAlphaMask$FeatherEdge.class",
+      "bytes": 3807,
+      "sha256": "1f51fc23d171c2b633dcb28830fd916e8aa1fb9a2599130ccb9c0caced19d765"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt$sourceAlphaMask$HoleFillImage.class",
+      "bytes": 12119,
+      "sha256": "6fc68968fab25f31ed33e0c3e08c177551d3620532c8a34027d3761997d4417c"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt$sourceAlphaMask$HoleGradient.class",
+      "bytes": 4416,
+      "sha256": "25bdfe67e762fac4faeb7e400f86c0478fc84957bcb25e2974db1119185b9079"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt$sourceAlphaMask$SkinPatch.class",
+      "bytes": 12236,
+      "sha256": "a83a56198980eaec10509c80bbefe677ba2e47b478b4a1bd39f7f28d3eb43682"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt$sourceAlphaMask$SourceColorFilter.class",
+      "bytes": 5017,
+      "sha256": "a0b15e1f31a53e09bb52fadf8976549336e931f569534865065ab3a507e2ec78"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/ManifestExportKt.class",
+      "bytes": 126052,
+      "sha256": "87ca6e3d9a5f4fb3b1682b57e40117ed495950e0d032882a53c39f8213d9e5ac"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/PinkSakuraDynamicsKt$appendPinkSakuraDynamics$originalWorlds$1.class",
+      "bytes": 2086,
+      "sha256": "42f93ea9f8c6a9510b4889c83d535dc6366751f190bce0fc08a1d1ad858e24f5"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/PinkSakuraDynamicsKt$appendPinkSakuraDynamics$worlds$1.class",
+      "bytes": 2070,
+      "sha256": "b8812076a136738209f648a005953bd9556ad0bc1bd1590c7c4dba741daedb24"
+    },
+    {
+      "file": "io/github/psd2live/agentkit/PinkSakuraDynamicsKt.class",
+      "bytes": 62354,
+      "sha256": "fcf08f97fa1f6c67d3a37cdb3f7e024790b8f9be255e0910bc6e9dd708487e00"
+    }
+  ],
+  "lowHdMocByteIdentical": true,
+  "lowAtlasSha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4",
+  "hdAtlasSha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+  "superResolution": {
+    "model": "realesr-animevideov3-x4",
+    "rerun": false,
+    "reason": "New LOW atlas byte-identical to the recorded NCNN input; reused the exact previous HD atlas, with source hash checked by exporter."
+  },
+  "minimalWebScope": "Freshly re-exported Minimal MOC byte-identical to the separately Core/Web-checked Minimal from this work session; retained exact-artifact Web evidence."
+}

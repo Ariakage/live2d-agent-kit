@@ -1,4 +1,5 @@
 import {INPUTS, NEUTRAL_INPUT, DURATION, clamp, simulateInput, mapInput} from './tracking-input.js';
+import {DYNAMICS, captureBreath, captureWind, captureFloat} from './dynamics-config.js';
 
 /** One input owner: simulator, manual signals or camera results. Device acquisition
  * stays in CameraTracker; this controller maps, smooths and expires its values. */
@@ -8,7 +9,7 @@ export class CaptureController {
     this.holdParameterDefaults=new Set(Array.isArray(holdParameterDefaults)
       ? holdParameterDefaults.filter(id=>typeof id==='string'&&id.trim()) : []);
     this.mode='idle'; this.profile='all'; this.paused=false; this.time=0;
-    this.options={strength:1,smoothing:.3,speed:1,faceVisible:true,bodyVisible:true};
+    this.options={strength:1,smoothing:.3,speed:1,faceVisible:true,bodyVisible:true,breathing:DYNAMICS.breathingDefaultEnabled};
     this.inputs={...NEUTRAL_INPUT}; this.offsets={}; this.parameters={};
     this.frame=0; this.generation=0; this.raf=0; this.lastTime=0; this.lastPublish=0;
     this.cameraDetection={face:false,body:false}; this.cameraSeenAt=null; this.cameraTimestamp=-Infinity;
@@ -76,7 +77,7 @@ export class CaptureController {
       const ranges={strength:[.2,1.5],smoothing:[0,1],speed:[.25,2]};
       this.options[key]=clamp(values[key],...ranges[key]);
     }
-    for (const key of ['faceVisible','bodyVisible']) if (typeof values[key]==='boolean') this.options[key]=values[key];
+    for (const key of ['faceVisible','bodyVisible','breathing']) if (typeof values[key]==='boolean') this.options[key]=values[key];
     this.publish();
   }
   apply(dt, immediate=false) {
@@ -95,7 +96,15 @@ export class CaptureController {
       }
     }
     const breath=descriptors.find(p=>p.id==='ParamBreath');
-    if (breath && !Object.hasOwn(target,breath.id)) target.ParamBreath=this.mode!=='camera'&&this.options.bodyVisible ? breath.min+(breath.max-breath.min)*(.2+.16*Math.sin(this.time*2*Math.PI/6)) : breath.default;
+    const ambient=this.options.breathing && (this.mode==='camera' ? detected.face||detected.body : this.options.bodyVisible);
+    if (breath && !Object.hasOwn(target,breath.id)) {
+      const amount=ambient ? captureBreath(this.time) : this.mode!=='camera'&&this.options.bodyVisible ? .2+.16*Math.sin(this.time*2*Math.PI/6) : null;
+      target.ParamBreath=amount===null ? breath.default : clamp(breath.min+(breath.max-breath.min)*amount,breath.min,breath.max);
+    }
+    for (const [id,value] of [['ParamWind',captureWind(this.time)],['ParamFloat',captureFloat(this.time,viewer.getState?.()?.floatProfile)]]) {
+      const parameter=descriptors.find(p=>p.id===id);
+      if (parameter && !Object.hasOwn(target,id)) target[id]=ambient ? clamp(value,parameter.min,parameter.max) : parameter.default;
+    }
     for (const [id,value] of Object.entries(target)) {
       const eye=/Eye.*Open/.test(id);
       const tau=eye ? 12+this.options.smoothing*28 : 12+this.options.smoothing*280;
@@ -110,7 +119,7 @@ export class CaptureController {
     const tick=(now)=>{
       if (generation!==this.generation || this.mode==='idle' || this.paused) return;
       const elapsed=Math.max(0,(now-this.lastTime)/1000),dt=Math.min(elapsed,.1); this.lastTime=now;
-      this.time=(this.time+dt*this.options.speed)%DURATION;
+      this.time=(this.time+dt*(this.mode==='camera'?1:this.options.speed))%DURATION;
       // Camera smoothing uses elapsed time even when inference stalls rendering.
       // Only the synthetic timeline clamps a long frame to avoid jumping poses.
       this.apply(this.mode==='camera'?elapsed:dt);
@@ -147,8 +156,8 @@ export class CaptureController {
   }
   calibrate() {
     if (this.mode==='idle' || !this.options.faceVisible) return false;
-    for (const spec of INPUTS) if (/Angle/.test(spec.id) && (!spec.body || this.options.bodyVisible)) this.offsets[spec.id]=this.inputs[spec.id];
-    this.message='已将当前头部与躯干角度设为正位';
+    for (const spec of INPUTS) if ((/Angle/.test(spec.id) || spec.normalized) && (!spec.body || this.options.bodyVisible)) this.offsets[spec.id]=this.inputs[spec.id];
+    this.message='已将当前头部与可见躯干设为正位';
     if (this.paused) {this.getViewer()?.clearParameters();this.apply(0,true);this.getViewer()?.renderNow();this.freeze();}
     this.publish(); return true;
   }

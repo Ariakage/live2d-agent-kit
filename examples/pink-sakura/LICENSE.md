@@ -21,7 +21,7 @@
 | `runtime/` 内的 `.moc3`、`.model3.json`、`.cdi3.json`、`.physics3.json`、`.motion3.json`、`.exp3.json` 和纹理 `.png` | 本角色实际发布的模型运行资产 |
 | `verification/` 内的模型截图 `.png` 和演示 `.gif` | 从本角色运行模型捕获的展示画面 |
 
-不属于上述范围的文件应另查其许可。示例配方脚本、构建代码和原创说明文档沿用仓库根目录的 [MIT 许可](../../LICENSE)；GPL 集成保持 [原许可范围](../../THIRD_PARTY_NOTICES.md)。SDK、模型权重和第三方工具不随本示例分发，不能由本许可重新授权。
+不属于上述范围的文件应另查其许可。示例配方脚本、构建代码和原创说明文档沿用仓库根目录的 [MIT 许可](https://github.com/Ariakage/live2d-agent-kit/blob/main/LICENSE)；GPL 集成保持 [原许可范围](https://github.com/Ariakage/live2d-agent-kit/blob/main/THIRD_PARTY_NOTICES.md)。SDK、模型权重和第三方工具不随本示例分发，不能由本许可重新授权。
 
 ## 使用与署名
 

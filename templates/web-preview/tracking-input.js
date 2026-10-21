@@ -20,6 +20,12 @@ export const INPUTS = [
   {id:'MocopiBodyAngleX', label:'躯干左右', min:-10, max:10, value:0, target:'ParamBodyAngleX', body:true},
   {id:'MocopiBodyAngleY', label:'躯干俯仰', min:-10, max:10, value:0, target:'ParamBodyAngleY', body:true},
   {id:'MocopiBodyAngleZ', label:'肩部侧倾', min:-10, max:10, value:0, target:'ParamBodyAngleZ', body:true},
+  {id:'BodyShoulderLiftL', label:'左肩抬起', min:-1, max:1, value:0, target:'ParamShoulderLiftL', body:true, normalized:true},
+  {id:'BodyShoulderLiftR', label:'右肩抬起', min:-1, max:1, value:0, target:'ParamShoulderLiftR', body:true, normalized:true},
+  {id:'BodyChestExpand', label:'胸廓舒展', min:-1, max:1, value:0, target:'ParamChestExpand', body:true, normalized:true},
+  {id:'BodyWaistSway', label:'腰部左右摆动', min:-1, max:1, value:0, target:'ParamWaistSway', body:true, normalized:true},
+  {id:'BodyUpperArmLSwing', label:'左上臂外展', min:-1, max:1, value:0, target:'ParamUpperArmLSwing', body:true, normalized:true},
+  {id:'BodyUpperArmRSwing', label:'右上臂外展', min:-1, max:1, value:0, target:'ParamUpperArmRSwing', body:true, normalized:true},
 ];
 export const DURATION = 24;
 export const NEUTRAL_INPUT = Object.fromEntries(INPUTS.map(s => [s.id, s.value]));
@@ -63,6 +69,13 @@ export function simulateInput(time, profile='all') {
     v.MocopiBodyAngleX = 5 * oscillate(t, 8, -.35);
     v.MocopiBodyAngleY = 2.5 * oscillate(t, 8);
     v.MocopiBodyAngleZ = 5 * oscillate(t, 12, -.3);
+    // Whole cycles inside DURATION avoid a body-pose jump when playback loops.
+    v.BodyShoulderLiftL = .52 * oscillate(t, 8, .2);
+    v.BodyShoulderLiftR = .43 * oscillate(t, 12, -.35);
+    v.BodyChestExpand = .57 * oscillate(t, 6, .35);
+    v.BodyWaistSway = .62 * oscillate(t, 12, -.4);
+    v.BodyUpperArmLSwing = .6 * oscillate(t, 8, .15);
+    v.BodyUpperArmRSwing = .56 * oscillate(t, 12, -.5);
   }
   return v;
 }
@@ -80,7 +93,7 @@ export function mapInput(input={}, {strength=1, offsets={}, faceVisible=true, bo
     if (!target) continue;
     const tracked = (spec.body ? bodyVisible : faceVisible) && Number.isFinite(input[spec.id]);
     let value = tracked ? clamp(input[spec.id],spec.min,spec.max) : spec.value;
-    if (/Angle/.test(spec.id) && tracked) value=(value-(offsets[spec.id] || 0))*strength;
+    if (tracked && (/Angle/.test(spec.id) || spec.normalized)) value=(value-(offsets[spec.id] || 0))*strength;
     const inMin = mapping.inputMin ?? spec.min, inMax = mapping.inputMax ?? spec.max;
     const outMin = mapping.outputMin ?? (spec.id === 'MouthSmile' ? target.default : target.min);
     const outMax = mapping.outputMax ?? target.max;

@@ -23,7 +23,7 @@ function original(name, polygons, crop, z, extra={}) {
 // Measurement files are intentionally separate from the exporter. A later
 // correction updates its source contour, rather than changing an atlas by hand.
 const manifest = {name:'PinkSakura',width:1024,height:1536,
- config:{atlas_size:2048,texture_padding:16,texture_edge_extrusion:16,
+ config:{atlas_size:2048,texture_padding:16,texture_edge_extrusion:16,pink_dynamics:'dynamics-regions.json',
  mesh_spacing:16,source_pixel_head:true,source_closed_eyes:true,
  source_continuous_lid:true,source_lid_open_thickness:.3,
  source_eye_closure_depth:-8,head_strength:.22,body_strength:.25,

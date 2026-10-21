@@ -1,50 +1,114 @@
 {
-	"Version": 3,
-	"FileReferences": {
-		"Moc": "PinkSakura.moc3",
-		"Textures": [
-			"PinkSakura.8192/texture_00.png"
-		],
-		"Physics": "PinkSakura.physics3.json",
-		"DisplayInfo": "PinkSakura.cdi3.json",
-		"Motions": {
-			"Idle": [
-				{
-					"File": "PinkSakura.idle.motion3.json"
-				}
-			],
-			"Blink": [
-				{
-					"File": "PinkSakura.blink.motion3.json"
-				}
-			],
-			"Nod": [
-				{
-					"File": "PinkSakura.nod.motion3.json"
-				}
-			],
-			"Shake": [
-				{
-					"File": "PinkSakura.shake.motion3.json"
-				}
-			]
-		}
-	},
-	"Groups": [
-		{
-			"Target": "Parameter",
-			"Name": "EyeBlink",
-			"Ids": [
-				"ParamEyeLOpen",
-				"ParamEyeROpen"
-			]
-		},
-		{
-			"Target": "Parameter",
-			"Name": "LipSync",
-			"Ids": [
-				"ParamMouthOpenY"
-			]
-		}
-	]
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "PinkSakura.moc3",
+    "Textures": [
+      "PinkSakura.8192/texture_00.png"
+    ],
+    "Physics": "PinkSakura.physics3.json",
+    "DisplayInfo": "PinkSakura.cdi3.json",
+    "Motions": {
+      "Idle": [
+        {
+          "File": "PinkSakura.idle.motion3.json"
+        }
+      ],
+      "Blink": [
+        {
+          "File": "PinkSakura.blink.motion3.json"
+        }
+      ],
+      "Nod": [
+        {
+          "File": "PinkSakura.nod.motion3.json"
+        }
+      ],
+      "Shake": [
+        {
+          "File": "PinkSakura.shake.motion3.json"
+        }
+      ],
+      "Quiet": [
+        {
+          "File": "PinkSakura.quiet.motion3.json"
+        }
+      ],
+      "Curious": [
+        {
+          "File": "PinkSakura.curious.motion3.json"
+        }
+      ],
+      "Sleepy": [
+        {
+          "File": "PinkSakura.sleepy.motion3.json"
+        }
+      ],
+      "Airy": [
+        {
+          "File": "PinkSakura.airy.motion3.json"
+        }
+      ],
+      "SlowBlink": [
+        {
+          "File": "PinkSakura.slowblink.motion3.json"
+        }
+      ],
+      "SpeechBob": [
+        {
+          "File": "PinkSakura.speechbob.motion3.json"
+        }
+      ]
+    },
+    "Expressions": [
+      {
+        "Name": "Smile",
+        "File": "PinkSakura.Smile.exp3.json"
+      },
+      {
+        "Name": "SoftSmile",
+        "File": "PinkSakura.SoftSmile.exp3.json"
+      },
+      {
+        "Name": "WinkLeft",
+        "File": "PinkSakura.WinkLeft.exp3.json"
+      },
+      {
+        "Name": "WinkRight",
+        "File": "PinkSakura.WinkRight.exp3.json"
+      },
+      {
+        "Name": "Surprised",
+        "File": "PinkSakura.Surprised.exp3.json"
+      },
+      {
+        "Name": "Smug",
+        "File": "PinkSakura.Smug.exp3.json"
+      },
+      {
+        "Name": "Angry",
+        "File": "PinkSakura.Angry.exp3.json"
+      },
+      {
+        "Name": "Sleepy",
+        "File": "PinkSakura.Sleepy.exp3.json"
+      }
+    ]
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
 }

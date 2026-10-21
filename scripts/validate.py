@@ -360,6 +360,13 @@ def validate_manifest(manifest_path: Path) -> dict:
                 find_green(item, f"{location}[{index}]")
     find_green(manifest)
     config = manifest.get("config", {})
+    if isinstance(config, dict) and "pink_dynamics" in config:
+        try:
+            measurement = load_json(safe_reference(manifest_path.parent, config["pink_dynamics"]))
+            if not isinstance(measurement, dict) or measurement.get("profile") != "pink-sakura-v1" or measurement.get("canvas") != [1024, 1536]:
+                raise ValidationError("pink_dynamics requires the measured Pink Sakura profile")
+        except (ValidationError, OSError) as exc:
+            issue(report, "dynamics_measurement", str(exc))
     if not isinstance(config, dict):
         issue(report, "config", "config must be an object")
     elif "export_texture_pages" in config:

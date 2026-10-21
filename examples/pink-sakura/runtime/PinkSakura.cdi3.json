@@ -120,6 +120,71 @@
 			"Id": "ParamBackHairBaseLSwing",
 			"GroupId": "",
 			"Name": "back hair-base-l sway"
+		},
+		{
+			"Id": "ParamFloat",
+			"GroupId": "",
+			"Name": "Float"
+		},
+		{
+			"Id": "ParamWind",
+			"GroupId": "",
+			"Name": "Wind"
+		},
+		{
+			"Id": "ParamWindSway",
+			"GroupId": "",
+			"Name": "Wind Sway"
+		},
+		{
+			"Id": "ParamShoulderLiftL",
+			"GroupId": "",
+			"Name": "Shoulder Lift L"
+		},
+		{
+			"Id": "ParamShoulderLiftR",
+			"GroupId": "",
+			"Name": "Shoulder Lift R"
+		},
+		{
+			"Id": "ParamChestExpand",
+			"GroupId": "",
+			"Name": "Chest Expand"
+		},
+		{
+			"Id": "ParamWaistSway",
+			"GroupId": "",
+			"Name": "Waist Sway"
+		},
+		{
+			"Id": "ParamUpperArmLSwing",
+			"GroupId": "",
+			"Name": "Upper Arm LSwing"
+		},
+		{
+			"Id": "ParamUpperArmRSwing",
+			"GroupId": "",
+			"Name": "Upper Arm RSwing"
+		},
+		{
+			"Id": "ParamSleeveLSwing",
+			"GroupId": "",
+			"Name": "Sleeve LSwing"
+		},
+		{
+			"Id": "ParamSleeveRSwing",
+			"GroupId": "",
+			"Name": "Sleeve RSwing"
+		},
+		{
+			"Id": "ParamSkirtSwing",
+			"GroupId": "",
+			"Name": "Skirt Swing"
+		},
+		{
+			"Id": "ParamBowSwing",
+			"GroupId": "",
+			"Name": "Bow Swing"
 		}
 	],
 	"ParameterGroups": [

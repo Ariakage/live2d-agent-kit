@@ -28,3 +28,6 @@ __pycache__/
 *.cmo3
 *.psd
 *.zip
+
+# Rebuilt deterministically by the public Pink recipe.
+/examples/pink-sakura/manifest.json

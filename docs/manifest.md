@@ -170,8 +170,21 @@ AA、expand、fade 等修饰选项应搭配显式 `source_polygons` 或孔洞选
 | 独立发丝：`independent_hair_physics`、`hair_swing_strength` | 每根图层 alpha 与根部连接已正确，需要独立摆动；默认不开启 |
 | 领带：`tie_physics`、`tie_swing_strength` | 素材确为长条领饰；适配器会筛选长宽比大于 2 且名字以 `neckwear` 开头的图层，别把长发误命名成领饰 |
 | 嘴形：`cute_mouth_form`、`mouth_outline` | 已有合适口部素材；检查嘴形和张口二维网格，再组合转头，不能只测单个滑块 |
+| Pink 身体动态：`pink_dynamics` | 配方目录内的相对 JSON 路径；目前只支持公开 Pink Sakura 的 `pink-sakura-v1` 测量档，不是通用自动变形器开关 |
 | `parent_deformer` | 确定需要重设父级，且查询过实际生成的 `Deform...` 名称；不要凭命名猜父级或用它修错误 alpha |
 
 `source_pixel_shallow_blink` 虽有默认值，也不意味着省略整套 source-pixel 配方时自动测量眼睛。所有眼角、曲线、肤色修补矩形、发丝边界都属于每个新角色的测量资料，应保存来源截图和诊断结果，不要复用某个旧角色的数字。
 
 高清相关 `config.export_texture_pages`、`config.export_texture_source_sha256` 应由 [超分流程](upscaling.md)根据当前低清导出生成。改变 crop、mask、z、名字或绑定配置后先重新导出并验证，不继续使用旧图集哈希。
+
+## Pink Sakura 的身体动态扩展
+
+[公开测量文件](../examples/pink-sakura/dynamics-regions.json)记录原图 1024×1536 画布内的肩、腰、发饰锚点和局部幅度。`build-manifest.cjs` 在 `config` 中写入：
+
+```json
+{ "pink_dynamics": "dynamics-regions.json" }
+```
+
+[PinkSakuraDynamics.kt](../integrations/psd2live/PinkSakuraDynamics.kt)利用上游 `RigEditOverlay` / `RigWarpEdit`，在连续的身体和衣袖层上增加局部变形器，再添加 Float、Wind 与配件物理。中性控制点保持恒等，新增参数进入真实 MOC；网页映射只负责提供输入。`ParamWind` 是物理输入，经 `ParamWindSway` 才影响画面，静态单参数检查可能提示未观察到位移，必须补做随时间求值的检查。
+
+路径必须留在 manifest 所在配方目录内，测量档也必须进入公开源包。该文件的点位、层名与幅度仅适合 Pink；给其他角色使用时需要重新拆层和测量，并实现、验证对应配方，不能只改 `profile` 名称后套用。当前上臂只是连续衣袖的小幅摆动，不支持自由弯肘或手势。

@@ -1,0 +1,414 @@
+{
+  "schema": "pink-dynamics-release-v1",
+  "checkedDate": "2026-10-21",
+  "pass": true,
+  "scope": "Native/Core, WebGL, continuous automated motion and sampled visual review. Not physical camera, VTube Studio, Cubism GUI, cross-platform, or clean Gradle dependency build.",
+  "nativeCore": {
+    "report": "native-core.json",
+    "poses": 228,
+    "counts": {
+      "parameters": 37,
+      "drawables": 26,
+      "vertices": 7180,
+      "triangles": 11904
+    },
+    "warnings": [
+      "Parameters without a measurable direct vertex/opacity/order effect: ParamWind"
+    ]
+  },
+  "web": {
+    "report": "web-smoke.json",
+    "checks": 38,
+    "browser": {
+      "name": "chromium",
+      "version": "155.0.8059.86",
+      "playwrightPackage": "playwright",
+      "playwrightVersion": "1.62.1",
+      "explicitExecutablePath": true
+    }
+  },
+  "dynamics": {
+    "report": "dynamics.json",
+    "checks": 8,
+    "neutralFaceChangedPixels": 0
+  },
+  "continuous": {
+    "report": "continuous.json.gz",
+    "uncompressedSha256": "818e0b9bddaba6d9358b59450987e2ab0cf5dd7dfe7f8a2aad0a62f5d0aeb775",
+    "totalFrames": 6597,
+    "tracks": [
+      {
+        "name": "motion-Idle",
+        "group": "Idle",
+        "duration": 6.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 382,
+        "timing": {
+          "frames": 382,
+          "durationMs": 6509.5,
+          "maxGapMs": 34.5,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-Blink",
+        "group": "Blink",
+        "duration": 1.7,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 102,
+        "timing": {
+          "frames": 102,
+          "durationMs": 1716.6000000238419,
+          "maxGapMs": 33.39999997615814,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-Nod",
+        "group": "Nod",
+        "duration": 2.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 149,
+        "timing": {
+          "frames": 149,
+          "durationMs": 2515.899999976158,
+          "maxGapMs": 33.699999928474426,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-Shake",
+        "group": "Shake",
+        "duration": 2.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 148,
+        "timing": {
+          "frames": 148,
+          "durationMs": 2511.6999999284744,
+          "maxGapMs": 34.09999990463257,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-Quiet",
+        "group": "Quiet",
+        "duration": 12.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 736,
+        "timing": {
+          "frames": 736,
+          "durationMs": 12516.200000047684,
+          "maxGapMs": 34.299999952316284,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-Curious",
+        "group": "Curious",
+        "duration": 12.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 734,
+        "timing": {
+          "frames": 734,
+          "durationMs": 12511,
+          "maxGapMs": 34.200000047683716,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-Sleepy",
+        "group": "Sleepy",
+        "duration": 12.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 734,
+        "timing": {
+          "frames": 734,
+          "durationMs": 12500,
+          "maxGapMs": 34.200000047683716,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-Airy",
+        "group": "Airy",
+        "duration": 18.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 1088,
+        "timing": {
+          "frames": 1088,
+          "durationMs": 18516,
+          "maxGapMs": 34.200000047683716,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-SlowBlink",
+        "group": "SlowBlink",
+        "duration": 2.7,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 160,
+        "timing": {
+          "frames": 160,
+          "durationMs": 2716.100000023842,
+          "maxGapMs": 33.39999997615814,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "motion-SpeechBob",
+        "group": "SpeechBob",
+        "duration": 5.5,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 325,
+        "timing": {
+          "frames": 325,
+          "durationMs": 5512.099999904633,
+          "maxGapMs": 33.5,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "face-cycle",
+        "duration": 6,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 354,
+        "timing": {
+          "frames": 354,
+          "durationMs": 6016.299999952316,
+          "maxGapMs": 33.700000047683716,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "body-hair-cycle",
+        "duration": 6,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 353,
+        "timing": {
+          "frames": 353,
+          "durationMs": 6001.299999952316,
+          "maxGapMs": 33.60000002384186,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "body-native-cycle",
+        "duration": 6,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 354,
+        "timing": {
+          "frames": 354,
+          "durationMs": 6028.899999976158,
+          "maxGapMs": 34.699999928474426,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "accessory-cycle",
+        "duration": 6,
+        "view": "portrait",
+        "neutralBefore": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "neutralAfter": "cb4f6b6460cb506362fd7ebd0b70f518961aab42b4c5c3549351e608d3e33a3d",
+        "frameCount": 355,
+        "timing": {
+          "frames": 355,
+          "durationMs": 6016.300000071526,
+          "maxGapMs": 33.800000071525574,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-Smile",
+        "expression": "Smile",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 78,
+        "timing": {
+          "frames": 78,
+          "durationMs": 1316.5,
+          "maxGapMs": 33.299999952316284,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-SoftSmile",
+        "expression": "SoftSmile",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 78,
+        "timing": {
+          "frames": 78,
+          "durationMs": 1316,
+          "maxGapMs": 33.5,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-WinkLeft",
+        "expression": "WinkLeft",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 77,
+        "timing": {
+          "frames": 77,
+          "durationMs": 1300.1000000238419,
+          "maxGapMs": 34.700000047683716,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-WinkRight",
+        "expression": "WinkRight",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 79,
+        "timing": {
+          "frames": 79,
+          "durationMs": 1313.1999999284744,
+          "maxGapMs": 34.60000002384186,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-Surprised",
+        "expression": "Surprised",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 78,
+        "timing": {
+          "frames": 78,
+          "durationMs": 1313.6000000238419,
+          "maxGapMs": 33.40000009536743,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-Smug",
+        "expression": "Smug",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 78,
+        "timing": {
+          "frames": 78,
+          "durationMs": 1316,
+          "maxGapMs": 34.09999990463257,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-Angry",
+        "expression": "Angry",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 78,
+        "timing": {
+          "frames": 78,
+          "durationMs": 1310.4000000953674,
+          "maxGapMs": 33.5,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      },
+      {
+        "name": "expression-Sleepy",
+        "expression": "Sleepy",
+        "duration": 1.3,
+        "view": "face",
+        "neutralBefore": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "neutralAfter": "bda512f0a35aeeddc69e94527cadbbb7079b90dd011e2c3f6f8de0c517cc8239",
+        "frameCount": 77,
+        "timing": {
+          "frames": 77,
+          "durationMs": 1300.1000000238419,
+          "maxGapMs": 34.10000002384186,
+          "gapsOver100ms": 0
+        },
+        "neutralRestored": true
+      }
+    ],
+    "visualReview": "See separate visual-review.json; automated pass does not establish every-frame visual acceptance."
+  },
+  "minimal": {
+    "corePoses": 192,
+    "webChecks": 22,
+    "mocSha256": "dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9"
+  },
+  "tests": {
+    "python": 65,
+    "node": 77
+  },
+  "cameraTested": false,
+  "vtubeStudioTested": false,
+  "editorTested": false,
+  "releasePackage": {
+    "zipSha256": "655e458a24f6a7d4ca9cf89fc734e8d3262794e2d1ea165e904ff31e3623fed7",
+    "crcAndExtractedFilesChecked": true,
+    "publicRuntimeMatches": true
+  },
+  "limitations": [
+    "Upper arms are restrained local deformations on a connected body raster, not free elbow/hand gestures.",
+    "Half-closed eyelash thickness and blunt tips remain; EyeOpen 0–0.25 is a closed-eye hold.",
+    "Minimum individual warp control triangle ratio is 0.8407541; the 228 sampled native poses have zero flipped/degenerate triangles. This does not cover every simultaneous combination.",
+    "8192-square atlas needs suitable GPU support."
+  ]
+}

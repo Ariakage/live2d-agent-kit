@@ -21,3 +21,25 @@ This adapter still targets commit `5526f2e16b57e5f83d34f33730d6fa26d8bc8695`.
 Later character work used 1.3.0 GUI/MCP and CMO authoring, plus 1.4.0 physics
 import. See the [version notes](../../docs/psd2live-versions.md); those separate
 workflows do not establish compatibility of this adapter or patch with a newer engine.
+
+
+## Pink Sakura body dynamics
+
+`PinkSakuraDynamics.kt` is an opt-in extension selected by
+`config.pink_dynamics`. It uses the existing `RigEditOverlay` / `RigWarpEdit`
+API to add nine identity-at-neutral local deformers, thirteen parameters and
+five physics groups. It keeps the connected body/sleeve raster, texture layout
+and mesh topology. The new upper-arm controls provide restrained sway, not
+free elbow or hand gestures.
+
+The measurement JSON must resolve inside the source recipe directory. The
+current implementation accepts only the measured `pink-sakura-v1` profile;
+[its coordinates](../../examples/pink-sakura/dynamics-regions.json) are not a
+universal character template. `ParamWind` drives the physical `ParamWindSway`
+output, so verify it over time rather than expecting an immediate static change.
+
+[The example recipe](../../examples/pink-sakura/README.md#复现模板) also includes
+`build-performance.cjs`. Run it on a fresh export with a passed native Core
+report matching that MOC to generate parameter-only expressions and motions.
+This separate step does not change geometry or textures. Latest scoped tests
+are recorded in the [dynamics review](../../examples/pink-sakura/verification/dynamics-20261020/README.md), including a real Minimal exporter/Core/Web regression.

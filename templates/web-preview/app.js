@@ -95,6 +95,9 @@ for(const id of ['camera-show','camera-nodes','camera-gaze'])$('#'+id).onchange=
 document.addEventListener('visibilitychange',()=>{if(document.hidden){landmarkOverlay.clear('background');if(capture.mode==='camera')capture.stop();else camera.stop();}});
 window.addEventListener('pagehide',()=>{landmarkOverlay.clear('pagehide');capture.stop({reset:false,announce:false});camera.stop();});
 $('#background').onchange=e=>$('#stage').dataset.background=e.target.value;
+$('#capture-breathing').onchange=e=>capture.setOptions({breathing:e.target.checked});
+$('#speech-bob').onchange=e=>viewer?.setSpeechBob(e.target.checked);
+$('#float-profile').onchange=e=>viewer?.setFloatProfile(e.target.value);
 $('#reset-all').onclick=()=>reset();
 $('#auto-play').onchange=e=>{capture.stop({reset:false});viewer.setAutoPlay(e.target.checked);};
 $('#pointer-follow').onchange=e=>{capture.stop({reset:false});viewer.setAutoPlay(e.target.checked);$('#auto-play').checked=e.target.checked;viewer.setPointerFollow(e.target.checked);};
@@ -115,7 +118,10 @@ try {
   for(const p of readyInfo.parameters)parameterControls.set(p.id,control($('#parameters'),p.name===p.id?p.id:`${p.name} · ${p.id}`,p.id,p.min,p.max,p.default,v=>{takeManual();viewer.setParameter(p.id,v);viewer.renderNow();}));
   const mapped=mapInput({}, {descriptors:readyInfo.parameters});
   for(const s of INPUTS){const c=control($('#capture-inputs'),`${s.label} · ${s.id}`,s.id,s.min,s.max,s.value,v=>capture.setInput(s.id,v));const target=INPUT_MAPPING[s.id]===false?null:INPUT_MAPPING[s.id]?.target||s.target;if(!(target in mapped)){c.input.disabled=true;c.row.classList.add('unavailable');c.row.title='模型无此映射目标；不会声称支持此输入';}inputControls.set(s.id,c);}
-  const known=Object.keys(mapped);$('#capability-note').textContent=`可写入 ${known.length} 个跟踪目标；${readyInfo.physics?'已加载模型物理配置':'此模型未提供物理配置'}。眉毛输入需要独立眉毛绑定；存在参数仍需检查可见效果。左右按模型解剖命名，视频仅镜像显示。未实现手臂或手指绑定。`;
+  const known=Object.keys(mapped),hasBodyProxies=known.some(id=>id.startsWith('ParamUpperArm'));
+  $('#capability-note').textContent=`可写入 ${known.length} 个跟踪目标；${readyInfo.physics?'已加载模型物理配置':'此模型未提供物理配置'}。眉毛输入需要独立眉毛绑定；存在参数仍需检查可见效果。左右按模型解剖命名，视频仅镜像显示。${hasBodyProxies?'肩腰与上臂使用二维姿态近似，需双肩和对应肘/髋可见；未实现手指追踪。':'此模型未提供独立上臂绑定。'}`;
+  const nativeIds=new Set(readyInfo.parameters.map(p=>p.id));
+  $('#dynamics-controls').hidden=!nativeIds.has('ParamFloat');
   const expressionStatus=document.createElement('p');expressionStatus.className='muted';expressionStatus.setAttribute('role','status');expressionStatus.id='expression-status';
   expressionStatus.textContent=readyInfo.expressions.length?'表情可叠加在面捕上；暂停后可切换，直接参数滑块优先。':'此模型未提供预设表情文件；仍可用面捕或参数调节眼睛与嘴形。';
   $('#expressions').append(expressionStatus);
@@ -127,6 +133,9 @@ try {
       catch(error){if(request===expressionRequest)expressionStatus.textContent=`无法切换表情：${error.message}`;}
     };$('#expressions').append(b);
   }
-  for(const name of readyInfo.motions){const b=document.createElement('button');b.textContent=`动作：${name}`;b.onclick=()=>{takeManual();viewer.playMotion(name);};$('#motions').append(b);}
+  for(const name of readyInfo.motions){const b=document.createElement('button');b.textContent=`动作：${name}`;b.dataset.motion=name;b.onclick=()=>{
+    capture.stop({reset:false});$('#auto-play').checked=false;$('#pointer-follow').checked=false;
+    expressionRequest++;clearExpressionStatus();viewer.playMotion(name).catch(error=>{$('#status').textContent=`动作载入失败：${error.message}`;});
+  };$('#motions').append(b);}
   viewer.renderNow();renderMonitor(capture.getState());
 } catch(error){$('#status').textContent='真实模型载入失败';$('#load-error').hidden=false;$('#load-error').textContent=`${error.message}\n请先运行 prepare-preview.py，提供自己已合法获取的 Core、Pixi 与 Live2D 渲染依赖，并用本地 server.py 打开。此页不会用静态图片或假动画代替真实 Core。`;console.error(error);}

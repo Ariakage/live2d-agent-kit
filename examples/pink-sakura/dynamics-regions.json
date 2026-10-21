@@ -1,0 +1,21 @@
+{
+  "profile": "pink-sakura-v1",
+  "canvas": [1024, 1536],
+  "coordinateSystem": "Original reference pixels; anatomical L is image-right. Positive upper-arm swing moves the wrist outward from the torso. Measurements are specific to this example.",
+  "bodyLayer": "topwear",
+  "bowLayer": "headwear-bow",
+  "shoulders": {"R": [392, 382], "L": [605, 380]},
+  "waist": [500, 564],
+  "bowAnchor": [640, 139],
+  "floatPixels": 8,
+  "limits": {
+    "shoulderPixels": 3,
+    "chestPixels": 2,
+    "waistPixels": 4,
+    "upperArmDegrees": 1.5,
+    "sleevePixels": 3,
+    "skirtPixels": 4,
+    "bowDegrees": 2
+  },
+  "notes": "Connected sleeve/hand raster is retained. Upper-arm motion is a restrained local sway, not a free arm gesture. New fields taper before the feet and preserve the collar centre. Verify combinations through actual Core rendering."
+}

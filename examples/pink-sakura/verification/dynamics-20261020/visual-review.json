@@ -1,0 +1,32 @@
+{
+  "checkedDate": "2026-10-21",
+  "status": "sampled-review-with-limitations",
+  "mocSha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+  "contactSheetFrames": 128,
+  "originalSizeDetails": [
+    {
+      "file": "body-native-cycle-0096.png",
+      "sha256": "90f671cc6dba014a6553600155b41fe2078135dd0ea0717871ca8fe9017eea22"
+    },
+    {
+      "file": "expression-Sleepy-0051.png",
+      "sha256": "679e6e9229135fa10cb044f1b09c31f78d084c96382b760d88da0e20b24e485a"
+    },
+    {
+      "file": "expression-WinkLeft-0051.png",
+      "sha256": "e62d6dc241cfa36957e7e01ed2e664962a6f277bd10dd35371057e81d357c982"
+    }
+  ],
+  "exhaustive": false,
+  "selectedFrameIndex": "selected-frames.json",
+  "observations": [
+    "No new large holes or detached cuff/skirt edges observed in selected body/accessory sequences.",
+    "Approved neutral face retained; full-cycle face samples retain known thick mid-blink lashes and blunt closed-lash ends.",
+    "Expression presets are restrained combinations of existing brows/lids/mouth; Surprised/Angry are subtle and do not introduce new artwork."
+  ],
+  "limitations": [
+    "All 6597 frames received automated checks; only listed 128 overview witnesses and 3 original-size details were visually inspected.",
+    "Subtle antialiasing and hair-edge artifacts may remain at high zoom.",
+    "No physical camera, VTS, Cubism Editor or 30-minute acceptance."
+  ]
+}

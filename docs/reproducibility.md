@@ -1,14 +1,32 @@
 # 从公开文件复现
 
-Pink Sakura 的制作源图、眉毛分解源文件、最终遮罩坐标、配方生成器和引擎补丁均在仓库中。忽略的 `work/` 保存迭代输出，`.cache/` 保存另行获取的工具；它们不是公开示例生成 manifest 所需的隐藏素材。**2026-09-12 已完成独立空缓存起步的完整源码编译、16 层 Minimal 导出及实际 Core/Web 验证。** 本页保留较早快速审计的未完成记录，并分别说明后续验证。
+Pink Sakura 的制作源图、眉毛分解源文件、遮罩和身体动态测量、表情动作生成器及引擎集成均在仓库中。忽略的 `work/` 保存迭代输出，`.cache/` 保存另行获取的工具；它们不是公开示例生成 manifest 所需的隐藏素材。**2026-09-12 已完成独立空缓存起步的完整源码编译、16 层 Minimal 导出及实际 Core/Web 验证。** 本页保留较早快速审计的未完成记录，并分别说明后续验证。
 
-## 已提交源码包：7f391f4
+## 当前身体动态版本
+
+当前 Pink 为 37 参数、8 个表情、10 个动作。重建需要公开的 `dynamics-regions.json` 和 `PinkSakuraDynamics.kt`；生成器在 manifest 的 `config.pink_dynamics` 中使用相对路径，源包检查器也会把这个测量文件列为必需输入。复制整个示例配方时保留它，无需从作者旧 `work/` 中取文件。
+
+按 [Pink 的完整复现步骤](../examples/pink-sakura/README.md#复现模板)导出 LOW、处理高清图集、导出 HD 并执行原生 Core 检查后，再运行：
+
+```sh
+node work/pink-sakura-rebuild/build-performance.cjs \
+  work/pink-sakura-rebuild/hd \
+  work/pink-sakura-rebuild/core-hd-report.json
+```
+
+该命令只接受新的候选目录和与 MOC SHA 匹配的通过报告，生成表情、动作和 `model3.json` 引用；不能省略它后把裸导出称为完整发布示例。随后执行结构、Web 与连续动作检查，再打包。旧 MOC 的通过报告不会替新文件通过验证。
+
+本轮用已有 Gradle 依赖缓存重新编译集成代码，完成 Pink LOW / HD 与 Minimal 的真实导出及 Core / Web 回归。低分图集哈希与原版相同，因而复用已记录的 `realesr-animevideov3-x4` 高清纹理；这不表示重跑了神经超分。完整范围见[动态验证记录](../examples/pink-sakura/verification/dynamics-20261020/README.md)。它不是新的空缓存依赖构建、跨平台测试或摄像头 / VTube Studio 验收。
+
+下面的 24 参数、202 姿态及旧 MOC 指纹属于早期眉毛版本的历史构建证据，不代表当前动态模型。
+
+## 历史已提交源码包：7f391f4
 
 提交 `7f391f432615cfb46460e63e2555dabc98a0a9f9` 已再次通过独立 `git archive` 检查。新副本初始没有 `work/`、`.cache/`、`outputs/` 或 `dist/`：59 项 Python 与 28 项 Node 测试通过；三张眉毛素材重新生成后与发布字节一致；Pink 重建 24 个源层、Minimal 重建 16 个几何层。Pink manifest 与实际制作记录 SHA 相同，八张图像依赖全部在源包内。
 
 原报告及其 SHA 保留在[已提交源包记录](verification/source-package-7f391f4.json)和[验证索引](verification/README.md)。该检查不联网、不编译引擎、不导出 MOC、不执行 Core 或摄像头，因此 `cleanEngineBuildValidated` 与 `nativeCoreValidated` 保持 `false`。这与下面单独完成的冷源码编译结果并不冲突；冷构建使用的是较早源包加已记录的公开修改，不能直接称作对 `7f391f4` 的又一次完整冷编译。
 
-## 完整源码构建结果
+## 历史完整源码构建结果：2026-09-12
 
 本次从提交 `2afd9d2ac29d1ef93c39b86215c3d81d89cb7f6d` 的 `git archive` 建立新副本。初始引擎目录、Gradle 缓存及副本内 `work/`、`.cache/`、`build/` 均不存在；没有复制旧应用类、JAR 或生产工程。构建期间加入了当前公开的 16 层 Minimal 生成器，以及本页说明的源码获取和可选网络恢复脚本，逐个记录 SHA。因此这是“该源包加已记录的公开脚本修改”的实测，不追溯声称旧提交本身包含新增功能。
 
@@ -23,11 +41,11 @@ Pink Sakura 的制作源图、眉毛分解源文件、最终遮罩坐标、配�
 | 原生 Core | 新导出文件在 Core 6.0.257 中通过 192 个姿态检查，errors/warnings 均为空 |
 | 实际 WebGL | Chrome 152.0.7977.83 / Playwright 1.63.0 / Web Core 5.1.0：22 项检查通过，19 个参数均测得绑定变化，没有摄像头请求 |
 | 公共脚本入口 | 使用显式 `PSD2LIVE_GRADLE` 再调用 `export-model.sh` 成功；这是重用本次新编译输出的入口复跑，单独记录 |
-| 当前 Pink 公开配方 | 单独复制公开 generator/JSON/source，重建 24 层 manifest；8 张图像依赖全部在副本中，眉毛三张衍生图确定性重建一致，真实 LOW 导出成功；新文件 Core 202 姿态检查通过 |
+| 当时的 Pink 公开配方 | 单独复制公开 generator/JSON/source，重建 24 层 manifest；8 张图像依赖全部在副本中，眉毛三张衍生图确定性重建一致，真实 LOW 导出成功；新文件 Core 202 姿态检查通过 |
 
 Minimal 新 MOC 的 SHA-256 为 `dded5ca479232e5e74a94ac52681efa13faef73d2ac0174a22a365e0b94b98c9`；1024² 图集为 `da54af0069a6122a3da0a6cd101d153ca498d77f98af9d4ffced99f5ece9a42d`。浏览器实际收到的二者指纹与这次原生 Core 输入一致。
 
-同一份新编译引擎从公开 Pink 配方导出的 LOW MOC 为 `ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae`，与当前仓库 4× 高清版 MOC 逐字节一致；新文件在原生 Core 中通过 202 个姿态，24 参数、26 Drawable，errors/warnings 均为空。这项补测没有重新执行 NCNN 超分或 Pink 的 91 帧画布检查；原有高清图集与该轮视觉验收继续由 Pink 自己的验证记录说明。
+同一份新编译引擎从公开 Pink 配方导出的 LOW MOC 为 `ba9c30d1a8a6382dad388caa67bf0baad944fc618b171bcb95613e4f7b6b19ae`，与该轮发布的 4× 高清版 MOC 逐字节一致；新文件在原生 Core 中通过 202 个姿态，24 参数、26 Drawable，errors/warnings 均为空。这项补测没有重新执行 NCNN 超分或 Pink 的 91 帧画布检查；原有高清图集与该轮视觉验收继续由 Pink 自己的验证记录说明。
 
 这次冷启动经历了网络恢复：完整 Git 获取首先遇到 `curl 18 / early EOF`；源码模式成功后，Gradle 直接 HTTPS 下载很慢，relay 首次运行也曾超过读取超时。增加受限的 curl 断点重试和本构建的等待时间后，使用**本次新下载的依赖**继续，重试前仍无应用编译类。成功的全编译/导出命令用时 11 分 21 秒；这不是整次审计耗时，也不是首次命令无错误通过。原始命令、时间、初始空目录状态、来源/校验清单和编译输出树均已记录。
 
@@ -64,7 +82,7 @@ Minimal 新 MOC 的 SHA-256 为 `dded5ca479232e5e74a94ac52681efa13faef73d2ac0174
 python3 scripts/check-source-package.py --report work/source-package-report.json
 ```
 
-默认只检查 `HEAD` 的已提交文件，不包含工作区未提交修改。它在临时目录执行测试、kit 检查、Pink manifest 重建和最小素材生成，核对源图依赖没有逃出包，并比较 Pink 的已记录 manifest SHA。运行结束后自动删除临时副本，报告保留在指定位置。
+默认只检查 `HEAD` 的已提交文件，不包含工作区未提交修改。它在临时目录执行测试、kit 检查、Pink manifest 重建和最小素材生成，核对源图与 `pink_dynamics` 测量依赖没有逃出包，并比较 Pink 的已记录 manifest SHA。运行结束后自动删除临时副本，报告保留在指定位置。
 
 可指定提交或本机运行环境：
 

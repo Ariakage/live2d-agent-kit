@@ -323,6 +323,13 @@ fun main(args: Array<String>) {
             physicsEdits = physicsEdits,
         ))
     }
+    configJson["pink_dynamics"]?.jsonPrimitive?.content?.let { path ->
+        val requested=Path.of(path)
+        require(!requested.isAbsolute) { "pink_dynamics must be a relative measurement file" }
+        val measured=manifestPath.parent.resolve(requested).normalize()
+        require(measured.startsWith(manifestPath.parent)) { "pink_dynamics must remain inside the source recipe" }
+        config=appendPinkSakuraDynamics(source,config,pipeline,measured,output.resolve("$name.dynamics-report.json"))
+    }
     println("Exporting $name: ${layers.size} layers, ${width}x$height canvas")
     val result = pipeline.run(source, name, output, config, ProgressListener { stage, fraction ->
         println("%3d%% %s".format((fraction * 100).toInt(), stage))

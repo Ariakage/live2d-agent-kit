@@ -20,6 +20,14 @@ function syntheticValues(kind,t,parameters) {
  if(kind==='face-cycle') Object.assign(values,{
   ParamEyeLOpen:1-u,ParamEyeROpen:1-u,ParamBrowLY:u,ParamBrowRY:-u,
   ParamMouthOpenY:.8*u,ParamMouthForm:Math.sin(u*Math.PI*2),ParamAngleX:12*u});
+ else if(kind==='body-native-cycle'||kind==='accessory-cycle') {
+  const wave=Math.sin(2*Math.PI*t)*u;
+  const body={ParamShoulderFollow:.6,ParamShoulderLiftL:1,ParamShoulderLiftR:-.75,
+   ParamChestExpand:.7,ParamWaistSway:1,ParamUpperArmLSwing:1,ParamUpperArmRSwing:-1};
+  const accessories={ParamFloat:.8,ParamWind:1,ParamSleeveLSwing:1,ParamSleeveRSwing:-1,ParamSkirtSwing:1,ParamBowSwing:1};
+  for(const [id,scale]of Object.entries(kind==='body-native-cycle'?body:accessories))if(id in values)values[id]=wave*scale;
+  values.ParamAngleZ=12*wave;values.ParamBodyAngleZ=-5*wave;
+ }
  else {
   const wave=Math.sin(2*Math.PI*t)*u;
   Object.assign(values,{ParamAngleX:30*wave,ParamAngleY:-15*wave,ParamAngleZ:20*wave,
@@ -89,13 +97,17 @@ async function run(url,out) {
   const tracks=Object.entries(refs.Motions).map(([group,list])=>{
    const motion=JSON.parse(bodies.get(new URL(list[0].File,entry).href));
    const duration=motion.Meta.Duration;
-   if(!Number.isFinite(duration)||duration<=0||duration>10)throw new Error('Unsupported motion duration');
+   if(!Number.isFinite(duration)||duration<=0||duration>30)throw new Error('Unsupported motion duration');
    return {name:'motion-'+group,group,duration:duration+.5,view:'portrait'};
   }).concat([{name:'face-cycle',duration:6,view:'face'},{name:'body-hair-cycle',duration:6,view:'portrait'}]);
+  if(descriptors.has('ParamWaistSway'))tracks.push({name:'body-native-cycle',duration:6,view:'portrait'},
+   {name:'accessory-cycle',duration:6,view:'portrait'});
+  for(const expression of refs.Expressions||[])tracks.push({name:'expression-'+expression.Name,
+   expression:expression.Name,duration:1.3,view:'face'});
   for(const track of tracks) {
    const record={...track,frames:[]};report.tracks.push(record);
    // Validate the whole synthetic path before it reaches the viewer's clamping API.
-   if(!track.group) for(let i=0;i<=600;i++) validateValues(syntheticValues(track.name,i/600,report.ready.parameters),descriptors);
+   if(!track.group&&!track.expression) for(let i=0;i<=600;i++) validateValues(syntheticValues(track.name,i/600,report.ready.parameters),descriptors);
    await page.exposeFunction('saveFrame'+report.tracks.length,frame=>{
     const bytes=Buffer.from(frame.image.split(',')[1],'base64');delete frame.image;
     const dimensions=pngDimensions(bytes),file=`${track.name}-${String(record.frames.length).padStart(4,'0')}.png`;
@@ -115,7 +127,7 @@ async function run(url,out) {
     const pending=[];let start,requested=null,frame=0,failure=null,stopped=false;
     let finish;const completed=new Promise(resolve=>{finish=resolve;});
     const timeout=setTimeout(()=>{failure='Render capture timed out';finish();},(track.duration+10)*1000);
-    if(!track.group) for(const [id,value]of Object.entries(window.__continuousValues(track.name,0,parameters)))v.setParameter(id,value);
+    if(!track.group&&!track.expression) for(const [id,value]of Object.entries(window.__continuousValues(track.name,0,parameters)))v.setParameter(id,value);
     // Capture only after Pixi finishes the model draw. Never count RAF as rendered.
     PIXI.Renderer.prototype.render=function(...args){
      const result=original.apply(this,args);
@@ -141,7 +153,8 @@ async function run(url,out) {
     };
     try {
      if(track.group&&!await v.playMotion(track.group))throw new Error('Motion did not start: '+track.group);
-     if(!track.group)raf=requestAnimationFrame(drive);
+     if(track.expression&&!await v.setExpression(track.expression))throw new Error('Expression did not start: '+track.expression);
+     if(!track.group&&!track.expression)raf=requestAnimationFrame(drive);
      await completed;
     } finally {
      stopped=true;clearTimeout(timeout);cancelAnimationFrame(raf);PIXI.Renderer.prototype.render=original;
@@ -158,6 +171,8 @@ async function run(url,out) {
    if(!record.frames.some(f=>Object.entries(f.parameters).some(([id,value])=>Math.abs(value-descriptors.get(id).default)>.01)))throw new Error('Track never changed native parameters');
    console.log(track.name+': '+record.frames.length+' completed frames');
   }
+  await Promise.all(reads);
+  report.loadedResources.push(...matchResources((refs.Expressions||[]).map(e=>new URL(e.File,entry).href),observed,manifest,new URL('./',manifestURL).href));
   report.deviceRequests=await page.evaluate(()=>window.__deviceRequests);
   if(report.deviceRequests||report.errors.length)throw new Error('Device request or browser error');
   report.pass=true;

@@ -13,6 +13,16 @@ SPEC.loader.exec_module(MODULE)
 
 
 class SourcePackageTests(unittest.TestCase):
+    def test_dynamics_measurement_is_a_required_public_input(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            manifest = root / "manifest.json"
+            manifest.write_text(json.dumps({"layers": [], "config": {"pink_dynamics": "regions.json"}}))
+            with self.assertRaisesRegex(ValueError, "Missing manifest dependency"):
+                MODULE.manifest_sources(manifest, root)
+            (root / "regions.json").write_text('{}')
+            self.assertIn("regions.json", MODULE.manifest_sources(manifest, root)["sources"])
+
     def test_archive_rejects_parent_paths_and_links(self):
         for kind in ("parent", "symlink"):
             with self.subTest(kind=kind), tempfile.TemporaryDirectory() as temporary:

@@ -1,10 +1,10 @@
 {
     "Version": 3,
     "Meta": {
-        "PhysicsSettingCount": 9,
-        "TotalInputCount": 10,
-        "TotalOutputCount": 9,
-        "VertexCount": 19,
+        "PhysicsSettingCount": 14,
+        "TotalInputCount": 15,
+        "TotalOutputCount": 14,
+        "VertexCount": 29,
         "EffectiveForces": {
             "Gravity": {
                 "X": 0,
@@ -51,6 +51,26 @@
             {
                 "Id": "PhysicsBackHairBaseLSwing",
                 "Name": "back hair-base-l sway"
+            },
+            {
+                "Id": "PhysicsAmbientWind",
+                "Name": "Ambient wind"
+            },
+            {
+                "Id": "PhysicsSleeveL",
+                "Name": "Left sleeve"
+            },
+            {
+                "Id": "PhysicsSleeveR",
+                "Name": "Right sleeve"
+            },
+            {
+                "Id": "PhysicsSkirt",
+                "Name": "Skirt hem"
+            },
+            {
+                "Id": "PhysicsBow",
+                "Name": "Hair bow"
             }
         ]
     },
@@ -608,6 +628,311 @@
                     "Delay": 0.8,
                     "Acceleration": 0.9,
                     "Radius": 12.0
+                }
+            ],
+            "Normalization": {
+                "Position": {
+                    "Minimum": -10.0,
+                    "Default": 0.0,
+                    "Maximum": 10.0
+                },
+                "Angle": {
+                    "Minimum": -30.0,
+                    "Default": 0.0,
+                    "Maximum": 30.0
+                }
+            }
+        },
+        {
+            "Id": "PhysicsAmbientWind",
+            "Input": [
+                {
+                    "Source": {
+                        "Target": "Parameter",
+                        "Id": "ParamWind"
+                    },
+                    "Weight": 100.0,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Output": [
+                {
+                    "Destination": {
+                        "Target": "Parameter",
+                        "Id": "ParamWindSway"
+                    },
+                    "VertexIndex": 1,
+                    "Scale": 0.8,
+                    "Weight": 100,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Vertices": [
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 0.0
+                    },
+                    "Mobility": 1.0,
+                    "Delay": 1.0,
+                    "Acceleration": 1.0,
+                    "Radius": 0.0
+                },
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 10.0
+                    },
+                    "Mobility": 0.8,
+                    "Delay": 0.6,
+                    "Acceleration": 1.0,
+                    "Radius": 10.0
+                }
+            ],
+            "Normalization": {
+                "Position": {
+                    "Minimum": -10.0,
+                    "Default": 0.0,
+                    "Maximum": 10.0
+                },
+                "Angle": {
+                    "Minimum": -30.0,
+                    "Default": 0.0,
+                    "Maximum": 30.0
+                }
+            }
+        },
+        {
+            "Id": "PhysicsSleeveL",
+            "Input": [
+                {
+                    "Source": {
+                        "Target": "Parameter",
+                        "Id": "ParamBodyAngleZ"
+                    },
+                    "Weight": 100.0,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Output": [
+                {
+                    "Destination": {
+                        "Target": "Parameter",
+                        "Id": "ParamSleeveLSwing"
+                    },
+                    "VertexIndex": 1,
+                    "Scale": 0.65,
+                    "Weight": 100,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Vertices": [
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 0.0
+                    },
+                    "Mobility": 1.0,
+                    "Delay": 1.0,
+                    "Acceleration": 1.0,
+                    "Radius": 0.0
+                },
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 10.0
+                    },
+                    "Mobility": 0.75,
+                    "Delay": 0.6,
+                    "Acceleration": 1.0,
+                    "Radius": 10.0
+                }
+            ],
+            "Normalization": {
+                "Position": {
+                    "Minimum": -10.0,
+                    "Default": 0.0,
+                    "Maximum": 10.0
+                },
+                "Angle": {
+                    "Minimum": -30.0,
+                    "Default": 0.0,
+                    "Maximum": 30.0
+                }
+            }
+        },
+        {
+            "Id": "PhysicsSleeveR",
+            "Input": [
+                {
+                    "Source": {
+                        "Target": "Parameter",
+                        "Id": "ParamBodyAngleZ"
+                    },
+                    "Weight": 100.0,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Output": [
+                {
+                    "Destination": {
+                        "Target": "Parameter",
+                        "Id": "ParamSleeveRSwing"
+                    },
+                    "VertexIndex": 1,
+                    "Scale": 0.65,
+                    "Weight": 100,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Vertices": [
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 0.0
+                    },
+                    "Mobility": 1.0,
+                    "Delay": 1.0,
+                    "Acceleration": 1.0,
+                    "Radius": 0.0
+                },
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 11.0
+                    },
+                    "Mobility": 0.75,
+                    "Delay": 0.65,
+                    "Acceleration": 1.0,
+                    "Radius": 11.0
+                }
+            ],
+            "Normalization": {
+                "Position": {
+                    "Minimum": -10.0,
+                    "Default": 0.0,
+                    "Maximum": 10.0
+                },
+                "Angle": {
+                    "Minimum": -30.0,
+                    "Default": 0.0,
+                    "Maximum": 30.0
+                }
+            }
+        },
+        {
+            "Id": "PhysicsSkirt",
+            "Input": [
+                {
+                    "Source": {
+                        "Target": "Parameter",
+                        "Id": "ParamBodyAngleX"
+                    },
+                    "Weight": 100.0,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Output": [
+                {
+                    "Destination": {
+                        "Target": "Parameter",
+                        "Id": "ParamSkirtSwing"
+                    },
+                    "VertexIndex": 1,
+                    "Scale": 0.7,
+                    "Weight": 100,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Vertices": [
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 0.0
+                    },
+                    "Mobility": 1.0,
+                    "Delay": 1.0,
+                    "Acceleration": 1.0,
+                    "Radius": 0.0
+                },
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 14.0
+                    },
+                    "Mobility": 0.8,
+                    "Delay": 0.75,
+                    "Acceleration": 1.0,
+                    "Radius": 14.0
+                }
+            ],
+            "Normalization": {
+                "Position": {
+                    "Minimum": -10.0,
+                    "Default": 0.0,
+                    "Maximum": 10.0
+                },
+                "Angle": {
+                    "Minimum": -30.0,
+                    "Default": 0.0,
+                    "Maximum": 30.0
+                }
+            }
+        },
+        {
+            "Id": "PhysicsBow",
+            "Input": [
+                {
+                    "Source": {
+                        "Target": "Parameter",
+                        "Id": "ParamAngleZ"
+                    },
+                    "Weight": 100.0,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Output": [
+                {
+                    "Destination": {
+                        "Target": "Parameter",
+                        "Id": "ParamBowSwing"
+                    },
+                    "VertexIndex": 1,
+                    "Scale": 0.7,
+                    "Weight": 100,
+                    "Type": "Angle",
+                    "Reflect": false
+                }
+            ],
+            "Vertices": [
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 0.0
+                    },
+                    "Mobility": 1.0,
+                    "Delay": 1.0,
+                    "Acceleration": 1.0,
+                    "Radius": 0.0
+                },
+                {
+                    "Position": {
+                        "X": 0,
+                        "Y": 8.0
+                    },
+                    "Mobility": 0.72,
+                    "Delay": 0.5,
+                    "Acceleration": 1.0,
+                    "Radius": 8.0
                 }
             ],
             "Normalization": {

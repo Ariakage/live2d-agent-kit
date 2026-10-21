@@ -86,3 +86,55 @@ test('calibration rejects closed eyes/open mouth and cannot retain body calibrat
   assert.equal(mapper.calibrate(31).body,true);mapper.reset();
   assert.equal(mapper.faceCalibrated,false);assert.equal(mapper.bodyCalibrated,false);assert.equal(mapper.calibrate(40).ok,false);
 });
+
+function upperBodyFixture() {
+  const pose=poseFixture();
+  pose.landmarks[0][13]={x:.7,y:.58,z:0,visibility:.99,presence:.99};
+  pose.landmarks[0][14]={x:.3,y:.58,z:0,visibility:.99,presence:.99};
+  return pose;
+}
+function bodyUpdate(mapper,pose,timestamp,face=faceFixture()) {
+  return mapper.update({faceResult:face,poseResult:pose,faceTimestamp:timestamp,poseTimestamp:timestamp,timestamp});
+}
+test('six body proxies begin at neutral and map relative shoulder, chest, waist and independent arm movement',async()=>{
+  const {TrackingMapper}=await math(),mapper=new TrackingMapper(),base=upperBodyFixture();
+  const initial=bodyUpdate(mapper,base,10);
+  for(const key of Object.keys(initial.inputs).filter(k=>k.startsWith('Body'))) close(initial.inputs[key],0);
+  const lifted=upperBodyFixture();lifted.landmarks[0][11].y-=.05;
+  assert.ok(bodyUpdate(mapper,lifted,20).inputs.BodyShoulderLiftL>0);
+  const expanded=upperBodyFixture();expanded.worldLandmarks[0][11].x+=.04;expanded.worldLandmarks[0][12].x-=.04;
+  assert.ok(bodyUpdate(mapper,expanded,30).inputs.BodyChestExpand>0);
+  const shifted=upperBodyFixture();shifted.landmarks[0][23].x+=.04;shifted.landmarks[0][24].x+=.04;
+  assert.ok(bodyUpdate(mapper,shifted,40).inputs.BodyWaistSway>0);
+  const arms=upperBodyFixture();arms.landmarks[0][13].x+=.12;arms.landmarks[0][14].x-=.06;
+  const result=bodyUpdate(mapper,arms,50).inputs;
+  assert.ok(result.BodyUpperArmLSwing>result.BodyUpperArmRSwing && result.BodyUpperArmRSwing>0);
+  assert.equal(mapper.calibrate(51).ok,true);
+  for(const key of Object.keys(result).filter(k=>k.startsWith('Body'))) close(bodyUpdate(mapper,arms,60).inputs[key],0);
+});
+test('body-only detection works and partial landmark loss neutralizes only unavailable body proxies',async()=>{
+  const {TrackingMapper}=await math(),mapper=new TrackingMapper();
+  bodyUpdate(mapper,upperBodyFixture(),10);
+  const pose=upperBodyFixture();pose.landmarks[0][13].x+=.12;pose.landmarks[0][14].x-=.12;
+  let frame=bodyUpdate(mapper,pose,20,{});
+  assert.equal(frame.faceVisible,false);assert.equal(frame.bodyVisible,true);assert.ok(frame.inputs.BodyUpperArmLSwing>0);
+  pose.landmarks[0][13].visibility=.1;pose.landmarks[0][23].visibility=.1;
+  frame=bodyUpdate(mapper,pose,30,{});
+  assert.equal(frame.inputs.BodyUpperArmLSwing,0);assert.ok(frame.inputs.BodyUpperArmRSwing>0);
+  for(const id of ['BodyShoulderLiftL','BodyShoulderLiftR','BodyChestExpand','BodyWaistSway']) assert.equal(frame.inputs[id],0);
+  pose.landmarks[0][12].visibility=.1;
+  frame=bodyUpdate(mapper,pose,40);
+  assert.equal(frame.bodyVisible,false);
+  for(const key of Object.keys(frame.inputs).filter(k=>k.startsWith('Body'))) assert.equal(frame.inputs[key],0);
+});
+test('relative body proxies resist uniform camera zoom and clear calibration across reset',async()=>{
+  const {TrackingMapper}=await math(),mapper=new TrackingMapper(),pose=upperBodyFixture();
+  bodyUpdate(mapper,pose,10);
+  for(const point of pose.landmarks[0]) {point.x=.5+(point.x-.5)*.8;point.y=.5+(point.y-.5)*.8;point.z*=.8;}
+  for(const point of pose.worldLandmarks[0]) for(const axis of ['x','y','z']) point[axis]*=.8;
+  let frame=bodyUpdate(mapper,pose,20);
+  for(const key of Object.keys(frame.inputs).filter(k=>k.startsWith('Body'))) close(frame.inputs[key],0);
+  pose.landmarks[0][13].x+=.15;assert.ok(bodyUpdate(mapper,pose,30).inputs.BodyUpperArmLSwing>0);
+  mapper.reset();frame=bodyUpdate(mapper,pose,40);
+  for(const key of Object.keys(frame.inputs).filter(k=>k.startsWith('Body'))) close(frame.inputs[key],0);
+});

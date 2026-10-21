@@ -1,6 +1,7 @@
 /** Real Cubism Core + WebGL model preview. Dependencies are pinned and local. */
 import { DRAWING, REGIONS } from './view-config.js';
 import { ExpressionLayer } from './expression-layer.js';
+import { SpeechBob } from './speech-bob.js';
 const base = new URL('./', import.meta.url);
 let dependencyPromise;
 
@@ -99,7 +100,11 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
     let autoPlay = false, pointerFollow = false, oneShot = false;
     let selectedView = 'full', zoom = 1, expressionName = '', expressionFadeOut = .35;
     const expressionLayer = new ExpressionLayer();
+    const speech = new SpeechBob();
+    let speechEnabled = false, floatProfile = 'normal', idleElapsed = 0, idleIndex = 0;
+    const idleGroups = ['Quiet', 'Curious', 'Sleepy'].filter(name => motionDefinitions[name]?.length);
     let currentDelta = 0, frozenCapture = null, frozenExpressionTransition = false;
+    let motionBlend = null;
     let expressionGeneration = 0, motionGeneration = 0;
     let lastStats = 0, frameCount = 0, frameElapsed = 0;
     let lastRenderedParameters = Object.fromEntries(descriptors.map(p => [p.id, p.default]));
@@ -123,6 +128,17 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
     function finalParameters() {
       if (captureActive) {
         for (const [id, value] of captureParameters) writeParameter(id, value);
+        const accent = speech.step(rawParams.values[indices.get('ParamMouthOpenY')] || 0, currentDelta,
+          {enabled: speechEnabled, active: true});
+        writeParameter('ParamAngleY', accent.angleY, 'Add');
+        writeParameter('ParamFloat', accent.float, 'Add');
+      }
+      if (motionBlend && !frozenCapture) {
+        motionBlend.elapsed += currentDelta;
+        const t = Math.min(1, motionBlend.elapsed / .6), weight = t * t * (3 - 2 * t);
+        for (let i = 0; i < rawParams.values.length; i++)
+          rawParams.values[i] = motionBlend.from[i] + (rawParams.values[i] - motionBlend.from[i]) * weight;
+        if (t === 1) motionBlend = null;
       }
       lastExpressionSource = Float32Array.from(rawParams.values);
       expressionLayer.step(frozenCapture && !frozenExpressionTransition ? 0 : currentDelta)
@@ -152,6 +168,15 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         finalParameters();
         core.update();
       } else if (autoPlay || oneShot) {
+        if (autoPlay && idleGroups.length > 1) {
+          idleElapsed += currentDelta;
+          if (idleElapsed >= 48) {
+            idleElapsed = 0; idleIndex = (idleIndex + 1) % idleGroups.length;
+            motionManager.groups.idle = idleGroups[idleIndex];
+            // Start with the motion's fade; stopping all motions here would snap the pose.
+            model.motion(idleGroups[idleIndex], 0, PIXI.live2d.MotionPriority.FORCE).catch(error => onError?.(error));
+          }
+        }
         originalUpdate(Math.min(dt, 50), now);
       } else {
         // A paused preview has no ticking motion, breath, blinking, or physics.
@@ -232,6 +257,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         // Each call replaces the frame rather than retaining stale tracked values.
         captureParameters.clear();
         frozenCapture = null; frozenExpressionTransition = false;
+        motionBlend = null;
         for (const [id, value] of Object.entries(parameters)) {
           const index = indices.get(id);
           if (index === undefined || typeof value !== 'number' || !Number.isFinite(value)) continue;
@@ -250,22 +276,38 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
       },
       clearCaptureParameters() {
         captureActive = false; captureParameters.clear();
+        speech.reset();
         frozenCapture = null; frozenExpressionTransition = false;
       },
+      setSpeechBob(enabled) { speechEnabled = Boolean(enabled); if (!speechEnabled) speech.reset(); },
+      setFloatProfile(profile) { if (['low', 'normal', 'high'].includes(profile)) floatProfile = profile; },
       setAutoPlay(enabled) {
+        motionBlend = null;
         frozenCapture = null; frozenExpressionTransition = false;
         autoPlay = Boolean(enabled); oneShot = false; motionGeneration++;
         motionManager.stopAllMotions();
-        motionManager.groups.idle = autoPlay ? 'Idle' : '__paused__';
+        idleElapsed = 0; idleIndex = 0;
+        motionManager.groups.idle = autoPlay ? (idleGroups[0] || 'Idle') : '__paused__';
         rawParams.values.set(defaults); core.saveParameters();
         leave();
       },
       async playMotion(group) {
         if (!motionDefinitions[group]?.length || destroyed) return false;
         const generation = ++motionGeneration;
+        const from = Float32Array.from(descriptors.map(p => lastRenderedParameters[p.id]));
+        autoPlay = false; pointerFollow = false; manual.clear();
+        viewer.clearCaptureParameters();
+        expressionLayer.reset(); expressionName = ''; expressionGeneration++;
+        motionManager.groups.idle = '__paused__';
+        // Hold the outgoing frame while loading, then blend capture/manual/motion alike.
+        frozenCapture = from;
         motionManager.stopAllMotions();
-        const started = await model.motion(group, 0, PIXI.live2d.MotionPriority.FORCE);
+        let started;
+        try { started = await model.motion(group, 0, PIXI.live2d.MotionPriority.FORCE); }
+        catch(error) { if(generation===motionGeneration){frozenCapture=null;motionBlend=null;} throw error; }
         if (generation !== motionGeneration || destroyed) return false;
+        frozenCapture = null;
+        motionBlend = {from, elapsed: 0};
         oneShot = Boolean(started);
         return started;
       },
@@ -303,6 +345,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         viewer.setAutoPlay(false); fit();
       },
       getState() { return { autoPlay, pointerFollow, view: selectedView, zoom, expression: expressionName,
+        speechBob: speechEnabled, floatProfile, idleGroup: autoPlay ? motionManager.groups.idle : null,
         captureActive, capturePaused: Boolean(frozenCapture), captureParameters: Object.fromEntries(captureParameters),
         manualParameters: Object.fromEntries(manual), parameters: { ...lastRenderedParameters } }; },
       getParameters() { return descriptors.map(p => ({ ...p, value: lastRenderedParameters[p.id] })); },

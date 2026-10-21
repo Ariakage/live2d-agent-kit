@@ -7,7 +7,14 @@ export const TRACKING_INPUTS = Object.freeze({
   MouthOpen: [0, 1, 0], MouthSmile: [0, 1, 0],
   BrowLeftY: [-1, 1, 0], BrowRightY: [-1, 1, 0],
   MocopiBodyAngleX: [-10, 10, 0], MocopiBodyAngleY: [-10, 10, 0], MocopiBodyAngleZ: [-10, 10, 0],
+  BodyShoulderLiftL: [-1, 1, 0], BodyShoulderLiftR: [-1, 1, 0],
+  BodyChestExpand: [-1, 1, 0], BodyWaistSway: [-1, 1, 0],
+  BodyUpperArmLSwing: [-1, 1, 0], BodyUpperArmRSwing: [-1, 1, 0],
 });
+const RELATIVE_BODY_INPUTS = new Set([
+  'BodyShoulderLiftL','BodyShoulderLiftR','BodyChestExpand','BodyWaistSway',
+  'BodyUpperArmLSwing','BodyUpperArmRSwing',
+]);
 
 export const neutralTrackingInputs = () => Object.fromEntries(
   Object.entries(TRACKING_INPUTS).map(([key, limits]) => [key, limits[2]]),
@@ -84,8 +91,10 @@ export function faceResultToInputs(result) {
   }};
 }
 
-/** Shoulders supply approximate yaw/roll. Pitch also needs visible hips.
+/** Shoulders supply approximate yaw/roll. Pitch and torso shape need visible hips.
  * The Mocopi names are compatibility fields only; no Mocopi device is connected.
+ * Shape proxies are calibrated relative to a neutral pose. They are not direct
+ * measurements of chest volume or a skeletal shoulder joint.
  */
 export function poseResultToInputs(result, {minConfidence = .6, aspectRatio = 4/3} = {}) {
   const missing = reason => ({visible: false, inputs: {}, confidence: 0, pitchAvailable: false, reason});
@@ -115,9 +124,58 @@ export function poseResultToInputs(result, {minConfidence = .6, aspectRatio = 4/
     if (vertical > .04) pitch = degrees(Math.atan2(shoulderZ-hipZ, vertical));
     else return missing('torso-unreliable');
   }
+  const inputs = {MocopiBodyAngleX: yaw, MocopiBodyAngleY: pitch, MocopiBodyAngleZ: roll};
+  const rollRad = Math.atan2(dy, dx), cosine = Math.cos(rollRad), sine = Math.sin(rollRad);
+  // Elbows are independent. An occluded elbow returns this arm to neutral while
+  // leaving the other shoulder and body axes live.
+  for (const [shoulderIndex, elbowIndex, id, direction] of [
+    [11, 13, 'BodyUpperArmLSwing', 1], [12, 14, 'BodyUpperArmRSwing', -1],
+  ]) {
+    if (!reliable(elbowIndex)) continue;
+    const vx = (points[elbowIndex].x - points[shoulderIndex].x) * aspect;
+    const vy = points[elbowIndex].y - points[shoulderIndex].y;
+    if (Math.hypot(vx, vy) < .065) continue;
+    const outward = direction * (cosine * vx + sine * vy);
+    const downward = -sine * vx + cosine * vy;
+    inputs[id] = clamp(degrees(Math.atan2(outward, downward)) / 75, -1, 1);
+  }
+  if (pitchAvailable) {
+    const hipL = points[23], hipR = points[24];
+    const hipDx = (hipL.x - hipR.x) * aspect;
+    const hipDy = hipL.y - hipR.y;
+    const hipSpan = Math.hypot(hipDx, hipDy);
+    if (hipSpan >= .05) {
+      // Body-local coordinates remove the rigid shoulder roll before computing
+      // lift and waist displacement. Divide by hip span to resist camera zoom.
+      for (const [shoulderIndex, hipIndex, id] of [
+        [11, 23, 'BodyShoulderLiftL'], [12, 24, 'BodyShoulderLiftR'],
+      ]) {
+        const vx = (points[hipIndex].x - points[shoulderIndex].x) * aspect;
+        const vy = points[hipIndex].y - points[shoulderIndex].y;
+        inputs[id] = 2.2 * (-sine * vx + cosine * vy) / hipSpan;
+      }
+      const shoulderSpan = Math.hypot(dx, dy);
+      const worldHips = useWorld && [23,24].every(i => finitePoint(world[i]));
+      const chestSpan = worldHips ? norm([
+        world[11].x-world[12].x, world[11].y-world[12].y, world[11].z-world[12].z,
+      ]) : shoulderSpan;
+      const waistSpan = worldHips ? norm([
+        world[23].x-world[24].x, world[23].y-world[24].y, world[23].z-world[24].z,
+      ]) : hipSpan;
+      if (chestSpan > .04 && waistSpan > .04) {
+        inputs.BodyChestExpand = 2 * Math.log(chestSpan / waistSpan);
+      }
+      const shoulderMidX = (left.x + right.x) / 2;
+      const shoulderMidY = (left.y + right.y) / 2;
+      const hipMidX = (hipL.x + hipR.x) / 2;
+      const hipMidY = (hipL.y + hipR.y) / 2;
+      inputs.BodyWaistSway = 1.8 * (cosine * (hipMidX - shoulderMidX) * aspect +
+        sine * (hipMidY - shoulderMidY)) / hipSpan;
+    }
+  }
   return {visible: true, reason: pitchAvailable ? '' : 'shoulders-only',
     confidence: Math.min(confidence(left), confidence(right)), pitchAvailable,
-    inputs: {MocopiBodyAngleX: yaw, MocopiBodyAngleY: pitch, MocopiBodyAngleZ: roll}};
+    inputs};
 }
 
 /** State contains only derived numbers, never image frames or landmark arrays. */
@@ -143,9 +201,13 @@ export class TrackingMapper {
     const raw = {...face.inputs, ...body.inputs};
     const inputs = neutralTrackingInputs();
     for (const [key, limits] of Object.entries(TRACKING_INPUTS)) {
-      const visible = key.startsWith('Mocopi') ? body.visible : face.visible;
+      const visible = key.startsWith('Mocopi') || key.startsWith('Body') ? body.visible : face.visible;
       if (!visible || !Number.isFinite(raw[key])) continue;
-      let value = raw[key], baseline = this.baseline[key] ?? limits[2];
+      let value = raw[key];
+      // Relative body proxies have no universal zero posture. The first valid
+      // sample establishes a safe neutral until the user explicitly calibrates.
+      if (RELATIVE_BODY_INPUTS.has(key) && !Number.isFinite(this.baseline[key])) this.baseline[key] = value;
+      const baseline = this.baseline[key] ?? limits[2];
       if (key === 'MocopiBodyAngleY' && !body.pitchAvailable) value = 0;
       else if (key.includes('Angle')) value = angleDelta(value, baseline);
       else if (key.startsWith('EyeOpen')) value /= Math.max(.4, baseline);
@@ -174,7 +236,7 @@ export class TrackingMapper {
     this.faceCalibrated = true;
     this.bodyCalibrated = last.bodyVisible && timestamp-last.poseTimestamp <= this.maxAgeMs;
     if (!this.bodyCalibrated) for (const key of Object.keys(this.baseline)) {
-      if (key.startsWith('Mocopi')) delete this.baseline[key];
+      if (key.startsWith('Mocopi') || key.startsWith('Body')) delete this.baseline[key];
     }
     return {ok: true, face: true, body: this.bodyCalibrated,
       bodyPitch: this.bodyCalibrated && last.bodyPitchAvailable,

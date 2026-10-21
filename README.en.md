@@ -21,7 +21,7 @@ The workflow grew out of character production with **GPT-6 Astra Ultra**. Start 
 
 ## Example model: Pink Sakura
 
-[Pink Sakura](examples/pink-sakura/README.md) includes source art, a layer recipe, an HD runtime model and verification records. The screenshots and animation below come from the model's WebGL canvas. The animation uses synthetic tracking input.
+[Pink Sakura](examples/pink-sakura/README.md) includes source art, a layer recipe, an HD runtime model and verification records. The screenshots and animation below come from the earlier eyebrow version's WebGL canvas, using synthetic tracking input. See the [dynamics review](examples/pink-sakura/verification/dynamics-20261020/README.md) for the latest body-motion evidence.
 
 | Reference art | Rigged model | Motion preview |
 | :---: | :---: | :---: |
@@ -29,14 +29,15 @@ The workflow grew out of character production with **GPT-6 Astra Ultra**. Start 
 
 | Feature | Included in the example |
 | --- | --- |
-| Structure | 24 source layers, 26 drawables, 24 parameters |
-| Rigging | Independent eyebrows, eyes, mouth shapes, head/body movement, breathing and 8 hair parameters |
-| Motions | Idle, Blink, Nod, Shake |
+| Structure | 24 source layers, 26 drawables, 37 parameters |
+| Rigging | Eyebrows, eyes, mouth shapes, head/body movement, shoulders, chest/waist, gentle upper-arm sway, cuffs, skirt, bow and hair |
+| Motions | 10 motions, including Quiet / Curious / Sleepy idles, Airy, SlowBlink and SpeechBob |
+| Expressions and physics | 8 parameter presets, 14 physics groups, Float and Wind inputs |
 | HD texture | `realesr-animevideov3-x4`, from a 2048² atlas to 8192² |
 
 [Runtime files](examples/pink-sakura/runtime/) · [Rebuild the model](examples/pink-sakura/README.md#复现模板) · [Face closeups and test records](examples/pink-sakura/verification/README.md)
 
-This example uses a conservative 2D rig with a single body layer and no independent arm or finger rigging. Some details remain rough at close range: the closed lip line is faint, partially closed lashes are thick, and `EyeOpen` stays closed between 0 and 0.25. See the [continuous-motion review](examples/pink-sakura/verification/continuous-20261017/README.md) for the remaining issues. Final VTube Studio acceptance is left to the user.
+The body and sleeves retain a connected raster, with local deformers for shoulders, chest/waist and gentle upper-arm sway. This version adds no chin-rest, heart, wave or finger gestures. Some details remain rough at close range: the closed lip line is faint, partially closed lashes are thick, and `EyeOpen` stays closed between 0 and 0.25. See the [dynamics review](examples/pink-sakura/verification/dynamics-20261020/README.md) for the remaining issues. Final VTube Studio acceptance is left to the user.
 
 The provider attributes the reference image to **ChatGPT Image2.5**. The example artwork and model use [CC BY 4.0](examples/pink-sakura/LICENSE.md): you may use and modify them with attribution and a description of your changes. Do not claim to be the original creator. Underpainting and model production have separate provenance records.
 
@@ -100,11 +101,11 @@ Optional camera tracking covers eyebrows, blinking, gaze, mouth shapes, head ang
 
 [Setup and calibration](docs/camera-tracking.md) · [Migrate an existing model](docs/migrate-existing-model.md) · [Camera test records](docs/verification/README.md#真实摄像头与网络边界)
 
-The preview also has independent video, landmark and 2D gaze display switches, plus camera-session statistics. Models with expression presets can switch them smoothly during tracking or while paused. Pink does not yet include an expression preset library; these browser controls do not add model rigging. See the [camera guide](docs/camera-tracking.md).
+The preview also has independent video, landmark and 2D gaze display switches, plus camera-session statistics. Models with expression presets can switch them smoothly during tracking or while paused. Pink now provides 8 presets and native mappings for six upper-body estimates. Extra breathing, breeze, float and speech bob are optional and off by default; these are animation accents, not camera measurements. See the [camera guide](docs/camera-tracking.md).
 
 ## Reproduction and verification
 
-**You do not need the author's original `work/` directory.** Pink Sakura's source images, eyebrow preparation script, layer recipe and runtime model are committed. Temporary files and caches can be regenerated. Obtain the official SDK, browser libraries, Upscayl and upscaling weights separately.
+**You do not need the author's original `work/` directory.** Pink Sakura's source images, eyebrow preparation script, layer and dynamics measurements, performance generator and runtime model are committed. Temporary files and caches can be regenerated. Obtain the official SDK, browser libraries, Upscayl and upscaling weights separately.
 
 | In this repository | Prepare locally |
 | --- | --- |
@@ -118,13 +119,14 @@ Each report identifies the commit or files it tested. Recent records are summari
 
 | Check | Recorded result |
 | --- | --- |
+| [Native body dynamics, 2026-10-21](examples/pink-sakura/verification/dynamics-20261020/README.md) | Core, Web, complete motion paths and neutral-face comparison; counts, artifact identities and visual-review scope are recorded in the report |
 | [Preview interactions, 2026-10-18](docs/verification/web-features-20261018.json) | 61 Python, 59 Node and 38 real WebGL checks; synthetic callbacks test overlays, expressions and statistics without opening a camera |
 | [Pink Sakura continuous motion, 2026-10-17](examples/pink-sakura/verification/continuous-20261017/README.md) | 6 paths and 1,488 completed render frames, including return paths, reversals and neutral reset; contact-sheet overview and selected full-size inspections |
 | [Core and browser checks from the same run](examples/pink-sakura/verification/continuous-20261017/summary.json) | 202 Core poses, 22 Web checks, 91 static captures; runtime ZIP extraction and hash checks passed |
 | [Fresh source archive, `e2c4679`](docs/verification/source-package-e2c4679.json) | 61 Python and 35 Node tests passed; regenerated 3 eyebrow PNGs, the 24-layer Pink recipe and the 16-layer geometric example |
 | [Earlier device and build checks](docs/verification/README.md) | 16 physical-camera checks at `7f391f4`, plus a separately recorded cold engine build |
 
-Source regeneration, engine compilation, rendering and device tests have separate records. None replaces final VTube Studio acceptance. The latest continuous-motion run did not repeat camera testing, neural upscaling or the cold engine build.
+Source regeneration, engine compilation, rendering and device tests have separate records. None replaces final VTube Studio acceptance. The latest dynamics run compiled the adapter and exported Pink and Minimal with Core/Web checks using an existing Gradle dependency cache. It did not repeat camera testing, neural upscaling or a cold engine build. The original HD atlas was reused only after verifying an identical low-resolution atlas hash.
 
 ## Tools and guides
 

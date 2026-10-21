@@ -189,6 +189,28 @@ class UpscaleIdentityTests(unittest.TestCase):
         self.assertEqual([p["source_sha256"] for p in report["pages"]], self.digests)
         self.assertFalse((self.output / "manifest-hd.json").exists())
 
+    def test_hd_recipe_carries_measured_dynamics_into_new_directory(self):
+        source = self.root / 'measurements' / 'body.json'
+        source.parent.mkdir()
+        source.write_text('{"profile":"pink-sakura-v1","canvas":[1024,1536]}\n')
+        self.manifest.write_text(json.dumps({'name':'Fixture','layers':[],
+            'config':{'pink_dynamics':'measurements/body.json'}}))
+        self.run_fixture()
+        hd = json.loads((self.output / 'manifest-hd.json').read_text())
+        copied = upscale.local_reference(self.output, hd['config']['pink_dynamics'])
+        self.assertEqual(copied.read_bytes(), source.read_bytes())
+        self.assertEqual(self.report()['dynamicsMeasurement']['sha256'], upscale.sha(source))
+
+    def test_missing_or_escaping_dynamics_fails_before_inference(self):
+        outside = self.root.parent / 'outside-dynamics.json'
+        for reference in ('missing.json', '../outside-dynamics.json', str(outside)):
+            with self.subTest(reference=reference):
+                self.manifest.write_text(json.dumps({'name':'Fixture','layers':[],
+                    'config':{'pink_dynamics':reference}}))
+                with self.assertRaises(ValueError):self.run_fixture()
+                self.assertEqual(self.inferences, 0)
+                self.assertFalse(self.output.exists())
+
     def test_inference_failure_does_not_publish_an_hd_recipe(self):
         def fail(index):
             raise subprocess.CalledProcessError(2, "simulated-ncnn")

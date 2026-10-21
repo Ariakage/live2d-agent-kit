@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "cameraTested": false,
+  "vtubeStudioTested": false,
+  "checks": [
+    {
+      "name": "approved neutral face pixels preserved",
+      "pass": true,
+      "detail": {
+        "width": 760,
+        "height": 685,
+        "roi": {
+          "x0": 202,
+          "y0": 335,
+          "x1": 551,
+          "y1": 590
+        },
+        "changedPixels": 11,
+        "faceChangedPixels": 0,
+        "maxChannelDifference": 1
+      }
+    },
+    {
+      "name": "ParamUpperArmLSwing positive input moves outward",
+      "pass": true,
+      "detail": {
+        "changedVertices": 233,
+        "meanDx": 0.005471565868593592,
+        "minDx": 1.1499971151351929e-05,
+        "maxDx": 0.012462496757507324,
+        "coordinateSystem": "Core model x, positive toward image-right"
+      }
+    },
+    {
+      "name": "ParamUpperArmRSwing positive input moves outward",
+      "pass": true,
+      "detail": {
+        "changedVertices": 251,
+        "meanDx": -0.005528872053461721,
+        "minDx": -0.012433350086212158,
+        "maxDx": -1.7330050468444824e-05,
+        "coordinateSystem": "Core model x, positive toward image-right"
+      }
+    },
+    {
+      "name": "manual and repeated motion handoffs preserve outgoing pose",
+      "pass": true,
+      "detail": {
+        "first": 12,
+        "before": 0.13916561007499695,
+        "after": 0.13916561007499695
+      }
+    },
+    {
+      "name": "wind input drives native secondary parameter over time",
+      "pass": true,
+      "detail": [
+        0.4652714431285858,
+        0.45579373836517334,
+        0.435695081949234,
+        0.4255375266075134,
+        0.42161691188812256,
+        0.4200337827205658,
+        0.41932761669158936,
+        0.4190635681152344
+      ]
+    },
+    {
+      "name": "speech and ambient accents freeze with capture",
+      "pass": true
+    },
+    {
+      "name": "stop clears auxiliary offsets",
+      "pass": true
+    },
+    {
+      "name": "no devices or browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "browser": {
+    "name": "chromium",
+    "version": "155.0.8059.86",
+    "playwrightPackage": "playwright",
+    "playwrightVersion": "1.62.1",
+    "explicitExecutablePath": true
+  },
+  "baseline": {
+    "modelUrl": "http://127.0.0.1:8864/model/model.model3.json",
+    "pngSha256": "15d3d49c35abdae41c863999d5c6054e7300720ee3b54c64ed87f5a424b93b0b"
+  },
+  "candidate": {
+    "modelUrl": "http://127.0.0.1:8865/model/model.model3.json",
+    "pngSha256": "ccd5007c70cc001e85256c16edb22f0d8ccd4ede2a6ab3cc0f8cd0256670de99"
+  },
+  "originalLocalReportSha256": "4771c0d83e07f8b4b6d74b79e98527dd63e1506d5ca2d64fa49d1e32051cb15b"
+}
