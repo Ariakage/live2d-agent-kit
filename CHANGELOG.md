@@ -1,6 +1,8 @@
 # Changelog / 更新日志
 
-## 2026-10-21 · Native Pink dynamics / 身体动态与表情动作
+## 2026-10-21
+
+- 独立源码包 `a909460` 审计通过：65 项 Python / 77 项 Node，眉毛、Pink 与 Minimal 公开配方可重建；已补齐高清配方搬迁时的动态测量文件复制与边界测试。 · Native Pink dynamics / 身体动态与表情动作
 
 - Pink Sakura now has 37 native parameters: shoulder, chest/waist, restrained upper-arm sway, cuffs, skirt, bow, Float and Wind join the existing face and hair rig. Nine local deformers retain the connected sleeve/body raster and preserve the neutral controls; no chin-rest, heart, wave or finger gestures were added.
 - Added the public `dynamics-regions.json` measurement profile and GPL `PinkSakuraDynamics.kt` extension using the pinned psd2live engine. Source-package checks require the measurement file, so reconstruction does not depend on a private `work/` directory.

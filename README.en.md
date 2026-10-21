@@ -119,6 +119,7 @@ Each report identifies the commit or files it tested. Recent records are summari
 
 | Check | Recorded result |
 | --- | --- |
+| [Fresh source archive, `a909460`](docs/verification/source-package-a909460.json) | 65 Python and 77 Node tests; brows, Pink recipe and measured dynamics inputs rebuilt without work/cache directories |
 | [Native body dynamics, 2026-10-21](examples/pink-sakura/verification/dynamics-20261020/README.md) | Core, Web, complete motion paths and neutral-face comparison; counts, artifact identities and visual-review scope are recorded in the report |
 | [Preview interactions, 2026-10-18](docs/verification/web-features-20261018.json) | 61 Python, 59 Node and 38 real WebGL checks; synthetic callbacks test overlays, expressions and statistics without opening a camera |
 | [Pink Sakura continuous motion, 2026-10-17](examples/pink-sakura/verification/continuous-20261017/README.md) | 6 paths and 1,488 completed render frames, including return paths, reversals and neutral reset; contact-sheet overview and selected full-size inspections |

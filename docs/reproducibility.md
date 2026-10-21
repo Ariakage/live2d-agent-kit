@@ -4,6 +4,8 @@ Pink Sakura 的制作源图、眉毛分解源文件、遮罩和身体动态测�
 
 ## 当前身体动态版本
 
+提交 `a909460` 已通过[新的独立源码包检查](verification/source-package-a909460.json)：65 项 Python / 77 项 Node 测试、眉毛字节重建、Pink / Minimal 配方生成通过，初始没有工作目录与缓存。
+
 当前 Pink 为 37 参数、8 个表情、10 个动作。重建需要公开的 `dynamics-regions.json` 和 `PinkSakuraDynamics.kt`；生成器在 manifest 的 `config.pink_dynamics` 中使用相对路径，源包检查器也会把这个测量文件列为必需输入。复制整个示例配方时保留它，无需从作者旧 `work/` 中取文件。
 
 按 [Pink 的完整复现步骤](../examples/pink-sakura/README.md#复现模板)导出 LOW、处理高清图集、导出 HD 并执行原生 Core 检查后，再运行：
