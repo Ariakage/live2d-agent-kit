@@ -24,6 +24,7 @@
 | [姿态回归](web-poses.json) | 91 张实际画布，覆盖眉、嘴眼组合、头身与头发；44 张脸部概览另行查看。 |
 | [Minimal Core](minimal-core.json) / [Web](minimal-web.json) | 最终适配器实际导出，192 姿态 Core 与 22 项 Web 通过。 |
 | [构建身份](build.json) | 最终 LOW 重导出 MOC、图集与已测试输入相同；LOW/HD MOC 一致。用了已有 Gradle 依赖缓存。 |
+| [独立源码包](../../../../docs/verification/source-package-f41437c.json) | 提交 `f41437c` 的无旧 work/cache 副本通过 65 项 Python、82 项 Node 测试；3 张眉毛、4 张手臂配准图逐字节重建一致，Pink 30 层与 Minimal 16 层配方生成通过。此检查不执行引擎或超分。 |
 | [新超分](upscale.json) | 实际重新运行 `realesr-animevideov3-x4`，2048² → 8192²；RGB 神经推理、独立 alpha。没有复用上轮图集。 |
 | 打包 | 仅运行依赖与独立署名/许可文本；ZIP CRC 和解包字节核对通过。见 [release-metadata.json](../../runtime/release-metadata.json)。 |
 

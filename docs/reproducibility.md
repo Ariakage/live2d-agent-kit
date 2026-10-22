@@ -4,16 +4,17 @@
 
 Pink 当前为 30 源层、41 参数、32 Drawable。除了原眉分解，重建时还需运行公开的 `prepare-arm.cjs`，从 `source/arm-parts-v1.png` 生成四张手臂配准图。源图、测量与 JDK 21 脚本都在仓库内，旧 `work/` 不是输入。
 
-按 [Pink 完整步骤](../examples/pink-sakura/README.md#复现模板)依次重建源层、LOW、超分、HD、表情动作和网页。新袖片改变图集，不能复用上一版高清图。实际使用的模型仍为 `realesr-animevideov3-x4`，权重指纹与 6,921 帧检查见[本轮证据](../examples/pink-sakura/verification/gestures-20261022/README.md)。本轮复用 Gradle 依赖缓存；下面的冷构建记录属于历史版本。
+按 [Pink 完整步骤](../examples/pink-sakura/README.md#复现模板)依次重建源层、LOW、超分、HD、表情动作和网页。新袖片改变图集，不能复用上一版高清图。实际使用的模型仍为 `realesr-animevideov3-x4`，权重指纹与合计 15 条轨迹、7,810 帧检查见[本轮证据](../examples/pink-sakura/verification/gestures-20261022/README.md)。本轮复用 Gradle 依赖缓存；下面的冷构建记录属于历史版本。
 
+提交 `f41437c` 已通过[独立源码包检查](verification/source-package-f41437c.json)：从初始没有 `work/`、`.cache/`、`outputs/` 或 `dist/` 的 `git archive` 副本运行 65 项 Python、82 项 Node 测试；三张眉毛与四张手臂配准 PNG 重建后与公开文件逐字节一致，Pink 30 层 manifest 与记录的 SHA 一致，Minimal 16 层配方也可生成。这项离线检查不调用引擎、超分或 Core，因此不等于新一轮引擎冷编译。
 
 Pink Sakura 的制作源图、眉毛分解源文件、遮罩和身体动态测量、表情动作生成器及引擎集成均在仓库中。忽略的 `work/` 保存迭代输出，`.cache/` 保存另行获取的工具；它们不是公开示例生成 manifest 所需的隐藏素材。**2026-09-12 已完成独立空缓存起步的完整源码编译、16 层 Minimal 导出及实际 Core/Web 验证。** 本页保留较早快速审计的未完成记录，并分别说明后续验证。
 
-## 当前身体动态版本
+## 历史身体动态版本：2026-10-21
 
 提交 `a909460` 已通过[新的独立源码包检查](verification/source-package-a909460.json)：65 项 Python / 77 项 Node 测试、眉毛字节重建、Pink / Minimal 配方生成通过，初始没有工作目录与缓存。
 
-当前 Pink 为 37 参数、8 个表情、10 个动作。重建需要公开的 `dynamics-regions.json` 和 `PinkSakuraDynamics.kt`；生成器在 manifest 的 `config.pink_dynamics` 中使用相对路径，源包检查器也会把这个测量文件列为必需输入。复制整个示例配方时保留它，无需从作者旧 `work/` 中取文件。
+该版 Pink 为 37 参数、8 个表情、10 个动作。重建需要公开的 `dynamics-regions.json` 和 `PinkSakuraDynamics.kt`；生成器在 manifest 的 `config.pink_dynamics` 中使用相对路径，源包检查器也会把这个测量文件列为必需输入。复制整个示例配方时保留它，无需从作者旧 `work/` 中取文件。
 
 按 [Pink 的完整复现步骤](../examples/pink-sakura/README.md#复现模板)导出 LOW、处理高清图集、导出 HD 并执行原生 Core 检查后，再运行：
 
@@ -212,7 +213,7 @@ bash scripts/export-model.sh work/cold-minimal/assets/manifest.json work/cold-mi
 
 “能打开最终工程”“能从公开输入重建”“已在目标软件验收”是三件事。后续私有角色修复
 带来的方法已同步到本 kit；该角色的素材、定制绑定和历史验收没有成为 Pink Sakura 的输入。
-Pink 仍以仓库中的配方与素材生成模型，本次保留现有动作；最新检查见
+Pink 以仓库中的配方与素材生成模型；手势版另行公开了它自己的补画与绑定。最新检查见
 [Pink 验证记录](../examples/pink-sakura/verification/README.md)。
 
 | 要恢复的内容 | 必须保留或取得 | 不能据此推断 |

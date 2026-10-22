@@ -1,5 +1,7 @@
 # 验证记录索引 / Verification records
 
+**2026-10-23：** 手势提交 `f41437c` 的[独立源码包检查](source-package-f41437c.json)通过：65 项 Python、82 项 Node；三张眉毛和四张手臂配准图逐字节重建一致，Pink 30 层 manifest 与制作记录一致，Minimal 16 层配方重建通过。初始副本没有 `work/`、`.cache/`、`outputs/` 或 `dist/`。本次源包审计不运行引擎、超分、Core 或摄像头；这些检查的实际范围分别记录在下方手势版本中。报告 SHA-256：`8900fdb60f72d2bfad056183b0c38bd8ab6608344a2ce6e34f66e43f6795f8a8`。
+
 **2026-10-22：** [Pink 手势版本](../../examples/pink-sakura/verification/gestures-20261022/README.md)包含 41 参数和 14 动作。新增补画、注册源图、4× 动漫推理与本轮 Core/Web/连续动作证据；旧设备报告不能作为新版摄像头或 VTS 验收。
 
 **2026-10-21：** [Pink 身体与配件动态](../../examples/pink-sakura/verification/dynamics-20261020/README.md)提供 37 参数、8 表情和 10 动作的新模型及验证。提交 `a909460` 的[独立源码包检查](source-package-a909460.json)通过：65 项 Python、77 项 Node，三张眉毛素材重建一致，Pink 24 层与动态测量文件、Minimal 16 层输入均齐全。初始副本没有 `work/`、`.cache/`、`outputs/` 或 `dist/`；这项审计不运行引擎、超分或真实摄像头。报告 SHA-256：`d9b7962590920cfccb6e68c9ff78053a237c8c9accf33de8cab7cb2be04b3ded`。下列设备报告属于历史版本。

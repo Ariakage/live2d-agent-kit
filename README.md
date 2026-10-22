@@ -122,6 +122,7 @@ CMO3 保留模型与绑定，其可编辑图层从图集重建，不包含原 PS
 | 检查 | 已记录的结果 |
 | --- | --- |
 | [手势与新超分，2026-10-22](examples/pink-sakura/verification/gestures-20261022/README.md) | 236 个 Core 姿态、38 项 Web 检查、7,810 个连续帧及 91 张姿态截图；另有 Minimal 回归与选帧目检 |
+| [手势版独立源码包，`f41437c`](docs/verification/source-package-f41437c.json) | 65 项 Python、82 项 Node；无旧 work/cache，重建 3 张眉毛、4 张手臂配准图、30 层 Pink 与 16 层 Minimal 配方 |
 | [独立源码包，`a909460`](docs/verification/source-package-a909460.json) | 65 项 Python、77 项 Node；从没有 work/cache 的源码副本重建眉毛、Pink 配方与动态测量依赖 |
 | [原生身体动态，2026-10-21](examples/pink-sakura/verification/dynamics-20261020/README.md) | Core、Web、完整连续动作及中性脸部对照；具体计数、文件身份与目视范围见报告 |
 | [网页交互，2026-10-18](docs/verification/web-features-20261018.json) | 61 项 Python、59 项 Node、38 项真实 WebGL 检查；合成回调验证节点、表情叠加与统计工具，未开启摄像头 |

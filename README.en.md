@@ -122,6 +122,7 @@ Each report identifies the commit or files it tested. Recent records are summari
 | Check | Recorded result |
 | --- | --- |
 | [Gestures and fresh upscale, 2026-10-22](examples/pink-sakura/verification/gestures-20261022/README.md) | 236 Core poses, 38 Web checks, 7,810 continuous frames and 91 pose screenshots; Minimal regression and scoped visual review |
+| [Gesture source archive, `f41437c`](docs/verification/source-package-f41437c.json) | 65 Python and 82 Node tests; regenerated 3 brow images, 4 registered arm images, the 30-layer Pink recipe and 16-layer Minimal recipe without old work/cache directories |
 | [Fresh source archive, `a909460`](docs/verification/source-package-a909460.json) | 65 Python and 77 Node tests; brows, Pink recipe and measured dynamics inputs rebuilt without work/cache directories |
 | [Native body dynamics, 2026-10-21](examples/pink-sakura/verification/dynamics-20261020/README.md) | Core, Web, complete motion paths and neutral-face comparison; counts, artifact identities and visual-review scope are recorded in the report |
 | [Preview interactions, 2026-10-18](docs/verification/web-features-20261018.json) | 61 Python, 59 Node and 38 real WebGL checks; synthetic callbacks test overlays, expressions and statistics without opening a camera |
