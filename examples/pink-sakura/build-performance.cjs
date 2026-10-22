@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// MIT. Original parameter-only performances for Pink Sakura; no new artwork.
+// MIT. Performances use only parameters verified in the candidate model.
 'use strict';
 const fs=require('node:fs');
 const path=require('node:path');
@@ -128,6 +128,22 @@ function buildPerformance(nativeParameters) {
     ParamAngleY:[[0,0],[.55,0],[1.3,-.25],[2.2,-.1],[2.8,-.03],[3.6,-.35],[4.55,0],[5,0]],
     ParamFloat:[[0,0],[.7,0],[1.5,.035],[2.6,.008],[3.8,.05],[4.8,0],[5,0]]
   });
+  const gestureIds=['ParamArmRLift','ParamArmRPose','ParamHandRForm','ParamHandRWave'];
+  const gestureCount=gestureIds.filter(id=>parameters.has(id)).length;
+  if(gestureCount&&gestureCount!==gestureIds.length)throw new Error('Incomplete native gesture parameter set.');
+  if(gestureCount) {
+    for(const [name,pose,form] of [['HandToChin',0,1],['FingerHeart',1,2],['Wave',2,3]]) {
+      // Change hand drawings only while the sleeve is down, including at the end.
+      const selection=value=>[[0,0],[.4,value],[6.6,value],[7.2,0],[7.6,0]];
+      Motions[name]=motion(parameters,7.6,false,{
+        ParamArmRLift:[[0,0],[.5,0],[2.5,1],[4.5,1],[6.5,0],[7.6,0]],
+        ParamArmRPose:selection(pose),ParamHandRForm:selection(form),
+        ParamHandRWave:name==='Wave'?[[0,0],[2.6,0],[2.95,.55],[3.3,-.55],
+          [3.65,.5],[4,-.4],[4.4,0],[7.6,0]]:[[0,0],[7.6,0]]
+      });
+    }
+    Motions.HandDown=motion(parameters,1.6,false,Object.fromEntries(gestureIds.map(id=>[id,[[0,0],[1.6,0]]])));
+  }
   return {Expressions,Motions};
 }
 function buildRuntime(runtimeDirectory,reportFile) {

@@ -1,5 +1,12 @@
 # 从公开文件复现
 
+## 2026-10-22 手势版本
+
+Pink 当前为 30 源层、41 参数、32 Drawable。除了原眉分解，重建时还需运行公开的 `prepare-arm.cjs`，从 `source/arm-parts-v1.png` 生成四张手臂配准图。源图、测量与 JDK 21 脚本都在仓库内，旧 `work/` 不是输入。
+
+按 [Pink 完整步骤](../examples/pink-sakura/README.md#复现模板)依次重建源层、LOW、超分、HD、表情动作和网页。新袖片改变图集，不能复用上一版高清图。实际使用的模型仍为 `realesr-animevideov3-x4`，权重指纹与 6,921 帧检查见[本轮证据](../examples/pink-sakura/verification/gestures-20261022/README.md)。本轮复用 Gradle 依赖缓存；下面的冷构建记录属于历史版本。
+
+
 Pink Sakura 的制作源图、眉毛分解源文件、遮罩和身体动态测量、表情动作生成器及引擎集成均在仓库中。忽略的 `work/` 保存迭代输出，`.cache/` 保存另行获取的工具；它们不是公开示例生成 manifest 所需的隐藏素材。**2026-09-12 已完成独立空缓存起步的完整源码编译、16 层 Minimal 导出及实际 Core/Web 验证。** 本页保留较早快速审计的未完成记录，并分别说明后续验证。
 
 ## 当前身体动态版本

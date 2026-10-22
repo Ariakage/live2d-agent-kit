@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "example": "Pink Sakura",
-  "production_status": "37-parameter native dynamics revision; new Core/Web and continuous checks; sampled visual review; VTS and physical camera not retested",
+  "production_status": "41-parameter gesture revision; fresh anime inference; Core/Web/continuous and scoped visual checks; VTS and physical camera not retested",
   "scope": "Source and recipe identities, generation history, actual 4x runtime atlas, exported runtime and scoped validation evidence. No claim of clean-environment full source build or VTube Studio acceptance.",
   "provider": "Ariakage",
   "project": "https://github.com/Ariakage/live2d-agent-kit",
@@ -131,6 +131,83 @@
       "license": "CC-BY-4.0",
       "byte_identical_regeneration": true,
       "preparation_evidence": "verification/brow-preparation.json"
+    },
+    {
+      "file": "source/arm-parts-v1.png",
+      "bytes": 1441800,
+      "sha256": "927b3c79022b2b9bec8bbe6f3ba6739f216eb077d1940c3c6467898f89ab452b",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "license": "CC-BY-4.0",
+      "origin": "built-in-image-generation",
+      "input": "source/reference.png",
+      "tool": "Built-in image generation",
+      "service_model": "not independently verified",
+      "prompt": "Use case: identity-preserve. Asset type: production Live2D separated arm-parts sheet, not a portrait. Reference image supplies Pink Sakura's exact delicate anime art style, pastel pink cardigan, subtle pink line art and very pale warm skin. Make ONE clean transparent PNG sprite sheet with four isolated components, generously separated, no labels, no background marks or shadow. LEFT HALF: one complete relaxed, almost straight cardigan sleeve for the arm on the VIEWER'S LEFT (character's RIGHT), extending from a rounded shoulder cap at the top to a ribbed wrist cuff at the bottom, angled slightly down-left exactly like the reference sleeve. Include whole uninterrupted fabric around the elbow and the small pink ribbon on the lower sleeve. No hand attached, no torso, no head, no hair. Rounded shoulder has enough painted fabric for hidden overlap. Sleeve outer contour simple and continuous, no disconnected scraps. RIGHT HALF: three small hands stacked vertically, all for this same character-right arm, wrist at bottom and fingers at top, same wrist width and same hand size. Top hand = relaxed small gently curled fist with knuckles at top for resting the chin, soft natural thumb around curled fingers. Middle hand = small Korean finger-heart gesture, index and thumb crossing at tips, other three fingers folded. Bottom hand = friendly wave, palm facing viewer, five natural fingers gently separated, thumb on image-right. Every hand has a short clean wrist extending down for hiding inside cuff; no sleeve on hands. Maintain small cute anime palm proportions, no giant hands, no realistic skin texture. Refined thin colored outlines and soft cel shadows, matching the provided reference. Preserve true transparency and clean antialiased outlines. This is an asset sheet only: do not draw character, face, any lettering, bones, or checkerboard.",
+      "prompt_role": "Historical generation input, not future-agent instructions.",
+      "source_observation": "Actual RGBA with transparent background and near-zero alpha dust. Measured registration filters alpha <= 3 and samples in premultiplied-alpha space."
+    },
+    {
+      "file": "source/gesture-sleeve-r.png",
+      "bytes": 89472,
+      "sha256": "e53e120de303bec7bd8584794e31114dd0ea96bf15f0c0a94e13fe149da8c9f4",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "license": "CC-BY-4.0",
+      "origin": "deterministic-source-pixel-registration",
+      "derived_from": "source/arm-parts-v1.png",
+      "generator": "PrepareArm.java via prepare-arm.cjs",
+      "measurements": "dynamics-regions.json",
+      "byte_identical_regeneration": true
+    },
+    {
+      "file": "source/gesture-hand-chin-r.png",
+      "bytes": 10599,
+      "sha256": "d145e24df16c83027c1c5b042f03340207e3fd30341b4015478c444b688b5a38",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "license": "CC-BY-4.0",
+      "origin": "deterministic-source-pixel-registration",
+      "derived_from": "source/arm-parts-v1.png",
+      "generator": "PrepareArm.java via prepare-arm.cjs",
+      "measurements": "dynamics-regions.json",
+      "byte_identical_regeneration": true
+    },
+    {
+      "file": "source/gesture-hand-heart-r.png",
+      "bytes": 10478,
+      "sha256": "9eb8a72c42f4646efe0ced3cef641cbdb0e234de5dc26a8ff77e53db58e84c82",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "license": "CC-BY-4.0",
+      "origin": "deterministic-source-pixel-registration",
+      "derived_from": "source/arm-parts-v1.png",
+      "generator": "PrepareArm.java via prepare-arm.cjs",
+      "measurements": "dynamics-regions.json",
+      "byte_identical_regeneration": true
+    },
+    {
+      "file": "source/gesture-hand-wave-r.png",
+      "bytes": 13194,
+      "sha256": "1ebc45c422f815d11284688e39962046073f7562cc79de0c4dc6d7ed3f8fba28",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "has_alpha_channel": true,
+      "license": "CC-BY-4.0",
+      "origin": "deterministic-source-pixel-registration",
+      "derived_from": "source/arm-parts-v1.png",
+      "generator": "PrepareArm.java via prepare-arm.cjs",
+      "measurements": "dynamics-regions.json",
+      "byte_identical_regeneration": true
     }
   ],
   "recipe_files": [
@@ -147,9 +224,12 @@
     "dynamics-regions.json",
     "build-performance.cjs",
     "check-continuous.cjs",
-    "check-dynamics.cjs"
+    "check-dynamics.cjs",
+    "PrepareArm.java",
+    "prepare-arm.cjs",
+    "check-gestures.cjs"
   ],
-  "recipe_status": "Public 24-source-layer recipe plus dynamics-regions.json and build-performance.cjs; no private artwork/work-directory dependency",
+  "recipe_status": "Public 30-source-layer recipe, measured arm registration, dynamics and performance generator; no private artwork/work-directory dependency",
   "registration_notes": [
     "Original logical reference canvas is 1024x1536. Approved face, front hair and clothing retain the original as their primary source; outer/arc rear strands also remain original overlays.",
     "Facial generation inputs used reference crop [300,0,400,400] resized to 1200x1200; returned files are 1254x1254 and need measured registration.",
@@ -160,18 +240,20 @@
     "Original outer/arc rear strands overlay the generated base and move independently. Some visible rear-hair pixels now come from the generated base; an all-original-visible-rear-pixels claim is no longer accurate.",
     "Original upper-lid folds are isolated as face_detail-upper-lid-folds, separate from thresholded moving dark lashes. The mouth_open layer is registered at logical y277 for this specific source.",
     "Recorded prompts request visual constraints but do not establish that generated results satisfied them. Results and generated-service versions are recorded separately.",
-    "Original shallow pink brow ink is decomposed into three deterministic derivative PNGs by PrepareBrows.java; bright residuals and measured intersecting hair contours remain stationary. Foreground brow movement preserves the approved source design; this is not a newly generated face."
+    "Original shallow pink brow ink is decomposed into three deterministic derivative PNGs by PrepareBrows.java; bright residuals and measured intersecting hair contours remain stationary. Foreground brow movement preserves the approved source design; this is not a newly generated face.",
+    "Viewer-left sleeve is a new registered continuous raster. Cuff overlay reuses identical geometry and source pixels; hands are isolated sprites. Existing relaxed hand is sampled from the original reference.",
+    "This release changes source art and atlas layout for the arm; a new neural 4x atlas was actually generated. Dynamics adapter unchanged-art flags describe only its own input-to-output operation, not the change from stage 2."
   ],
   "final_evidence": {
     "runtime_model": "runtime/PinkSakura.model3.json",
-    "runtime_model_sha256": "c2fa4c10d2b5322c0eaf6da9a02b2ecc963dd2b9018628fc1d5942c41d2e3090",
-    "runtime_moc_sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+    "runtime_model_sha256": "e2185bdfcee29824e6ef94293ab879f76bb00bf889d4ad50de77ce9a347f4c7c",
+    "runtime_moc_sha256": "4ce948a92454589668b24caf3d928362a5251d3e415e0733ec5356e01f4fa745",
     "low_hd_moc_byte_identical": true,
     "hd_textures": [
       {
         "file": "runtime/PinkSakura.8192/texture_00.png",
-        "bytes": 45336522,
-        "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+        "bytes": 48606365,
+        "sha256": "b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e",
         "width": 8192,
         "height": 8192,
         "channels": "RGBA"
@@ -180,346 +262,284 @@
     "runtime_files": [
       {
         "file": "runtime/ASSET-LICENSE.md",
-        "bytes": 2960,
-        "sha256": "1107b511d8b5494199e8e5415b36e65664717826dc86e97f8ee1a835a85980af"
+        "sha256": "1d5a80ece404d21357a8027168e4903acddec1ee335686a46ad809d3dba63dc3",
+        "bytes": 1392
       },
       {
         "file": "runtime/ATTRIBUTION.md",
-        "bytes": 5250,
-        "sha256": "0e34fc3d015f9926568245063bf2597c7bf3b29e22208d90608ce642a84dd82c"
+        "sha256": "07691a60665bb30bbc46482775b75ffeb71b78d5364b98e2eb6b2d4994cf0b26",
+        "bytes": 2177
       },
       {
         "file": "runtime/PinkSakura.8192/texture_00.png",
-        "bytes": 45336522,
-        "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361"
+        "sha256": "b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e",
+        "bytes": 48606365
       },
       {
         "file": "runtime/PinkSakura.Angry.exp3.json",
-        "bytes": 630,
-        "sha256": "933b6bd37bbc38f809be37b910b43e06f1cd5a7ce0e3589e314ae69a3bb461ad"
+        "sha256": "933b6bd37bbc38f809be37b910b43e06f1cd5a7ce0e3589e314ae69a3bb461ad",
+        "bytes": 630
       },
       {
         "file": "runtime/PinkSakura.Sleepy.exp3.json",
-        "bytes": 632,
-        "sha256": "ec75eadd424aa6ab2a51f93c8b5da51310fcff520fb260b72f561ff2caa9cc9f"
+        "sha256": "ec75eadd424aa6ab2a51f93c8b5da51310fcff520fb260b72f561ff2caa9cc9f",
+        "bytes": 632
       },
       {
         "file": "runtime/PinkSakura.Smile.exp3.json",
-        "bytes": 623,
-        "sha256": "edc03b4d46d8e7861215689d9bcbc5dd113e17bedb9b972dacff1576870a97d9"
+        "sha256": "edc03b4d46d8e7861215689d9bcbc5dd113e17bedb9b972dacff1576870a97d9",
+        "bytes": 623
       },
       {
         "file": "runtime/PinkSakura.Smug.exp3.json",
-        "bytes": 630,
-        "sha256": "039de847cfa12d191a10c1f412b4742aaa142588f0122c5e3e63aab6818df128"
+        "sha256": "039de847cfa12d191a10c1f412b4742aaa142588f0122c5e3e63aab6818df128",
+        "bytes": 630
       },
       {
         "file": "runtime/PinkSakura.SoftSmile.exp3.json",
-        "bytes": 623,
-        "sha256": "f7408d991b1b68f9fd4119b2a1f81f6a16b4e4bad6cecb2c96e3d71b8e149410"
+        "sha256": "f7408d991b1b68f9fd4119b2a1f81f6a16b4e4bad6cecb2c96e3d71b8e149410",
+        "bytes": 623
       },
       {
         "file": "runtime/PinkSakura.Surprised.exp3.json",
-        "bytes": 624,
-        "sha256": "d8acf60419997c289e015ed140aefa5d50dbcf871566f22baf36c3e103b1a86f"
+        "sha256": "d8acf60419997c289e015ed140aefa5d50dbcf871566f22baf36c3e103b1a86f",
+        "bytes": 624
       },
       {
         "file": "runtime/PinkSakura.WinkLeft.exp3.json",
-        "bytes": 620,
-        "sha256": "e3bb471f38c48cd80a4344cf354f49aff53d2f653962b5e52cd31e3265484526"
+        "sha256": "e3bb471f38c48cd80a4344cf354f49aff53d2f653962b5e52cd31e3265484526",
+        "bytes": 620
       },
       {
         "file": "runtime/PinkSakura.WinkRight.exp3.json",
-        "bytes": 620,
-        "sha256": "2b873816ff9a8fcf1f9eee19970be0d5a4a8e8f74d397d1112709fe9de026d27"
+        "sha256": "2b873816ff9a8fcf1f9eee19970be0d5a4a8e8f74d397d1112709fe9de026d27",
+        "bytes": 620
       },
       {
         "file": "runtime/PinkSakura.airy.motion3.json",
-        "bytes": 12075,
-        "sha256": "10ade92258be94667d302b84837d1547848407e5fa2b349e2a98910b2b94bb64"
+        "sha256": "10ade92258be94667d302b84837d1547848407e5fa2b349e2a98910b2b94bb64",
+        "bytes": 12075
       },
       {
         "file": "runtime/PinkSakura.blink.motion3.json",
-        "bytes": 1155,
-        "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110"
+        "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110",
+        "bytes": 1155
       },
       {
         "file": "runtime/PinkSakura.cdi3.json",
-        "bytes": 6060,
-        "sha256": "04a84e449021a4261cbc343d8804693f59090601468f82f0615823d0ac561b5b"
+        "sha256": "145a383a2c6dc9488294500c49e84a4390d3018705d0655985c0920f5f778ff8",
+        "bytes": 6847
       },
       {
         "file": "runtime/PinkSakura.curious.motion3.json",
-        "bytes": 11579,
-        "sha256": "45386ab91514e34c7e4b27c968aa2457d2c084abb6c1bc1c07e781df7220a2c1"
+        "sha256": "45386ab91514e34c7e4b27c968aa2457d2c084abb6c1bc1c07e781df7220a2c1",
+        "bytes": 11579
+      },
+      {
+        "file": "runtime/PinkSakura.fingerheart.motion3.json",
+        "sha256": "ffa8db8cb2bc44b01a420609d46c8095784779ef1a2c7af0e758539fe80440ae",
+        "bytes": 2126
+      },
+      {
+        "file": "runtime/PinkSakura.handdown.motion3.json",
+        "sha256": "9e4ab4bd266348e8bc771afa4589a3ba92a1dae5f2cd595756ed2b56b933d26c",
+        "bytes": 1187
+      },
+      {
+        "file": "runtime/PinkSakura.handtochin.motion3.json",
+        "sha256": "77fb096373150a572ef2bdce8a61adc6ea271d1f67e51645383d5f38d1500e6c",
+        "bytes": 2126
       },
       {
         "file": "runtime/PinkSakura.idle.motion3.json",
-        "bytes": 2282,
-        "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990"
+        "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990",
+        "bytes": 2282
       },
       {
         "file": "runtime/PinkSakura.moc3",
-        "bytes": 1013184,
-        "sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8"
+        "sha256": "4ce948a92454589668b24caf3d928362a5251d3e415e0733ec5356e01f4fa745",
+        "bytes": 5206464
       },
       {
         "file": "runtime/PinkSakura.model3.json",
-        "bytes": 2249,
-        "sha256": "c2fa4c10d2b5322c0eaf6da9a02b2ecc963dd2b9018628fc1d5942c41d2e3090"
+        "sha256": "e2185bdfcee29824e6ef94293ab879f76bb00bf889d4ad50de77ce9a347f4c7c",
+        "bytes": 2659
       },
       {
         "file": "runtime/PinkSakura.nod.motion3.json",
-        "bytes": 1751,
-        "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418"
+        "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418",
+        "bytes": 1751
       },
       {
         "file": "runtime/PinkSakura.physics3.json",
-        "bytes": 28244,
-        "sha256": "50416d102579e65756db8636fd882f28e9fd0ea182da09f6225fd1482cb785ea"
+        "sha256": "50416d102579e65756db8636fd882f28e9fd0ea182da09f6225fd1482cb785ea",
+        "bytes": 28244
       },
       {
         "file": "runtime/PinkSakura.quiet.motion3.json",
-        "bytes": 10411,
-        "sha256": "f85e1ba83ce97793c124091ade9371577bd385c561125ade24828685dec36ced"
+        "sha256": "f85e1ba83ce97793c124091ade9371577bd385c561125ade24828685dec36ced",
+        "bytes": 10411
       },
       {
         "file": "runtime/PinkSakura.shake.motion3.json",
-        "bytes": 1571,
-        "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01"
+        "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01",
+        "bytes": 1571
       },
       {
         "file": "runtime/PinkSakura.sleepy.motion3.json",
-        "bytes": 10270,
-        "sha256": "4ebffb79de698ef5b68bca81c86c10edce23c6435c61fafd88a17cf94bbc698f"
+        "sha256": "4ebffb79de698ef5b68bca81c86c10edce23c6435c61fafd88a17cf94bbc698f",
+        "bytes": 10270
       },
       {
         "file": "runtime/PinkSakura.slowblink.motion3.json",
-        "bytes": 1432,
-        "sha256": "b861d0ab6bcd0c20901b656c0d2eeda8ca8e771b913c20bfdeff656f1d6d36c4"
+        "sha256": "b861d0ab6bcd0c20901b656c0d2eeda8ca8e771b913c20bfdeff656f1d6d36c4",
+        "bytes": 1432
       },
       {
         "file": "runtime/PinkSakura.speechbob.motion3.json",
-        "bytes": 3239,
-        "sha256": "7af749e56d29a7af938fd27306ed34f740af21053ab134b962ae8ca5cd464622"
+        "sha256": "7af749e56d29a7af938fd27306ed34f740af21053ab134b962ae8ca5cd464622",
+        "bytes": 3239
+      },
+      {
+        "file": "runtime/PinkSakura.wave.motion3.json",
+        "sha256": "de2e4216ddf3b3c0e1ab0f5f6cc8cc222bab34be13bb493412f6ee2c96d9aca1",
+        "bytes": 2744
       },
       {
         "file": "runtime/release-metadata.json",
-        "bytes": 4941,
-        "sha256": "4a8787cadfb779d87b861e8172b75e76b5e831526023e93a4ce514e8177f12c0"
+        "sha256": "2a8e30f49bab92efc4967f99a7ee98ca08fdc24dc1d2bbc18b6369fe85639979",
+        "bytes": 5554
       }
     ],
     "native_core": {
       "status": "passed",
-      "report": "verification/dynamics-20261020/native-core.json",
-      "version": "06.00.0257 (100663553)",
-      "checked_at": "2026-10-20T18:20:47.199755Z",
-      "tested_pose_count": 228,
-      "errors": [],
+      "report": "verification/gestures-20261022/native-core.json",
+      "tested_pose_count": 236,
       "warnings": [
-        "Parameters without a measurable direct vertex/opacity/order effect: ParamWind"
+        "Parameters without a measurable direct vertex/opacity/order effect: ParamWind, ParamArmRPose, ParamHandRWave"
       ]
     },
     "webgl": {
-      "status": "passed",
-      "report": "verification/dynamics-20261020/web-smoke.json",
-      "checks": 38,
-      "continuous_report": "verification/dynamics-20261020/continuous.json.gz",
-      "completed_frames": 6597,
-      "camera_requests": 0
+      "status": "automated-checks-passed",
+      "report": "verification/gestures-20261022/web-smoke.json",
+      "continuous_frames": 7810,
+      "pose_frames": 91,
+      "camera_requests": 0,
+      "continuous_capture_runs": 2
     },
     "visual_review": {
-      "report": "verification/dynamics-20261020/visual-review.json",
-      "exhaustive": false,
-      "status": "sampled-review-with-limitations",
-      "contact_sheet_frames": 128,
-      "original_size_details": 3
+      "status": "reviewed-with-limitations",
+      "report": "verification/gestures-20261022/visual-review.json",
+      "scope": "192 chronological completed-frame arm contact-sheet samples, 44 face-regression overview frames, and three full-size held gesture captures. Not exhaustive visual inspection of all captured frames."
     },
-    "vtube_studio": "not-retested; pending-user-acceptance",
+    "vtube_studio": "pending-user-acceptance",
     "actual_camera_tested": false,
     "clean_environment_full_build_validated": false,
     "export_limitations": {
-      "report": "verification/dynamics-20261020/export-warnings.txt",
-      "cmo3": "Editable atlas-rebuilt layers and model/rig data; original PSD source-image edit chain not retained. Official Editor manual acceptance not performed."
+      "report": "verification/gestures-20261022/export-warnings.txt",
+      "cmo3": "Atlas-rebuilt editable layers, original PSD editing chain not retained; GUI not accepted."
     },
     "public_recipe_rebuild": {
-      "status": "source-manifest-matched; committed-archive-check-recorded-separately",
-      "manifest_sha256": "7e3bdf615a096765a2470cdae844046b0b2ed5049b47f04a3b3a11aca6570b10",
-      "source_layers": 24,
+      "status": "passed",
+      "source": "Fresh local copy of published sources and recipes; all derivative PNGs regenerated",
+      "source_layers": 30,
+      "manifest_sha256": "c440af93d971640ec9bc0d944a1284ec34ec5ee2962d17394af0a9ab98edb264",
       "matches_actual_low_export_input_bytes": true,
-      "scope": "Published recipe, measurement and performance inputs. See current source archive report for clean temporary-directory regeneration."
+      "eyebrow_derivatives_byte_identical": true,
+      "arm_derivatives_byte_identical": true,
+      "scope": "Recipe regeneration and final cached-dependency LOW export; source archive audit separately recorded after commit."
     },
-    "summary": "verification/dynamics-20261020/summary.json",
+    "summary": "verification/gestures-20261022/summary.json",
     "report_identities": [
       {
-        "file": "verification/dynamics-20261020/README.md",
-        "bytes": 5001,
-        "sha256": "86feba5a6ac89858adb6168266ad7b274d177a9acb1cbf178bd12a624bff8d40"
+        "file": "verification/gestures-20261022/README.md",
+        "bytes": 6666,
+        "sha256": "a6396d8f86488861d7c95c337e0a5b3904fd6ac9a40fe8425bb811cd734b690b"
       },
       {
-        "file": "verification/dynamics-20261020/accessory-cycle.jpg",
-        "bytes": 188208,
-        "sha256": "0821f9ba0e14a2410d2317e3acf71cce2520003677e7363401f5538320410b04"
+        "file": "verification/gestures-20261022/build.json",
+        "bytes": 2003,
+        "sha256": "a2114d91b655d9700e0a521b60f84bd9e44bb83a08d6b7ae77fa0d93067a8919"
       },
       {
-        "file": "verification/dynamics-20261020/baseline-face.png",
-        "bytes": 639383,
-        "sha256": "15d3d49c35abdae41c863999d5c6054e7300720ee3b54c64ed87f5a424b93b0b"
+        "file": "verification/gestures-20261022/continuous.json.gz",
+        "bytes": 497600,
+        "sha256": "ea0d8cf977e6a9c48be6bba446269a1a2329253f61bea81d2454715c03d839f5"
       },
       {
-        "file": "verification/dynamics-20261020/body-native-cycle-0096.png",
-        "bytes": 378065,
-        "sha256": "90f671cc6dba014a6553600155b41fe2078135dd0ea0717871ca8fe9017eea22"
+        "file": "verification/gestures-20261022/export-warnings.txt",
+        "bytes": 3959,
+        "sha256": "9b02a723047fd9664fcd52af5492c1f48c2599cd55147b5211e23ff3543e5b2c"
       },
       {
-        "file": "verification/dynamics-20261020/body-native-cycle.jpg",
-        "bytes": 189547,
-        "sha256": "e8c2851a4ef93fe03cef3d1e327bb42b399f67f220a3dd48ea848e345fa249e2"
+        "file": "verification/gestures-20261022/frame-audit.json",
+        "bytes": 2284,
+        "sha256": "4c1a6f06ed85ff575a9ed07507a984994920169f0947b00249156e8bd11faddb"
       },
       {
-        "file": "verification/dynamics-20261020/build.json",
-        "bytes": 5560,
-        "sha256": "c51a494790d3324ef187d9eb031cbbd09fe3e22b20f8b72ff0fa51254f96a0d2"
+        "file": "verification/gestures-20261022/handdown-selected-frames.json",
+        "bytes": 17737,
+        "sha256": "326847e269d3d47469a9b32a79cfe4cfc3acc88a45207e2b64d081dd69389794"
       },
       {
-        "file": "verification/dynamics-20261020/candidate-face.png",
-        "bytes": 639421,
-        "sha256": "ccd5007c70cc001e85256c16edb22f0d8ccd4ede2a6ab3cc0f8cd0256670de99"
+        "file": "verification/gestures-20261022/handdown.json.gz",
+        "bytes": 45371,
+        "sha256": "e0beafb99409d8a531008d62c764d9e2f6911a682c15afeb1c7d00cd3136f9d6"
       },
       {
-        "file": "verification/dynamics-20261020/continuous.json.gz",
-        "bytes": 1075415,
-        "sha256": "a49c3eb9cebe397248750f89c13a42d7a84c36d431aa5fe20fe59a364d6c88b7"
+        "file": "verification/gestures-20261022/minimal-core.json",
+        "bytes": 331533,
+        "sha256": "25cc48e276f882c5c15694ac49424053b3b03ea199f169d6be9e487bd69992d2"
       },
       {
-        "file": "verification/dynamics-20261020/dynamics.json",
-        "bytes": 2645,
-        "sha256": "0129c94c10a6484db87cc999dd6c40226b9a72d25afc342c67cb687b6f80a0bd"
-      },
-      {
-        "file": "verification/dynamics-20261020/export-warnings.txt",
-        "bytes": 2175,
-        "sha256": "56ef154c9cc28f5bdbfb11a7e46391ff09a87df5c030684929168112f6418657"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-Angry.jpg",
-        "bytes": 74104,
-        "sha256": "03e3d809d7cd7fa6968e38b26abc7a2b4c7721502149753e03f0a459c941b88b"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-Sleepy-0051.png",
-        "bytes": 426416,
-        "sha256": "679e6e9229135fa10cb044f1b09c31f78d084c96382b760d88da0e20b24e485a"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-Sleepy.jpg",
-        "bytes": 73296,
-        "sha256": "1997bb73a61dd6557b07e4bb4bd8daf901d4b0c8a384cadcb6fb47d488ba1335"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-Smile.jpg",
-        "bytes": 74229,
-        "sha256": "a3203da8d0c7bf7411551c5fb0e731436015a1e15f2dbedc45bc3ee2b7985a3d"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-Smug.jpg",
-        "bytes": 74160,
-        "sha256": "fed95e27cfad460abf3eac11503e66bac746da453751d36cac1246e09362f410"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-SoftSmile.jpg",
-        "bytes": 75078,
-        "sha256": "2fa36e1975d3dc34a213a54bd0876ee2c4d51db52665b82f2ef6f4663a221cdb"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-Surprised.jpg",
-        "bytes": 75260,
-        "sha256": "2315b23b91a7925ed28ff846cacfd25b189aa92ee4d0f6a1909bb21fa5f6731f"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-WinkLeft-0051.png",
-        "bytes": 428131,
-        "sha256": "e62d6dc241cfa36957e7e01ed2e664962a6f277bd10dd35371057e81d357c982"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-WinkLeft.jpg",
-        "bytes": 74308,
-        "sha256": "d7c1bd8bb8ca1e2fd57b29c93e9e5608d6c04502c50c91e318c8969e2de1dbea"
-      },
-      {
-        "file": "verification/dynamics-20261020/expression-WinkRight.jpg",
-        "bytes": 74573,
-        "sha256": "4f579743b593a969189c661c8a0ae13159f54e824d81c324f9f6df732ecdd03a"
-      },
-      {
-        "file": "verification/dynamics-20261020/face-cycle.jpg",
-        "bytes": 212532,
-        "sha256": "020bd72e778d0281429d3e6fb4c5aefdbe5b422296c8c5f8cce886125cd6a14b"
-      },
-      {
-        "file": "verification/dynamics-20261020/minimal-core.json",
-        "bytes": 331541,
-        "sha256": "710f639db49c1b16f8b58c3a2180d39fbd49988407b2377d278f56373aff2ee6"
-      },
-      {
-        "file": "verification/dynamics-20261020/minimal-web.json",
+        "file": "verification/gestures-20261022/minimal-web.json",
         "bytes": 9837,
-        "sha256": "2ea5cc4e12cc678fff10376088ec079f9a5955c3caa17ef41ed5b45f00ceaba4"
+        "sha256": "7d11b675fdf6fb34f6f511582cea7061d622282ff03cc044ea5aee2cbfed0823"
       },
       {
-        "file": "verification/dynamics-20261020/motion-Airy.jpg",
-        "bytes": 186487,
-        "sha256": "1068c03ea108bdc812c7af583cebb22f7d3c1437f950d08733c3b9c1f27d6a8a"
+        "file": "verification/gestures-20261022/native-core.json",
+        "bytes": 329857,
+        "sha256": "1238c6494273b7a139e8a992a6abbdcae1c8cd63efca968a7a4c2f178d7ef669"
       },
       {
-        "file": "verification/dynamics-20261020/motion-Curious.jpg",
-        "bytes": 188457,
-        "sha256": "7121dfd19e4ce66669caf88114d119ec8c22fdde70149e5223d30cd89bab5dd9"
+        "file": "verification/gestures-20261022/native-dynamics.json",
+        "bytes": 4742,
+        "sha256": "3f574295d486d2863346d6aff67b0001f10e8791fa21e81aa17f895ab19422a9"
       },
       {
-        "file": "verification/dynamics-20261020/motion-Sleepy.jpg",
-        "bytes": 188450,
-        "sha256": "4f19ed4524efce89b2cf35048feb2e3a8276456eb90b1ee8186dac89e2052e78"
+        "file": "verification/gestures-20261022/native-gestures.json",
+        "bytes": 926,
+        "sha256": "1d340e53947cae1c006dcca89783a48849050209d7a46c674d5a0245dc1e39f1"
       },
       {
-        "file": "verification/dynamics-20261020/motion-SlowBlink.jpg",
-        "bytes": 189348,
-        "sha256": "667327086bf2555229872e51be320cf8ecfc81adb7d01f24ad98751757ae8221"
+        "file": "verification/gestures-20261022/selected-frames.json",
+        "bytes": 69564,
+        "sha256": "1dd755cc55edb40c93e42c8b3e347cf6ff4aac55a56357a3490537ecd93cd1ab"
       },
       {
-        "file": "verification/dynamics-20261020/motion-SpeechBob.jpg",
-        "bytes": 190460,
-        "sha256": "85b8daf025253cc54dbe5b64139ce0108374610ecb63a55074410195d42b79fb"
+        "file": "verification/gestures-20261022/summary.json",
+        "bytes": 1691,
+        "sha256": "c986ef13d2547a88fd6537151f048243fa0dc5227d57d83547f72bfb0c513a10"
       },
       {
-        "file": "verification/dynamics-20261020/native-core.json",
-        "bytes": 304814,
-        "sha256": "44326f2e361ad96b0a3ab4ec26415811535d6dc067270a0677ce5c39e5078ca5"
+        "file": "verification/gestures-20261022/upscale.json",
+        "bytes": 2202,
+        "sha256": "ac6b71d2267209d89c245680a9578b252625fd8b6e06599aad872c020c883166"
       },
       {
-        "file": "verification/dynamics-20261020/native-dynamics.json",
-        "bytes": 4541,
-        "sha256": "c20fad00a2cd32e21751e213570eea6b1f8e9e2f1c7fb2c53cbe99344df7742e"
+        "file": "verification/gestures-20261022/visual-review.json",
+        "bytes": 8780,
+        "sha256": "d2f782f2082c38e092da000ff957167bae5c29925e9212c8e9cbf46e36de1210"
       },
       {
-        "file": "verification/dynamics-20261020/selected-frames.json",
-        "bytes": 230482,
-        "sha256": "c2adada297d8f5a3e42f8047fb495460c580d2c71291163b4c037efabe44c398"
+        "file": "verification/gestures-20261022/web-poses.json",
+        "bytes": 304629,
+        "sha256": "68d8e5b5d5cd4b8f52db44b64d142fd2e7ad717b80674bb595f144652a293771"
       },
       {
-        "file": "verification/dynamics-20261020/summary.json",
-        "bytes": 13956,
-        "sha256": "39d2decc7f5f82d6be0fc14815b619d86fa0d6b9f89467b6786ec08d309bbeb4"
-      },
-      {
-        "file": "verification/dynamics-20261020/visual-review.json",
-        "bytes": 1423,
-        "sha256": "bfaea124e9a04d398a08a7fa31c724e1398871548c75f7095197ec472a8bb703"
-      },
-      {
-        "file": "verification/dynamics-20261020/web-smoke.json",
-        "bytes": 15083,
-        "sha256": "e312e44bfb6f3e5959e8e8705b27afa3167da79cf0232460274f222cae9f9078"
+        "file": "verification/gestures-20261022/web-smoke.json",
+        "bytes": 15721,
+        "sha256": "9d1a852b15690fb9d4b20cbe315bce1e760ba2d12265a5247e5cdac23ba4d35b"
       }
     ]
   },
@@ -554,8 +574,8 @@
   "recipe_file_identities": [
     {
       "file": "build-manifest.cjs",
-      "bytes": 8533,
-      "sha256": "0ef55a79d2574246fae886310b4021e1f04dc599429f12d0d6ca4d70ab65dc22"
+      "bytes": 9869,
+      "sha256": "3809c3c653bc95832c249797cad4d42f54fcac371bafe7a9b2b5f00dd0f6e285"
     },
     {
       "file": "body-regions.json",
@@ -604,13 +624,13 @@
     },
     {
       "file": "dynamics-regions.json",
-      "bytes": 848,
-      "sha256": "342d40e98c5714da53a6244668360d19fae1c58b1b49ac99a80ece12622707a1"
+      "bytes": 3756,
+      "sha256": "3be49ada03c1f19ac4b1596a5dcb61653ac9bf0c3d225c8b759f5b0c8d70e828"
     },
     {
       "file": "build-performance.cjs",
-      "bytes": 10010,
-      "sha256": "9d923db584b905d7644f1ac58cd6ba5e5516fd50b6e99deda5521ec41ece013c"
+      "bytes": 11008,
+      "sha256": "a6054427ba46a64a698fd958a1f5d5526321471ff56364e0a53070132eeacf4a"
     },
     {
       "file": "check-continuous.cjs",
@@ -621,49 +641,46 @@
       "file": "check-dynamics.cjs",
       "bytes": 6850,
       "sha256": "84042d7c843f3744e75aaea97bbe76b9b0c646a3dd1e2edd9bae8aad0348cb5a"
+    },
+    {
+      "file": "PrepareArm.java",
+      "bytes": 3332,
+      "sha256": "9ab87f2a1a50c3217838c3aee88ebf2937f910ade9157d89b330521640690adc"
+    },
+    {
+      "file": "prepare-arm.cjs",
+      "bytes": 1283,
+      "sha256": "bd0b8d8302807584be7104646fd46c9854f1281d14afccc7c9cbe159189c169a"
+    },
+    {
+      "file": "check-gestures.cjs",
+      "bytes": 8569,
+      "sha256": "89d0055c91cd9cd9e1000aeaf66568199ca5163c39b8c8e41772f7e7fa80b45c"
     }
   ],
   "runtime_statistics": {
-    "source_layers": 24,
-    "runtime_parameters": 37,
-    "drawables": 26,
-    "vertices": 7180,
-    "triangles": 11904,
-    "hair_swing_parameters": 8,
-    "hair_swing_parameter_ids": [
-      "ParamFrontHairSideLSwing",
-      "ParamFrontHairSideRSwing",
-      "ParamBackHairOuterLSwing",
-      "ParamBackHairOuterRSwing",
-      "ParamBackHairArcLSwing",
-      "ParamBackHairArcRSwing",
-      "ParamBackHairBaseRSwing",
-      "ParamBackHairBaseLSwing"
-    ],
-    "basis": "Actual official Core counts. ParamWind is physics-only input; temporal Web check verifies its output.",
-    "eyebrow_parameters": 2,
-    "eyebrow_parameter_ids": [
-      "ParamBrowLY",
-      "ParamBrowRY"
-    ],
-    "physics_groups": 14,
-    "expression_presets": 8,
-    "motion_groups": 10
+    "parameters": 41,
+    "drawables": 32,
+    "vertices": 7411,
+    "triangles": 12107,
+    "source_layers": 30,
+    "motions": 14,
+    "expressions": 8,
+    "physics_groups": 14
   },
   "upscale": {
     "status": "completed",
-    "report": "verification/upscale.json",
+    "report": "verification/gestures-20261022/upscale.json",
     "tool": "Upscayl NCNN local CLI",
     "model": "realesr-animevideov3-x4",
     "scale": 4,
     "method": "Local NCNN neural RGB 4x; independent bicubic alpha; unchanged logical UVs",
-    "input_manifest_sha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
+    "input_manifest_sha256": "c440af93d971640ec9bc0d944a1284ec34ec5ee2962d17394af0a9ab98edb264",
     "binary_sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
     "weights": {
       "realesr-animevideov3-x4.param": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e",
       "realesr-animevideov3-x4.bin": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
     },
-    "atlas_pages": 1,
     "low_atlas_size": [
       2048,
       2048
@@ -676,28 +693,10 @@
       1024,
       1536
     ],
-    "source_psd_resolution_scope": "Neural 4x applies to the runtime atlas RGB. Source image pixels and PSD logical canvas/layer coordinates remain their recorded original sizes; not a 4x redrawn source PSD.",
-    "low_texture_sha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4",
-    "hd_texture_sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
-    "ncnn_flags": [
-      "-n",
-      "realesr-animevideov3-x4",
-      "-z",
-      "4",
-      "-s",
-      "4",
-      "-t",
-      "256",
-      "-j",
-      "1:1:1",
-      "-f",
-      "png"
-    ],
-    "current_revision_reuse": {
-      "neural_inference_rerun": false,
-      "low_atlas_matches_original_input": true,
-      "hd_atlas_bytes_unchanged": true
-    }
+    "low_texture_sha256": "ef3b4db6f1e0b7bbd6bdfe8ce3bbc18fa2082dcdf11fefea00b1150afd196451",
+    "hd_texture_sha256": "b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e",
+    "neural_inference_rerun": true,
+    "source_psd_resolution_scope": "Neural 4x applies to runtime atlas RGB, not a 4x redrawn source PSD."
   },
   "historical_evidence": {
     "eyebrows-20260912": {
@@ -1109,6 +1108,416 @@
             "affectsModel": true
           }
         ]
+      }
+    },
+    "dynamics-20261020": {
+      "runtime_model": "runtime/PinkSakura.model3.json",
+      "runtime_model_sha256": "c2fa4c10d2b5322c0eaf6da9a02b2ecc963dd2b9018628fc1d5942c41d2e3090",
+      "runtime_moc_sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+      "low_hd_moc_byte_identical": true,
+      "hd_textures": [
+        {
+          "file": "runtime/PinkSakura.8192/texture_00.png",
+          "bytes": 45336522,
+          "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+          "width": 8192,
+          "height": 8192,
+          "channels": "RGBA"
+        }
+      ],
+      "runtime_files": [
+        {
+          "file": "runtime/ASSET-LICENSE.md",
+          "bytes": 2960,
+          "sha256": "1107b511d8b5494199e8e5415b36e65664717826dc86e97f8ee1a835a85980af"
+        },
+        {
+          "file": "runtime/ATTRIBUTION.md",
+          "bytes": 5250,
+          "sha256": "0e34fc3d015f9926568245063bf2597c7bf3b29e22208d90608ce642a84dd82c"
+        },
+        {
+          "file": "runtime/PinkSakura.8192/texture_00.png",
+          "bytes": 45336522,
+          "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361"
+        },
+        {
+          "file": "runtime/PinkSakura.Angry.exp3.json",
+          "bytes": 630,
+          "sha256": "933b6bd37bbc38f809be37b910b43e06f1cd5a7ce0e3589e314ae69a3bb461ad"
+        },
+        {
+          "file": "runtime/PinkSakura.Sleepy.exp3.json",
+          "bytes": 632,
+          "sha256": "ec75eadd424aa6ab2a51f93c8b5da51310fcff520fb260b72f561ff2caa9cc9f"
+        },
+        {
+          "file": "runtime/PinkSakura.Smile.exp3.json",
+          "bytes": 623,
+          "sha256": "edc03b4d46d8e7861215689d9bcbc5dd113e17bedb9b972dacff1576870a97d9"
+        },
+        {
+          "file": "runtime/PinkSakura.Smug.exp3.json",
+          "bytes": 630,
+          "sha256": "039de847cfa12d191a10c1f412b4742aaa142588f0122c5e3e63aab6818df128"
+        },
+        {
+          "file": "runtime/PinkSakura.SoftSmile.exp3.json",
+          "bytes": 623,
+          "sha256": "f7408d991b1b68f9fd4119b2a1f81f6a16b4e4bad6cecb2c96e3d71b8e149410"
+        },
+        {
+          "file": "runtime/PinkSakura.Surprised.exp3.json",
+          "bytes": 624,
+          "sha256": "d8acf60419997c289e015ed140aefa5d50dbcf871566f22baf36c3e103b1a86f"
+        },
+        {
+          "file": "runtime/PinkSakura.WinkLeft.exp3.json",
+          "bytes": 620,
+          "sha256": "e3bb471f38c48cd80a4344cf354f49aff53d2f653962b5e52cd31e3265484526"
+        },
+        {
+          "file": "runtime/PinkSakura.WinkRight.exp3.json",
+          "bytes": 620,
+          "sha256": "2b873816ff9a8fcf1f9eee19970be0d5a4a8e8f74d397d1112709fe9de026d27"
+        },
+        {
+          "file": "runtime/PinkSakura.airy.motion3.json",
+          "bytes": 12075,
+          "sha256": "10ade92258be94667d302b84837d1547848407e5fa2b349e2a98910b2b94bb64"
+        },
+        {
+          "file": "runtime/PinkSakura.blink.motion3.json",
+          "bytes": 1155,
+          "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110"
+        },
+        {
+          "file": "runtime/PinkSakura.cdi3.json",
+          "bytes": 6060,
+          "sha256": "04a84e449021a4261cbc343d8804693f59090601468f82f0615823d0ac561b5b"
+        },
+        {
+          "file": "runtime/PinkSakura.curious.motion3.json",
+          "bytes": 11579,
+          "sha256": "45386ab91514e34c7e4b27c968aa2457d2c084abb6c1bc1c07e781df7220a2c1"
+        },
+        {
+          "file": "runtime/PinkSakura.idle.motion3.json",
+          "bytes": 2282,
+          "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990"
+        },
+        {
+          "file": "runtime/PinkSakura.moc3",
+          "bytes": 1013184,
+          "sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8"
+        },
+        {
+          "file": "runtime/PinkSakura.model3.json",
+          "bytes": 2249,
+          "sha256": "c2fa4c10d2b5322c0eaf6da9a02b2ecc963dd2b9018628fc1d5942c41d2e3090"
+        },
+        {
+          "file": "runtime/PinkSakura.nod.motion3.json",
+          "bytes": 1751,
+          "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418"
+        },
+        {
+          "file": "runtime/PinkSakura.physics3.json",
+          "bytes": 28244,
+          "sha256": "50416d102579e65756db8636fd882f28e9fd0ea182da09f6225fd1482cb785ea"
+        },
+        {
+          "file": "runtime/PinkSakura.quiet.motion3.json",
+          "bytes": 10411,
+          "sha256": "f85e1ba83ce97793c124091ade9371577bd385c561125ade24828685dec36ced"
+        },
+        {
+          "file": "runtime/PinkSakura.shake.motion3.json",
+          "bytes": 1571,
+          "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01"
+        },
+        {
+          "file": "runtime/PinkSakura.sleepy.motion3.json",
+          "bytes": 10270,
+          "sha256": "4ebffb79de698ef5b68bca81c86c10edce23c6435c61fafd88a17cf94bbc698f"
+        },
+        {
+          "file": "runtime/PinkSakura.slowblink.motion3.json",
+          "bytes": 1432,
+          "sha256": "b861d0ab6bcd0c20901b656c0d2eeda8ca8e771b913c20bfdeff656f1d6d36c4"
+        },
+        {
+          "file": "runtime/PinkSakura.speechbob.motion3.json",
+          "bytes": 3239,
+          "sha256": "7af749e56d29a7af938fd27306ed34f740af21053ab134b962ae8ca5cd464622"
+        },
+        {
+          "file": "runtime/release-metadata.json",
+          "bytes": 4941,
+          "sha256": "4a8787cadfb779d87b861e8172b75e76b5e831526023e93a4ce514e8177f12c0"
+        }
+      ],
+      "native_core": {
+        "status": "passed",
+        "report": "verification/dynamics-20261020/native-core.json",
+        "version": "06.00.0257 (100663553)",
+        "checked_at": "2026-10-20T18:20:47.199755Z",
+        "tested_pose_count": 228,
+        "errors": [],
+        "warnings": [
+          "Parameters without a measurable direct vertex/opacity/order effect: ParamWind"
+        ]
+      },
+      "webgl": {
+        "status": "passed",
+        "report": "verification/dynamics-20261020/web-smoke.json",
+        "checks": 38,
+        "continuous_report": "verification/dynamics-20261020/continuous.json.gz",
+        "completed_frames": 6597,
+        "camera_requests": 0
+      },
+      "visual_review": {
+        "report": "verification/dynamics-20261020/visual-review.json",
+        "exhaustive": false,
+        "status": "sampled-review-with-limitations",
+        "contact_sheet_frames": 128,
+        "original_size_details": 3
+      },
+      "vtube_studio": "not-retested; pending-user-acceptance",
+      "actual_camera_tested": false,
+      "clean_environment_full_build_validated": false,
+      "export_limitations": {
+        "report": "verification/dynamics-20261020/export-warnings.txt",
+        "cmo3": "Editable atlas-rebuilt layers and model/rig data; original PSD source-image edit chain not retained. Official Editor manual acceptance not performed."
+      },
+      "public_recipe_rebuild": {
+        "status": "source-manifest-matched; committed-archive-check-recorded-separately",
+        "manifest_sha256": "7e3bdf615a096765a2470cdae844046b0b2ed5049b47f04a3b3a11aca6570b10",
+        "source_layers": 24,
+        "matches_actual_low_export_input_bytes": true,
+        "scope": "Published recipe, measurement and performance inputs. See current source archive report for clean temporary-directory regeneration."
+      },
+      "summary": "verification/dynamics-20261020/summary.json",
+      "report_identities": [
+        {
+          "file": "verification/dynamics-20261020/README.md",
+          "bytes": 5001,
+          "sha256": "86feba5a6ac89858adb6168266ad7b274d177a9acb1cbf178bd12a624bff8d40"
+        },
+        {
+          "file": "verification/dynamics-20261020/accessory-cycle.jpg",
+          "bytes": 188208,
+          "sha256": "0821f9ba0e14a2410d2317e3acf71cce2520003677e7363401f5538320410b04"
+        },
+        {
+          "file": "verification/dynamics-20261020/baseline-face.png",
+          "bytes": 639383,
+          "sha256": "15d3d49c35abdae41c863999d5c6054e7300720ee3b54c64ed87f5a424b93b0b"
+        },
+        {
+          "file": "verification/dynamics-20261020/body-native-cycle-0096.png",
+          "bytes": 378065,
+          "sha256": "90f671cc6dba014a6553600155b41fe2078135dd0ea0717871ca8fe9017eea22"
+        },
+        {
+          "file": "verification/dynamics-20261020/body-native-cycle.jpg",
+          "bytes": 189547,
+          "sha256": "e8c2851a4ef93fe03cef3d1e327bb42b399f67f220a3dd48ea848e345fa249e2"
+        },
+        {
+          "file": "verification/dynamics-20261020/build.json",
+          "bytes": 5560,
+          "sha256": "c51a494790d3324ef187d9eb031cbbd09fe3e22b20f8b72ff0fa51254f96a0d2"
+        },
+        {
+          "file": "verification/dynamics-20261020/candidate-face.png",
+          "bytes": 639421,
+          "sha256": "ccd5007c70cc001e85256c16edb22f0d8ccd4ede2a6ab3cc0f8cd0256670de99"
+        },
+        {
+          "file": "verification/dynamics-20261020/continuous.json.gz",
+          "bytes": 1075415,
+          "sha256": "a49c3eb9cebe397248750f89c13a42d7a84c36d431aa5fe20fe59a364d6c88b7"
+        },
+        {
+          "file": "verification/dynamics-20261020/dynamics.json",
+          "bytes": 2645,
+          "sha256": "0129c94c10a6484db87cc999dd6c40226b9a72d25afc342c67cb687b6f80a0bd"
+        },
+        {
+          "file": "verification/dynamics-20261020/export-warnings.txt",
+          "bytes": 2175,
+          "sha256": "56ef154c9cc28f5bdbfb11a7e46391ff09a87df5c030684929168112f6418657"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-Angry.jpg",
+          "bytes": 74104,
+          "sha256": "03e3d809d7cd7fa6968e38b26abc7a2b4c7721502149753e03f0a459c941b88b"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-Sleepy-0051.png",
+          "bytes": 426416,
+          "sha256": "679e6e9229135fa10cb044f1b09c31f78d084c96382b760d88da0e20b24e485a"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-Sleepy.jpg",
+          "bytes": 73296,
+          "sha256": "1997bb73a61dd6557b07e4bb4bd8daf901d4b0c8a384cadcb6fb47d488ba1335"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-Smile.jpg",
+          "bytes": 74229,
+          "sha256": "a3203da8d0c7bf7411551c5fb0e731436015a1e15f2dbedc45bc3ee2b7985a3d"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-Smug.jpg",
+          "bytes": 74160,
+          "sha256": "fed95e27cfad460abf3eac11503e66bac746da453751d36cac1246e09362f410"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-SoftSmile.jpg",
+          "bytes": 75078,
+          "sha256": "2fa36e1975d3dc34a213a54bd0876ee2c4d51db52665b82f2ef6f4663a221cdb"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-Surprised.jpg",
+          "bytes": 75260,
+          "sha256": "2315b23b91a7925ed28ff846cacfd25b189aa92ee4d0f6a1909bb21fa5f6731f"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-WinkLeft-0051.png",
+          "bytes": 428131,
+          "sha256": "e62d6dc241cfa36957e7e01ed2e664962a6f277bd10dd35371057e81d357c982"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-WinkLeft.jpg",
+          "bytes": 74308,
+          "sha256": "d7c1bd8bb8ca1e2fd57b29c93e9e5608d6c04502c50c91e318c8969e2de1dbea"
+        },
+        {
+          "file": "verification/dynamics-20261020/expression-WinkRight.jpg",
+          "bytes": 74573,
+          "sha256": "4f579743b593a969189c661c8a0ae13159f54e824d81c324f9f6df732ecdd03a"
+        },
+        {
+          "file": "verification/dynamics-20261020/face-cycle.jpg",
+          "bytes": 212532,
+          "sha256": "020bd72e778d0281429d3e6fb4c5aefdbe5b422296c8c5f8cce886125cd6a14b"
+        },
+        {
+          "file": "verification/dynamics-20261020/minimal-core.json",
+          "bytes": 331541,
+          "sha256": "710f639db49c1b16f8b58c3a2180d39fbd49988407b2377d278f56373aff2ee6"
+        },
+        {
+          "file": "verification/dynamics-20261020/minimal-web.json",
+          "bytes": 9837,
+          "sha256": "2ea5cc4e12cc678fff10376088ec079f9a5955c3caa17ef41ed5b45f00ceaba4"
+        },
+        {
+          "file": "verification/dynamics-20261020/motion-Airy.jpg",
+          "bytes": 186487,
+          "sha256": "1068c03ea108bdc812c7af583cebb22f7d3c1437f950d08733c3b9c1f27d6a8a"
+        },
+        {
+          "file": "verification/dynamics-20261020/motion-Curious.jpg",
+          "bytes": 188457,
+          "sha256": "7121dfd19e4ce66669caf88114d119ec8c22fdde70149e5223d30cd89bab5dd9"
+        },
+        {
+          "file": "verification/dynamics-20261020/motion-Sleepy.jpg",
+          "bytes": 188450,
+          "sha256": "4f19ed4524efce89b2cf35048feb2e3a8276456eb90b1ee8186dac89e2052e78"
+        },
+        {
+          "file": "verification/dynamics-20261020/motion-SlowBlink.jpg",
+          "bytes": 189348,
+          "sha256": "667327086bf2555229872e51be320cf8ecfc81adb7d01f24ad98751757ae8221"
+        },
+        {
+          "file": "verification/dynamics-20261020/motion-SpeechBob.jpg",
+          "bytes": 190460,
+          "sha256": "85b8daf025253cc54dbe5b64139ce0108374610ecb63a55074410195d42b79fb"
+        },
+        {
+          "file": "verification/dynamics-20261020/native-core.json",
+          "bytes": 304814,
+          "sha256": "44326f2e361ad96b0a3ab4ec26415811535d6dc067270a0677ce5c39e5078ca5"
+        },
+        {
+          "file": "verification/dynamics-20261020/native-dynamics.json",
+          "bytes": 4541,
+          "sha256": "c20fad00a2cd32e21751e213570eea6b1f8e9e2f1c7fb2c53cbe99344df7742e"
+        },
+        {
+          "file": "verification/dynamics-20261020/selected-frames.json",
+          "bytes": 230482,
+          "sha256": "c2adada297d8f5a3e42f8047fb495460c580d2c71291163b4c037efabe44c398"
+        },
+        {
+          "file": "verification/dynamics-20261020/summary.json",
+          "bytes": 13956,
+          "sha256": "39d2decc7f5f82d6be0fc14815b619d86fa0d6b9f89467b6786ec08d309bbeb4"
+        },
+        {
+          "file": "verification/dynamics-20261020/visual-review.json",
+          "bytes": 1423,
+          "sha256": "bfaea124e9a04d398a08a7fa31c724e1398871548c75f7095197ec472a8bb703"
+        },
+        {
+          "file": "verification/dynamics-20261020/web-smoke.json",
+          "bytes": 15083,
+          "sha256": "e312e44bfb6f3e5959e8e8705b27afa3167da79cf0232460274f222cae9f9078"
+        }
+      ],
+      "upscale": {
+        "status": "completed",
+        "report": "verification/upscale.json",
+        "tool": "Upscayl NCNN local CLI",
+        "model": "realesr-animevideov3-x4",
+        "scale": 4,
+        "method": "Local NCNN neural RGB 4x; independent bicubic alpha; unchanged logical UVs",
+        "input_manifest_sha256": "dfebae919a530dbc5eee1077c1ad2eed000147f70f5b0b3ed35027651270d571",
+        "binary_sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
+        "weights": {
+          "realesr-animevideov3-x4.param": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e",
+          "realesr-animevideov3-x4.bin": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
+        },
+        "atlas_pages": 1,
+        "low_atlas_size": [
+          2048,
+          2048
+        ],
+        "hd_atlas_size": [
+          8192,
+          8192
+        ],
+        "logical_canvas": [
+          1024,
+          1536
+        ],
+        "source_psd_resolution_scope": "Neural 4x applies to the runtime atlas RGB. Source image pixels and PSD logical canvas/layer coordinates remain their recorded original sizes; not a 4x redrawn source PSD.",
+        "low_texture_sha256": "8ad7a493445ee96b059c20e93c3027de11e213e3128dfb73362cf7775e7676e4",
+        "hd_texture_sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+        "ncnn_flags": [
+          "-n",
+          "realesr-animevideov3-x4",
+          "-z",
+          "4",
+          "-s",
+          "4",
+          "-t",
+          "256",
+          "-j",
+          "1:1:1",
+          "-f",
+          "png"
+        ],
+        "current_revision_reuse": {
+          "neural_inference_rerun": false,
+          "low_atlas_matches_original_input": true,
+          "hd_atlas_bytes_unchanged": true
+        }
       }
     }
   }

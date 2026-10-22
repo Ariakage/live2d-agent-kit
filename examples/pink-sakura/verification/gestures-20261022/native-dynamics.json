@@ -1,0 +1,150 @@
+{
+  "profile": "pink-sakura-v1",
+  "newParameters": 13,
+  "nativeFloatPixels": 8.0,
+  "sourceArtChanged": false,
+  "meshTopologyChanged": false,
+  "textureUvChanged": false,
+  "unchangedFieldsScope": "This adapter does not edit the supplied raster, UVs or topology. These flags do not compare this source recipe with an earlier release; gesture layers are registered upstream.",
+  "wholeModelNeutralPixelIdentityTested": false,
+  "fields": [
+    {
+      "parameter": "ParamShoulderLiftL",
+      "deformer": "DeformExampleShoulderLiftL",
+      "driver": "ParamBodyAngleZ",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 3.0,
+      "minimumControlTriangleAreaRatio": 0.9666622,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamShoulderLiftR",
+      "deformer": "DeformExampleShoulderLiftR",
+      "driver": "ParamBodyAngleZ",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 3.0,
+      "minimumControlTriangleAreaRatio": 0.9666834,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamChestExpand",
+      "deformer": "DeformExampleChestExpand",
+      "driver": "ParamBodyAngleY",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 1.9889256,
+      "minimumControlTriangleAreaRatio": 0.95911556,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamWaistSway",
+      "deformer": "DeformExampleWaistSway",
+      "driver": "ParamBodyAngleX",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 4.0,
+      "minimumControlTriangleAreaRatio": 0.9465811,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamUpperArmLSwing",
+      "deformer": "DeformExampleUpperArmLSwing",
+      "driver": "ParamBodyAngleZ",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 15.974884,
+      "minimumControlTriangleAreaRatio": 0.8814709,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamUpperArmRSwing",
+      "deformer": "DeformExampleUpperArmRSwing",
+      "driver": "ParamBodyAngleZ",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 15.659757,
+      "minimumControlTriangleAreaRatio": 0.8407541,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamSleeveLSwing",
+      "deformer": "DeformExampleSleeveLSwing",
+      "driver": "ParamWindSway",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 3.026549,
+      "minimumControlTriangleAreaRatio": 0.9669732,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamSleeveRSwing",
+      "deformer": "DeformExampleSleeveRSwing",
+      "driver": "ParamWindSway",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 3.026549,
+      "minimumControlTriangleAreaRatio": 0.95560974,
+      "neutralIdentity": true
+    },
+    {
+      "parameter": "ParamSkirtSwing",
+      "deformer": "DeformExampleSkirtSwing",
+      "driver": "ParamWindSway",
+      "keys": 15,
+      "maximumSourcePixelDisplacement": 4.0,
+      "minimumControlTriangleAreaRatio": 0.9297905,
+      "neutralIdentity": true
+    },
+    {
+      "drawable": "ArtMeshFrontHairL",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.9994452
+    },
+    {
+      "drawable": "ArtMeshFrontHairR",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.9994393
+    },
+    {
+      "drawable": "ArtMeshBackHairL",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.98891526
+    },
+    {
+      "drawable": "ArtMeshBackHairR",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.9954271
+    },
+    {
+      "drawable": "ArtMeshBackHairL2",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.99328125
+    },
+    {
+      "drawable": "ArtMeshBackHairR2",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.9942659
+    },
+    {
+      "drawable": "ArtMeshBackHairR3",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.99273807
+    },
+    {
+      "drawable": "ArtMeshBackHairL3",
+      "windResponse": true,
+      "bowResponse": false,
+      "minimumMeshTriangleAreaRatio": 0.965778
+    },
+    {
+      "drawable": "ArtMeshHeadwear",
+      "windResponse": true,
+      "bowResponse": true,
+      "minimumMeshTriangleAreaRatio": 0.9867612
+    }
+  ],
+  "gesturesEnabled": true,
+  "limitations": "The separately measured gesture sleeve and hands inherit the body fields. See gestures-report for local geometry checks; parent combinations and continuous visual joins still require Core/Web validation.",
+  "originalLocalReportSha256": "8aa22bd3821ffe044db09e555c18846479d49c24f7b5e119dbc7f6a49b0a6d0d"
+}

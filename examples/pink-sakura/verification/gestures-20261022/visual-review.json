@@ -1,0 +1,258 @@
+{
+  "status": "reviewed-with-limitations",
+  "scope": "192 chronological completed-frame arm contact-sheet samples, 44 face-regression overview frames, and three full-size held gesture captures. Not exhaustive visual inspection of all captured frames.",
+  "selectedFrames": "selected-frames.json",
+  "armContactSheets": 12,
+  "armSampleFrames": 192,
+  "faceOverviewFrames": 44,
+  "staticHeldFrames": [
+    {
+      "file": "inspect-hd-v6/pose-0-1.png",
+      "bytes": 565857,
+      "sha256": "eacfd869590c601a052b223226ed7b2a99e59e6270103ac719a890e80bcd9d3b"
+    },
+    {
+      "file": "inspect-hd-v6/pose-1-1.png",
+      "bytes": 563815,
+      "sha256": "67c84b8071dca03fa1b443539383a0384ec23982c30eb1700f1b40c9cf9cca3f"
+    },
+    {
+      "file": "inspect-hd-v6/pose-2-1.png",
+      "bytes": 570704,
+      "sha256": "8eb3920f3826ab380329f1030e113fe3b91b1a430c5c9ec568e3ed4a3bcdfe94"
+    }
+  ],
+  "faceSourceFrames": [
+    {
+      "file": "brow-l-max-face.png",
+      "bytes": 723184,
+      "sha256": "8bd6a46f2604639c8431b56fab6601b998b9c5932677ca5c136a59813e1af588"
+    },
+    {
+      "file": "brow-l-min-face.png",
+      "bytes": 723209,
+      "sha256": "16ab46b77323306c4c87364d333fb94ea663b647f18968db0b16cf17604c7873"
+    },
+    {
+      "file": "brow-r-max-face.png",
+      "bytes": 723202,
+      "sha256": "53d418d69bf741c87ceee599e0837ed4039a2f8798553ffaae45af3f9198727b"
+    },
+    {
+      "file": "brow-r-min-face.png",
+      "bytes": 723254,
+      "sha256": "c6c383ce5f8f0b5ad4dc0c39d95415798c3165d5f23b5a5e2b2485fab78f54d8"
+    },
+    {
+      "file": "brows-asymmetric-face.png",
+      "bytes": 723241,
+      "sha256": "3b0fe96d47884876ee3729426b427be0eedc9ca929aa51f061db5eb6bde95eea"
+    },
+    {
+      "file": "brows-asymmetric-inverse-face.png",
+      "bytes": 723164,
+      "sha256": "8ed286dfac47c25e19064a660a70f53a3367018dca8980bb61cc1d6a57553d6e"
+    },
+    {
+      "file": "brows-closed-smile-face.png",
+      "bytes": 709505,
+      "sha256": "2c9c18e7101f378b9bd81f22f59971533caf3b123a8bfd76e5e603c46d1d2005"
+    },
+    {
+      "file": "brows-head-max-face.png",
+      "bytes": 718987,
+      "sha256": "0816f15a47543e1bf0a966b06178b99d5cd3bd729a228c62ff4b3014363a63d0"
+    },
+    {
+      "file": "brows-head-min-face.png",
+      "bytes": 719289,
+      "sha256": "ade1363a75250e7ba2a709b623581465b0553f509e4ce8505e80d44ba09a3cdf"
+    },
+    {
+      "file": "brows-max-face.png",
+      "bytes": 723245,
+      "sha256": "02aaad532cccde81f58184c82b1d2833583b800f1718cd259836b2859c0c0079"
+    },
+    {
+      "file": "brows-min-face.png",
+      "bytes": 723203,
+      "sha256": "1a93a0d9b61e7c6d239ca3b4c76a06205388a087653378909b9c1d8bb688b1f2"
+    },
+    {
+      "file": "eyes-25-face.png",
+      "bytes": 709741,
+      "sha256": "e8cacf66cb86dbedad278c3d0b3275ca60c6e8fbab4e90f3e9d7b673b55c11de"
+    },
+    {
+      "file": "eyes-75-face.png",
+      "bytes": 717787,
+      "sha256": "3dfdb062fcda78505473d05091303cf5ef7f6b4d51209d0d6367e3d96532e8a9"
+    },
+    {
+      "file": "eyes-85-face.png",
+      "bytes": 721345,
+      "sha256": "08aaddd72dcf7685adc0d5cd80729266e03d48b74e15211956a32132c13ec5bb"
+    },
+    {
+      "file": "eyes-95-face.png",
+      "bytes": 722867,
+      "sha256": "ab7e609ccfe719aaa24091988a17fd39b9af25ec85112a9386fc8e5617f7850c"
+    },
+    {
+      "file": "eyes-closed-face.png",
+      "bytes": 709741,
+      "sha256": "e8cacf66cb86dbedad278c3d0b3275ca60c6e8fbab4e90f3e9d7b673b55c11de"
+    },
+    {
+      "file": "eyes-half-face.png",
+      "bytes": 711503,
+      "sha256": "32e14e60bab7daf5f714d86eb52d8045b6c4cafb014bcbd47316b5d98fc0e548"
+    },
+    {
+      "file": "eyes-open-face.png",
+      "bytes": 723224,
+      "sha256": "bd551e50dd0d460db7bdc6bdbfa5cb87171ba86bf7a4673259f1668cd6fa0292"
+    },
+    {
+      "file": "head-left-face.png",
+      "bytes": 739954,
+      "sha256": "3d85b616aed6ea947ce98f29371845c24dbc6bd4bcbf225ba5ccbd464acb1f6c"
+    },
+    {
+      "file": "head-right-face.png",
+      "bytes": 717720,
+      "sha256": "ff6466974b4d8e4bd8c5e9b82b97e774e778dc5e83cf3e080acb232d8bfc32c1"
+    },
+    {
+      "file": "head-x-max-face.png",
+      "bytes": 720863,
+      "sha256": "cfd067e81164d2ad8bd8c6d5635f29dcdce666b59d4759f8ec7f25017bb2f7bd"
+    },
+    {
+      "file": "head-x-min-face.png",
+      "bytes": 721304,
+      "sha256": "0e9fff477c533a79e2505301934aeda27b1c2b9c00652836c4950a7bce093eae"
+    },
+    {
+      "file": "head-y-max-face.png",
+      "bytes": 725889,
+      "sha256": "8368bc583d65117b38cf6ce7c112c53aadfc0b8461aedaffb9948a255bb54d1c"
+    },
+    {
+      "file": "head-y-min-face.png",
+      "bytes": 719738,
+      "sha256": "b150045b59efee5110347c7b35ea3103deebbd64ee3581cdfecf644c33b8c3bf"
+    },
+    {
+      "file": "head-z-max-face.png",
+      "bytes": 731779,
+      "sha256": "39c564f3c3a3960b87957a9ee9ce3efdc573653a397e1fc3da9210d66889a3df"
+    },
+    {
+      "file": "head-z-min-face.png",
+      "bytes": 737549,
+      "sha256": "e166feb1da6c158820d4ba09be8c2b56b605cae216d3fe6355df6af706582f79"
+    },
+    {
+      "file": "mouth-form--1-open-0-face.png",
+      "bytes": 723183,
+      "sha256": "d38503fcfb79c3a36796077f5dfa3c6808dcf48a07ac412c147a56499b36720a"
+    },
+    {
+      "file": "mouth-form--1-open-0p075-face.png",
+      "bytes": 723047,
+      "sha256": "5e4bcbd327f1c546353370745049f02118803b7d20821bc37b4493bd50b64e8a"
+    },
+    {
+      "file": "mouth-form--1-open-0p15-face.png",
+      "bytes": 722927,
+      "sha256": "c7adf86d1b07c8b71d50adc447ad7ffd57c0652b030cb02bde0af4653bbdc8d4"
+    },
+    {
+      "file": "mouth-form--1-open-0p5-face.png",
+      "bytes": 723589,
+      "sha256": "877c6c919528e2d45c191dd0cff66a84b41485de28e9bac8203b8d05e9377c45"
+    },
+    {
+      "file": "mouth-form-0-open-0-face.png",
+      "bytes": 723224,
+      "sha256": "bd551e50dd0d460db7bdc6bdbfa5cb87171ba86bf7a4673259f1668cd6fa0292"
+    },
+    {
+      "file": "mouth-form-0-open-0p075-face.png",
+      "bytes": 723166,
+      "sha256": "bdc44961e523aa4bc0036d221dd1294cb415e03c110d5f36026c7af4fde650f2"
+    },
+    {
+      "file": "mouth-form-0-open-0p15-face.png",
+      "bytes": 722986,
+      "sha256": "18c0088d2c52de390a233d24a529417e698204741553ae4c615131c9070446cf"
+    },
+    {
+      "file": "mouth-form-0-open-0p5-face.png",
+      "bytes": 723617,
+      "sha256": "f4fa1158eb038de20af9e26178710f5b6c0eae5d76090e4a8d26408b2d6664fe"
+    },
+    {
+      "file": "mouth-form-0-open-1-face.png",
+      "bytes": 724322,
+      "sha256": "0946588e9643eeacf8a5a737dc48365488e0885ee49a6276d6b9e0f640618e16"
+    },
+    {
+      "file": "mouth-form-1-open-0-face.png",
+      "bytes": 723403,
+      "sha256": "903347a753df5efce3ea3cfc9a3cc059fe21fee4a1ae8c39ab28c8ab83b22701"
+    },
+    {
+      "file": "mouth-form-1-open-0p075-face.png",
+      "bytes": 723210,
+      "sha256": "b2072d8b7d07a9f7ef5d9ed333e3796b76186f11000590f6105e5dc6894aef9b"
+    },
+    {
+      "file": "mouth-form-1-open-0p15-face.png",
+      "bytes": 723058,
+      "sha256": "378264a29a2ffff49686c7adc976ba6adeb7780c1520c392e37554bc8c0eda45"
+    },
+    {
+      "file": "mouth-form-1-open-0p5-face.png",
+      "bytes": 723728,
+      "sha256": "24eef02ed19a7f0a7ba081a59184f644a495b278e92b10c1eb202971b8692367"
+    },
+    {
+      "file": "mouth-frown-open-face.png",
+      "bytes": 724194,
+      "sha256": "0d7272be1f1be1b7b434a02269b6c97cf000fc228ca75086831975f8f2572d79"
+    },
+    {
+      "file": "mouth-smile-open-face.png",
+      "bytes": 724482,
+      "sha256": "5282f5d56a1dc3274392c1b464fce8cafeca5c9ebad0107efc711a297705b777"
+    },
+    {
+      "file": "neutral-face.png",
+      "bytes": 723224,
+      "sha256": "bd551e50dd0d460db7bdc6bdbfa5cb87171ba86bf7a4673259f1668cd6fa0292"
+    },
+    {
+      "file": "wink-l-face.png",
+      "bytes": 716745,
+      "sha256": "6cae2cc3f78cb9d7a8f42536695c9544270de28ed3683d3d11555031b762226d"
+    },
+    {
+      "file": "wink-r-face.png",
+      "bytes": 716495,
+      "sha256": "3b130e50f9d82bdde7a77cd5708cffc63601b367ba37ecd64c2b2bc0762552c1"
+    }
+  ],
+  "observations": [
+    "No detached elbow fragment or duplicated palm observed in the reviewed samples; cuff overlay covers the wrist root.",
+    "Approved facial design remains recognizable; existing thin brow, pale closed lips and thick half-closed lashes remain.",
+    "Hand poses are sprite forms, not finger articulation. Raised sleeve narrows and its fabric details stretch. No claim of physical cloth simulation.",
+    "Switching hand forms has an intentional hidden interval inside the lowered cuff. Direct arbitrary native pose/form combinations and target-application interruption blends still need acceptance."
+  ],
+  "actualCameraTested": false,
+  "vtubeStudioTested": false,
+  "additionalHandDownSamples": 48,
+  "additionalHandDownSheets": 3,
+  "additionalHandDownSelection": "handdown-selected-frames.json"
+}

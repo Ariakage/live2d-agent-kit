@@ -52,6 +52,13 @@ internal fun appendPinkSakuraDynamics(source: SourceArt, config: PipelineConfig,
     val body = findLayer(region.getValue("bodyLayer").jsonPrimitive.content)
     val bow = findLayer(region.getValue("bowLayer").jsonPrimitive.content)
     require(body.parentDeformerId?.raw == "DeformBodyZBreath")
+    val gestures = region["gestures"]?.jsonObject?.takeIf { it["enabled"]?.jsonPrimitive?.boolean == true }
+    val bodyMeshes = listOf(body) + if (gestures == null) emptyList() else {
+        val names = listOf(gestures.getValue("sleeveLayer").jsonPrimitive.content,gestures.getValue("cuffLayer").jsonPrimitive.content) +
+            gestures.getValue("handLayers").jsonObject.values.map { it.jsonPrimitive.content }
+        require(names.distinct().size == 6) { "Gestures require one sleeve, matching cuff and four distinct hands" }
+        names.map(::findLayer).onEach { require(it.parentDeformerId == body.parentDeformerId) }
+    }
     val edits = mutableListOf<RigKeyformSetEdit>()
     val reports = mutableListOf<JsonObject>()
     val keys = listOf(-1f, -.5f, 0f, .5f, 1f)
@@ -73,7 +80,7 @@ internal fun appendPinkSakuraDynamics(source: SourceArt, config: PipelineConfig,
     val bodyIds = manual + secondary.filter { it != "BowSwing" }
     var parent = body.parentDeformerId!!.raw
     val warps = bodyIds.map { id ->
-        RigWarpEdit("DeformExample$id", id, parent, listOf(body.id.raw), rows=24, columns=16).also { parent=it.id }
+        RigWarpEdit("DeformExample$id", id, parent, bodyMeshes.map { it.id.raw }, rows=24, columns=16).also { parent=it.id }
     }
     working = working.copy(rigEdits=working.rigEdits.copy(
         keyformSetEdits=working.rigEdits.keyformSetEdits+edits,
@@ -205,11 +212,16 @@ internal fun appendPinkSakuraDynamics(source: SourceArt, config: PipelineConfig,
         reports+=buildJsonObject {put("drawable",drawable.id.raw);put("windResponse",true);put("bowResponse",isBow);put("minimumMeshTriangleAreaRatio",minimumRatio)}
     }
     working=working.copy(rigEdits=working.rigEdits.copy(keyformSetEdits=working.rigEdits.keyformSetEdits+edits))
+    if (gestures != null) working = appendPinkSakuraGestures(source, working, pipeline, gestures,
+        reportPath.resolveSibling(reportPath.fileName.toString().replace(".dynamics-report.json", ".gestures-report.json")))
     Files.writeString(reportPath,Json {prettyPrint=true}.encodeToString(JsonObject.serializer(),buildJsonObject {
         put("profile","pink-sakura-v1");put("newParameters",added.size);put("nativeFloatPixels",floatPixels)
         put("sourceArtChanged",false);put("meshTopologyChanged",false);put("textureUvChanged",false)
+        put("unchangedFieldsScope", "This adapter does not edit the supplied raster, UVs or topology. These flags do not compare this source recipe with an earlier release; gesture layers are registered upstream.")
         put("wholeModelNeutralPixelIdentityTested",false);put("fields",JsonArray(reports))
-        put("limitations","Connected body raster permits restrained local motion only; no free elbow/hand gesture. Lattice checks do not replace Core interpolation and visual sequence checks. Root Float and inherited neutral face require real render comparison.")
+        put("gesturesEnabled", gestures != null)
+        put("limitations",if (gestures == null) "Connected body raster permits restrained local motion only; no free elbow/hand gesture. Lattice checks do not replace Core interpolation and visual sequence checks. Root Float and inherited neutral face require real render comparison."
+            else "The separately measured gesture sleeve and hands inherit the body fields. See gestures-report for local geometry checks; parent combinations and continuous visual joins still require Core/Web validation.")
     }))
     return working
 }

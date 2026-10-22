@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22",
+  "status": "automated-checks-passed-with-scoped-visual-review",
+  "counts": {
+    "parameters": 41,
+    "drawables": 32,
+    "vertices": 7411,
+    "triangles": 12107
+  },
+  "motions": 14,
+  "expressions": 8,
+  "physicsGroups": 14,
+  "mocSha256": "4ce948a92454589668b24caf3d928362a5251d3e415e0733ec5356e01f4fa745",
+  "textureSha256": "b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e",
+  "nativeCorePoses": 236,
+  "webChecks": 38,
+  "poseFrames": 91,
+  "gestureTracks": 12,
+  "gestureFrames": 6921,
+  "lowResolutionGestureFrames": 6900,
+  "minimumObservedGestureTriangleAreaRatio": 0.090767525479324,
+  "maximumFrameGapMs": 41.299999999813735,
+  "raisedFramesWithoutHand": 0,
+  "flippedGestureTriangles": 0,
+  "continuousReport": "continuous.json.gz",
+  "originalContinuousReportSha256": "1136a2e1c0f2df5a168c22863fe07578676f7ddc7eadfc57526106a96aebd1d4",
+  "visualReview": "visual-review.json",
+  "actualCameraTested": false,
+  "vtubeStudioTested": false,
+  "officialEditorTested": false,
+  "cleanEngineBuildTested": false,
+  "notes": [
+    "Geometry checks use each completed render, not only endpoints. Positive triangle area is not an artistic acceptance score.",
+    "Native static no-effect notices for Wind and conditional ArmRPose/HandRWave remain in native-core.json. Wave and pose are exercised with Lift and matching Form in continuous checks.",
+    "PNG frame sets remain in local QA storage; full timestamps, parameters and PNG identities are published. They are not build dependencies."
+  ],
+  "handDownTracks": 3,
+  "handDownFrames": 889,
+  "allGestureFrames": 7810,
+  "allGestureTracks": 15,
+  "handDownReport": "handdown.json.gz"
+}

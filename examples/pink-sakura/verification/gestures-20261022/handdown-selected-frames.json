@@ -1,0 +1,677 @@
+{
+  "scope": "48 chronological HandDown interruption crops; not exhaustive visual review",
+  "frames": [
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 0,
+      "file": "HandToChin-to-HandDown-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 21,
+      "file": "HandToChin-to-HandDown-0021.png",
+      "pngSha256": "c55867582e2a322c02e6a979d795ac76fc33312379e9e09edce31b6c1265351f",
+      "timeMs": 520.7000000029802,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 42,
+      "file": "HandToChin-to-HandDown-0042.png",
+      "pngSha256": "09a562b73899afa248fbccef7f2a81af6254a828d5a55823f22f02e2b9e2ec5b",
+      "timeMs": 1050.1000000014901,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 63,
+      "file": "HandToChin-to-HandDown-0063.png",
+      "pngSha256": "a94654597cfcc2b525cecb8c7ebcf08ff9e4aa977985ef53b9021a3e45ceac42",
+      "timeMs": 1566.9000000022352,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 83,
+      "file": "HandToChin-to-HandDown-0083.png",
+      "pngSha256": "19c52528eacbcdd6d68fa2a204ebb2cf6ac57ce2f50cf6d981f2148552bcd308",
+      "timeMs": 2094.300000000745,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 104,
+      "file": "HandToChin-to-HandDown-0104.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 2634.400000002235,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 125,
+      "file": "HandToChin-to-HandDown-0125.png",
+      "pngSha256": "aa3bdc04c91db0ebda224b4de9ac14e68618adc378bd90ee57507199045081bc",
+      "timeMs": 3174.800000000745,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 146,
+      "file": "HandToChin-to-HandDown-0146.png",
+      "pngSha256": "05eeac319ca3cbd4cc8f5aa4376f8b0aa8e93b8a8b6369a9cd2c1491501fb8fe",
+      "timeMs": 3615.300000000745,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 167,
+      "file": "HandToChin-to-HandDown-0167.png",
+      "pngSha256": "f2f55ce41eec1144ea76eb063df04db565a7870c585bcaa3c46dc4327ab9d863",
+      "timeMs": 4043.10000000149,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 188,
+      "file": "HandToChin-to-HandDown-0188.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 4469.900000002235,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 209,
+      "file": "HandToChin-to-HandDown-0209.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 4895.10000000149,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 230,
+      "file": "HandToChin-to-HandDown-0230.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 5314.300000000745,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 250,
+      "file": "HandToChin-to-HandDown-0250.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 5692.10000000149,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 271,
+      "file": "HandToChin-to-HandDown-0271.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 6126.70000000298,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 292,
+      "file": "HandToChin-to-HandDown-0292.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 6583.900000002235,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-HandDown",
+      "index": 313,
+      "file": "HandToChin-to-HandDown-0313.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 7015,
+      "contactSheet": "HandToChin-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 0,
+      "file": "FingerHeart-to-HandDown-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 20,
+      "file": "FingerHeart-to-HandDown-0020.png",
+      "pngSha256": "f2f55ce41eec1144ea76eb063df04db565a7870c585bcaa3c46dc4327ab9d863",
+      "timeMs": 417.30000000074506,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 39,
+      "file": "FingerHeart-to-HandDown-0039.png",
+      "pngSha256": "6479369c232c3f574991fc38eaf7e82bc1e3591f0167ae00bdb6bb6c40b19f98",
+      "timeMs": 812.7000000029802,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 59,
+      "file": "FingerHeart-to-HandDown-0059.png",
+      "pngSha256": "731859e93d2fa643f7ce477c93c174e1011cfd0918964920a5f10d905b112aec",
+      "timeMs": 1237.6000000014901,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 79,
+      "file": "FingerHeart-to-HandDown-0079.png",
+      "pngSha256": "2e710b0c09e178ee271d9b57fa415d199d75c560ec436c28165b4f52e80d4115",
+      "timeMs": 1655.2000000029802,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 98,
+      "file": "FingerHeart-to-HandDown-0098.png",
+      "pngSha256": "878d8289b511369a6dd27e7f448f5e527de5dd1a45e080d277319381013bb8a8",
+      "timeMs": 2084.5,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 118,
+      "file": "FingerHeart-to-HandDown-0118.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 2575.800000000745,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 138,
+      "file": "FingerHeart-to-HandDown-0138.png",
+      "pngSha256": "098f9976285485aac050fae3d7b40094c157d1bde238218a5caa5fcaad7124d7",
+      "timeMs": 3071.900000002235,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 157,
+      "file": "FingerHeart-to-HandDown-0157.png",
+      "pngSha256": "09a1020321964614e409b081981bb1fcdba374d4a05a7715dac838c719688f9b",
+      "timeMs": 3552.60000000149,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 177,
+      "file": "FingerHeart-to-HandDown-0177.png",
+      "pngSha256": "f2f55ce41eec1144ea76eb063df04db565a7870c585bcaa3c46dc4327ab9d863",
+      "timeMs": 4059,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 197,
+      "file": "FingerHeart-to-HandDown-0197.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 4569.900000002235,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 216,
+      "file": "FingerHeart-to-HandDown-0216.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 5051.5,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 236,
+      "file": "FingerHeart-to-HandDown-0236.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 5544,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 256,
+      "file": "FingerHeart-to-HandDown-0256.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 6041,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 275,
+      "file": "FingerHeart-to-HandDown-0275.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 6512,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandDown",
+      "index": 295,
+      "file": "FingerHeart-to-HandDown-0295.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 7011.800000000745,
+      "contactSheet": "FingerHeart-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 0,
+      "file": "Wave-to-HandDown-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 19,
+      "file": "Wave-to-HandDown-0019.png",
+      "pngSha256": "7dc421ab680cf44a8dde6b340bd88bfb6e8c0cfb2da5351ed747a0a007c05c42",
+      "timeMs": 481.4000000022352,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 37,
+      "file": "Wave-to-HandDown-0037.png",
+      "pngSha256": "68a8cdd5a0cc5143d386c73aeb83dc10ddab0437e2fdb5ceda76f4a6a2c19268",
+      "timeMs": 932.4000000022352,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 56,
+      "file": "Wave-to-HandDown-0056.png",
+      "pngSha256": "339355e8c74a8603ca29dfbdcf4edd09a53b28d73e9b3b47f2e9a1b1376499a3",
+      "timeMs": 1423.9000000022352,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 74,
+      "file": "Wave-to-HandDown-0074.png",
+      "pngSha256": "2830186d49dafa31d3458225370cafa5516c605f17d650b00020699981361de5",
+      "timeMs": 1879.5,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 93,
+      "file": "Wave-to-HandDown-0093.png",
+      "pngSha256": "e3ea4f43ee51ae9bbefafc6fc4bb9f699e14c3390361f6ffe8723799898f3bbc",
+      "timeMs": 2374.800000000745,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 111,
+      "file": "Wave-to-HandDown-0111.png",
+      "pngSha256": "33fa38b1031cb042c4ea777f41f32847083b882ec0baf18d8e6aa4c3dc63cc7b",
+      "timeMs": 2847.2000000029802,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 130,
+      "file": "Wave-to-HandDown-0130.png",
+      "pngSha256": "a3880b53b0832f768861fbe9963cf1825dc0197c7cd60d4848116535427029bb",
+      "timeMs": 3332,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 148,
+      "file": "Wave-to-HandDown-0148.png",
+      "pngSha256": "8294872fd2b987baf652bce56c5cafad54b1f57f1e6d93c33f464840a85f95b7",
+      "timeMs": 3763.400000002235,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 167,
+      "file": "Wave-to-HandDown-0167.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 4228.70000000298,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 185,
+      "file": "Wave-to-HandDown-0185.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 4673.20000000298,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 204,
+      "file": "Wave-to-HandDown-0204.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 5153.70000000298,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 222,
+      "file": "Wave-to-HandDown-0222.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 5611.400000002235,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 241,
+      "file": "Wave-to-HandDown-0241.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 6098.300000000745,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 259,
+      "file": "Wave-to-HandDown-0259.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 6555.400000002235,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandDown",
+      "index": 278,
+      "file": "Wave-to-HandDown-0278.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 7017.60000000149,
+      "contactSheet": "Wave-to-HandDown.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    }
+  ]
+}

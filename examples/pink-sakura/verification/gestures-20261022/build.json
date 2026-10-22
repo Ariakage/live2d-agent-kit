@@ -1,0 +1,46 @@
+{
+  "engineCommit": "5526f2e16b57e5f83d34f33730d6fa26d8bc8695",
+  "engineDependencyMode": "Existing Gradle dependency cache; offline actual Kotlin compilation/export. No new cold build.",
+  "java": "JDK 21",
+  "patchSha256": "a785a2cd38cb9d999a1f445d9fb36c75d3731d2742a335d072a3cdadd22a17fa",
+  "manifestSha256": "c440af93d971640ec9bc0d944a1284ec34ec5ee2962d17394af0a9ab98edb264",
+  "lowMocEqualsHdMoc": true,
+  "finalReexportEqualsTestedMoc": true,
+  "finalReexportEqualsUpscaleInputAtlas": true,
+  "finalDocumentationOnlyMeasurementUpdate": "The measurement notes and adapter report scope were clarified after inference; final LOW re-export MOC and atlas are byte-identical to the tested inference inputs. Original inference manifest identity remains in upscale.json.",
+  "sourcesRegeneratedByteIdentically": true,
+  "compilerIntegrations": [
+    {
+      "file": "integrations/psd2live/ExtractPsd.kt",
+      "bytes": 2064,
+      "sha256": "9e8f13a51876df4f5d8e5b10cf5937af3fc795062580c0dcffd7a6bb975358a5"
+    },
+    {
+      "file": "integrations/psd2live/ManifestExport.kt",
+      "bytes": 60141,
+      "sha256": "de2b4201b5c22beccaab7d26f872d1c6421a8916f566f2dc87506494101ee4a6"
+    },
+    {
+      "file": "integrations/psd2live/PinkSakuraDynamics.kt",
+      "bytes": 16627,
+      "sha256": "c36bc6de3d26062789fd01a0c6d8576cb707cc011c83ff9f73d68fdd13d721c3"
+    },
+    {
+      "file": "integrations/psd2live/PinkSakuraGestures.kt",
+      "bytes": 13978,
+      "sha256": "7d50771ce5f3c8991c982b0112d4400128cb0ae8f0bfd596d6b61e4cd23a2ce0"
+    }
+  ],
+  "lowAtlasSha256": "ef3b4db6f1e0b7bbd6bdfe8ce3bbc18fa2082dcdf11fefea00b1150afd196451",
+  "highAtlasSha256": "b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e",
+  "minimalCoreAndWeb": {
+    "nativePoses": 192,
+    "webChecks": 22
+  },
+  "newAnimeInferenceExecuted": true,
+  "unitTests": {
+    "python": 65,
+    "node": 82
+  },
+  "sourcePackageArchiveAudit": "Recorded separately after commit; local recipe reconstruction completed."
+}

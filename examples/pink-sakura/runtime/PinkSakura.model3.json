@@ -57,6 +57,26 @@
         {
           "File": "PinkSakura.speechbob.motion3.json"
         }
+      ],
+      "HandToChin": [
+        {
+          "File": "PinkSakura.handtochin.motion3.json"
+        }
+      ],
+      "FingerHeart": [
+        {
+          "File": "PinkSakura.fingerheart.motion3.json"
+        }
+      ],
+      "Wave": [
+        {
+          "File": "PinkSakura.wave.motion3.json"
+        }
+      ],
+      "HandDown": [
+        {
+          "File": "PinkSakura.handdown.motion3.json"
+        }
       ]
     },
     "Expressions": [

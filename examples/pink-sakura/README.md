@@ -1,6 +1,6 @@
 # Pink Sakura · 角色工作流示例
 
-**本例包含公开源图、拆层配方、37 参数高清模型，以及表情与动作生成器。** 当前版本增加身体和衣料动态，保留已认可的脸与原高清图集。运行入口是 [PinkSakura.model3.json](runtime/PinkSakura.model3.json)，使用时保留整个 `runtime/` 的相对目录。
+**本例包含公开源图、拆层配方、41 参数高清模型，以及表情与动作生成器。** 当前版本增加托下巴、指尖比心和招手，保留已认可的脸，并为新手部素材重新生成高清图集。运行入口是 [PinkSakura.model3.json](runtime/PinkSakura.model3.json)，使用时保留整个 `runtime/` 的相对目录。
 
 这个示例使用用户明确授权收录的新粉色角色，演示从单张正面立绘制作 Live2D 的流程：补画遮挡区域、测量拆层、绑定、检查组合动作、动漫超分，再验证与打包。
 
@@ -8,21 +8,32 @@
 
 ![Pink Sakura 早期眉毛版本的实际 WebGL 合成输入演示](verification/preview.gif)
 
-上方是早期眉毛版本的 72 帧、12 fps 演示，使用合成输入，没有摄像头或麦克风输入。它展示原脸、头部和发丝，尚未包含本轮身体动态。最新检查见[动态验证记录](verification/dynamics-20261020/README.md)。
+上方是早期眉毛版本的 72 帧、12 fps 演示，使用合成输入，没有摄像头或麦克风输入。它展示原脸、头部和发丝，尚未包含本轮身体动态。最新检查见[手势验证记录](verification/gestures-20261022/README.md)。
 
 ## 当前模型
 
 | 项目 | 内容 |
 | --- | --- |
-| 结构 | 24 个源层、37 参数、26 Drawable、7,180 顶点、11,904 三角形 |
+| 结构 | 30 个源层、41 参数、32 Drawable、7,411 顶点、12,107 三角形 |
 | 面部 | 独立左右眉、眼睛、视线与嘴形；保留原面部素材与绑定 |
 | 身体 | 9 个串联局部变形器；双肩、胸腰、上臂与袖口轻摆、裙摆 |
 | 配件与环境输入 | 发饰、8 个发丝参数、14 组物理；`ParamFloat` 为整体 ±8 原画像素，`ParamWind` 经物理驱动次级摆动 |
 | 表情 | Smile、SoftSmile、WinkLeft、WinkRight、Surprised、Smug、Angry、Sleepy |
-| 动作 | Idle、Blink、Nod、Shake；新增 Quiet、Curious、Sleepy、Airy、SlowBlink、SpeechBob |
+| 动作 | Idle、Blink、Nod、Shake；Quiet、Curious、Sleepy、Airy、SlowBlink、SpeechBob；HandToChin、FingerHeart、Wave、HandDown（共 14 个） |
 | 高清图集 | `realesr-animevideov3-x4`，2048² → 8192²；RGB 神经超分与独立 alpha，保持布局和 UV |
 
-身体、袖子和手部仍使用连续图层。上臂输入只做 ±1.5° 的局部轻摆，没有新增托下巴、比心、招手或手指动作。九个变形器在中性点保持恒等映射，源图、图集排布和网格拓扑不变；实际画面仍需结合组合动作检查。
+![本轮实际模型的三种手势](verification/gestures-20261022/gesture-overview.jpg)
+
+观众左侧（角色右臂）改为一块连续袖片、同路径袖口覆盖和独立手型；肩部仍继承身体变形器。原放松手从参考图提取，托下巴、比心和招手来自专用补画。抬手使用 17×17 个 Lift/Pose 组合点；手型切换时先收入袖口，网页中途换动作时先放下，避免空中换图和肘部跳变。手指是三种绘制手型，不是逐指绑定。
+
+| 手部参数 | 范围与用途 |
+| --- | --- |
+| `ParamArmRLift` | 0–1：放下到抬起 |
+| `ParamArmRPose` | 0 / 1 / 2：托下巴 / 指尖比心 / 招手；半整数经过放下姿态 |
+| `ParamHandRForm` | 0 / 1 / 2 / 3：原放松手 / 托下巴 / 比心 / 张掌；切换间隔会收入袖口 |
+| `ParamHandRWave` | -1–1：张掌摆腕，只在抬手时生效 |
+
+请优先播放完整动作。自行驱动时先把 Lift 降到 0，再改 Pose/Form，然后升高 Lift；随意混合参数不能保证姿势好看。摄像头模式仍只估计脸与上半身，没有自动识别这三种手势。
 
 8 个表情只使用已有嘴眼和眉毛参数，没有新增表情贴图。原眉线很细，Angry 是轻微不悦；半闭眼睫毛仍偏厚，`EyeOpen=0..0.25` 保留闭眼停留段，闭唇线也偏淡。这些预设不代表完成了新的表情美术精修。
 
@@ -30,9 +41,9 @@
 
 ## 验证与历史记录
 
-最新文件身份、Core / Web 检查、连续动作路径、中性脸部对比和选帧目视范围集中在[动态验证记录](verification/dynamics-20261020/README.md)。自动连续帧检查不等于每帧都经过人工精看，原生数值有效也不能替代接缝与画风验收。
+最新文件身份、Core / Web、连续手势和选帧目视范围集中在[手势验证记录](verification/gestures-20261022/README.md)。7,810 帧自动检查覆盖 15 条完整轨迹（主检查与主动放下补测）；agent 目视抽查 240 个手臂帧、44 个脸部姿态概览及 3 张完整手势图，不等于逐帧精看全部画面。
 
-本轮通过固定 psd2live 重新编译适配器并导出 LOW / HD，另做 Minimal 实际导出与 Core / Web 回归。使用的是已有 Gradle 依赖缓存，并非一次新的空缓存构建。低分图集与上一版逐字节一致后，复用原 `realesr-animevideov3-x4` 高清图集；没有重复神经超分。8192² 图集 SHA-256 仍为 `8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361`。
+本轮用固定 psd2live 导出 LOW / HD，并做 Minimal 导出与 Core / Web 回归。构建使用已有 Gradle 缓存。新增袖片与手型改变了图集，因此实际重跑 `realesr-animevideov3-x4`；8192² 图集 SHA 为 `b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e`。LOW / HD MOC 相同；未重新做空缓存引擎构建、摄像头或 VTS 验收。上轮 37 参数结果见[身体动态历史](verification/dynamics-20261020/README.md)。
 
 早期 24 参数眉毛版本的 [202 姿态 Core 检查](verification/native-core.json)、[91 帧画布记录](verification/web-poses.json)、[75 张选帧目视记录](verification/visual-review.json)、[超分记录](verification/upscale.json)，以及 [2026-10-17 连续动作检查](verification/continuous-20261017/README.md)仍保留为历史证据，不能用于替代新版 MOC 的验收。各轮版本边界见[验证索引](verification/README.md)。
 
@@ -52,12 +63,14 @@ CMO3 保留模型与绑定，但可编辑图层从图集重建，不保留原 PS
 | `source/eyeless-face-v1.png` | 1254×1254 无眼底图；只用于原眼睛下的局部肤色填充 |
 | `source/rear-hair-underpainting-v1.png` | 1024×1536 绿底后发补画；采用其完整自然轮廓作为连续后发底层，部分可见后发也来自此图 |
 | `source/eyebrow-base-v1.png`、`source/eyebrow-l-v1.png`、`source/eyebrow-r-v1.png` | 确定性分解原浅粉眉墨的底图与左右透明眉层；不改变原始五张输入 |
+| `source/arm-parts-v1.png`、`source/gesture-*.png` | 为 Pink 新生成的透明衣袖和三种手型，以及按公开测量重采样的四张注册图；原放松手仍取原图 |
+| `PrepareArm.java` / `prepare-arm.cjs` | JDK 21 配准脚本；透明度预乘采样，仅清理接近全透明的噪点，不生成新绘画 |
 | `brow-regions.json` / `PrepareBrows.java` / `prepare-brows.cjs` | 本角色测量曲线、交叉发线保护列与 JDK 21 原像素分解脚本；无需 Pillow 或新增神经权重 |
 | `body-regions.json` / `face-regions.json` | 在原始源图中测量的轮廓、孔洞、眼角与局部位置 |
 | `body-topwear-patch.json` | 仅处理衣服隐藏填色与腿边修正；在导入身体层后应用，不再分左右截取生成后发 |
 | `dynamics-regions.json` | 1024×1536 画布内的肩、腰和发饰锚点及幅度；`pink-sakura-v1` 专用原生变形配方，必须随源包保留 |
 | `build-manifest.cjs` | 合并测量与补丁，生成这张角色专用的 `manifest.json` |
-| `build-performance.cjs` | 对匹配原生 Core 报告的新导出目录生成 8 个表情和 6 个新增动作；拒绝覆盖已发布模型 |
+| `build-performance.cjs` | 对匹配原生 Core 报告的新导出目录生成 8 个表情和 10 个新增动作；拒绝覆盖已发布模型 |
 | `preview-config.json` / `check-poses.cjs` | 本角色的取景配置与实际画布姿态检查脚本；报告绑定实际载入的模型与纹理 SHA |
 
 五张原始 PNG 都是 **RGB，没有 alpha 通道**；新眉毛底图也是 RGB，左右眉衍生图是 RGBA。身体补画画出的棋盘格不是透明背景；后发补画的绿色也需要由精确遮罩和采样规则排除。生成提示要求透明或原位，并不表示返回图已经满足要求。面部补画的输入是原图 `[300,0,400,400]` 裁切、放大到 1200² 的局部，而输出为 1254²；必须使用配方中的测量映射，不能按同名文件直接覆盖脸部。
@@ -82,7 +95,7 @@ CMO3 保留模型与绑定，但可编辑图层从图集重建，不保留原 PS
 
 ## 复现模板
 
-以下命令从 **仓库根目录**运行，使用本示例已收录的源图、测量 JSON 与脚本。已将公开配方复制到全新工作目录，重新生成 24 层 manifest，与实际低分导出输入逐字节一致并通过结构检查。外部依赖仍需自行准备，这项配方重建不等于在干净环境中重新编译完整引擎。每次使用新的工作目录和导出目录；保留原始文件作为对照。
+以下命令从 **仓库根目录**运行，使用本示例已收录的源图、测量 JSON 与脚本。已将公开配方复制到全新工作目录，重新生成 30 层 manifest，与实际低分导出输入逐字节一致并通过结构检查。外部依赖仍需自行准备，这项配方重建不等于在干净环境中重新编译完整引擎。每次使用新的工作目录和导出目录；保留原始文件作为对照。
 
 ### 1. 准备外部工具
 
@@ -103,13 +116,14 @@ Core 命令需要已配置的 `CUBISM_CORE_DIR` 和 `VALIDATOR_JAVA`；Java 构�
 mkdir -p work
 python3 -c "import shutil; shutil.copytree('examples/pink-sakura', 'work/pink-sakura-rebuild', ignore=shutil.ignore_patterns('runtime'))"
 node work/pink-sakura-rebuild/prepare-brows.cjs
+node work/pink-sakura-rebuild/prepare-arm.cjs
 node work/pink-sakura-rebuild/build-manifest.cjs
 bash scripts/validate.sh --manifest work/pink-sakura-rebuild/manifest.json
 bash scripts/export-model.sh \
   work/pink-sakura-rebuild/manifest.json work/pink-sakura-rebuild/low
 ```
 
-`prepare-brows.cjs` 使用 `VALIDATOR_JAVA` 指定的 JDK 21，未设置时使用 PATH 上的 `java`。它只重建工作目录中的三张衍生 PNG。上述复制同时保留 `dynamics-regions.json`；manifest 的 `config.pink_dynamics` 相对路径必须能在配方目录内解析，不需要作者原来的 `work/` 文件。
+`prepare-brows.cjs` 使用 `VALIDATOR_JAVA` 指定的 JDK 21，未设置时使用 PATH 上的 `java`。它只重建工作目录中的三张眉毛衍生 PNG；`prepare-arm.cjs` 同样使用 JDK 21 重建四张手臂配准 PNG。上述复制同时保留 `dynamics-regions.json`；manifest 的 `config.pink_dynamics` 相对路径必须能在配方目录内解析，不需要作者原来的 `work/` 文件。
 
 先检查 `low/` 的源图复合、导入图层及实际模型画面。尤其看原脸是否保持、半睁眼的睫毛粗细、`MouthSmile × MouthOpen` 的肤色接缝，以及后发在衣料边缘的连续性。结构有问题时先回到测量/填色配方修复，不能靠超分遮掩。
 
@@ -202,7 +216,7 @@ node examples/pink-sakura/check-continuous.cjs \
 node --test tests/test_continuous_review.cjs
 ```
 
-脚本是 Pink 当前参数的检查配方，换角色时先调整输入并核对其声明范围，不能靠静默钳制掩盖错误。自动结果始终保留 `visualReview: pending`；另行记录实际看过的编号帧、区域和剩余瑕疵。最新[动态检查记录](verification/dynamics-20261020/README.md)覆盖本版新增动态，不包含独立手势。原始 PNG 可能占用数 GB；转存后应逐文件核对哈希，保留报告、索引和抽查原图再清理本地副本。
+脚本是 Pink 当前参数的检查配方，换角色时先调整输入并核对其声明范围，不能靠静默钳制掩盖错误。自动结果始终保留 `visualReview: pending`；另行记录实际看过的编号帧、区域和剩余瑕疵。历史[动态检查记录](verification/dynamics-20261020/README.md)覆盖上一版新增动态，不包含独立手势。原始 PNG 可能占用数 GB；转存后应逐文件核对哈希，保留报告、索引和抽查原图再清理本地副本。
 
 若有单独运行的旧版基线，还可用 `check-dynamics.cjs CANDIDATE_URL BASELINE_URL EMPTY_OUTPUT` 检查中性脸部、动作交接、风物理与辅助动画暂停；两个页面的资源身份都应记录。该检查不读取摄像头。
 
@@ -218,6 +232,14 @@ ffmpeg -framerate 12 -i work/pink-sakura-rebuild/demo-frames/frame-%03d.png \
 ```
 
 在页面中检查全身、半身、单眼/双眼闭合、嘴形与张嘴组合、头身反向和发丝摆动。脚本检查与目视检查分别记录，并核对浏览器实际载入的 MOC/纹理身份。这里模拟面捕/半身输入，不读取摄像头；详细依赖、操作和参数映射见 [预览模板](../../templates/web-preview/README.md)。
+
+新增手势用下面的专门检查器复核。它连续捕获三种完整动作、三条反向重复轨迹和六种有序互切，检查实际 Core 三角形方向与手型可见数量。原始 PNG 保存在输出目录，随后需查看袖口/肩部/下巴接触处；图像未断裂不能只靠几何正面积推断。
+
+```sh
+PLAYWRIGHT_MODULE=/path/to/node_modules/playwright \
+node examples/pink-sakura/check-gestures.cjs \
+  http://127.0.0.1:8837/ work/pink-sakura-rebuild/gestures
+```
 
 ### 6. 连同署名与许可打包
 

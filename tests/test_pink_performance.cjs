@@ -11,6 +11,36 @@ const parameters=[...base.parameters.map(({id,min,max,default:value})=>({id,min,
   ...extras.filter(name=>!base.parameters.some(p=>p.id==='Param'+name))
     .map(name=>({id:'Param'+name,min:-1,max:1,default:0}))];
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+const gestureParameters=[['ArmRLift',0,1],['ArmRPose',0,2],['HandRForm',0,3],['HandRWave',-1,1]]
+  .map(([id,min,max])=>({id:'Param'+id,min,max,default:0}));
+
+test('gesture motions change hand art only while lowered and return every arm parameter to neutral',()=>{
+  const {Motions}=buildPerformance([...parameters,...gestureParameters]);
+  assert.throws(()=>buildPerformance([...parameters,gestureParameters[0]]),/Incomplete native gesture/);
+  function at(curve,time) {
+    const s=curve.Segments;let x=s[0],y=s[1];
+    for(let i=2;i<s.length;i+=7) {
+      if(time<=s[i+5]) {
+        const t=(time-x)/(s[i+5]-x),u=1-t;
+        return u*u*u*y+3*u*u*t*s[i+2]+3*u*t*t*s[i+4]+t*t*t*s[i+6];
+      }
+      x=s[i+5];y=s[i+6];
+    }
+    return y;
+  }
+  for(const [name,pose,form] of [['HandToChin',0,1],['FingerHeart',1,2],['Wave',2,3]]) {
+    const motion=Motions[name],curves=Object.fromEntries(motion.Curves.map(c=>[c.Id,c]));
+    assert.equal(motion.Meta.Loop,false);
+    for(let i=0;i<=456;i++) {
+      const time=i/60,lift=at(curves.ParamArmRLift,time);
+      if(lift>1e-6) {
+        assert.ok(Math.abs(at(curves.ParamArmRPose,time)-pose)<1e-6);
+        assert.ok(Math.abs(at(curves.ParamHandRForm,time)-form)<1e-6);
+      }
+    }
+    for(const c of motion.Curves)assert.equal(c.Segments.at(-1),0);
+  }
+});
 
 test('eight expressions retain camera blink and mouth inputs without unsupported art',()=>{
   const {Expressions}=buildPerformance(parameters);

@@ -1,0 +1,2693 @@
+{
+  "scope": "192 chronological arm/shoulder/cuff crops; not all 6921 frames manually inspected",
+  "frames": [
+    {
+      "track": "motion-HandToChin",
+      "index": 0,
+      "file": "motion-HandToChin-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 32,
+      "file": "motion-HandToChin-0032.png",
+      "pngSha256": "1e08482a6f81fb107388a8f759ae19de61196ec74017cdeaf1ac1600a9177233",
+      "timeMs": 544.9000000003725,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 64,
+      "file": "motion-HandToChin-0064.png",
+      "pngSha256": "a9ce4d7c123109dff58725908776d7f52038fb4233fd3e5800e99d09946d75b5",
+      "timeMs": 1106.2000000001863,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 96,
+      "file": "motion-HandToChin-0096.png",
+      "pngSha256": "6cbbdd9f843a4639a069351af575d68508ffa347ed9b534f72884a4fac59a3e8",
+      "timeMs": 1644.9000000003725,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 128,
+      "file": "motion-HandToChin-0128.png",
+      "pngSha256": "d687d48e590ede948c7c9e02dafc8a3a07f4dc616d17b4786514f441c79d7eb6",
+      "timeMs": 2194.2999999998137,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 160,
+      "file": "motion-HandToChin-0160.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 2743.9000000003725,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 192,
+      "file": "motion-HandToChin-0192.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 3294.7999999998137,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 224,
+      "file": "motion-HandToChin-0224.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 3827.7000000001863,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 257,
+      "file": "motion-HandToChin-0257.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 4393.799999999814,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 289,
+      "file": "motion-HandToChin-0289.png",
+      "pngSha256": "65fa769bba1279e52acd4a0e9c97485188fb01c1c637476597dff15b86ae75ad",
+      "timeMs": 4944.700000000186,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 321,
+      "file": "motion-HandToChin-0321.png",
+      "pngSha256": "0ba853ead5c9e4a5b54814cbf5c02f86c676982777f259f7f702c1335fc5356d",
+      "timeMs": 5478,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 353,
+      "file": "motion-HandToChin-0353.png",
+      "pngSha256": "806ad2263f0e7b417eba55f8b07de723b82281b2f77e3b1a07dcc5d8efd919f5",
+      "timeMs": 6027.700000000186,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 385,
+      "file": "motion-HandToChin-0385.png",
+      "pngSha256": "4ace4c1ca6c61e39408bf179ca0539539a7b74e6ebc0c23479a8b56f3085a4af",
+      "timeMs": 6578.100000000559,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 417,
+      "file": "motion-HandToChin-0417.png",
+      "pngSha256": "e22ca4b3df0c56758ccb659e06db09afc7a24d8d9fe1af041235fb3d8e4fe5de",
+      "timeMs": 7111.200000000186,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 449,
+      "file": "motion-HandToChin-0449.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 7660.200000000186,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-HandToChin",
+      "index": 481,
+      "file": "motion-HandToChin-0481.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 8211.100000000559,
+      "contactSheet": "motion-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 0,
+      "file": "motion-FingerHeart-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 32,
+      "file": "motion-FingerHeart-0032.png",
+      "pngSha256": "a799b6b1f8c6a5346dd970b79adcd8597a3037d550784168165e9243b824530b",
+      "timeMs": 549.7999999998137,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 64,
+      "file": "motion-FingerHeart-0064.png",
+      "pngSha256": "9797fd6375d90af405e15875c2acba4f743ec42948aa7bdaa4d6b563c06f8148",
+      "timeMs": 1083.199999999255,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 96,
+      "file": "motion-FingerHeart-0096.png",
+      "pngSha256": "f8f01da2712b43068721414153dc46fece941cde75048316c9c16822e7a2a3fa",
+      "timeMs": 1632.5,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 129,
+      "file": "motion-FingerHeart-0129.png",
+      "pngSha256": "32eb9123a8461f30eb1960259eec6f9c0dda040a41be78194ed76b0397729530",
+      "timeMs": 2199.899999999441,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 161,
+      "file": "motion-FingerHeart-0161.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 2733.199999999255,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 193,
+      "file": "motion-FingerHeart-0193.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 3283.199999999255,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 225,
+      "file": "motion-FingerHeart-0225.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 3832.5,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 257,
+      "file": "motion-FingerHeart-0257.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 4382.0999999996275,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 289,
+      "file": "motion-FingerHeart-0289.png",
+      "pngSha256": "c74b89895107486a1ddfa76eba12f5568e23503dbd932245452c736e5bcbc395",
+      "timeMs": 4933.199999999255,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 321,
+      "file": "motion-FingerHeart-0321.png",
+      "pngSha256": "abbc51d297d0f01d13c096ffc5e54883d3410b200cd5c5ac1ae966c03e70070c",
+      "timeMs": 5466.199999999255,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 353,
+      "file": "motion-FingerHeart-0353.png",
+      "pngSha256": "9a2e362f75a60f0711511a8512918f9fe06f4bda1cb6a359db38e227532a55b1",
+      "timeMs": 6016.199999999255,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 386,
+      "file": "motion-FingerHeart-0386.png",
+      "pngSha256": "aafac5ab455ca41cedbdca821f3d4e45b25aaaee61f8b3316883262772191508",
+      "timeMs": 6582.0999999996275,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 418,
+      "file": "motion-FingerHeart-0418.png",
+      "pngSha256": "531a356e029b483fa6ade2f0c24482ab69c36df1097b62fd1b217d3351efca70",
+      "timeMs": 7133.0999999996275,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 450,
+      "file": "motion-FingerHeart-0450.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 7665.899999999441,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-FingerHeart",
+      "index": 482,
+      "file": "motion-FingerHeart-0482.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 8215.199999999255,
+      "contactSheet": "motion-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 0,
+      "file": "motion-Wave-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 32,
+      "file": "motion-Wave-0032.png",
+      "pngSha256": "d929a71b43277a218f50bfa5ec0d634466b608d8bdbb1d13cdb0d9976f1f66fb",
+      "timeMs": 549.2999999998137,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 64,
+      "file": "motion-Wave-0064.png",
+      "pngSha256": "c7319f6f8f0122748c6d3dfa8561b7eefb9a189d9eaac376642a6bb3eb8236ce",
+      "timeMs": 1099.199999999255,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 96,
+      "file": "motion-Wave-0096.png",
+      "pngSha256": "9ed8712abb621c4750b7532fb794662ad2350c36cc3ad6b72e899ea1f2acb532",
+      "timeMs": 1632.8999999994412,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 129,
+      "file": "motion-Wave-0129.png",
+      "pngSha256": "918ec5b0fe3dec6aa2721aeba7f150feb959a29e104dbcb8cecfbd992a76c7a2",
+      "timeMs": 2200,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 161,
+      "file": "motion-Wave-0161.png",
+      "pngSha256": "ade43a6e12357d6768c5cd9d076353cd038f3a3c635ec7582130347f647ec011",
+      "timeMs": 2749,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 193,
+      "file": "motion-Wave-0193.png",
+      "pngSha256": "9c44403538891668970ac32c385c8980f24f26cba7bec5afba75e57a94f1682d",
+      "timeMs": 3299.899999999441,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 225,
+      "file": "motion-Wave-0225.png",
+      "pngSha256": "362d5c04530dd633c72fc81914dd730930cb109ea07e189cbd933d6356e51e64",
+      "timeMs": 3849,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 257,
+      "file": "motion-Wave-0257.png",
+      "pngSha256": "17f74675f8bce750df074e4ca74a5acfacb6726fe6fb2cb13cdf70996c614dc6",
+      "timeMs": 4383.0999999996275,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 289,
+      "file": "motion-Wave-0289.png",
+      "pngSha256": "d50c5c3380f20e5cc99cb27ea6285bf7a61ce5fb0d5bf7d222e92bdf908edbbf",
+      "timeMs": 4933.0999999996275,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 321,
+      "file": "motion-Wave-0321.png",
+      "pngSha256": "3461687df8b42288ad9596277135fa1de803b668b5261438a1e4cd4c8fcb15b7",
+      "timeMs": 5483.299999999814,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 353,
+      "file": "motion-Wave-0353.png",
+      "pngSha256": "af281ff65edf71f7970ee6c947519c576efc6f9735c2cb62d3fa218d177e73b4",
+      "timeMs": 6016.0999999996275,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 386,
+      "file": "motion-Wave-0386.png",
+      "pngSha256": "eb96f1e9f30bd8e4056060b7937fdf81fdfca650a060310449f275b011783e67",
+      "timeMs": 6583.0999999996275,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 418,
+      "file": "motion-Wave-0418.png",
+      "pngSha256": "ce6e647bfea519a9e53e1d582fe6db68da0ecb234e735cb49852d5ba435cb946",
+      "timeMs": 7133.199999999255,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 450,
+      "file": "motion-Wave-0450.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 7683,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "motion-Wave",
+      "index": 482,
+      "file": "motion-Wave-0482.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 8233,
+      "contactSheet": "motion-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 0,
+      "file": "reverse-repeat-0-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 31,
+      "file": "reverse-repeat-0-0031.png",
+      "pngSha256": "469b83ee0b3074706bd059e72b982936dfbf324df5d4e0f1bb826dd23270e982",
+      "timeMs": 516.7000000001863,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 63,
+      "file": "reverse-repeat-0-0063.png",
+      "pngSha256": "9c0332aa164cc807c0853846c9e68e7ed2ed18ddf696f86c927a5fdc76f21711",
+      "timeMs": 1066.6000000005588,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 94,
+      "file": "reverse-repeat-0-0094.png",
+      "pngSha256": "45ae3610fe40b8839e3228261d38d9a1a37c9d285b31d5701d4aa76aa79ce281",
+      "timeMs": 1599.9000000003725,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 126,
+      "file": "reverse-repeat-0-0126.png",
+      "pngSha256": "88477555704cafbc21a9bbe59510f35abba4171effbd9b20bb46ffc6e0982209",
+      "timeMs": 2132.9000000003725,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 157,
+      "file": "reverse-repeat-0-0157.png",
+      "pngSha256": "bfcdc59dd178d2b2eba41a782c7428e54a96fcc7781082359206427b2dd49347",
+      "timeMs": 2666.7000000001863,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 188,
+      "file": "reverse-repeat-0-0188.png",
+      "pngSha256": "99aa71bde2ec06d81de3514f18987f60ba0cd0662d5940173ee880e44273de8e",
+      "timeMs": 3199.7999999998137,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 220,
+      "file": "reverse-repeat-0-0220.png",
+      "pngSha256": "6e07fffd359b15ac7659f0c632e8f42af01a4b3673f26fc01237b22f312edaf0",
+      "timeMs": 3733.2000000001863,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 251,
+      "file": "reverse-repeat-0-0251.png",
+      "pngSha256": "52b5d2e20734a7797a3df5e0ba79aabc63d8fc55ca05b662ee1070c11b06f2a9",
+      "timeMs": 4265.700000000186,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 283,
+      "file": "reverse-repeat-0-0283.png",
+      "pngSha256": "9def95194e5d18bdb9ba8f06b112b7771579c1e7c8712a4792efc63712aee829",
+      "timeMs": 4815.5,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 314,
+      "file": "reverse-repeat-0-0314.png",
+      "pngSha256": "3107dc3943597d89913834a7364ba9b380b25e37fc7dfe7cdc8f7fd5a0808dfb",
+      "timeMs": 5332.9000000003725,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 345,
+      "file": "reverse-repeat-0-0345.png",
+      "pngSha256": "d3d1e0a0911ddb5977cffb3ae74ae08cedf19f5b1062bb0e8864d052b4223bf5",
+      "timeMs": 5866.4000000003725,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 377,
+      "file": "reverse-repeat-0-0377.png",
+      "pngSha256": "eb5325e4a4e1eed9af4e8602cba0c295a044b22c05adb9b533b8cd44741e89e0",
+      "timeMs": 6415.5,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 408,
+      "file": "reverse-repeat-0-0408.png",
+      "pngSha256": "0e63c445a5d278dc11db2371fddaa04b04fba6ed505132a424d4e5c0a5c40240",
+      "timeMs": 6949.799999999814,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 440,
+      "file": "reverse-repeat-0-0440.png",
+      "pngSha256": "282b721e4a98ab42476f9c7ee3a40b8e611e3c2798cc175873b39df562f9fc73",
+      "timeMs": 7483.100000000559,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-0",
+      "index": 471,
+      "file": "reverse-repeat-0-0471.png",
+      "pngSha256": "50ac725d8ee6e5ac294a640057c4567ba8ca710a9883a60ed71f3284f2cecc98",
+      "timeMs": 8015.700000000186,
+      "contactSheet": "reverse-repeat-0.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 0,
+      "file": "reverse-repeat-1-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 31,
+      "file": "reverse-repeat-1-0031.png",
+      "pngSha256": "22463e1dc82b24a5300964919da1ee9c6392a58a4d7b7a0dec9ce3aa8f132eeb",
+      "timeMs": 532.9000000003725,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 63,
+      "file": "reverse-repeat-1-0063.png",
+      "pngSha256": "3a26ebe9226d4cbe9e4cc24fa82975c2b3e4b92485049d3a9b724cf866be2326",
+      "timeMs": 1082.6000000005588,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 94,
+      "file": "reverse-repeat-1-0094.png",
+      "pngSha256": "1be8624286c39ad21568cad3cabb1d57ea63f59c5d52e3edcd5085e753b71ad1",
+      "timeMs": 1599.800000000745,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 125,
+      "file": "reverse-repeat-1-0125.png",
+      "pngSha256": "ccc0687034aec31fdd3dfa3a1adbcd452ebd9238916e30571bc65a9e0c6ce5d4",
+      "timeMs": 2133.100000000559,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 157,
+      "file": "reverse-repeat-1-0157.png",
+      "pngSha256": "96b95006fc2357c005aca8b8d68d10af19278b74a7931fc4a8641f51117423d6",
+      "timeMs": 2683.2000000001863,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 188,
+      "file": "reverse-repeat-1-0188.png",
+      "pngSha256": "ce4d0c8bf08225382530f02780a7faeb03fdc9692d47e9a268b8ba5aad39d657",
+      "timeMs": 3199.800000000745,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 219,
+      "file": "reverse-repeat-1-0219.png",
+      "pngSha256": "2a67023c4ee3d834ef95184ff7d6274e34bb25031be33fdbf5c9a65e973d09dc",
+      "timeMs": 3733.2000000001863,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 251,
+      "file": "reverse-repeat-1-0251.png",
+      "pngSha256": "6453b95b4abd0d1850a73e4087e87c9ed66756773ff1e1285120599edc0a7266",
+      "timeMs": 4283.100000000559,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 282,
+      "file": "reverse-repeat-1-0282.png",
+      "pngSha256": "e97f5124ae3009a9a1544b6e20b7a56a9c96383c354cddfa35a3783c77dbccfa",
+      "timeMs": 4816.5,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 313,
+      "file": "reverse-repeat-1-0313.png",
+      "pngSha256": "6125ac6e7d91a82d0e4fc4150e8b5f32dffbca09fc92789d9742a0efdfc881c2",
+      "timeMs": 5333,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 345,
+      "file": "reverse-repeat-1-0345.png",
+      "pngSha256": "eb4932c944f3c99ea280ed580d1cbec0e2bc273e7cbf93afb8c29ed9122844c3",
+      "timeMs": 5882.100000000559,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 376,
+      "file": "reverse-repeat-1-0376.png",
+      "pngSha256": "b08c96d7d09ec59af7b930845390d3c2f1c64db900f24d693b876da12e38ca60",
+      "timeMs": 6416.4000000003725,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 407,
+      "file": "reverse-repeat-1-0407.png",
+      "pngSha256": "a3be39b2ff0bae306f93cdc89b5cea380ed0d1d49194d1da613cb8a0a357399c",
+      "timeMs": 6933.300000000745,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 439,
+      "file": "reverse-repeat-1-0439.png",
+      "pngSha256": "5125a0b9faec8f690c815bc4894dc535529252335dfa8be01d432e5424d65141",
+      "timeMs": 7482.9000000003725,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-1",
+      "index": 470,
+      "file": "reverse-repeat-1-0470.png",
+      "pngSha256": "3d9786da36ce1b4f3141994bab7cdef9c60a6e6d7aa2f1a0393d2cc253307303",
+      "timeMs": 8016.300000000745,
+      "contactSheet": "reverse-repeat-1.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 0,
+      "file": "reverse-repeat-2-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 31,
+      "file": "reverse-repeat-2-0031.png",
+      "pngSha256": "0170e55fd6e6ff87d220e53572142e47e24472aa0fc00594fd15a64d5ca8670f",
+      "timeMs": 516.7999999998137,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 63,
+      "file": "reverse-repeat-2-0063.png",
+      "pngSha256": "b1ed389a6593cb7d60c417f190f0e1a38bc2db0cc4ae340be00be3e403e64f8b",
+      "timeMs": 1066.7000000001863,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 94,
+      "file": "reverse-repeat-2-0094.png",
+      "pngSha256": "6816dfab0dd6a21199d55ee4aef8249ce9e48e9c751151448e85fea092683c9c",
+      "timeMs": 1600,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 126,
+      "file": "reverse-repeat-2-0126.png",
+      "pngSha256": "bb1998c6536b123997f1d75143b20e24220939d9f310ac954242accc2f562cd2",
+      "timeMs": 2150,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 157,
+      "file": "reverse-repeat-2-0157.png",
+      "pngSha256": "f69dfedeae960a2b02afaeae6b4db48741d94e47b074381281fddc53c3d178f4",
+      "timeMs": 2666.7000000001863,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 188,
+      "file": "reverse-repeat-2-0188.png",
+      "pngSha256": "7068b967170b87efaa537aa1d924f07e3a7c01219a62b7a5172e6124cdeb1939",
+      "timeMs": 3200.0999999996275,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 220,
+      "file": "reverse-repeat-2-0220.png",
+      "pngSha256": "37a1c0683f0d1e947de23f173f5f77e15a6723ec6939bfc31db8e9fda256fc97",
+      "timeMs": 3750,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 251,
+      "file": "reverse-repeat-2-0251.png",
+      "pngSha256": "a56dd6253eefa7c3c4c21853a035b6232529acbd2d5fa7232c6fe2400eb1106f",
+      "timeMs": 4283.4000000003725,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 283,
+      "file": "reverse-repeat-2-0283.png",
+      "pngSha256": "0866712c2f47dbac3fe1bb6d6f2a0ab7f2784b87fc6c65bc2e21a20249fff015",
+      "timeMs": 4816.700000000186,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 314,
+      "file": "reverse-repeat-2-0314.png",
+      "pngSha256": "b203af2cc7c63a63146e01c81a9fa5f340fd69063c885d9611ae5940bcbab6cc",
+      "timeMs": 5349.299999999814,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 345,
+      "file": "reverse-repeat-2-0345.png",
+      "pngSha256": "d0b03bd0fb6808723e6514944b03da7d2b4c3efd679aa0eb4bce20577643c620",
+      "timeMs": 5883.4000000003725,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 377,
+      "file": "reverse-repeat-2-0377.png",
+      "pngSha256": "fd3cf75b43b817f9d22e3e45943b739a373183e45b346a15ab141cbd2955cffa",
+      "timeMs": 6416.5,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 408,
+      "file": "reverse-repeat-2-0408.png",
+      "pngSha256": "dda05b9962e8e5f1a359f6ca2c270e2c86566148ceed2c0fae38fd3ec64a7f67",
+      "timeMs": 6949.5,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 440,
+      "file": "reverse-repeat-2-0440.png",
+      "pngSha256": "5e550b624495f0456bb7d8bb9c6f309e070e74f19ad5220057c800f7e0724e41",
+      "timeMs": 7499.9000000003725,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "reverse-repeat-2",
+      "index": 471,
+      "file": "reverse-repeat-2-0471.png",
+      "pngSha256": "bd0e820de770a0921c5fd4635c6ce683b0ea85320bec3f44aa3edd1eac097448",
+      "timeMs": 8016.5999999996275,
+      "contactSheet": "reverse-repeat-2.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 0,
+      "file": "HandToChin-to-FingerHeart-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 45,
+      "file": "HandToChin-to-FingerHeart-0045.png",
+      "pngSha256": "6e8529caa703a75e0ca1f101bd16cb9a14c05762404b9887f5599204d66f44d9",
+      "timeMs": 783.0999999996275,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 90,
+      "file": "HandToChin-to-FingerHeart-0090.png",
+      "pngSha256": "9bab130a8f0c76bcfe2c610f82dbbf3cb2a647e71d80d4757bfc5aef4f128f07",
+      "timeMs": 1549.9000000003725,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 135,
+      "file": "HandToChin-to-FingerHeart-0135.png",
+      "pngSha256": "05ca7fda216802eb289a7f08884fc19d45fa23cdad59b6fe4fd3661662ef206b",
+      "timeMs": 2316.2999999998137,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 180,
+      "file": "HandToChin-to-FingerHeart-0180.png",
+      "pngSha256": "c4448b0f6572ee2e97a0ca07c45a605a93604fd4f1636ff55054c71911ee5cd9",
+      "timeMs": 3083.0999999996275,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 225,
+      "file": "HandToChin-to-FingerHeart-0225.png",
+      "pngSha256": "28895e5401789d29e544f0a9a925dd70340850c19cea22aba7225c0c0876c596",
+      "timeMs": 3849.7000000001863,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 270,
+      "file": "HandToChin-to-FingerHeart-0270.png",
+      "pngSha256": "f2f55ce41eec1144ea76eb063df04db565a7870c585bcaa3c46dc4327ab9d863",
+      "timeMs": 4616,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 315,
+      "file": "HandToChin-to-FingerHeart-0315.png",
+      "pngSha256": "9a6507c46d41beb791898f1a074c87cbf3a11d10201a1013bdc6886bdf79bf4b",
+      "timeMs": 5382.299999999814,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 360,
+      "file": "HandToChin-to-FingerHeart-0360.png",
+      "pngSha256": "7019bb7ef842e45a2827375be3d90ddbf2cd0a8491d4cbe7a12ff2db37f1378d",
+      "timeMs": 6149.0999999996275,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 405,
+      "file": "HandToChin-to-FingerHeart-0405.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 6916.200000000186,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 450,
+      "file": "HandToChin-to-FingerHeart-0450.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 7682.0999999996275,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 495,
+      "file": "HandToChin-to-FingerHeart-0495.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 8449.599999999627,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 540,
+      "file": "HandToChin-to-FingerHeart-0540.png",
+      "pngSha256": "46fd5fed4184408f10b9a57f2e47c6bc8315abf147a50d05edba6b2aef05421d",
+      "timeMs": 9216.200000000186,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 585,
+      "file": "HandToChin-to-FingerHeart-0585.png",
+      "pngSha256": "eb313ebecf3992317dd92b39d1cb3e62bccb93cb1c38294d298b7ae0dee3b1eb",
+      "timeMs": 9981.900000000373,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 630,
+      "file": "HandToChin-to-FingerHeart-0630.png",
+      "pngSha256": "aafac5ab455ca41cedbdca821f3d4e45b25aaaee61f8b3316883262772191508",
+      "timeMs": 10749.599999999627,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-FingerHeart",
+      "index": 675,
+      "file": "HandToChin-to-FingerHeart-0675.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 11516.599999999627,
+      "contactSheet": "HandToChin-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 0,
+      "file": "HandToChin-to-Wave-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 45,
+      "file": "HandToChin-to-Wave-0045.png",
+      "pngSha256": "267a618444ac5c216ab77d0695a25ff0598d715e5fad9239cb29d2fc7f72d5ec",
+      "timeMs": 766.7000000001863,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 90,
+      "file": "HandToChin-to-Wave-0090.png",
+      "pngSha256": "9bab130a8f0c76bcfe2c610f82dbbf3cb2a647e71d80d4757bfc5aef4f128f07",
+      "timeMs": 1550.1000000005588,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 135,
+      "file": "HandToChin-to-Wave-0135.png",
+      "pngSha256": "29edde9568df803391df1ffa14891087e724f7febd50672356d355b1b8a9693c",
+      "timeMs": 2300.100000000559,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 180,
+      "file": "HandToChin-to-Wave-0180.png",
+      "pngSha256": "ba1513bf0a2b8d8ee2dfc488e0e55b5c5e8561eafc7c8f9504cd79fbddbaaf06",
+      "timeMs": 3066.4000000003725,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 225,
+      "file": "HandToChin-to-Wave-0225.png",
+      "pngSha256": "b964e6c2148b8a0572eb05d8383750759038132261b6029d02d0a5494420a828",
+      "timeMs": 3832.7999999998137,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 270,
+      "file": "HandToChin-to-Wave-0270.png",
+      "pngSha256": "86eb03b13f7f5b6b1cb581c80caa295c7c1c8db6c99a829ace2620a592ddffa2",
+      "timeMs": 4599.700000000186,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 315,
+      "file": "HandToChin-to-Wave-0315.png",
+      "pngSha256": "8d41e0e7a43fe7b9faeee0ed620da2483d161c72d20d9014c9bf7c1bd5dfcc95",
+      "timeMs": 5366.600000000559,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 360,
+      "file": "HandToChin-to-Wave-0360.png",
+      "pngSha256": "2830186d49dafa31d3458225370cafa5516c605f17d650b00020699981361de5",
+      "timeMs": 6133.100000000559,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 405,
+      "file": "HandToChin-to-Wave-0405.png",
+      "pngSha256": "c38e675a33feeb3b01fea9a6c2e757159a5fff45814f7635f75c5514c38ca998",
+      "timeMs": 6900,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 450,
+      "file": "HandToChin-to-Wave-0450.png",
+      "pngSha256": "87a3105f7c01111e3531c77309ee9d28bf635f7fcb1b5b400f714967e6c5576f",
+      "timeMs": 7666.299999999814,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 495,
+      "file": "HandToChin-to-Wave-0495.png",
+      "pngSha256": "ea49c3f5003e1c20861687239a60d7a1662efab2a196e9802c14aee4d698abaa",
+      "timeMs": 8433.100000000559,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 540,
+      "file": "HandToChin-to-Wave-0540.png",
+      "pngSha256": "c2b16d9c4bb96adc445528e8475e512d0bad7ddc6352e7f4ab8b200c95df1828",
+      "timeMs": 9216.299999999814,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 585,
+      "file": "HandToChin-to-Wave-0585.png",
+      "pngSha256": "e5c8a32c739ed7fa8ad56ca21f35e65a7f24a53a6266587ad9b284286e141965",
+      "timeMs": 9983,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 630,
+      "file": "HandToChin-to-Wave-0630.png",
+      "pngSha256": "eb96f1e9f30bd8e4056060b7937fdf81fdfca650a060310449f275b011783e67",
+      "timeMs": 10749.600000000559,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "HandToChin-to-Wave",
+      "index": 675,
+      "file": "HandToChin-to-Wave-0675.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 11516.299999999814,
+      "contactSheet": "HandToChin-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 0,
+      "file": "FingerHeart-to-HandToChin-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 45,
+      "file": "FingerHeart-to-HandToChin-0045.png",
+      "pngSha256": "0830dc95fd282955519f292e2c341aa2b08035022e2e251abf6bb6526f928d7b",
+      "timeMs": 765.7000000001863,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 90,
+      "file": "FingerHeart-to-HandToChin-0090.png",
+      "pngSha256": "5fb15e44204b7e3f0628f224c3da801ee9ccb055cd304a38db30f93d53538a41",
+      "timeMs": 1533.4000000003725,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 135,
+      "file": "FingerHeart-to-HandToChin-0135.png",
+      "pngSha256": "086dfb56eddd2ed1d1d4e07cef627e399c42541655312f64f9409ea365eb1f92",
+      "timeMs": 2299.7999999998137,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 180,
+      "file": "FingerHeart-to-HandToChin-0180.png",
+      "pngSha256": "47009cf611dca6e57c57a7abe1b4b4b0cf7b08c4d2d927a0a287eb07eba12701",
+      "timeMs": 3066.4000000003725,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 225,
+      "file": "FingerHeart-to-HandToChin-0225.png",
+      "pngSha256": "e1483915ddf8b13bb29f641dc6962123b71de7ab69a578cff2c0cb378b85ac54",
+      "timeMs": 3832.7000000001863,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 270,
+      "file": "FingerHeart-to-HandToChin-0270.png",
+      "pngSha256": "f2f55ce41eec1144ea76eb063df04db565a7870c585bcaa3c46dc4327ab9d863",
+      "timeMs": 4582.299999999814,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 315,
+      "file": "FingerHeart-to-HandToChin-0315.png",
+      "pngSha256": "fccfd20fa25ee2da26cd4fcdbf36e7402b926eddfe538cc3dccf1bd965f2b0ec",
+      "timeMs": 5349.700000000186,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 361,
+      "file": "FingerHeart-to-HandToChin-0361.png",
+      "pngSha256": "590045de5c38c24086ab4f03924f386f266f0e35c4bf14c5f3069fe49ac35d41",
+      "timeMs": 6133,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 406,
+      "file": "FingerHeart-to-HandToChin-0406.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 6899.4000000003725,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 451,
+      "file": "FingerHeart-to-HandToChin-0451.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 7682.9000000003725,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 496,
+      "file": "FingerHeart-to-HandToChin-0496.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 8449.400000000373,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 541,
+      "file": "FingerHeart-to-HandToChin-0541.png",
+      "pngSha256": "96ea13b253c20c20ab6aa5da77600855e56ce2bf3e2765e4b6e0ba7b00d11a7f",
+      "timeMs": 9215.400000000373,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 586,
+      "file": "FingerHeart-to-HandToChin-0586.png",
+      "pngSha256": "81befcd63fe282a96774ac0ad46db3e32d389aed9beea7af9f9faa61736ed9fb",
+      "timeMs": 9982.799999999814,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 631,
+      "file": "FingerHeart-to-HandToChin-0631.png",
+      "pngSha256": "4ace4c1ca6c61e39408bf179ca0539539a7b74e6ebc0c23479a8b56f3085a4af",
+      "timeMs": 10749.5,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-HandToChin",
+      "index": 676,
+      "file": "FingerHeart-to-HandToChin-0676.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 11516.099999999627,
+      "contactSheet": "FingerHeart-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 0,
+      "file": "FingerHeart-to-Wave-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 45,
+      "file": "FingerHeart-to-Wave-0045.png",
+      "pngSha256": "0830dc95fd282955519f292e2c341aa2b08035022e2e251abf6bb6526f928d7b",
+      "timeMs": 766.5,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 90,
+      "file": "FingerHeart-to-Wave-0090.png",
+      "pngSha256": "de8b47e294dc393e3d0140399fa5fd5191bc4b7c57926ce26690767a0b097fd5",
+      "timeMs": 1533.1000000005588,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 135,
+      "file": "FingerHeart-to-Wave-0135.png",
+      "pngSha256": "086dfb56eddd2ed1d1d4e07cef627e399c42541655312f64f9409ea365eb1f92",
+      "timeMs": 2299.300000000745,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 180,
+      "file": "FingerHeart-to-Wave-0180.png",
+      "pngSha256": "47009cf611dca6e57c57a7abe1b4b4b0cf7b08c4d2d927a0a287eb07eba12701",
+      "timeMs": 3065.300000000745,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 225,
+      "file": "FingerHeart-to-Wave-0225.png",
+      "pngSha256": "2ff61a046a396eb59e4d817f55adc7e1be543842a70bbaf623d3b9233f7cf678",
+      "timeMs": 3833.100000000559,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 270,
+      "file": "FingerHeart-to-Wave-0270.png",
+      "pngSha256": "907f9f7e9d9fca85b9c36c4cc499a7c3d0f0cda7a5f2c46a855539531a5a6f17",
+      "timeMs": 4599.700000000186,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 315,
+      "file": "FingerHeart-to-Wave-0315.png",
+      "pngSha256": "5a55ce2eac714d028fcbc4811083bf66a0065ac442a57589cf7285315fea0a80",
+      "timeMs": 5366.4000000003725,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 361,
+      "file": "FingerHeart-to-Wave-0361.png",
+      "pngSha256": "e1934478e3b6c4f23df8c57ccef70c7c29e338d0be22c3ada86e57f54047db01",
+      "timeMs": 6149.600000000559,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 406,
+      "file": "FingerHeart-to-Wave-0406.png",
+      "pngSha256": "73e7f233993b55536678cd56124eaefddec55084b03025c0a3b355e495caf154",
+      "timeMs": 6916.100000000559,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 451,
+      "file": "FingerHeart-to-Wave-0451.png",
+      "pngSha256": "276c2b96bc91a7298f446c5242fa03235b01f0663fcab66a69006846502dd6cc",
+      "timeMs": 7681.9000000003725,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 496,
+      "file": "FingerHeart-to-Wave-0496.png",
+      "pngSha256": "a31c76488f49f90bb007ebae746b87b494eabcebd4dcd836a8cfd45e4215ad42",
+      "timeMs": 8448.800000000745,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 541,
+      "file": "FingerHeart-to-Wave-0541.png",
+      "pngSha256": "eee0f3e3994c4862b3042e9eb62e15c29d70151b2818c03aa942ac531cf558af",
+      "timeMs": 9215.700000000186,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 586,
+      "file": "FingerHeart-to-Wave-0586.png",
+      "pngSha256": "48a86899f75c18642acc26b1a6e383d302ea1c72d7b42a70e1086ddaac0ceb79",
+      "timeMs": 9982.5,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 631,
+      "file": "FingerHeart-to-Wave-0631.png",
+      "pngSha256": "eb96f1e9f30bd8e4056060b7937fdf81fdfca650a060310449f275b011783e67",
+      "timeMs": 10749,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "FingerHeart-to-Wave",
+      "index": 676,
+      "file": "FingerHeart-to-Wave-0676.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 11516.100000000559,
+      "contactSheet": "FingerHeart-to-Wave.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 0,
+      "file": "Wave-to-HandToChin-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 45,
+      "file": "Wave-to-HandToChin-0045.png",
+      "pngSha256": "cac9a5164425de6fa740397612062afa353ab1a67b8527a2449aa4f48935c828",
+      "timeMs": 783.2000000001863,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 90,
+      "file": "Wave-to-HandToChin-0090.png",
+      "pngSha256": "4cd7c8c49e110bdb09a2df4bc2d56373183b0b3b142c271fc9746d2d0ef83b77",
+      "timeMs": 1549.9000000003725,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 135,
+      "file": "Wave-to-HandToChin-0135.png",
+      "pngSha256": "488cb048bf4b22b6955ac19dc5dc6b029f1ef5296ffab90b335e255ccf16e0b0",
+      "timeMs": 2316.4000000003725,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 180,
+      "file": "Wave-to-HandToChin-0180.png",
+      "pngSha256": "cee50a864193ea5c128c2ede98bf46bba2ddeca732d6ab7ae4a544fe06eaaf56",
+      "timeMs": 3083.2000000001863,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 225,
+      "file": "Wave-to-HandToChin-0225.png",
+      "pngSha256": "642600905a5d70876a2403efdbc744432b2c0458475937fbd2b6cac6c6475f25",
+      "timeMs": 3849.2000000001863,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 270,
+      "file": "Wave-to-HandToChin-0270.png",
+      "pngSha256": "f2f55ce41eec1144ea76eb063df04db565a7870c585bcaa3c46dc4327ab9d863",
+      "timeMs": 4616.300000000745,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 315,
+      "file": "Wave-to-HandToChin-0315.png",
+      "pngSha256": "77794a432f98480d7b1a83dcfce05e585a2870fe7900958f7cf95d0e587b312d",
+      "timeMs": 5382.5,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 360,
+      "file": "Wave-to-HandToChin-0360.png",
+      "pngSha256": "a74ffbcd5b5fd99e74c1d2603e27abcfe24e24f630d185f2e588cedcffaa93ee",
+      "timeMs": 6149.700000000186,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 405,
+      "file": "Wave-to-HandToChin-0405.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 6916.4000000003725,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 450,
+      "file": "Wave-to-HandToChin-0450.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 7682.9000000003725,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 495,
+      "file": "Wave-to-HandToChin-0495.png",
+      "pngSha256": "ab0b91fdcf02127c054bc0c397aac03ec99c7ff9c56af0904e4f0ea207482480",
+      "timeMs": 8449.300000000745,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 540,
+      "file": "Wave-to-HandToChin-0540.png",
+      "pngSha256": "d853940f539d1aaaeb8b81f896b8ec11220d5addd66550085ed4a82e8abfb143",
+      "timeMs": 9216.200000000186,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 585,
+      "file": "Wave-to-HandToChin-0585.png",
+      "pngSha256": "81befcd63fe282a96774ac0ad46db3e32d389aed9beea7af9f9faa61736ed9fb",
+      "timeMs": 9982.900000000373,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 630,
+      "file": "Wave-to-HandToChin-0630.png",
+      "pngSha256": "4ace4c1ca6c61e39408bf179ca0539539a7b74e6ebc0c23479a8b56f3085a4af",
+      "timeMs": 10749.600000000559,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-HandToChin",
+      "index": 675,
+      "file": "Wave-to-HandToChin-0675.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 11516.100000000559,
+      "contactSheet": "Wave-to-HandToChin.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 0,
+      "file": "Wave-to-FingerHeart-0000.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 0,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 45,
+      "file": "Wave-to-FingerHeart-0045.png",
+      "pngSha256": "2cc6367adaf771e98a31f59d27cd02a0f710775954a3025d376b465efd04f2c8",
+      "timeMs": 766.6000000005588,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 90,
+      "file": "Wave-to-FingerHeart-0090.png",
+      "pngSha256": "0a9204797977e8bb7b7fd0354df38cbf5deb1499645be2d033f1325a497ab17e",
+      "timeMs": 1533.300000000745,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 135,
+      "file": "Wave-to-FingerHeart-0135.png",
+      "pngSha256": "152f6d9babd5990fd720e4014206ed74bc9ced98839f9d704e9b9190a0baa259",
+      "timeMs": 2299.800000000745,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 180,
+      "file": "Wave-to-FingerHeart-0180.png",
+      "pngSha256": "b6f09720c38704dfed7e03e11cf887c126ed233082945c2959962716414853d7",
+      "timeMs": 3066.5,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 225,
+      "file": "Wave-to-FingerHeart-0225.png",
+      "pngSha256": "ab4fc4590e35e5a7214eee0c973f5b962df198653a79d50b85d86daa7fa6955f",
+      "timeMs": 3833.100000000559,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 270,
+      "file": "Wave-to-FingerHeart-0270.png",
+      "pngSha256": "99bbea3e5c56562a4488acf58f9aade91bf7777f7841db54f9a9a71240bc8356",
+      "timeMs": 4599.800000000745,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 315,
+      "file": "Wave-to-FingerHeart-0315.png",
+      "pngSha256": "5c9fd3d467aab533ab5d8f0b5d2b65cc4329476d971245991e14c073af139140",
+      "timeMs": 5366.4000000003725,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 360,
+      "file": "Wave-to-FingerHeart-0360.png",
+      "pngSha256": "6a11c7ab63e4c76601429fc71924c842cd938abcce7cda82713131b08772775d",
+      "timeMs": 6133,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 405,
+      "file": "Wave-to-FingerHeart-0405.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 6899.700000000186,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 450,
+      "file": "Wave-to-FingerHeart-0450.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 7666.4000000003725,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 495,
+      "file": "Wave-to-FingerHeart-0495.png",
+      "pngSha256": "2989ab2b3a278848c3679ce5d5246c5dd4b133160aeccda08f70ab4657cd6ec0",
+      "timeMs": 8432.800000000745,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 540,
+      "file": "Wave-to-FingerHeart-0540.png",
+      "pngSha256": "31141e6b3a98041a03a305836d3b86a89bfc6f64dc0c22a86526af8edb790e47",
+      "timeMs": 9199.5,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 585,
+      "file": "Wave-to-FingerHeart-0585.png",
+      "pngSha256": "eb313ebecf3992317dd92b39d1cb3e62bccb93cb1c38294d298b7ae0dee3b1eb",
+      "timeMs": 9982.5,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 630,
+      "file": "Wave-to-FingerHeart-0630.png",
+      "pngSha256": "aafac5ab455ca41cedbdca821f3d4e45b25aaaee61f8b3316883262772191508",
+      "timeMs": 10748.400000000373,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    },
+    {
+      "track": "Wave-to-FingerHeart",
+      "index": 675,
+      "file": "Wave-to-FingerHeart-0675.png",
+      "pngSha256": "027e6102918706840ec5230ebea5ced56848ff0e8e13daad6bd221aa34668388",
+      "timeMs": 11516.200000000186,
+      "contactSheet": "Wave-to-FingerHeart.jpg",
+      "cropPixels": [
+        0,
+        169,
+        495,
+        712
+      ]
+    }
+  ]
+}

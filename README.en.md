@@ -21,7 +21,7 @@ The workflow grew out of character production with **GPT-6 Astra Ultra**. Start 
 
 ## Example model: Pink Sakura
 
-[Pink Sakura](examples/pink-sakura/README.md) includes source art, a layer recipe, an HD runtime model and verification records. The screenshots and animation below come from the earlier eyebrow version's WebGL canvas, using synthetic tracking input. See the [dynamics review](examples/pink-sakura/verification/dynamics-20261020/README.md) for the latest body-motion evidence.
+[Pink Sakura](examples/pink-sakura/README.md) includes source art, a layer recipe, an HD runtime model and verification records. The screenshots and animation below come from the earlier eyebrow version's WebGL canvas, using synthetic tracking input. See the [gesture review](examples/pink-sakura/verification/gestures-20261022/README.md) for the current model and motion evidence.
 
 | Reference art | Rigged model | Motion preview |
 | :---: | :---: | :---: |
@@ -29,15 +29,17 @@ The workflow grew out of character production with **GPT-6 Astra Ultra**. Start 
 
 | Feature | Included in the example |
 | --- | --- |
-| Structure | 24 source layers, 26 drawables, 37 parameters |
+| Structure | 30 source layers, 32 drawables, 41 parameters |
 | Rigging | Eyebrows, eyes, mouth shapes, head/body movement, shoulders, chest/waist, gentle upper-arm sway, cuffs, skirt, bow and hair |
-| Motions | 10 motions, including Quiet / Curious / Sleepy idles, Airy, SlowBlink and SpeechBob |
+| Motions | 14 motions, including HandToChin, FingerHeart, Wave, HandDown, three idle presets, SlowBlink and SpeechBob |
 | Expressions and physics | 8 parameter presets, 14 physics groups, Float and Wind inputs |
 | HD texture | `realesr-animevideov3-x4`, from a 2048² atlas to 8192² |
 
 [Runtime files](examples/pink-sakura/runtime/) · [Rebuild the model](examples/pink-sakura/README.md#复现模板) · [Face closeups and test records](examples/pink-sakura/verification/README.md)
 
-The body and sleeves retain a connected raster, with local deformers for shoulders, chest/waist and gentle upper-arm sway. This version adds no chin-rest, heart, wave or finger gestures. Some details remain rough at close range: the closed lip line is faint, partially closed lashes are thick, and `EyeOpen` stays closed between 0 and 0.25. See the [dynamics review](examples/pink-sakura/verification/dynamics-20261020/README.md) for the remaining issues. Final VTube Studio acceptance is left to the user.
+![Actual HD model: chin rest, finger heart and wave](examples/pink-sakura/verification/gestures-20261022/gesture-overview.jpg)
+
+The new gestures use a sleeve and hand sprites made for Pink, on the viewer’s left. The web player lowers the arm before switching gestures to avoid overlapping hands and abrupt elbow changes. These are preset motions, not camera hand tracking. The raised sleeve narrows, while older details such as thick half-closed lashes and a faint lip line remain. See the [review and limitations](examples/pink-sakura/verification/gestures-20261022/README.md). Final VTube Studio acceptance is left to the user.
 
 The provider attributes the reference image to **ChatGPT Image2.5**. The example artwork and model use [CC BY 4.0](examples/pink-sakura/LICENSE.md): you may use and modify them with attribution and a description of your changes. Do not claim to be the original creator. Underpainting and model production have separate provenance records.
 
@@ -105,7 +107,7 @@ The preview also has independent video, landmark and 2D gaze display switches, p
 
 ## Reproduction and verification
 
-**You do not need the author's original `work/` directory.** Pink Sakura's source images, eyebrow preparation script, layer and dynamics measurements, performance generator and runtime model are committed. Temporary files and caches can be regenerated. Obtain the official SDK, browser libraries, Upscayl and upscaling weights separately.
+**You do not need the author's original `work/` directory.** Pink Sakura's source images, eyebrow decomposition and arm registration scripts, layer and dynamics measurements, performance generator and runtime model are committed. Temporary files and caches can be regenerated. Obtain the official SDK, browser libraries, Upscayl and upscaling weights separately.
 
 | In this repository | Prepare locally |
 | --- | --- |
@@ -119,6 +121,7 @@ Each report identifies the commit or files it tested. Recent records are summari
 
 | Check | Recorded result |
 | --- | --- |
+| [Gestures and fresh upscale, 2026-10-22](examples/pink-sakura/verification/gestures-20261022/README.md) | 236 Core poses, 38 Web checks, 7,810 continuous frames and 91 pose screenshots; Minimal regression and scoped visual review |
 | [Fresh source archive, `a909460`](docs/verification/source-package-a909460.json) | 65 Python and 77 Node tests; brows, Pink recipe and measured dynamics inputs rebuilt without work/cache directories |
 | [Native body dynamics, 2026-10-21](examples/pink-sakura/verification/dynamics-20261020/README.md) | Core, Web, complete motion paths and neutral-face comparison; counts, artifact identities and visual-review scope are recorded in the report |
 | [Preview interactions, 2026-10-18](docs/verification/web-features-20261018.json) | 61 Python, 59 Node and 38 real WebGL checks; synthetic callbacks test overlays, expressions and statistics without opening a camera |
@@ -127,7 +130,7 @@ Each report identifies the commit or files it tested. Recent records are summari
 | [Fresh source archive, `e2c4679`](docs/verification/source-package-e2c4679.json) | 61 Python and 35 Node tests passed; regenerated 3 eyebrow PNGs, the 24-layer Pink recipe and the 16-layer geometric example |
 | [Earlier device and build checks](docs/verification/README.md) | 16 physical-camera checks at `7f391f4`, plus a separately recorded cold engine build |
 
-Source regeneration, engine compilation, rendering and device tests have separate records. None replaces final VTube Studio acceptance. The latest dynamics run compiled the adapter and exported Pink and Minimal with Core/Web checks using an existing Gradle dependency cache. It did not repeat camera testing, neural upscaling or a cold engine build. The original HD atlas was reused only after verifying an identical low-resolution atlas hash.
+Source regeneration, engine compilation, rendering and device tests have separate records. This gesture revision exports Pink and Minimal with cached Gradle dependencies and runs fresh `realesr-animevideov3-x4` inference for the new arm artwork. LOW and HD MOCs are byte-identical. No new cold engine build, physical-camera run or VTS acceptance is claimed.
 
 ## Tools and guides
 

@@ -187,4 +187,4 @@ AA、expand、fade 等修饰选项应搭配显式 `source_polygons` 或孔洞选
 
 [PinkSakuraDynamics.kt](../integrations/psd2live/PinkSakuraDynamics.kt)利用上游 `RigEditOverlay` / `RigWarpEdit`，在连续的身体和衣袖层上增加局部变形器，再添加 Float、Wind 与配件物理。中性控制点保持恒等，新增参数进入真实 MOC；网页映射只负责提供输入。`ParamWind` 是物理输入，经 `ParamWindSway` 才影响画面，静态单参数检查可能提示未观察到位移，必须补做随时间求值的检查。
 
-路径必须留在 manifest 所在配方目录内，测量档也必须进入公开源包。该文件的点位、层名与幅度仅适合 Pink；给其他角色使用时需要重新拆层和测量，并实现、验证对应配方，不能只改 `profile` 名称后套用。当前上臂只是连续衣袖的小幅摆动，不支持自由弯肘或手势。
+路径必须留在 manifest 所在配方目录内，测量档也必须进入公开源包。该文件的点位、层名与幅度仅适合 Pink；给其他角色使用时需要重新拆层和测量，并实现、验证对应配方，不能只改 `profile` 名称后套用。基础上臂参数仍只作小幅摆动。可选 `gestures.enabled` 分支需要专门注册的袖片、袖口和四种手型，另加四个手势参数。`restShoulder` / `restWrist`、三组肘腕点、注册缩放与裁切均是 Pink 专用数据；先运行 `prepare-arm.cjs`，不能把这组坐标直接套到别的角色。

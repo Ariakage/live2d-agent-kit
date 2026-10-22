@@ -127,3 +127,8 @@ alpha 仍继承原遮罩拓扑，不能凭超分凭空生成缺失细节。32px 
 - 分别记录高清运行时与编辑素材的分辨率。高清 runtime 图集不意味着源 PSD 的所有图层都已成为 4× 可编辑图层；不要把这些产物混为一谈。
 
 最后把实际 runtime 包交给 VTube Studio 用户验收；网页成功不替代其渲染器的结果。
+
+
+## Pink 手势图集的再超分
+
+2026-10-22 版本新增袖片与手型后，旧图集不再适用，因此实际重新执行同一 `realesr-animevideov3-x4` 模型。LOW 输入 SHA 为 `ef3b4db6f1e0b7bbd6bdfe8ce3bbc18fa2082dcdf11fefea00b1150afd196451`，新 HD 图集为 `b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e`。权重未改变；[完整推理记录](../examples/pink-sakura/verification/gestures-20261022/upscale.json)保留原输入 manifest、二进制与权重指纹。随后仅澄清测量文件注释，最终 LOW 重导出图集与原推理输入仍逐字节一致。

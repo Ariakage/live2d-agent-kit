@@ -127,20 +127,20 @@ def main():
     template = KIT_ROOT / 'templates' / 'web-preview'
     output.mkdir(parents=True, exist_ok=True)
     for source in template.iterdir():
-        if source.is_file(): shutil.copy2(source, output/source.name)
+        if source.is_file(): shutil.copyfile(source, output/source.name)
     (output/'model').mkdir(); (output/'vendor').mkdir()
     # Preserve arbitrary original filenames and directories. The entry point alone
     # is normalized; all resources remain relative to its original model directory.
     for relative, source in files:
-        target = output/'model'/relative; target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target)
+        target = output/'model'/relative; target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
     (output/'model'/'model.model3.json').write_text(json.dumps(settings,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    shutil.copy2(core, output/'vendor'/'live2dcubismcore.min.js')
-    for name in VENDOR: shutil.copy2(vendor/name, output/'vendor'/name)
+    shutil.copyfile(core, output/'vendor'/'live2dcubismcore.min.js')
+    for name in VENDOR: shutil.copyfile(vendor/name, output/'vendor'/name)
     camera_assets = None
     if tracking:
         for item, source in tracking:
             dest = output/'tracking'/item['path']; dest.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(source, dest)
+            shutil.copyfile(source, dest)
             if sha(dest) != item['sha256']:
                 raise ValueError(f'Tracking dependency changed during copy: {item["path"]}; prepare a new output directory')
         # The tracker resolves these relative to the prepared document URL.
@@ -156,12 +156,12 @@ def main():
                 target=output/'vendor'/source.name
                 if target.exists() and sha(target)!=sha(source):
                     target=output/'vendor'/('core-'+source.name)
-                shutil.copy2(source,target);notices.add(target.name)
+                shutil.copyfile(source,target);notices.add(target.name)
     reference_url=download_url=None
     if args.reference:
-        (output/'media').mkdir();dest=output/'media'/('reference'+args.reference.suffix.lower());shutil.copy2(args.reference,dest);reference_url='./media/'+dest.name
+        (output/'media').mkdir();dest=output/'media'/('reference'+args.reference.suffix.lower());shutil.copyfile(args.reference,dest);reference_url='./media/'+dest.name
     if args.download:
-        (output/'downloads').mkdir();shutil.copy2(args.download,output/'downloads'/'model.zip');download_url='./downloads/model.zip'
+        (output/'downloads').mkdir();shutil.copyfile(args.download,output/'downloads'/'model.zip');download_url='./downloads/model.zip'
     values={'DRAWING':drawing,'REGIONS':regions,'MODEL_URL':'./model/model.model3.json','MODEL_LABEL':config.get('label',model.name.removesuffix('.model3.json')),'REFERENCE_URL':reference_url,'DOWNLOAD_URL':download_url,'INPUT_MAPPING':config.get('inputMapping',{}),'CAPTURE_HOLD_DEFAULTS':hold_defaults,'CAMERA_ASSETS':camera_assets}
     (output/'view-config.js').write_text('// Generated configuration; drawing dimensions are independent of texture atlas resolution.\n'+''.join(f'export const {key} = {json.dumps(value,ensure_ascii=False)};\n' for key,value in values.items()),encoding='utf-8')
     manifest={'schemaVersion':1,'modelEntry':'model/model.model3.json','config':values,'dependencies':{'core':'user-provided; verify Cubism redistribution terms','pixi':'6.5.10','pixi-live2d-display':'0.4.0'},'copiedNotices':sorted(notices),'files':{str(p.relative_to(output)):sha(p) for p in sorted(output.rglob('*')) if p.is_file()}}

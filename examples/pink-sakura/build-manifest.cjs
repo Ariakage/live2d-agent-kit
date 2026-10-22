@@ -130,6 +130,27 @@ for (const side of ['r','l']) {
   crop:f.patch_rect_xywh,x:f.patch_rect_xywh[0],y:f.patch_rect_xywh[1],z:56,
   parent_deformer:'DeformFaceContour'});
 }
+const gestures=JSON.parse(fs.readFileSync(path.join(root,'dynamics-regions.json'))).gestures;
+if (gestures?.enabled) {
+ const topwear=layers.find(layer=>layer.name==='topwear');
+ const relaxedHand=topwear.source_polygons[5];
+ // Remove the old sleeve and hand together; the retained cardigan panel is the torso boundary.
+ topwear.source_alpha_holes.push([[170,340],[400,340],[400,430],[389,492],
+  [372,552],[356,610],[341,658],[324,709],[320,790],[285,894],[170,894]]);
+ layers.push(original('gesture-hand-rest-r',[relaxedHand],[180,775,100,105],25,
+  {parent_deformer:'DeformBodyZBreath'}));
+ for(const part of gestures.registration.parts)layers.push({
+  name:part.name,path:`source/${part.name}.png`,crop:[170,325,260,575],x:170,y:325,
+  z:part.mode==='sleeve'?26:25,
+  parent_deformer:'DeformBodyZBreath'});
+ const [sx,sy]=gestures.restShoulder,[wx,wy]=gestures.restWrist;
+ const length=Math.hypot(wx-sx,wy-sy),dx=(wx-sx)/length,dy=(wy-sy)/length;
+ const corner=(along,across)=>[sx+dx*along+dy*across,sy+dy*along-dx*across];
+ layers.push({name:gestures.cuffLayer,path:'source/gesture-sleeve-r.png',
+  source_polygons:[[corner(length*.86,-100),corner(length*1.15,-100),
+   corner(length*1.15,100),corner(length*.86,100)]],source_mask_antialias:true,
+  crop:[170,325,260,575],x:170,y:325,z:71,parent_deformer:'DeformBodyZBreath'});
+}
 if (process.argv.includes('--import-only')) manifest.import_only=true;
 fs.writeFileSync(path.join(root,manifest.import_only?'manifest-import.json':'manifest.json'),
  JSON.stringify(manifest,null,2)+'\n');

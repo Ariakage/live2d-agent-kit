@@ -1,5 +1,14 @@
 # Changelog / 更新日志
 
+## 2026-10-22 · Pink Sakura gestures / 手势
+
+- 为观众左侧手臂新增托下巴、指尖比心、招手与放下：41 参数、32 Drawable、14 动作。公开补画源、配准脚本与测量，使用连续袖片和同路径袖口覆盖，保留原脸。
+- 网页中途切换先放下旧动作再换手型；增加取消/替换回归。手型在袖口内切换，暂不提供摄像头手指识别。
+- 新图集实际执行 `realesr-animevideov3-x4`，2048² → 8192²；LOW/HD MOC 一致。当前复现不需要旧 work 素材。
+- 新增真实 WebGL 连续检查：15 条轨迹、7,810 帧，涵盖往返、反向、六种互切和主动放下；另做 91 帧脸部/身体姿态回归、236 姿态 Core、38 项 Web 检查以及 Minimal 导出/Core/Web 回归。选帧目检范围与限制单独列出，未重新进行摄像头/VTS/冷引擎构建验收。
+- 修复外置文件系统不支持时间戳复制时预览准备失败的问题；复制内容后继续按字节身份校验。
+- Validation and reproduction details: [gesture evidence](examples/pink-sakura/verification/gestures-20261022/README.md).
+
 ## 2026-10-21
 
 - 独立源码包 `a909460` 审计通过：65 项 Python / 77 项 Node，眉毛、Pink 与 Minimal 公开配方可重建；已补齐高清配方搬迁时的动态测量文件复制与边界测试。 · Native Pink dynamics / 身体动态与表情动作

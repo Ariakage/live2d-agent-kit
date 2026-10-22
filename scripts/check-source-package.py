@@ -121,6 +121,19 @@ def main():
                     report["browSources"].append({"file": name, "sha256": actual, "matchesPublished": actual == expected})
                     if actual != expected:
                         raise ValueError(f"Regenerated eyebrow source differs: {name}")
+            arm_script = root / "examples/pink-sakura/prepare-arm.cjs"
+            if arm_script.is_file():
+                run("pink-arm-preparation", [args.node, str(arm_script.relative_to(root)), "work/pink-arms"])
+                report["armSources"] = []
+                for generated in sorted((root / "work/pink-arms").glob("*.png")):
+                    published = root / "examples/pink-sakura/source" / generated.name
+                    actual = hashlib.sha256(generated.read_bytes()).hexdigest()
+                    expected = hashlib.sha256(published.read_bytes()).hexdigest()
+                    report["armSources"].append({"file": generated.name, "sha256": actual, "matchesPublished": actual == expected})
+                    if actual != expected:
+                        raise ValueError(f"Regenerated arm source differs: {generated.name}")
+                if len(report["armSources"]) != 4:
+                    raise ValueError("Expected a continuous sleeve and three generated hand forms")
             run("pink-recipe", [args.node, "examples/pink-sakura/build-manifest.cjs"])
             pink = root / "examples/pink-sakura/manifest.json"
             report["pink"] = manifest_sources(pink, root)

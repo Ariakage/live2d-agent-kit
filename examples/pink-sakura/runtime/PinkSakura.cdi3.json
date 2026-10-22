@@ -185,6 +185,26 @@
 			"Id": "ParamBowSwing",
 			"GroupId": "",
 			"Name": "Bow Swing"
+		},
+		{
+			"Id": "ParamArmRLift",
+			"GroupId": "",
+			"Name": "Right arm gesture lift"
+		},
+		{
+			"Id": "ParamArmRPose",
+			"GroupId": "",
+			"Name": "Right arm pose: chin / heart / wave"
+		},
+		{
+			"Id": "ParamHandRForm",
+			"GroupId": "",
+			"Name": "Right hand: rest / chin / heart / wave"
+		},
+		{
+			"Id": "ParamHandRWave",
+			"GroupId": "",
+			"Name": "Right wrist wave"
 		}
 	],
 	"ParameterGroups": [
@@ -265,6 +285,10 @@
 	],
 	"Drawables": [
 		{
+			"Id": "ArtMeshLayerR",
+			"Name": "gesture-cuff-r"
+		},
+		{
 			"Id": "ArtMeshEyeCloseL",
 			"Name": "eye_close-l"
 		},
@@ -335,6 +359,26 @@
 		{
 			"Id": "ArtMeshFrontHairR",
 			"Name": "front hair-side-r"
+		},
+		{
+			"Id": "ArtMeshLayerR2",
+			"Name": "gesture-sleeve-r"
+		},
+		{
+			"Id": "ArtMeshLayerR3",
+			"Name": "gesture-hand-wave-r"
+		},
+		{
+			"Id": "ArtMeshLayerR4",
+			"Name": "gesture-hand-heart-r"
+		},
+		{
+			"Id": "ArtMeshLayerR5",
+			"Name": "gesture-hand-chin-r"
+		},
+		{
+			"Id": "ArtMeshLayerR6",
+			"Name": "gesture-hand-rest-r"
 		},
 		{
 			"Id": "ArtMeshTopwear",

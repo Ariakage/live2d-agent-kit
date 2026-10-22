@@ -1,0 +1,24 @@
+{
+  "profile": "pink-sakura-arm-v1",
+  "passedLocalGeometry": true,
+  "newParameters": 4,
+  "liftKeyCount": 17,
+  "poseKeyCount": 17,
+  "sleeveKeyPoses": 289,
+  "interpolationSamples": 4608,
+  "minimumSleeveKeyTriangleAreaRatio": 0.09009145,
+  "minimumSleeveInterpolatedTriangleAreaRatio": 0.09649621,
+  "minimumWidthScale": 0.4597521,
+  "elbowRadii": [
+    39.0,
+    39.0,
+    56.0
+  ],
+  "singleContinuousSleeveMesh": true,
+  "matchingCuffOverlay": true,
+  "fractionalPoseReturnsThroughRest": true,
+  "handOpacitySamples": 121,
+  "maximumSimultaneousVisibleHands": 1,
+  "limitations": "Local sleeve mesh keys and quarter-cell interpolants only. Geometry positivity does not prove appearance, parent-combination safety or VTS acceptance. Hand-form switching retracts into the cuff and has an intentionally hidden interval.",
+  "originalLocalReportSha256": "e05f33c7718c4c167bd0c587b117f08813ea8b6a00ac459946c03a7a274bd26c"
+}

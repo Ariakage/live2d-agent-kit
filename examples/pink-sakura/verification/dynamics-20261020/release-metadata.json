@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-21T00:55:32.857095+00:00",
+  "entry": "PinkSakura.model3.json",
+  "nativeCoreValidated": true,
+  "coreEvidence": {
+    "validator": "local-official-cubism-core",
+    "sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+    "passed": true,
+    "coreVersion": "06.00.0257 (100663553)",
+    "checkedAt": "2026-10-20T18:20:47.199755Z",
+    "source": "Supplied report matched; Core was not rerun by this command."
+  },
+  "mocSha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+  "files": {
+    "ASSET-LICENSE.md": {
+      "sha256": "1107b511d8b5494199e8e5415b36e65664717826dc86e97f8ee1a835a85980af",
+      "bytes": 2960
+    },
+    "ATTRIBUTION.md": {
+      "sha256": "0e34fc3d015f9926568245063bf2597c7bf3b29e22208d90608ce642a84dd82c",
+      "bytes": 5250
+    },
+    "PinkSakura.8192/texture_00.png": {
+      "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
+      "bytes": 45336522
+    },
+    "PinkSakura.Angry.exp3.json": {
+      "sha256": "933b6bd37bbc38f809be37b910b43e06f1cd5a7ce0e3589e314ae69a3bb461ad",
+      "bytes": 630
+    },
+    "PinkSakura.Sleepy.exp3.json": {
+      "sha256": "ec75eadd424aa6ab2a51f93c8b5da51310fcff520fb260b72f561ff2caa9cc9f",
+      "bytes": 632
+    },
+    "PinkSakura.Smile.exp3.json": {
+      "sha256": "edc03b4d46d8e7861215689d9bcbc5dd113e17bedb9b972dacff1576870a97d9",
+      "bytes": 623
+    },
+    "PinkSakura.Smug.exp3.json": {
+      "sha256": "039de847cfa12d191a10c1f412b4742aaa142588f0122c5e3e63aab6818df128",
+      "bytes": 630
+    },
+    "PinkSakura.SoftSmile.exp3.json": {
+      "sha256": "f7408d991b1b68f9fd4119b2a1f81f6a16b4e4bad6cecb2c96e3d71b8e149410",
+      "bytes": 623
+    },
+    "PinkSakura.Surprised.exp3.json": {
+      "sha256": "d8acf60419997c289e015ed140aefa5d50dbcf871566f22baf36c3e103b1a86f",
+      "bytes": 624
+    },
+    "PinkSakura.WinkLeft.exp3.json": {
+      "sha256": "e3bb471f38c48cd80a4344cf354f49aff53d2f653962b5e52cd31e3265484526",
+      "bytes": 620
+    },
+    "PinkSakura.WinkRight.exp3.json": {
+      "sha256": "2b873816ff9a8fcf1f9eee19970be0d5a4a8e8f74d397d1112709fe9de026d27",
+      "bytes": 620
+    },
+    "PinkSakura.airy.motion3.json": {
+      "sha256": "10ade92258be94667d302b84837d1547848407e5fa2b349e2a98910b2b94bb64",
+      "bytes": 12075
+    },
+    "PinkSakura.blink.motion3.json": {
+      "sha256": "399f91b7bfac0666f589ab7c6daace5e33e5c6d6e7c6e7ca4024b6db48a65110",
+      "bytes": 1155
+    },
+    "PinkSakura.cdi3.json": {
+      "sha256": "04a84e449021a4261cbc343d8804693f59090601468f82f0615823d0ac561b5b",
+      "bytes": 6060
+    },
+    "PinkSakura.curious.motion3.json": {
+      "sha256": "45386ab91514e34c7e4b27c968aa2457d2c084abb6c1bc1c07e781df7220a2c1",
+      "bytes": 11579
+    },
+    "PinkSakura.idle.motion3.json": {
+      "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990",
+      "bytes": 2282
+    },
+    "PinkSakura.moc3": {
+      "sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+      "bytes": 1013184
+    },
+    "PinkSakura.model3.json": {
+      "sha256": "c2fa4c10d2b5322c0eaf6da9a02b2ecc963dd2b9018628fc1d5942c41d2e3090",
+      "bytes": 2249
+    },
+    "PinkSakura.nod.motion3.json": {
+      "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418",
+      "bytes": 1751
+    },
+    "PinkSakura.physics3.json": {
+      "sha256": "50416d102579e65756db8636fd882f28e9fd0ea182da09f6225fd1482cb785ea",
+      "bytes": 28244
+    },
+    "PinkSakura.quiet.motion3.json": {
+      "sha256": "f85e1ba83ce97793c124091ade9371577bd385c561125ade24828685dec36ced",
+      "bytes": 10411
+    },
+    "PinkSakura.shake.motion3.json": {
+      "sha256": "9714b72b47dba8e33b6b08d0f9e84c77309a6ce6c98d2a3815c3a59d69163b01",
+      "bytes": 1571
+    },
+    "PinkSakura.sleepy.motion3.json": {
+      "sha256": "4ebffb79de698ef5b68bca81c86c10edce23c6435c61fafd88a17cf94bbc698f",
+      "bytes": 10270
+    },
+    "PinkSakura.slowblink.motion3.json": {
+      "sha256": "b861d0ab6bcd0c20901b656c0d2eeda8ca8e771b913c20bfdeff656f1d6d36c4",
+      "bytes": 1432
+    },
+    "PinkSakura.speechbob.motion3.json": {
+      "sha256": "7af749e56d29a7af938fd27306ed34f740af21053ab134b962ae8ca5cd464622",
+      "bytes": 3239
+    }
+  },
+  "attribution": {
+    "included": true,
+    "path": "ATTRIBUTION.md",
+    "sha256": "0e34fc3d015f9926568245063bf2597c7bf3b29e22208d90608ce642a84dd82c"
+  },
+  "assetLicense": {
+    "included": true,
+    "path": "ASSET-LICENSE.md",
+    "sha256": "1107b511d8b5494199e8e5415b36e65664717826dc86e97f8ee1a835a85980af"
+  },
+  "vtubeStudioTested": false,
+  "officialEditorTested": false,
+  "cameraAccessed": false,
+  "scope": "Runtime dependencies copied after structural checks and exact supplied official-Core report matching; optional explicitly supplied publication text is byte-verified. No target-application acceptance or license-content validation is inferred."
+}

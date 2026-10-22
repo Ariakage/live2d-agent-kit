@@ -1,12 +1,30 @@
 {
   "profile": "pink-sakura-v1",
-  "canvas": [1024, 1536],
+  "canvas": [
+    1024,
+    1536
+  ],
   "coordinateSystem": "Original reference pixels; anatomical L is image-right. Positive upper-arm swing moves the wrist outward from the torso. Measurements are specific to this example.",
   "bodyLayer": "topwear",
   "bowLayer": "headwear-bow",
-  "shoulders": {"R": [392, 382], "L": [605, 380]},
-  "waist": [500, 564],
-  "bowAnchor": [640, 139],
+  "shoulders": {
+    "R": [
+      392,
+      382
+    ],
+    "L": [
+      605,
+      380
+    ]
+  },
+  "waist": [
+    500,
+    564
+  ],
+  "bowAnchor": [
+    640,
+    139
+  ],
   "floatPixels": 8,
   "limits": {
     "shoulderPixels": 3,
@@ -17,5 +35,172 @@
     "skirtPixels": 4,
     "bowDegrees": 2
   },
-  "notes": "Connected sleeve/hand raster is retained. Upper-arm motion is a restrained local sway, not a free arm gesture. New fields taper before the feet and preserve the collar centre. Verify combinations through actual Core rendering."
+  "notes": "Body fields use a connected torso raster with restrained upper-arm sway. When gestures.enabled is true, the viewer-left sleeve and hands are replaced by registered sprite layers with independent lift, pose and hand-form keys. Fields taper before the feet and preserve the collar centre. Verify combinations through actual Core rendering.",
+  "gestures": {
+    "enabled": true,
+    "side": "R",
+    "restShoulder": [
+      392,
+      382
+    ],
+    "restWrist": [
+      246,
+      798
+    ],
+    "registration": {
+      "source": "arm-parts-v1.png",
+      "sleeveCenterline": [
+        [
+          70,
+          490
+        ],
+        [
+          180,
+          450
+        ],
+        [
+          350,
+          450
+        ],
+        [
+          600,
+          410
+        ],
+        [
+          800,
+          365
+        ],
+        [
+          1000,
+          300
+        ],
+        [
+          1200,
+          275
+        ],
+        [
+          1360,
+          235
+        ],
+        [
+          1430,
+          235
+        ]
+      ],
+      "parts": [
+        {
+          "name": "gesture-sleeve-r",
+          "mode": "sleeve",
+          "crop": [
+            0,
+            45,
+            615,
+            1410
+          ],
+          "anchor": [
+            450,
+            180
+          ],
+          "scale": [
+            0.265,
+            0.3736240677226435
+          ]
+        },
+        {
+          "name": "gesture-hand-chin-r",
+          "mode": "hand",
+          "crop": [
+            670,
+            70,
+            300,
+            395
+          ],
+          "anchor": [
+            831,
+            440
+          ],
+          "scale": [
+            0.2,
+            0.16
+          ]
+        },
+        {
+          "name": "gesture-hand-heart-r",
+          "mode": "hand",
+          "crop": [
+            680,
+            510,
+            280,
+            415
+          ],
+          "anchor": [
+            856,
+            900
+          ],
+          "scale": [
+            0.2,
+            0.16
+          ]
+        },
+        {
+          "name": "gesture-hand-wave-r",
+          "mode": "hand",
+          "crop": [
+            650,
+            935,
+            350,
+            490
+          ],
+          "anchor": [
+            850,
+            1400
+          ],
+          "scale": [
+            0.21,
+            0.17
+          ]
+        }
+      ]
+    },
+    "sleeveLayer": "gesture-sleeve-r",
+    "handLayers": {
+      "rest": "gesture-hand-rest-r",
+      "chin": "gesture-hand-chin-r",
+      "heart": "gesture-hand-heart-r",
+      "wave": "gesture-hand-wave-r"
+    },
+    "poses": [
+      {
+        "wrist": [
+          470,
+          366
+        ],
+        "elbow": [
+          315,
+          535
+        ]
+      },
+      {
+        "wrist": [
+          314,
+          375
+        ],
+        "elbow": [
+          310,
+          545
+        ]
+      },
+      {
+        "wrist": [
+          280,
+          350
+        ],
+        "elbow": [
+          300,
+          545
+        ]
+      }
+    ],
+    "cuffLayer": "gesture-cuff-r"
+  }
 }

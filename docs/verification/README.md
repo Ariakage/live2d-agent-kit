@@ -1,5 +1,7 @@
 # 验证记录索引 / Verification records
 
+**2026-10-22：** [Pink 手势版本](../../examples/pink-sakura/verification/gestures-20261022/README.md)包含 41 参数和 14 动作。新增补画、注册源图、4× 动漫推理与本轮 Core/Web/连续动作证据；旧设备报告不能作为新版摄像头或 VTS 验收。
+
 **2026-10-21：** [Pink 身体与配件动态](../../examples/pink-sakura/verification/dynamics-20261020/README.md)提供 37 参数、8 表情和 10 动作的新模型及验证。提交 `a909460` 的[独立源码包检查](source-package-a909460.json)通过：65 项 Python、77 项 Node，三张眉毛素材重建一致，Pink 24 层与动态测量文件、Minimal 16 层输入均齐全。初始副本没有 `work/`、`.cache/`、`outputs/` 或 `dist/`；这项审计不运行引擎、超分或真实摄像头。报告 SHA-256：`d9b7962590920cfccb6e68c9ff78053a237c8c9accf33de8cab7cb2be04b3ded`。下列设备报告属于历史版本。
 
 **2026-10-18：** [通用网页交互回归](web-features-20261018.json)记录了 61 项 Python、59 项 Node 和 38 项真实 Core/WebGL 检查。新增检查使用临时测试表情与合成追踪回调，覆盖面捕/模拟输入中的表情叠加、暂停后换表情、异步结果顺序、节点/视线开关和统计导出；设备请求为 0。查看了 1360×1000 桌面与 390×844 窄屏布局。记录包含模板和脚本 SHA；未改变 Pink 模型或图集，没有重跑真实摄像头、30 分钟长跑、VTS 或引擎冷编译。

@@ -1,0 +1,78 @@
+{
+  "Version": 3,
+  "Meta": {
+    "Duration": 1.6,
+    "Fps": 60,
+    "Loop": false,
+    "FadeInTime": 0.6,
+    "FadeOutTime": 0.6,
+    "AreBeziersRestricted": true,
+    "CurveCount": 4,
+    "TotalSegmentCount": 4,
+    "TotalPointCount": 16,
+    "UserDataCount": 0,
+    "TotalUserDataSize": 0
+  },
+  "Curves": [
+    {
+      "Target": "Parameter",
+      "Id": "ParamArmRLift",
+      "Segments": [
+        0,
+        0,
+        1,
+        0.53333333,
+        0,
+        1.06666667,
+        0,
+        1.6,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamArmRPose",
+      "Segments": [
+        0,
+        0,
+        1,
+        0.53333333,
+        0,
+        1.06666667,
+        0,
+        1.6,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamHandRForm",
+      "Segments": [
+        0,
+        0,
+        1,
+        0.53333333,
+        0,
+        1.06666667,
+        0,
+        1.6,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamHandRWave",
+      "Segments": [
+        0,
+        0,
+        1,
+        0.53333333,
+        0,
+        1.06666667,
+        0,
+        1.6,
+        0
+      ]
+    }
+  ]
+}

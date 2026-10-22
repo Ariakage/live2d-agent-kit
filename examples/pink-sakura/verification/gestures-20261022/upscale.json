@@ -1,0 +1,67 @@
+{
+  "complete": true,
+  "created_at": "2026-10-21T12:45:46.354541+00:00",
+  "method": "Local NCNN neural RGB 4x; independent bicubic alpha; unchanged logical UVs",
+  "input_manifest_sha256": "c440af93d971640ec9bc0d944a1284ec34ec5ee2962d17394af0a9ab98edb264",
+  "binary_sha256": "32fc7ada575dea981d158be032b92df9c98300b1e7c29f78ce532bd9fd6cfd07",
+  "model": "realesr-animevideov3-x4",
+  "weights": {
+    "realesr-animevideov3-x4.param": "850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e",
+    "realesr-animevideov3-x4.bin": "548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d"
+  },
+  "scale": 4,
+  "max_texture_size": 8192,
+  "pages": [
+    {
+      "source": "${REPO}/work/pink-gestures-20261021/low-v6/PinkSakura.2048/texture_00.png",
+      "source_sha256": "ef3b4db6f1e0b7bbd6bdfe8ce3bbc18fa2082dcdf11fefea00b1150afd196451",
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output": "page-00-rgba-4x.png",
+      "output_sha256": "b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e",
+      "output_size": [
+        8192,
+        8192
+      ],
+      "command": [
+        "/Applications/Upscayl.app/Contents/Resources/bin/upscayl-bin",
+        "-i",
+        "${VALIDATION_ARCHIVE}/20261021-pink-gestures-upscale/page-00-rgb.png",
+        "-o",
+        "${VALIDATION_ARCHIVE}/20261021-pink-gestures-upscale/page-00-rgb-4x.png",
+        "-m",
+        "${UPSCAYL_MODELS}",
+        "-n",
+        "realesr-animevideov3-x4",
+        "-z",
+        "4",
+        "-s",
+        "4",
+        "-t",
+        "256",
+        "-j",
+        "1:1:1",
+        "-f",
+        "png"
+      ]
+    }
+  ],
+  "dynamicsMeasurement": {
+    "file": "pink-dynamics.json",
+    "sha256": "9bda9e2f85dfc0ac56dd992b7dfb735e07aa885dcb1cd81fac9ab59880c02237"
+  },
+  "sourceSnapshots": [
+    {
+      "source": "${REPO}/work/pink-gestures-20261021/low-v6/PinkSakura.2048/texture_00.png",
+      "snapshot": "source-atlases/page-00.png",
+      "sha256": "ef3b4db6f1e0b7bbd6bdfe8ce3bbc18fa2082dcdf11fefea00b1150afd196451",
+      "size": [
+        2048,
+        2048
+      ]
+    }
+  ],
+  "originalLocalReportSha256": "52db7df0d78e54a7daae999432c9b33cdf29cc70e784cdfb0064aede14662141"
+}

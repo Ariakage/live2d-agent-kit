@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-10-21T00:55:32.857095+00:00",
+  "createdAt": "2026-10-22T12:22:04.341902+00:00",
   "entry": "PinkSakura.model3.json",
   "nativeCoreValidated": true,
   "coreEvidence": {
     "validator": "local-official-cubism-core",
-    "sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+    "sha256": "4ce948a92454589668b24caf3d928362a5251d3e415e0733ec5356e01f4fa745",
     "passed": true,
     "coreVersion": "06.00.0257 (100663553)",
-    "checkedAt": "2026-10-20T18:20:47.199755Z",
+    "checkedAt": "2026-10-21T12:50:35.227914Z",
     "source": "Supplied report matched; Core was not rerun by this command."
   },
-  "mocSha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
+  "mocSha256": "4ce948a92454589668b24caf3d928362a5251d3e415e0733ec5356e01f4fa745",
   "files": {
     "ASSET-LICENSE.md": {
-      "sha256": "1107b511d8b5494199e8e5415b36e65664717826dc86e97f8ee1a835a85980af",
-      "bytes": 2960
+      "sha256": "1d5a80ece404d21357a8027168e4903acddec1ee335686a46ad809d3dba63dc3",
+      "bytes": 1392
     },
     "ATTRIBUTION.md": {
-      "sha256": "0e34fc3d015f9926568245063bf2597c7bf3b29e22208d90608ce642a84dd82c",
-      "bytes": 5250
+      "sha256": "07691a60665bb30bbc46482775b75ffeb71b78d5364b98e2eb6b2d4994cf0b26",
+      "bytes": 2177
     },
     "PinkSakura.8192/texture_00.png": {
-      "sha256": "8f0df8c8ec968dbebb6d1f89a8afd708a3f5843b1fae7b70a9d9cf31146d5361",
-      "bytes": 45336522
+      "sha256": "b8a59463858c8b94f5a296e06e918946e2e8be90149e3a379c7d4f9b1fb6957e",
+      "bytes": 48606365
     },
     "PinkSakura.Angry.exp3.json": {
       "sha256": "933b6bd37bbc38f809be37b910b43e06f1cd5a7ce0e3589e314ae69a3bb461ad",
@@ -66,24 +66,36 @@
       "bytes": 1155
     },
     "PinkSakura.cdi3.json": {
-      "sha256": "04a84e449021a4261cbc343d8804693f59090601468f82f0615823d0ac561b5b",
-      "bytes": 6060
+      "sha256": "145a383a2c6dc9488294500c49e84a4390d3018705d0655985c0920f5f778ff8",
+      "bytes": 6847
     },
     "PinkSakura.curious.motion3.json": {
       "sha256": "45386ab91514e34c7e4b27c968aa2457d2c084abb6c1bc1c07e781df7220a2c1",
       "bytes": 11579
+    },
+    "PinkSakura.fingerheart.motion3.json": {
+      "sha256": "ffa8db8cb2bc44b01a420609d46c8095784779ef1a2c7af0e758539fe80440ae",
+      "bytes": 2126
+    },
+    "PinkSakura.handdown.motion3.json": {
+      "sha256": "9e4ab4bd266348e8bc771afa4589a3ba92a1dae5f2cd595756ed2b56b933d26c",
+      "bytes": 1187
+    },
+    "PinkSakura.handtochin.motion3.json": {
+      "sha256": "77fb096373150a572ef2bdce8a61adc6ea271d1f67e51645383d5f38d1500e6c",
+      "bytes": 2126
     },
     "PinkSakura.idle.motion3.json": {
       "sha256": "5f709b9834310a670e1b55b448421568377031f26ad79040925db29da8943990",
       "bytes": 2282
     },
     "PinkSakura.moc3": {
-      "sha256": "5a4a2b68f5068a9870d73712d178d195f64d58d84d5e21e469911889171cabf8",
-      "bytes": 1013184
+      "sha256": "4ce948a92454589668b24caf3d928362a5251d3e415e0733ec5356e01f4fa745",
+      "bytes": 5206464
     },
     "PinkSakura.model3.json": {
-      "sha256": "c2fa4c10d2b5322c0eaf6da9a02b2ecc963dd2b9018628fc1d5942c41d2e3090",
-      "bytes": 2249
+      "sha256": "e2185bdfcee29824e6ef94293ab879f76bb00bf889d4ad50de77ce9a347f4c7c",
+      "bytes": 2659
     },
     "PinkSakura.nod.motion3.json": {
       "sha256": "bfd9a247d5ec8479145c2dddfd5fdbf03e1c46df8d7460f07badd146c1e19418",
@@ -112,17 +124,21 @@
     "PinkSakura.speechbob.motion3.json": {
       "sha256": "7af749e56d29a7af938fd27306ed34f740af21053ab134b962ae8ca5cd464622",
       "bytes": 3239
+    },
+    "PinkSakura.wave.motion3.json": {
+      "sha256": "de2e4216ddf3b3c0e1ab0f5f6cc8cc222bab34be13bb493412f6ee2c96d9aca1",
+      "bytes": 2744
     }
   },
   "attribution": {
     "included": true,
     "path": "ATTRIBUTION.md",
-    "sha256": "0e34fc3d015f9926568245063bf2597c7bf3b29e22208d90608ce642a84dd82c"
+    "sha256": "07691a60665bb30bbc46482775b75ffeb71b78d5364b98e2eb6b2d4994cf0b26"
   },
   "assetLicense": {
     "included": true,
     "path": "ASSET-LICENSE.md",
-    "sha256": "1107b511d8b5494199e8e5415b36e65664717826dc86e97f8ee1a835a85980af"
+    "sha256": "1d5a80ece404d21357a8027168e4903acddec1ee335686a46ad809d3dba63dc3"
   },
   "vtubeStudioTested": false,
   "officialEditorTested": false,

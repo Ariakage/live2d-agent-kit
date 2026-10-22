@@ -2,6 +2,7 @@
 import { DRAWING, REGIONS } from './view-config.js';
 import { ExpressionLayer } from './expression-layer.js';
 import { SpeechBob } from './speech-bob.js';
+import { GestureHandoff } from './gesture-handoff.js';
 const base = new URL('./', import.meta.url);
 let dependencyPromise;
 
@@ -101,6 +102,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
     let selectedView = 'full', zoom = 1, expressionName = '', expressionFadeOut = .35;
     const expressionLayer = new ExpressionLayer();
     const speech = new SpeechBob();
+    const gestureHandoff = new GestureHandoff();
     let speechEnabled = false, floatProfile = 'normal', idleElapsed = 0, idleIndex = 0;
     const idleGroups = ['Quiet', 'Curious', 'Sleepy'].filter(name => motionDefinitions[name]?.length);
     let currentDelta = 0, frozenCapture = null, frozenExpressionTransition = false;
@@ -154,6 +156,8 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
     internal.update = (dt, now) => {
       currentDelta = Number.isFinite(dt) ? clamp(dt, 0, 50) / 1000 : 0;
       if (frozenCapture) {
+        const returningArm=gestureHandoff.step(currentDelta);
+        if(returningArm)for(const [id,value] of Object.entries(returningArm))frozenCapture[indices.get(id)]=value;
         rawParams.values.set(frozenCapture);
         finalParameters();
         core.update();
@@ -254,6 +258,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
       clearParameters() { manual.clear(); },
       setCaptureParameters(parameters) {
         if (destroyed || !parameters || typeof parameters !== 'object' || Array.isArray(parameters)) return false;
+        if(!captureActive){motionGeneration++;gestureHandoff.cancel();motionManager.stopAllMotions();oneShot=false;}
         // Each call replaces the frame rather than retaining stale tracked values.
         captureParameters.clear();
         frozenCapture = null; frozenExpressionTransition = false;
@@ -275,6 +280,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         viewer.renderNow(); return true;
       },
       clearCaptureParameters() {
+        gestureHandoff.cancel();
         captureActive = false; captureParameters.clear();
         speech.reset();
         frozenCapture = null; frozenExpressionTransition = false;
@@ -282,6 +288,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
       setSpeechBob(enabled) { speechEnabled = Boolean(enabled); if (!speechEnabled) speech.reset(); },
       setFloatProfile(profile) { if (['low', 'normal', 'high'].includes(profile)) floatProfile = profile; },
       setAutoPlay(enabled) {
+        gestureHandoff.cancel();
         motionBlend = null;
         frozenCapture = null; frozenExpressionTransition = false;
         autoPlay = Boolean(enabled); oneShot = false; motionGeneration++;
@@ -294,7 +301,7 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
       async playMotion(group) {
         if (!motionDefinitions[group]?.length || destroyed) return false;
         const generation = ++motionGeneration;
-        const from = Float32Array.from(descriptors.map(p => lastRenderedParameters[p.id]));
+        let from = Float32Array.from(descriptors.map(p => lastRenderedParameters[p.id]));
         autoPlay = false; pointerFollow = false; manual.clear();
         viewer.clearCaptureParameters();
         expressionLayer.reset(); expressionName = ''; expressionGeneration++;
@@ -302,6 +309,9 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
         // Hold the outgoing frame while loading, then blend capture/manual/motion alike.
         frozenCapture = from;
         motionManager.stopAllMotions();
+        const returned=await gestureHandoff.start(lastRenderedParameters);
+        if(!returned||generation!==motionGeneration||destroyed)return false;
+        from=Float32Array.from(frozenCapture);
         let started;
         try { started = await model.motion(group, 0, PIXI.live2d.MotionPriority.FORCE); }
         catch(error) { if(generation===motionGeneration){frozenCapture=null;motionBlend=null;} throw error; }
@@ -346,10 +356,12 @@ export async function createViewer({ canvas, modelUrl, onReady, onError, onStats
       },
       getState() { return { autoPlay, pointerFollow, view: selectedView, zoom, expression: expressionName,
         speechBob: speechEnabled, floatProfile, idleGroup: autoPlay ? motionManager.groups.idle : null,
-        captureActive, capturePaused: Boolean(frozenCapture), captureParameters: Object.fromEntries(captureParameters),
+        captureActive, capturePaused: Boolean(frozenCapture)&&!gestureHandoff.active,
+        gestureHandoff:gestureHandoff.active,captureParameters: Object.fromEntries(captureParameters),
         manualParameters: Object.fromEntries(manual), parameters: { ...lastRenderedParameters } }; },
       getParameters() { return descriptors.map(p => ({ ...p, value: lastRenderedParameters[p.id] })); },
       getDrawableState() { return { positions: Array.from(raw.drawables.vertexPositions, v => Array.from(v)), opacities: Array.from(raw.drawables.opacities) }; },
+      getDrawableTopology() { return { ids: Array.from(raw.drawables.ids), indices: Array.from(raw.drawables.indices, v => Array.from(v)) }; },
       getModelCounts() { return { parameters: raw.parameters.count, drawables: raw.drawables.count,
         vertices: Array.from(raw.drawables.vertexCounts).reduce((sum, value) => sum + value, 0),
         triangles: Array.from(raw.drawables.indexCounts).reduce((sum, value) => sum + value / 3, 0) }; },

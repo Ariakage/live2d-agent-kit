@@ -21,7 +21,7 @@ Live2D Agent Kit 是一套供 Codex 和其他 coding agent 使用的角色制作
 
 ## 模型示例：Pink Sakura
 
-[Pink Sakura](examples/pink-sakura/README.md) 提供源图、拆层配方、高清运行模型和验证记录。下方截图和动画来自早期眉毛版本的 WebGL 画布；动画使用合成面捕输入。最新身体动态的画面与检查记录见[动态验证](examples/pink-sakura/verification/dynamics-20261020/README.md)。
+[Pink Sakura](examples/pink-sakura/README.md) 提供源图、拆层配方、高清运行模型和验证记录。下方截图和动画来自早期眉毛版本的 WebGL 画布；动画使用合成面捕输入。最新手势画面与完整动作检查见[手势验证](examples/pink-sakura/verification/gestures-20261022/README.md)。
 
 | 原始参考图 | 绑定后的模型 | 动作预览 |
 | :---: | :---: | :---: |
@@ -29,15 +29,17 @@ Live2D Agent Kit 是一套供 Codex 和其他 coding agent 使用的角色制作
 
 | 项目 | 示例内容 |
 | --- | --- |
-| 模型结构 | 24 个源图层、26 个 Drawable、37 个参数 |
+| 模型结构 | 30 个源图层、32 个 Drawable、41 个参数 |
 | 可动部位 | 独立眉眼与嘴形、头身、双肩、胸腰、轻微上臂摆动、袖口、裙摆、发饰与发丝 |
-| 内置动作 | 10 个动作，含 Quiet / Curious / Sleepy 三套待机、Airy、慢眨眼与 SpeechBob |
+| 内置动作 | 14 个动作，含托下巴、指尖比心、招手、放下，以及三套待机、慢眨眼与 SpeechBob |
 | 表情与物理 | 8 个参数表情、14 组物理；支持 Float 与 Wind |
 | 高清纹理 | `realesr-animevideov3-x4`，图集从 2048² 提升到 8192² |
 
 [运行文件](examples/pink-sakura/runtime/) · [重建这个模型](examples/pink-sakura/README.md#复现模板) · [脸部近景与测试记录](examples/pink-sakura/verification/README.md)
 
-身体和衣袖保留为连续图层，用局部变形器实现双肩、胸腰和轻微上臂摆动；这版没有托下巴、比心、招手或手指绑定。放大看仍有闭唇线偏淡、半闭眼睫毛偏厚等细节，`EyeOpen` 在 0～0.25 之间保持闭眼姿态。具体范围见[动态验证](examples/pink-sakura/verification/dynamics-20261020/README.md)，VTube Studio 的最终效果由使用者验收。
+![Pink Sakura 托下巴、指尖比心与招手的实际高清模型画面](examples/pink-sakura/verification/gestures-20261022/gesture-overview.jpg)
+
+新手势使用为 Pink 单独补画的连续衣袖与三种手型，位于观众左侧。网页中途换动作时先放下再切换，减少手型叠影和肘部折断。这是预设动作，不是摄像头手指识别。抬起时袖子会收窄；半闭眼睫毛偏厚、闭唇线偏淡等原有细节仍在，见[本轮检查与限制](examples/pink-sakura/verification/gestures-20261022/README.md)。VTube Studio 最终效果由使用者验收。
 
 原始参考图按提供者说明标注：**此图片来自 ChatGPT Image2.5 生成**。示例图片与模型采用 [CC BY 4.0](examples/pink-sakura/LICENSE.md)，允许署名使用和修改，请保留来源与修改说明，不要冒认原作者。补画和模型制作的来源另有记录。
 
@@ -105,7 +107,7 @@ Pink Sakura 使用 **`realesr-animevideov3-x4`**，通过 Upscayl 的 NCNN CLI �
 
 ## 复现与验证
 
-**不需要作者原来的 `work/` 目录。** Pink Sakura 的源图、眉毛生成脚本、拆层与动态测量配方、表情动作生成器和运行模型均已公开；临时文件和缓存可按指南重新生成。官方 SDK、浏览器运行库、Upscayl 和超分权重需另外获取。
+**不需要作者原来的 `work/` 目录。** Pink Sakura 的源图、眉毛分解与手臂配准脚本、拆层与动态测量配方、表情动作生成器和运行模型均已公开；临时文件和缓存可按指南重新生成。官方 SDK、浏览器运行库、Upscayl 和超分权重需另外获取。
 
 | 已提供 | 需要在本机准备 |
 | --- | --- |
@@ -119,6 +121,7 @@ CMO3 保留模型与绑定，其可编辑图层从图集重建，不包含原 PS
 
 | 检查 | 已记录的结果 |
 | --- | --- |
+| [手势与新超分，2026-10-22](examples/pink-sakura/verification/gestures-20261022/README.md) | 236 个 Core 姿态、38 项 Web 检查、7,810 个连续帧及 91 张姿态截图；另有 Minimal 回归与选帧目检 |
 | [独立源码包，`a909460`](docs/verification/source-package-a909460.json) | 65 项 Python、77 项 Node；从没有 work/cache 的源码副本重建眉毛、Pink 配方与动态测量依赖 |
 | [原生身体动态，2026-10-21](examples/pink-sakura/verification/dynamics-20261020/README.md) | Core、Web、完整连续动作及中性脸部对照；具体计数、文件身份与目视范围见报告 |
 | [网页交互，2026-10-18](docs/verification/web-features-20261018.json) | 61 项 Python、59 项 Node、38 项真实 WebGL 检查；合成回调验证节点、表情叠加与统计工具，未开启摄像头 |
@@ -127,7 +130,7 @@ CMO3 保留模型与绑定，其可编辑图层从图集重建，不包含原 PS
 | [空目录源包重建，`e2c4679`](docs/verification/source-package-e2c4679.json) | 61 项 Python、35 项 Node 测试通过；三张眉毛 PNG、24 层 Pink 配方与 16 层几何示例可重建 |
 | [历史设备与构建测试](docs/verification/README.md) | `7f391f4` 下的 16 项真实摄像头检查，以及另行记录的引擎冷构建 |
 
-源包重建、引擎编译、网页画面与设备测试分别记录；它们不替代 VTube Studio 的最终验收。最新动态版本重新编译适配器并完成 Pink / Minimal 导出和 Core / Web 检查，使用已有 Gradle 依赖缓存；没有重跑摄像头、神经超分或引擎冷构建。低分图集哈希保持一致后复用原高清图集。
+源包重建、引擎编译、网页画面与设备测试分别记录。本轮重新导出 Pink / Minimal，并为新增手部素材实际重跑 `realesr-animevideov3-x4`；LOW / HD MOC 仍逐字节一致。构建使用已有 Gradle 依赖缓存，没有重跑引擎冷构建、真实摄像头或 VTS 验收。
 
 ## 工具与文档
 

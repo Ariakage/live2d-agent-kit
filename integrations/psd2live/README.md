@@ -41,5 +41,15 @@ output, so verify it over time rather than expecting an immediate static change.
 [The example recipe](../../examples/pink-sakura/README.md#复现模板) also includes
 `build-performance.cjs`. Run it on a fresh export with a passed native Core
 report matching that MOC to generate parameter-only expressions and motions.
-This separate step does not change geometry or textures. Latest scoped tests
-are recorded in the [dynamics review](../../examples/pink-sakura/verification/dynamics-20261020/README.md), including a real Minimal exporter/Core/Web regression.
+This separate step does not change geometry or textures.
+
+`PinkSakuraGestures.kt` adds the optional, measured gesture branch: a continuous
+sleeve, matching cuff overlay, four mutually exclusive hand forms and four native
+parameters. It changes the source recipe/atlas upstream; the base dynamics
+adapter's unchanged-raster flags describe only its own input-to-output operation.
+A 17×17 lift/pose grid uses angular interpolation and broad elbow arcs.
+Quarter-cell triangle checks are local safeguards, not appearance acceptance.
+The web handoff lowers the old pose before changing hand form.
+
+Latest scoped tests, fresh anime inference, and an actual Minimal exporter/Core/Web
+regression are recorded in the [gesture review](../../examples/pink-sakura/verification/gestures-20261022/README.md).

@@ -13,7 +13,7 @@
 | 视觉抽查 | [记录](visual-review.json)与[选帧清单](selected-frames.json)：128 帧接触表概览，另看 3 张原尺寸细节。没有逐帧精细目检全部 6,597 帧。 |
 | Minimal 回归 | [192 姿态 Core](minimal-core.json)和[22 项 Web 检查](minimal-web.json)。最终集成再次导出的 Minimal MOC 与同轮已检查文件逐字节一致。 |
 | 构建与高清身份 | [构建记录](build.json)：实际编译并导出 LOW/HD；LOW 与 HD MOC 一致。使用 Gradle 依赖缓存，没有重新做空缓存引擎构建。 |
-| 打包 | ZIP CRC、解包字节与公开 runtime 一致；文件哈希在 [release-metadata.json](../../runtime/release-metadata.json)。 |
+| 打包 | ZIP CRC、解包字节与公开 runtime 一致；文件哈希在 [本轮 release-metadata.json](release-metadata.json)。 |
 
 ## 画面抽查
 

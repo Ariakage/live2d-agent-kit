@@ -1,0 +1,90 @@
+{
+  "scope": "Post-capture audit of original completed-frame log. No new rendering; original report unchanged.",
+  "sourceSha256": "1136a2e1c0f2df5a168c22863fe07578676f7ddc7eadfc57526106a96aebd1d4",
+  "tracks": [
+    {
+      "name": "motion-HandToChin",
+      "passed": true,
+      "frames": 482,
+      "maximumFrameGapMs": 41.299999999813735,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "motion-FingerHeart",
+      "passed": true,
+      "frames": 483,
+      "maximumFrameGapMs": 33.69999999925494,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "motion-Wave",
+      "passed": true,
+      "frames": 483,
+      "maximumFrameGapMs": 34.30000000074506,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "reverse-repeat-0",
+      "passed": true,
+      "frames": 472,
+      "maximumFrameGapMs": 33.59999999962747,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "reverse-repeat-1",
+      "passed": true,
+      "frames": 471,
+      "maximumFrameGapMs": 34.40000000037253,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "reverse-repeat-2",
+      "passed": true,
+      "frames": 472,
+      "maximumFrameGapMs": 33.60000000055879,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "HandToChin-to-FingerHeart",
+      "passed": true,
+      "frames": 676,
+      "maximumFrameGapMs": 34.5,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "HandToChin-to-Wave",
+      "passed": true,
+      "frames": 676,
+      "maximumFrameGapMs": 34.10000000055879,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "FingerHeart-to-HandToChin",
+      "passed": true,
+      "frames": 677,
+      "maximumFrameGapMs": 33.69999999925494,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "FingerHeart-to-Wave",
+      "passed": true,
+      "frames": 677,
+      "maximumFrameGapMs": 34.40000000037253,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "Wave-to-HandToChin",
+      "passed": true,
+      "frames": 676,
+      "maximumFrameGapMs": 34.09999999962747,
+      "raisedFramesWithoutHand": 0
+    },
+    {
+      "name": "Wave-to-FingerHeart",
+      "passed": true,
+      "frames": 676,
+      "maximumFrameGapMs": 34.39999999944121,
+      "raisedFramesWithoutHand": 0
+    }
+  ]
+}
